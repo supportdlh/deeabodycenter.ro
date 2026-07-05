@@ -158,13 +158,13 @@ Principiu: migrarea trebuie să fie **invizibilă pentru Google**. Păstrăm tot
 - Accesibilitate: contrast AA, `alt` pe toate imaginile, focus states vizibile, landmark-uri semantice, meniu accesibil de la tastatură.
 - Țintă: Lighthouse 95+ pe toate categoriile (realist pentru site static).
 
-## 10. Deploy pe shared hosting
+## 10. Deploy pe shared hosting (automat, prin GitHub Actions)
 
-- `astro build` → `dist/` cu HTML/CSS/JS + imagini optimizate.
-- Upload `dist/` în `public_html` prin FTP / cPanel File Manager.
-- **`.htaccess`**: compresie gzip/brotli, cache headers pe assets (imagini/fonturi/CSS — cache lung cu hash în nume), forțare HTTPS, eventuale 301.
-- Ghid pas-cu-pas de deploy livrat ca `DEPLOY.md`.
-- Opțional (nice-to-have, de discutat): script simplu de upload sau GitHub Action care face build + FTP la push. Nu e blocant.
+- **DECIS:** deploy **automat prin GitHub Actions** — la fiecare merge pe `main`, workflow-ul face `astro build` și urcă `dist/` pe shared hosting prin FTP/SFTP. Fără upload manual de rutină.
+- Se face **LA FINAL**, după ce clientul revizuiește rezultatul live în browser și aprobă.
+- Secrete în GitHub (setate de client): `FTP_HOST`, `FTP_USER`, `FTP_PASSWORD`, `FTP_REMOTE_DIR` (ex. `/public_html/`).
+- **`.htaccess`** (urcat din `public/`): compresie gzip/brotli, cache headers pe assets (cache lung, hash în nume), forțare HTTPS, canonicalizare trailing slash, eventuale 301.
+- **`DEPLOY.md`**: documentează fluxul automat + fallback manual (build local → upload `dist/` prin FTP/cPanel) + pași post-deploy (verificare live, retrimitere sitemap în Search Console, confirmare GA4).
 
 ## 11. Decizii confirmate & riscuri rămase
 
