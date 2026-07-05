@@ -1,0 +1,42 @@
+name: Deploy pe shared hosting
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (Astro static)
+        run: npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Directorul de pe server unde se servesc fișierele (ex. /public_html/)
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          # Se urcă DOAR conținutul build-ului
+          local-dir: ./dist/
+          # Protocol: 'ftp' (implicit), 'ftps' (recomandat dacă hostul suportă), sau 'ftps-legacy'
+          protocol: ftps

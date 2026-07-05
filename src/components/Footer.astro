@@ -6,6 +6,8 @@ import { nav } from '../data/nav';
 
 const oferteLinks = nav.find((item) => item.label === 'Oferte')?.children ?? [];
 
+const year = new Date().getFullYear();
+
 const serviciiLinks = [
   { label: 'Servicii Tratamente Faciale și Corporale', href: '/servicii-tratamente-faciale-si-corporale/' },
   { label: 'Tratament Sculptor', href: '/tratament-sculptor/' },
@@ -90,7 +92,7 @@ const serviciiLinks = [
     </div>
 
     <div class="footer-bottom">
-      <span>&copy; 2022 {site.name}.</span>
+      <span>&copy; {year} {site.name}.</span>
       <span>Creare site: <a href="https://digitalhelp.ro" target="_blank" rel="noopener">digitalhelp.ro</a></span>
     </div>
   </div>
