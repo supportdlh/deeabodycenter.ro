@@ -1,0 +1,301 @@
+---
+// Galerie de imagini (carusel orizontal) — reproduce secțiunea de galerie de pe
+// paginile live de tratament/ofertă (Elementor image carousel / Swiper), care nu
+// exista încă în clonă (galeriile au fost adăugate ca date pe `entry.data.gallery`,
+// dar layout-urile nu le randau).
+//
+// Look: eyebrow „Deea Body Center" + titlul paginii (identic cu blocul
+// `.below-main` din mockups/v1-clona/tratament-sculptor.html, care conținea
+// doar eyebrow+titlu — mockup-ul precede capturarea galeriilor), urmat de un
+// carusel orizontal cu scroll-snap CSS (fără librărie), săgeți prev/next (JS
+// vanilla minim) și un lightbox simplu click-to-enlarge (JS vanilla minim).
+//
+// Randat DOAR când `images` are cel puțin un element (vezi utilizarea din
+// TreatmentLayout/OfferLayout — condiționată pe `data.gallery?.length`).
+export interface Props {
+  images: string[];
+  title: string;
+}
+
+const { images, title } = Astro.props;
+---
+
+{
+  images.length > 0 && (
+    <section class="gallery-section" data-gallery>
+      <div class="gallery-heading">
+        <span class="eyebrow">Deea Body Center</span>
+        <h2>{title}</h2>
+      </div>
+
+      <div class="carousel">
+        <button class="carousel-arrow carousel-arrow--prev" type="button" data-dir="-1" aria-label="Imaginea anterioară">
+          ‹
+        </button>
+        <div class="carousel-track" data-track>
+          {images.map((src, i) => (
+            <a class="carousel-slide" href={src} data-slide data-index={i}>
+              <img src={src} alt={`${title} — imagine ${i + 1}`} loading="lazy" />
+            </a>
+          ))}
+        </div>
+        <button class="carousel-arrow carousel-arrow--next" type="button" data-dir="1" aria-label="Imaginea următoare">
+          ›
+        </button>
+      </div>
+
+      <div class="lightbox" data-lightbox-overlay hidden>
+        <button class="lightbox-close" type="button" data-lightbox-close aria-label="Închide">
+          ×
+        </button>
+        <button class="lightbox-nav lightbox-nav--prev" type="button" data-lightbox-prev aria-label="Imaginea precedentă">
+          ‹
+        </button>
+        <img class="lightbox-img" data-lightbox-img alt="" />
+        <button class="lightbox-nav lightbox-nav--next" type="button" data-lightbox-next aria-label="Imaginea următoare">
+          ›
+        </button>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .gallery-section {
+    background: var(--surface);
+  }
+
+  .gallery-heading {
+    padding: 48px 24px 0;
+    text-align: center;
+  }
+  .eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.155em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .gallery-heading h2 {
+    font-size: 2.625rem;
+    margin-bottom: 0;
+  }
+
+  /* ===== CAROUSEL ===== */
+  .carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 32px 24px 56px;
+  }
+  .carousel-track {
+    flex: 1;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+  .carousel-slide {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 240px;
+    height: 320px;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: var(--sh-sm);
+    display: block;
+    transition:
+      transform var(--t-med),
+      box-shadow var(--t-med);
+  }
+  .carousel-slide:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sh-md);
+  }
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .carousel-arrow {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--navy);
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+      background var(--t-fast),
+      color var(--t-fast),
+      border-color var(--t-fast);
+  }
+  .carousel-arrow:hover {
+    background: var(--magenta);
+    border-color: var(--magenta);
+    color: #fff;
+  }
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(5, 17, 69, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox[hidden] {
+    display: none;
+  }
+  .lightbox-img {
+    max-width: 88vw;
+    max-height: 84vh;
+    border-radius: 8px;
+    box-shadow: var(--sh-lg);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lightbox-close:hover {
+    background: var(--magenta);
+  }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lightbox-nav:hover {
+    background: var(--magenta);
+  }
+  .lightbox-nav--prev {
+    left: 16px;
+  }
+  .lightbox-nav--next {
+    right: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-heading {
+      padding-top: 40px;
+    }
+    .gallery-heading h2 {
+      font-size: 1.875rem;
+    }
+    .carousel {
+      padding: 24px 16px 40px;
+      gap: 8px;
+    }
+    .carousel-slide {
+      width: 180px;
+      height: 240px;
+    }
+    .carousel-arrow {
+      width: 36px;
+      height: 36px;
+      font-size: 1.25rem;
+    }
+  }
+</style>
+
+<script>
+  // JS vanilla minim, scoped pe fiecare instanță de galerie (nu presupune o
+  // singură galerie per pagină, deși în practică fiecare pagină are cel mult una).
+  function initGallery(root: Element) {
+    const track = root.querySelector<HTMLElement>('[data-track]');
+    const prevBtn = root.querySelector<HTMLButtonElement>('[data-dir="-1"]');
+    const nextBtn = root.querySelector<HTMLButtonElement>('[data-dir="1"]');
+
+    const scrollAmount = () => (track ? track.clientWidth * 0.8 : 0);
+    prevBtn?.addEventListener('click', () => track?.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+    nextBtn?.addEventListener('click', () => track?.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+
+    // Lightbox (click-to-enlarge)
+    const overlay = root.querySelector<HTMLElement>('[data-lightbox-overlay]');
+    const imgEl = overlay?.querySelector<HTMLImageElement>('[data-lightbox-img]');
+    const slides = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-slide]'));
+    let current = 0;
+
+    function openLightbox(index: number) {
+      current = index;
+      const slide = slides[current];
+      if (!slide || !imgEl || !overlay) return;
+      imgEl.src = slide.getAttribute('href') ?? '';
+      imgEl.alt = slide.querySelector('img')?.alt ?? '';
+      overlay.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      if (!overlay) return;
+      overlay.hidden = true;
+      document.body.style.overflow = '';
+    }
+    function step(dir: number) {
+      if (slides.length === 0) return;
+      openLightbox((current + dir + slides.length) % slides.length);
+    }
+
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLightbox(i);
+      });
+    });
+
+    overlay?.querySelector('[data-lightbox-close]')?.addEventListener('click', closeLightbox);
+    overlay?.addEventListener('click', (e) => {
+      if (e.target === overlay) closeLightbox();
+    });
+    overlay?.querySelector('[data-lightbox-prev]')?.addEventListener('click', () => step(-1));
+    overlay?.querySelector('[data-lightbox-next]')?.addEventListener('click', () => step(1));
+
+    document.addEventListener('keydown', (e) => {
+      if (!overlay || overlay.hidden) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+  }
+
+  document.querySelectorAll('[data-gallery]').forEach(initGallery);
+</script>

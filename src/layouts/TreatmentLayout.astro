@@ -1,14 +1,19 @@
 ---
-// Layout partajat de cele 17 pagini de tratament — portat din
-// mockups/v2-rafinat/tratament-sculptor.html (V2 aprobat).
-// Hero full-width cu casetă overlay + corp pe 2 coloane:
-// stânga = intro + acordeoane Corporal/Facial (din entry.data.sections, componenta Accordion);
-// dreapta = sidebar sticky cu imagine, titlu, text promo, beneficii și bloc de programare WhatsApp
-// (DECIS: fără formular — buton WhatsApp + telefon clickabil).
+// Layout partajat de cele 17 pagini de tratament — re-skinned PIXEL-PERFECT după
+// mockup-ul V1 aprobat mockups/v1-clona/tratament-sculptor.html (RS3).
+// Hero full-width cu casetă overlay (bloc navy translucent, colț de jos-stânga)
+// + corp pe 2 coloane: stânga = intro + acordeoane Corporal/Facial (din
+// entry.data.sections, componenta Accordion — restilizată local, prin :global(),
+// la varianta „boxată" din mockup, fără a atinge Accordion.astro folosit și de
+// FAQ-ul homepage-ului); dreapta = sidebar sticky cu imagine, titlu, text promo,
+// beneficii și bloc de programare WhatsApp (DECIS: fără formular — buton
+// WhatsApp + telefon clickabil). Sub conținut: galeria de imagini (Gallery),
+// randată doar dacă `entry.data.gallery` are elemente.
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import Accordion from '../components/Accordion.astro';
+import Gallery from '../components/Gallery.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import ServiceSchema from '../components/schema/ServiceSchema.astro';
 import { site } from '../data/site';
@@ -45,9 +50,11 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
       class="hero-img"
     />
     <div class="hero-gradient" aria-hidden="true"></div>
-    <div class="hero-text-box">
-      <h1>{data.title}</h1>
-      <p>{data.excerpt}</p>
+    <div class="hero-overlay-wrap">
+      <div class="hero-overlay-box">
+        <h1>{data.title}</h1>
+        <p>{data.excerpt}</p>
+      </div>
     </div>
   </div>
 
@@ -120,14 +127,14 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
 
           <div class="sidebar-social">
             <a href={site.social.facebook || '#'} aria-label="Facebook">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
                 ><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg
               >
             </a>
             <a href={site.social.instagram || '#'} aria-label="Instagram">
               <svg
-                width="18"
-                height="18"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -146,20 +153,24 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
       </div>
     </div>
   </section>
+
+  <!-- =========================================================
+       GALERIE (carusel de imagini) — randată doar dacă există
+  ========================================================== -->
+  <Gallery images={data.gallery ?? []} title={data.title} />
 </BaseLayout>
 
 <style>
   .wrap {
-    max-width: 1200px;
+    max-width: 1170px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 24px;
   }
 
   /* ===== HERO ===== */
   .treatment-hero {
     position: relative;
-    height: 72vh;
-    min-height: 480px;
+    min-height: 420px;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
@@ -175,148 +186,207 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
   .hero-gradient {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(to right, rgba(5, 17, 69, 0.8) 0%, rgba(5, 17, 69, 0.35) 55%, transparent 100%),
-      linear-gradient(to top, rgba(5, 17, 69, 0.55) 0%, transparent 50%);
+    background: linear-gradient(to bottom, rgba(5, 17, 69, 0.15) 0%, rgba(5, 17, 69, 0.3) 50%, rgba(5, 17, 69, 0.6) 100%);
   }
-  .hero-text-box {
+  .hero-overlay-wrap {
     position: relative;
-    padding: 56px 48px;
-    max-width: 600px;
+    z-index: 1;
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px 40px;
   }
-  .hero-text-box h1 {
+  .hero-overlay-box {
+    display: inline-block;
+    background: rgba(5, 17, 69, 0.7);
+    backdrop-filter: blur(4px);
+    border-radius: var(--r-sm);
+    padding: 28px 32px;
+    max-width: 560px;
+  }
+  .hero-overlay-box h1 {
     color: #fff;
-    margin-bottom: 16px;
+    font-size: 2.75rem;
+    line-height: 1.15;
+    margin-bottom: 14px;
   }
-  .hero-text-box p {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1.0625rem;
+  .hero-overlay-box p {
+    color: #fff;
+    opacity: 0.92;
+    font-size: 0.9375rem;
     line-height: 1.65;
   }
 
   /* ===== BODY (2-col) ===== */
   .page-body {
-    padding: 64px 0 80px;
+    padding: 56px 0 64px;
     background: var(--surface);
   }
   .body-grid {
     display: grid;
     grid-template-columns: 1fr 360px;
-    gap: 56px;
+    gap: 48px;
     align-items: start;
   }
 
   /* ===== MAIN COLUMN ===== */
   .main-col :global(p) {
-    font-size: 1rem;
-    line-height: 1.8;
-    margin-bottom: 18px;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    margin-bottom: 16px;
     color: var(--text-sec);
   }
   .main-col :global(p:last-child) {
     margin-bottom: 0;
   }
+  .main-col :global(p a) {
+    color: var(--teal);
+    font-weight: 500;
+  }
 
   .col-section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.625rem;
     font-weight: 700;
     color: var(--heading);
-    margin: 40px 0 16px;
+    margin: 34px 0 16px;
   }
 
   .accordion {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+  }
+
+  /* Restilizare LOCALĂ a componentei Accordion (folosită și de FAQ-ul homepage-ului,
+     unde rămâne cu look-ul „underline" din mockups/v1-clona/index.html) la varianta
+     „boxată" din mockups/v1-clona/tratament-sculptor.html — cerc magenta +/- , bandă
+     de titlu care se colorează la [open], corp pe fundal #FAFAFA. Scopat la `.accordion`
+     din acest layout, deci nu afectează alte utilizări ale <Accordion>. */
+  .accordion :global(details.faq-item) {
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+  }
+  .accordion :global(details.faq-item:first-of-type) {
+    border-top: 1px solid var(--border);
+  }
+  .accordion :global(details.faq-item summary) {
+    padding: 14px 18px;
+    font-size: 0.90625rem;
+    font-weight: 600;
+    background: var(--surface);
+    transition:
+      background var(--t-fast),
+      color var(--t-fast);
+  }
+  .accordion :global(details.faq-item summary::after) {
+    content: '';
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    background: var(--magenta)
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 2v8M2 6h8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
+      center / 12px no-repeat;
+    transition: background-image var(--t-fast);
+  }
+  .accordion :global(details.faq-item[open] summary) {
+    background: var(--magenta);
+    color: #fff;
+  }
+  .accordion :global(details.faq-item[open] summary::after) {
+    background-color: rgba(255, 255, 255, 0.25);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 6h8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+  .accordion :global(details.faq-item .faq-answer) {
+    padding: 18px 20px 20px;
+    font-size: 0.875rem;
+    background: #fafafa;
+    border-top: 1px solid var(--border);
   }
 
   /* ===== SIDEBAR ===== */
   .sidebar {
-    background: var(--surface-alt);
-    border-radius: var(--r-md);
-    padding: 32px;
-    border: 1px solid var(--border);
+    background: #ecf0f2;
+    border-radius: 10px;
+    padding: 28px 24px;
     position: sticky;
-    top: 96px;
+    top: 88px;
   }
   .sidebar h2 {
-    font-size: 1.625rem;
-    margin-bottom: 20px;
+    font-size: 1.75rem;
+    margin-bottom: 18px;
   }
   .sidebar :global(.sidebar-img) {
     width: 100%;
-    border-radius: var(--r-md);
-    margin-bottom: 20px;
-    box-shadow: var(--sh-sm);
+    max-height: 280px;
+    border-radius: 8px;
+    margin-bottom: 18px;
     object-fit: cover;
-    aspect-ratio: 2 / 3;
   }
   .sidebar :global(p) {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     line-height: 1.7;
     margin-bottom: 14px;
   }
 
   .sidebar-divider {
     height: 1px;
-    background: var(--border);
-    margin: 24px 0;
+    background: #d4d8dc;
+    margin: 22px 0;
   }
 
   .sidebar-label {
-    font-size: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9375rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
     color: var(--heading);
-    margin-bottom: 14px;
+    margin: 20px 0 12px;
   }
 
   .benefit-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 9px;
     margin-bottom: 0;
   }
   .benefit-list li {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    font-size: 0.9375rem;
+    font-size: 0.84375rem;
     color: var(--text-sec);
     line-height: 1.5;
   }
   .benefit-list li::before {
     content: '';
     flex-shrink: 0;
-    margin-top: 3px;
-    width: 18px;
-    height: 18px;
+    margin-top: 5px;
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
     border-radius: 50%;
-    background-color: var(--gold);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%23051145' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 10px 8px;
+    background: var(--magenta);
   }
 
   /* ===== BLOC PROGRAMARE WHATSAPP (fără formular) ===== */
   .sidebar-form-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--heading);
     margin-bottom: 8px;
   }
   .sidebar-note {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--text-sec);
-    margin-bottom: 20px;
+    line-height: 1.6;
+    margin-bottom: 16px;
   }
   .sidebar-note :global(a) {
-    font-weight: 600;
+    font-weight: 500;
     color: var(--teal);
   }
   .sidebar :global(.sidebar-wa-btn) {
@@ -326,27 +396,23 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
 
   .sidebar-social {
     display: flex;
-    gap: 12px;
-    margin-top: 20px;
+    gap: 10px;
+    align-items: center;
+    margin-top: 18px;
   }
   .sidebar-social a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    color: var(--text-sec);
-    border: 1px solid var(--border);
-    transition:
-      color var(--t-fast),
-      border-color var(--t-fast),
-      background var(--t-fast);
+    background: var(--navy);
+    color: #fff;
+    transition: background var(--t-fast);
   }
   .sidebar-social a:hover {
-    color: var(--magenta);
-    border-color: var(--magenta);
-    background: rgba(167, 64, 143, 0.07);
+    background: var(--magenta);
     text-decoration: none;
   }
 
@@ -362,13 +428,16 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
   }
   @media (max-width: 768px) {
     .treatment-hero {
-      height: 55vh;
+      min-height: 300px;
     }
-    .hero-text-box {
-      padding: 32px 24px;
+    .hero-overlay-box {
+      padding: 20px 22px;
+    }
+    .hero-overlay-box h1 {
+      font-size: 1.875rem;
     }
     .page-body {
-      padding: 48px 0 64px;
+      padding: 36px 0 48px;
     }
   }
   @media (max-width: 500px) {

@@ -1,12 +1,16 @@
 ---
-// Layout partajat de cele 3 pagini de ofertă — FĂRĂ mockup pentru aceste pagini (spec §7 / task 7),
-// deci layout proiectat de la zero, coerent cu limbajul vizual V2 aprobat:
-// hero full-width (pattern din TreatmentLayout) + intro narativ + grid de pachete de preț
-// (stil „price-box" din hero-ul homepage-ului: cutie navy, preț auriu) + bloc final de
-// programare WhatsApp (DECIS la nivel de proiect: fără formular — buton WhatsApp + telefon).
+// Layout partajat de cele 3 pagini de ofertă — FĂRĂ mockup dedicat pentru aceste pagini
+// (spec §7 / task 7), deci layout proiectat coerent cu limbajul vizual V1 aprobat
+// (RS3): hero full-width cu aceeași casetă overlay navy translucentă ca în
+// TreatmentLayout (mockups/v1-clona/tratament-sculptor.html) + intro narativ + grid de
+// pachete de preț (stil „price-box" din hero-ul homepage-ului: cutie navy, preț auriu)
+// + galerie de imagini promoționale (Gallery, randată doar dacă `entry.data.gallery`
+// are elemente) + bloc final de programare WhatsApp (DECIS la nivel de proiect: fără
+// formular — buton WhatsApp + telefon).
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
+import Gallery from '../components/Gallery.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import { site } from '../data/site';
 
@@ -43,10 +47,12 @@ const waMessage = `Bună, aș dori mai multe detalii despre ${data.title}.`;
       class="hero-img"
     />
     <div class="hero-gradient" aria-hidden="true"></div>
-    <div class="hero-text-box">
-      <div class="eyebrow eyebrow--gold">Oferte exclusive</div>
-      <h1>{data.title}</h1>
-      <p>{data.excerpt}</p>
+    <div class="hero-overlay-wrap">
+      <div class="hero-overlay-box">
+        <div class="eyebrow eyebrow--gold">Oferte exclusive</div>
+        <h1>{data.title}</h1>
+        <p>{data.excerpt}</p>
+      </div>
     </div>
   </div>
 
@@ -99,6 +105,11 @@ const waMessage = `Bună, aș dori mai multe detalii despre ${data.title}.`;
   }
 
   <!-- =========================================================
+       GALERIE (imagini promoționale) — randată doar dacă există
+  ========================================================== -->
+  <Gallery images={data.gallery ?? []} title={data.title} />
+
+  <!-- =========================================================
        CTA FINAL — PROGRAMARE WHATSAPP (fără formular)
   ========================================================== -->
   <section class="cta-section">
@@ -116,18 +127,19 @@ const waMessage = `Bună, aș dori mai multe detalii despre ${data.title}.`;
 
 <style>
   .wrap {
-    max-width: 1200px;
+    max-width: 1170px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 24px;
   }
   .wrap--narrow {
     max-width: 760px;
   }
 
-  /* ===== HERO ===== */
+  /* ===== HERO (aceeași casetă overlay navy translucentă ca TreatmentLayout,
+     după mockups/v1-clona/tratament-sculptor.html — coerență vizuală V1
+     între tratamente și oferte) ===== */
   .offer-hero {
     position: relative;
-    height: 48vh;
     min-height: 380px;
     display: flex;
     align-items: flex-end;
@@ -144,22 +156,34 @@ const waMessage = `Bună, aș dori mai multe detalii despre ${data.title}.`;
   .hero-gradient {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(to right, rgba(5, 17, 69, 0.85) 0%, rgba(5, 17, 69, 0.4) 55%, transparent 100%),
-      linear-gradient(to top, rgba(5, 17, 69, 0.6) 0%, transparent 50%);
+    background: linear-gradient(to bottom, rgba(5, 17, 69, 0.15) 0%, rgba(5, 17, 69, 0.3) 50%, rgba(5, 17, 69, 0.6) 100%);
   }
-  .hero-text-box {
+  .hero-overlay-wrap {
     position: relative;
-    padding: 48px 48px 56px;
-    max-width: 640px;
+    z-index: 1;
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px 40px;
   }
-  .hero-text-box h1 {
+  .hero-overlay-box {
+    display: inline-block;
+    background: rgba(5, 17, 69, 0.7);
+    backdrop-filter: blur(4px);
+    border-radius: var(--r-sm);
+    padding: 28px 32px;
+    max-width: 600px;
+  }
+  .hero-overlay-box h1 {
     color: #fff;
+    font-size: 2.75rem;
+    line-height: 1.15;
     margin-bottom: 14px;
   }
-  .hero-text-box p {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1.0625rem;
+  .hero-overlay-box p {
+    color: #fff;
+    opacity: 0.92;
+    font-size: 0.9375rem;
     line-height: 1.65;
   }
 
@@ -190,7 +214,7 @@ const waMessage = `Bună, aș dori mai multe detalii despre ${data.title}.`;
   .eyebrow--gold::before {
     background: var(--gold);
   }
-  .hero-text-box .eyebrow {
+  .hero-overlay-box .eyebrow {
     margin-bottom: 10px;
   }
 
@@ -369,11 +393,13 @@ const waMessage = `Bună, aș dori mai multe detalii despre ${data.title}.`;
   }
   @media (max-width: 768px) {
     .offer-hero {
-      height: 42vh;
-      min-height: 320px;
+      min-height: 300px;
     }
-    .hero-text-box {
-      padding: 32px 24px;
+    .hero-overlay-box {
+      padding: 20px 22px;
+    }
+    .hero-overlay-box h1 {
+      font-size: 1.875rem;
     }
     .section {
       padding: 48px 0;
