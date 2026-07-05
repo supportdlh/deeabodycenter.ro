@@ -1,0 +1,59 @@
+---
+// Cardul de testimonial (secțiunea „Ce spun ele").
+// Portat din mockup-ul V2 aprobat (.testi-card / .stars / .testi-text / .testi-author).
+export interface Props {
+  name: string;
+  text: string;
+}
+
+const { name, text } = Astro.props;
+---
+
+<div class="testi-card">
+  <div class="stars" aria-hidden="true">★★★★★</div>
+  <p class="testi-text">{text}</p>
+  <div class="testi-author">{name}</div>
+</div>
+
+<style>
+  .testi-card {
+    background: var(--surface-card);
+    border-radius: var(--r-md);
+    padding: 32px;
+    box-shadow: var(--sh-sm);
+    border: 1px solid var(--border);
+    position: relative;
+    height: 100%;
+  }
+  .testi-card::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--magenta);
+    opacity: 0.15;
+    line-height: 1;
+    position: absolute;
+    top: 8px;
+    left: 20px;
+  }
+  .stars {
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .testi-text {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--text-sec);
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .testi-author {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--heading);
+    position: relative;
+  }
+</style>

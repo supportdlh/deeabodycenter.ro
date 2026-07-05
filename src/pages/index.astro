@@ -1,11 +1,890 @@
 ---
+// Homepage — reconstruită secțiune cu secțiune din mockup-ul V2 aprobat
+// (mockups/v2-rafinat/index.html), folosind BaseLayout + componentele
+// comune (Header/Footer prin BaseLayout) + ScrollCue/WhatsAppButton +
+// componentele noi (ServiceCard/OfferCard/TestimonialCard/Accordion/ContactBlock).
+// Copy exact din reference/content.md; meta din reference/design-tokens.md.
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ScrollCue from '../components/ScrollCue.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import OfferCard from '../components/OfferCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import Accordion from '../components/Accordion.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import { site } from '../data/site';
+
+import heroImg from '../assets/promo-remodelare-corporala.webp';
+import facialSplitImg from '../assets/DSC01046-1536x1024.webp';
+import bodySplitImg from '../assets/DSC00993-scaled.webp';
+
+import imgIntraceuticals from '../assets/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-542.webp';
+import imgOptiFirm from '../assets/tratamente-faciale-1.png';
+import imgRf4k from '../assets/woman-rf-skin-tightening-min-1536x1008-1.webp';
+import imgMicropen from '../assets/tratament-micropen-1536x1046.webp';
+import imgGreenPeel from '../assets/tratament-green-peel-deeabocycenter-ploiesti_DBC-676.webp';
+import imgHidratiq from '../assets/tratament-hidratiq-1.png';
+
+import imgSculptor from '../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-320.webp';
+import imgDermohealth from '../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-346.webp';
+import imgZentisse from '../assets/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-250.webp';
+import imgVelaShape from '../assets/vela-shape-deeabocycenter-ploiesti_DBC-203.webp';
+import imgCriolipoliza from '../assets/criolipoliza-cryogen-deeabocycenter-ploiesti_DBC-428.webp';
+import imgElectrostimulare from '../assets/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-271.webp';
+import imgPresoterapie from '../assets/presoterapie-deeabodycenter-ploiesti.png';
+import imgSolar from '../assets/solar-deeabocycenter-ploiesti_DBC-297.webp';
+import imgEpilare from '../assets/epilare-definitiva-cu-laser-deeabodycenter-ploiesti.jpg';
+
+import imgOfferCorporal from '../assets/oferte-deea-body-center-ploiesti.webp';
+import imgOfferSpeciale from '../assets/DSC00993-scaled.webp';
+import imgOfferFaciale from '../assets/Tratament-sculptor-deeabodycenter.ro-ploiesti.webp';
+
+import imgTestimonialsBg from '../assets/testimonials.webp';
+
+const facialCards = [
+  {
+    title: 'Intraceuticals',
+    excerpt:
+      'Rezultate spectaculoase in tratarea ridurilor, pielii imbatranite, acnee, pete pigmentare, cearcane, elasticitate si volum piele.',
+    image: imgIntraceuticals,
+    href: '/tratament-facial-intraceuticals/',
+  },
+  {
+    title: 'Tratament special pentru ochi OPTI-FIRM',
+    excerpt:
+      'Tratament special pentru ochi OPTI-FIRM eye contour REPECHAGE – pentru cearcane, riduri si pungile de sub ochi.',
+    image: imgOptiFirm,
+    href: '/tratament-opti-firm/',
+  },
+  {
+    title: 'Tratamentul facial cu Radiofrecvență 4K',
+    excerpt:
+      'Recomandată pentru oricine dorește o piele mai fermă, mai netedă și cu un aspect întinerit, fără disconfort și fără intervenții invazive.',
+    image: imgRf4k,
+    href: '/tratament-facial-cu-radiofrecventa-4k/',
+  },
+  {
+    title: 'Tratament facial MicroPen',
+    excerpt:
+      'Tratamentul facial cu Micropen este o metodă inovatoare de rejuvenare și regenerare a pielii, cunoscută și sub numele de microneedling.',
+    image: imgMicropen,
+    href: '/tratament-facial-micropen/',
+  },
+  {
+    title: 'Tratamentul Green Peel® by Dr. Schrammek',
+    excerpt: 'Metodă de rejuvenare a pielii, bazată exclusiv pe ingrediente naturale, fără chimicale sau aditivi sintetici.',
+    image: imgGreenPeel,
+    href: '/tratament-green-peel-by-dr-schrammek/',
+  },
+  {
+    title: 'Tratament HidratIQ',
+    excerpt:
+      'Combina cosmetica 7 functii: Aqua peel, Oxigen Hiperbaric, Radiofrecventa, Ultrasunete, Spatula Ultrasunet, Ionoforeza, CrioHeat.',
+    image: imgHidratiq,
+    href: '/tratament-hidratiq/',
+  },
+];
+
+const bodyCards = [
+  {
+    title: 'Tratament Sculptor',
+    excerpt:
+      'Sculptor este un echipament de ultima generatie care combina cinci terapii premium, transferate din domeniul medical, atat pentru corp cat si pentru fata.',
+    image: imgSculptor,
+    href: '/tratament-sculptor/',
+  },
+  {
+    title: 'Masaj transdermic Dermohealth',
+    excerpt: 'Reducerea celulitei, îmbunătățirea fermității pielii și eliminarea toxinelor, cu rezultate vizibile și de lungă durată.',
+    image: imgDermohealth,
+    href: '/masaj-transdermic-dermohealth/',
+  },
+  {
+    title: 'ZENTISSE Slim Light Laser',
+    excerpt: 'Cel mai eficient laser de slabit din Romania este destinat mai ales slabirii in zonele problema.',
+    image: imgZentisse,
+    href: '/slabire-cu-zentisse-slim-light-laser/',
+  },
+  {
+    title: 'Tratare anticelulita cu VelaShape2',
+    excerpt:
+      'Solutie medicala non-invaziva aprobata de FDA pentru reducerea circumferintei si pentru diminuarea celulitei prin tehnologia elos.',
+    image: imgVelaShape,
+    href: '/tratare-celulita-cu-velashape2/',
+  },
+  {
+    title: 'Criolipoliza CRYOGEN',
+    excerpt: 'Ultima tehnologie aparuta in industria de ingrijire personala care are rolul de a distruge definitiv celulele adipoase.',
+    image: imgCriolipoliza,
+    href: '/criolipoliza/',
+  },
+  {
+    title: 'Slabire prin electrostimulare',
+    excerpt:
+      'O metodă eficientă și non-invazivă de remodelare corporală care folosește impulsuri electrice pentru a stimula mușchii în profunzime, mimând contracțiile naturale.',
+    image: imgElectrostimulare,
+    href: '/slabire-prin-electrostimulare/',
+  },
+  {
+    title: 'Presoterapie',
+    excerpt: 'Tehnologie avansata pentru tratarea problemelor ca: picioare umflate, picioare grele, eliminarea toxinelor, retinerea de apa.',
+    image: imgPresoterapie,
+    href: '/presoterapie/',
+  },
+  {
+    title: 'Solar',
+    excerpt: 'Va doriti un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare?',
+    image: imgSolar,
+    href: '/solar/',
+  },
+  {
+    title: 'Epilarea definitivă cu laserul XLight',
+    excerpt: 'Reprezintă o soluție avansată și eficientă pentru îndepărtarea permanentă a părului nedorit.',
+    image: imgEpilare,
+    href: '/epilarea-definitiva-cu-laserul-xlight/',
+  },
+];
+
+const offerCards = [
+  {
+    title: 'Oferte Tratamente Remodelare Corporala',
+    excerpt: 'Tratamente corporale personalizate care tonifiază, sculptează și reduc celulita, cu rezultate vizibile și de durată.',
+    image: imgOfferCorporal,
+    href: '/oferte-tratamente-corporale/',
+  },
+  {
+    title: 'Oferte speciale',
+    excerpt: 'Oferte speciale pentru tratamente faciale și corporale, obținând un ten luminos și un corp tonifiat.',
+    image: imgOfferSpeciale,
+    href: '/oferte-speciale-tratamente-faciale-si-corporale/',
+  },
+  {
+    title: 'Oferte Tratamente Faciale',
+    excerpt: 'Tratamentele faciale personalizează îngrijirea tenului tău, oferind hidratare intensă și regenerare celulară.',
+    image: imgOfferFaciale,
+    href: '/oferte-tratamente-faciale/',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Maria, 35 de ani',
+    text: 'Sunt absolut încântată de rezultatele obținute la Deea Body Center! Am început cu ședințe de remodelare corporală și am văzut diferențe vizibile încă de la primele tratamente. Pielea mea e mai fermă, iar centimetrii din talie și coapse s-au redus semnificativ. Echipa este profesionistă și amabilă, iar atmosfera este relaxantă. Recomand cu toată încrederea!',
+  },
+  {
+    name: 'Andreea, 29 de ani',
+    text: 'Tratamentele faciale de la Deea Body Center mi-au schimbat complet tenul! Am avut probleme cu cearcănele și ridurile fine, iar după câteva ședințe de radiofrecvență și tratamente hidratante, pielea mea e mai luminoasă și vizibil întinerită. Recomand acest loc minunat oricărei femei care își dorește un boost de încredere și frumusețe!',
+  },
+  {
+    name: 'Elena, 42 de ani',
+    text: 'De când am descoperit Deea Body Center, am început o transformare pe care o așteptam de mult. Remodelarea corporală mi-a tonifiat corpul, iar tratamentele faciale m-au ajutat să am un ten mult mai neted și radiant. Profesionalismul și atenția la detalii de aici sunt de neegalat! Este locul ideal pentru momente de răsfăț și îngrijire completă.',
+  },
+];
+
+// Răspunsuri REALE, extrase din accordion-ul live (deeabodycenter.ro, 2026-07-05) —
+// diferă de textul generic din mockup-ul V2 (care conținea variante placeholder).
+const faq = [
+  {
+    question: 'Cât durează rezultatele și de câte ședințe am nevoie pentru a vedea efecte?',
+    answers: [
+      'Rezultatele variază în funcție de tratament și de corpul fiecărei persoane.',
+      'De obicei, se observă îmbunătățiri după 3-5 ședințe, dar pentru rezultate optime se recomandă un program complet de 6-10 ședințe, efectuate la intervale regulate.',
+    ],
+  },
+  {
+    question: 'Sunt aceste tratamente sigure și au efecte secundare?',
+    answers: [
+      'Tratamentele sunt sigure atunci când sunt realizate de personal instruit și cu echipamente de calitate.',
+      'Pot apărea efecte secundare minore, precum roșeață sau senzație de căldură, dar acestea dispar de obicei în câteva ore.',
+      'Consultăm fiecare client pentru a ne asigura că tratamentele sunt potrivite și sigure pentru el.',
+    ],
+  },
+  {
+    question: 'Cum funcționează tratamentele de slăbire/localizare a grăsimii (ex. criolipoliză, cavitație, radiofrecvență)?',
+    answers: [
+      'Fiecare tratament are o metodă diferită de acțiune.',
+      'De exemplu, criolipoliza răcește țesutul adipos pentru a distruge celulele de grăsime, cavitația utilizează ultrasunete pentru a descompune grăsimea, iar radiofrecvența încălzește țesuturile pentru a stimula producția de colagen și a reduce celulita.',
+      'Toate sunt non-invazive și nedureroase.',
+    ],
+  },
+  {
+    question: 'Ce tipuri de tratamente faciale sunt potrivite pentru tipul meu de piele?',
+    answers: [
+      'Oferim o consultație inițială pentru a evalua tipul de piele și nevoile specifice ale fiecărui client.',
+      'În funcție de aceasta, recomandăm tratamente precum curățare profundă, hidratare intensă, anti-îmbătrânire sau pentru pielea sensibilă/acneică.',
+    ],
+  },
+];
 ---
 
 <BaseLayout
-  title="Deea Body Center"
-  description="Deea Body Center — Redefinește-ți silueta, redescoperă-ți încrederea!"
+  title="Deea Body Center - Remodelare corporala si tratamente faciale"
+  description="Obține silueta dorită cu tratamentele de remodelare corporala de la Deea Body Center Ploiești. Tonifiere, reducerea celulitei și contur perfect!"
   canonicalPath="/"
 >
-  <h1>OK</h1>
+  <!-- ============================================================
+       HERO — „Ofertă limitată"
+  ============================================================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge">Ofertă limitată</div>
+          <h1 class="hero-title">
+            Transformă-ți corpul și redefinește-ți încrederea cu oferta noastră exclusivă de remodelare!
+          </h1>
+          <p class="hero-sub">Rezervă acum pachetul tău complet și profită de criolipoliza cadou!</p>
+          <ul class="hero-list">
+            <li>3 ședințe VelaShape – coapse + fese</li>
+            <li>2 ședințe VelaShape – abdomen + flancuri + lombar</li>
+            <li>3 ședințe laser Zentisse</li>
+            <li>3 ședințe presodrenaj</li>
+            <li>1 zonă mare de criolipoliză <strong>cadou</strong></li>
+          </ul>
+          <div class="price-box">
+            <span class="price-label">Preț pachet complet</span>
+            <span class="price-value">1690 RON</span>
+          </div>
+          <p class="hero-note">Nu rata șansa de a obține silueta mult dorită la un preț special!</p>
+          <div class="btn-group">
+            <WhatsAppButton
+              label="Programează-te"
+              message="Bună, aș dori să profit de oferta cu criolipoliza cadou (pachet 1690 RON)."
+            />
+          </div>
+          <div class="social-row">
+            <a href={site.social.facebook || '#'} aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                ><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg
+              >
+            </a>
+            <a href={site.social.instagram || '#'} aria-label="Instagram">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                ><rect x="2" y="2" width="20" height="20" rx="5"></rect><path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
+                ></line></svg
+              >
+            </a>
+          </div>
+        </div>
+        <div class="hero-img">
+          <Image
+            src={heroImg}
+            alt="Pachet remodelare corporală — criolipoliză cadou"
+            width={800}
+            height={800}
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+    <ScrollCue />
+  </section>
+
+  <!-- ============================================================
+       TRATAMENTE FACIALE — split
+  ============================================================= -->
+  <section class="split" id="tratamente-faciale">
+    <div class="wrap">
+      <div class="split-inner">
+        <div class="split-img">
+          <Image src={facialSplitImg} alt="Tratamente faciale Deea Body Center Ploiești" width={800} height={600} loading="lazy" />
+        </div>
+        <div class="split-text">
+          <div class="eyebrow">Deea Body Center</div>
+          <h2>Tratamente Faciale</h2>
+          <p>
+            Ten revitalizat, neted și luminos, cu tratamente faciale personalizate pentru un aspect proaspăt și
+            sănătos, fără imperfecțiuni.
+          </p>
+          <div class="btn-group">
+            <WhatsAppButton variant="outline" label="Descoperă" message="Bună, aș dori mai multe detalii despre tratamentele faciale." />
+            <WhatsAppButton variant="outline" label="Tarife" message="Bună, aș dori tariful pentru tratamentele faciale." />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GRID TRATAMENTE FACIALE (6 carduri)
+  ============================================================= -->
+  <section class="section--alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Deea Body Center</div>
+        <h2>Tenul pe care ți-l dorești, la un pas distanță!</h2>
+        <p>La Deea Body Center, obții un ten radiant prin tratamente faciale personalizate, cu rezultate vizibile.</p>
+      </div>
+      <div class="svc-grid">
+        {facialCards.map((card) => <ServiceCard {...card} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REMODELARE CORPORALA — split
+  ============================================================= -->
+  <section class="split split--alt">
+    <div class="wrap">
+      <div class="split-inner">
+        <div class="split-text">
+          <div class="eyebrow">Deea Body Center</div>
+          <h2>Remodelare corporala</h2>
+          <p>
+            Tratamente de remodelare corporala prin reducerea grăsimii localizate, eliminarea celulitei, tonifierea
+            pielii și îmbunătățirea conturului corporal, oferind rezultate rapide și fără intervenții chirurgicale.
+          </p>
+          <div class="btn-group">
+            <WhatsAppButton variant="outline" label="Descoperă" message="Bună, aș dori mai multe detalii despre remodelarea corporală." />
+            <WhatsAppButton variant="outline" label="Tarife" message="Bună, aș dori tariful pentru remodelarea corporală." />
+          </div>
+        </div>
+        <div class="split-img">
+          <Image src={bodySplitImg} alt="Remodelare corporală Deea Body Center Ploiești" width={800} height={600} loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GRID TRATAMENTE CORPORALE (9 carduri)
+  ============================================================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Deea Body Center</div>
+        <h2>Corpul pe care ți-l dorești, la un pas distanță!</h2>
+        <p>La Deea Body Center, obții un corp tonifiat prin tratamente corporale personalizate, cu rezultate vizibile.</p>
+      </div>
+      <div class="svc-grid">
+        {bodyCards.map((card) => <ServiceCard {...card} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOLAR
+  ============================================================= -->
+  <section class="section--alt">
+    <div class="wrap">
+      <div class="solar-inner">
+        <div class="eyebrow" style="justify-content:center">Deea Body Center</div>
+        <h2>Solar</h2>
+        <p>
+          Va doriţi un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare? Deea Body Center va
+          propune o solutie rapida si eficienta: solariile ERGOLINE – lider incontestabil in domeniilor solariilor.
+        </p>
+        <div class="btn-group">
+          <WhatsAppButton variant="outline" label="Descoperă" message="Bună, aș dori mai multe detalii despre serviciul de Solar." />
+          <WhatsAppButton variant="outline" label="Tarife" message="Bună, aș dori tariful pentru Solar." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OFERTE
+  ============================================================= -->
+  <section class="section--dark">
+    <div class="wrap">
+      <div class="sec-head" style="color:#fff">
+        <div class="eyebrow eyebrow--gold" style="justify-content:center">Oferte exclusive</div>
+        <h2 style="color:#fff;margin-top:4px">Ofertele Deea Body Center</h2>
+      </div>
+      <div class="offers-grid">
+        {offerCards.map((card) => <OfferCard {...card} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALE „Ce spun ele"
+  ============================================================= -->
+  <section class="testi-section">
+    <div class="testi-bg" role="presentation">
+      <Image src={imgTestimonialsBg} alt="" width={1920} height={1277} loading="lazy" />
+    </div>
+    <div class="wrap testi-inner">
+      <div class="sec-head">
+        <div class="eyebrow">Ce spun ele</div>
+        <h2>Ce spun ele</h2>
+      </div>
+      <div class="testi-grid">
+        {testimonials.map((t) => <TestimonialCard {...t} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT & FAQ
+  ============================================================= -->
+  <section class="section--alt" id="programare">
+    <div class="wrap">
+      <div class="contact-grid">
+        <ContactBlock />
+
+        <div>
+          <div class="eyebrow">Întrebări</div>
+          <h2 style="margin-bottom:12px">Întrebări și răspunsuri</h2>
+          <p style="margin-bottom:32px">Răspunsuri la cele mai frecvente întrebări pe care le primim din partea clienților.</p>
+          <div class="accordion">
+            {
+              faq.map((item) => (
+                <Accordion title={item.question}>
+                  {item.answers.map((a) => (
+                    <p>{a}</p>
+                  ))}
+                </Accordion>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .section {
+    padding: 80px 0;
+    background: var(--surface);
+  }
+  .section--alt {
+    padding: 80px 0;
+    background: var(--surface-alt);
+  }
+  .section--dark {
+    padding: 80px 0;
+    background: var(--navy);
+  }
+
+  .sec-head {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 56px;
+  }
+  .sec-head h2 {
+    margin-bottom: 12px;
+  }
+  .sec-head p {
+    font-size: 1.0625rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 3px;
+    background: var(--teal);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .eyebrow--gold {
+    color: var(--gold);
+  }
+  .eyebrow--gold::before {
+    background: var(--gold);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #e9e4f8 0%, #f2eefb 35%, #faf9fe 70%, #ffffff 100%);
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    padding: 56px 0 64px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero > .wrap {
+    width: 100%;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(167, 64, 143, 0.09) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 20%;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(28, 114, 97, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.12fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(167, 64, 143, 0.1);
+    border: 1px solid rgba(167, 64, 143, 0.28);
+    color: var(--magenta);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: var(--r-pill);
+    margin-bottom: 14px;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--magenta);
+    border-radius: 50%;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(0.75);
+    }
+  }
+
+  .hero-title {
+    font-size: clamp(1.5rem, 2.9vw, 2.35rem);
+    line-height: 1.16;
+    margin-bottom: 10px;
+    color: var(--heading);
+  }
+  .hero-sub {
+    font-size: 1.0625rem;
+    color: var(--text-sec);
+    margin-bottom: 18px;
+  }
+
+  .hero-list {
+    list-style: none;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .hero-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9375rem;
+    color: var(--text-sec);
+    line-height: 1.5;
+  }
+  .hero-list li::before {
+    content: '';
+    flex-shrink: 0;
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--gold);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%23051145' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px 8px;
+  }
+
+  .price-box {
+    display: inline-flex;
+    flex-direction: column;
+    background: var(--navy);
+    border-radius: var(--r-md);
+    padding: 15px 26px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--magenta) 100%);
+  }
+  .price-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 4px;
+  }
+  .price-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hero-note {
+    font-size: 0.875rem;
+    color: var(--text-sec);
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .social-row a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--text-sec);
+    border: 1px solid var(--border);
+    transition:
+      color var(--t-fast),
+      border-color var(--t-fast),
+      background var(--t-fast);
+  }
+  .social-row a:hover {
+    color: var(--magenta);
+    border-color: var(--magenta);
+    background: rgba(167, 64, 143, 0.07);
+    text-decoration: none;
+  }
+
+  .hero-img {
+    position: relative;
+  }
+  .hero-img :global(img) {
+    width: 112%;
+    max-width: none;
+    margin-left: -6%;
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-lg);
+    animation: heroFloat 6s ease-in-out infinite;
+  }
+  @keyframes heroFloat {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-img :global(img) {
+      animation: none !important;
+    }
+  }
+
+  /* ===== SPLIT SECTION ===== */
+  .split {
+    padding: 80px 0;
+    background: var(--surface);
+  }
+  .split--alt {
+    background: var(--surface-alt);
+  }
+  .split-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .split-img :global(img) {
+    width: 100%;
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-md);
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+  .split-text h2 {
+    margin-bottom: 14px;
+  }
+  .split-text p {
+    font-size: 1.0625rem;
+  }
+
+  /* ===== SERVICE GRID ===== */
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* ===== SOLAR ===== */
+  .solar-inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .solar-inner h2 {
+    margin-bottom: 14px;
+  }
+  .solar-inner p {
+    font-size: 1.0625rem;
+  }
+  .solar-inner .btn-group {
+    justify-content: center;
+  }
+
+  /* ===== OFFERS ===== */
+  .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-section {
+    position: relative;
+    padding: 80px 0;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .testi-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    overflow: hidden;
+  }
+  .testi-bg :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .testi-inner {
+    position: relative;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* ===== CONTACT / FAQ ===== */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* ===== ACCORDION ===== */
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .svc-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 0;
+      padding: 48px 0 64px;
+    }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-img {
+      order: -1;
+    }
+    .hero-img :global(img) {
+      width: 100%;
+      margin-left: 0;
+    }
+    .split-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .split-inner .split-img {
+      order: -1;
+    }
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .testi-grid {
+      grid-template-columns: 1fr;
+    }
+    .offers-grid {
+      grid-template-columns: 1fr;
+    }
+    .section,
+    .section--alt,
+    .section--dark,
+    .split,
+    .split--alt,
+    .testi-section {
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+  }
+  @media (max-width: 600px) {
+    .svc-grid {
+      grid-template-columns: 1fr;
+    }
+    .wrap {
+      padding: 0 20px;
+    }
+  }
+</style>

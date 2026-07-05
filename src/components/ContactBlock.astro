@@ -1,0 +1,130 @@
+---
+// Blocul „Trimite o programare" — DECIS: fără formular (Nume/Telefon/Email/Mesaj).
+// În loc de câmpuri care nu trimit nimic: buton WhatsApp mare + telefon clickabil
+// (tel:) + programul de funcționare. Titlul secțiunii și linia „Sau sună la ..."
+// se păstrează identic cu mockup-ul V2 aprobat.
+import { site } from '../data/site';
+import WhatsAppButton from './WhatsAppButton.astro';
+---
+
+<div class="contact-block">
+  <div class="eyebrow">Programare</div>
+  <h2 class="contact-title">Trimite o programare</h2>
+  <p class="contact-note">
+    Sau sună la <a href={site.phoneHref}>{site.phone}</a> pentru programare telefonică la {site.name}.
+  </p>
+
+  <div class="contact-cta">
+    <WhatsAppButton
+      label="Scrie-ne pe WhatsApp"
+      message="Bună, aș dori o programare la Deea Body Center."
+      class="contact-cta-btn"
+    />
+    <a href={site.phoneHref} class="contact-phone">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+        ><path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+        ></path></svg
+      >
+      {site.phone}
+    </a>
+  </div>
+
+  <div class="contact-hours">
+    <h3 class="contact-hours-title">Program</h3>
+    <ul>
+      {
+        site.hours.map((h) => (
+          <li>
+            <span class="hours-days">{h.days}</span>
+            <span class="hours-time">{h.open && h.close ? `${h.open} – ${h.close}` : 'Închis'}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  .contact-title {
+    margin-bottom: 12px;
+  }
+  .contact-note {
+    font-size: 0.9375rem;
+    margin-bottom: 32px;
+  }
+  .contact-note a {
+    font-weight: 600;
+    color: var(--teal);
+  }
+
+  .contact-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .contact-cta :global(.contact-cta-btn) {
+    padding: 16px 34px;
+    font-size: 1rem;
+  }
+  .contact-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--heading);
+  }
+  .contact-phone:hover {
+    color: var(--magenta);
+    text-decoration: none;
+  }
+  .contact-phone svg {
+    color: var(--magenta);
+    flex-shrink: 0;
+  }
+
+  .contact-hours {
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 24px 28px;
+    background: var(--surface-card);
+  }
+  .contact-hours-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-sec);
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 14px;
+  }
+  .contact-hours ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .contact-hours li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 0.9375rem;
+  }
+  .hours-days {
+    color: var(--heading);
+    font-weight: 500;
+  }
+  .hours-time {
+    color: var(--text-sec);
+  }
+
+  @media (max-width: 480px) {
+    .contact-cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+// Element de acordeon FAQ, nativ <details>/<summary> (fără JS).
+// Portat din mockup-ul V2 aprobat (details.acc / summary / .acc-icon / .acc-body).
+export interface Props {
+  title: string;
+  open?: boolean;
+}
+
+const { title, open = false } = Astro.props;
+---
+
+<details class="acc" open={open}>
+  <summary>
+    {title}
+    <span class="acc-icon">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+        ><path d="M6 9l6 6 6-6" stroke="#051145" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        ></path></svg
+      >
+    </span>
+  </summary>
+  <div class="acc-body">
+    <slot />
+  </div>
+</details>
+
+<style>
+  details.acc {
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-sm);
+    background: var(--surface-card);
+    overflow: hidden;
+  }
+  details.acc summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    color: var(--heading);
+    user-select: none;
+    transition:
+      background var(--t-fast),
+      color var(--t-fast);
+  }
+  details.acc summary::-webkit-details-marker {
+    display: none;
+  }
+  details.acc[open] summary {
+    background: var(--magenta);
+    color: #fff;
+  }
+  .acc-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(5, 17, 69, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background var(--t-fast),
+      transform var(--t-med);
+  }
+  details.acc[open] .acc-icon {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(180deg);
+  }
+  details.acc[open] .acc-icon svg path {
+    stroke: #fff;
+  }
+
+  /* Override display:none din UA ca tranziția max-height să funcționeze */
+  details.acc > .acc-body {
+    display: block !important;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 20px;
+    transition:
+      max-height 0.35s ease,
+      padding 0.35s ease;
+  }
+  details.acc[open] > .acc-body {
+    max-height: 800px;
+    padding: 18px 20px;
+  }
+  .acc-body :global(p) {
+    font-size: 0.9375rem;
+    color: var(--text-sec);
+  }
+  .acc-body :global(p + p) {
+    margin-top: 12px;
+  }
+</style>
