@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tratament Sculptor — Deea Body Center Ploiești</title>
+  <meta name="description" content="Tratamentul Sculptor de la Deea Body Center Ploiești combină 5 terapii premium pentru remodelare corporală și facială, fără intervenții invazive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== TOKENS (identic cu index.html) ===== */
+    :root {
+      --navy:        #051145;
+      --magenta:     #A7408F;
+      --magenta-h:   #8f3278;
+      --teal:        #1C7261;
+      --gold:        #FEC42D;
+
+      --surface:     #FFFFFF;
+      --surface-alt: #F4F2FA;
+      --surface-card:#FFFFFF;
+      --heading:     #051145;
+      --text:        #051145;
+      --text-sec:    #4a4870;
+      --border:      rgba(5,17,69,0.10);
+
+      --sh-sm: 0 2px 12px rgba(5,17,69,0.07);
+      --sh-md: 0 6px 24px rgba(5,17,69,0.12);
+      --sh-lg: 0 14px 40px rgba(5,17,69,0.16);
+
+      --r-sm:   6px;
+      --r-md:   12px;
+      --r-lg:   20px;
+      --r-pill: 9999px;
+
+      --t-fast: 0.18s ease;
+      --t-med:  0.28s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface:     #080d22;
+        --surface-alt: #0d1535;
+        --surface-card:#111b45;
+        --heading:     #e8e5f5;
+        --text:        #e8e5f5;
+        --text-sec:    #a8a4c8;
+        --border:      rgba(255,255,255,0.10);
+        --sh-sm: 0 2px 12px rgba(0,0,0,0.28);
+        --sh-md: 0 6px 24px rgba(0,0,0,0.38);
+        --sh-lg: 0 14px 40px rgba(0,0,0,0.48);
+      }
+    }
+    :root[data-theme="dark"] {
+      --surface:     #080d22;
+      --surface-alt: #0d1535;
+      --surface-card:#111b45;
+      --heading:     #e8e5f5;
+      --text:        #e8e5f5;
+      --text-sec:    #a8a4c8;
+      --border:      rgba(255,255,255,0.10);
+      --sh-sm: 0 2px 12px rgba(0,0,0,0.28);
+      --sh-md: 0 6px 24px rgba(0,0,0,0.38);
+      --sh-lg: 0 14px 40px rgba(0,0,0,0.48);
+    }
+    :root[data-theme="light"] {
+      --surface:     #FFFFFF;
+      --surface-alt: #F4F2FA;
+      --surface-card:#FFFFFF;
+      --heading:     #051145;
+      --text:        #051145;
+      --text-sec:    #4a4870;
+      --border:      rgba(5,17,69,0.10);
+      --sh-sm: 0 2px 12px rgba(5,17,69,0.07);
+      --sh-md: 0 6px 24px rgba(5,17,69,0.12);
+      --sh-lg: 0 14px 40px rgba(5,17,69,0.16);
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--surface);
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    *:focus-visible {
+      outline: 2px solid var(--magenta);
+      outline-offset: 3px;
+      border-radius: var(--r-sm);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--heading);
+      text-wrap: balance;
+    }
+    h1 { font-size: clamp(1.875rem, 4vw, 3rem); }
+    h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+    h3 { font-size: 1.125rem; }
+    p  { color: var(--text-sec); line-height: 1.75; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ===== LAYOUT ===== */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: var(--r-pill);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      text-decoration: none !important;
+      transition: background var(--t-fast), color var(--t-fast),
+                  border-color var(--t-fast), transform var(--t-fast),
+                  box-shadow var(--t-fast);
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary { background: var(--magenta); color: #fff; }
+    .btn-primary:hover {
+      background: var(--magenta-h);
+      box-shadow: 0 6px 20px rgba(167,64,143,0.38);
+      color: #fff;
+    }
+    .btn-submit { width: 100%; justify-content: center; }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(5,17,69,0.06);
+      transition: background var(--t-med);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      height: 72px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .site-logo { flex-shrink: 0; }
+    .site-logo img { height: 46px; width: auto; }
+
+    .nav-cb { display: none; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      margin-left: auto;
+      border-radius: var(--r-sm);
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform var(--t-fast), opacity var(--t-fast);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+    .main-nav a {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: var(--r-sm);
+      transition: color var(--t-fast), background var(--t-fast);
+    }
+    .main-nav a:hover {
+      color: var(--teal);
+      background: rgba(28,114,97,0.07);
+      text-decoration: none;
+    }
+    .nav-cta { margin-left: 8px; padding: 10px 22px !important; }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .site-header { position: relative; }
+      .header-inner { position: relative; }
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        background: var(--surface);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px 24px;
+        gap: 4px;
+        box-shadow: var(--sh-md);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-cb:checked ~ .main-nav { display: flex; }
+      .main-nav a { width: 100%; padding: 12px 8px; }
+      .nav-cta { width: 100%; text-align: center; margin-left: 0 !important; }
+    }
+
+    /* ===== HERO ===== */
+    .sculptor-hero {
+      position: relative;
+      height: 72vh;
+      min-height: 480px;
+      background-image: url('../assets/Tratament-sculptor-deeabodycenter.ro-ploiesti.webp');
+      background-size: cover;
+      background-position: center 30%;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right,  rgba(5,17,69,0.80) 0%, rgba(5,17,69,0.35) 55%, transparent 100%),
+        linear-gradient(to top,    rgba(5,17,69,0.55) 0%, transparent 50%);
+    }
+    .hero-text-box {
+      position: relative;
+      padding: 56px 48px;
+      max-width: 600px;
+    }
+    .hero-text-box h1 { color: #fff; margin-bottom: 16px; }
+    .hero-text-box p  { color: rgba(255,255,255,0.85); font-size: 1.0625rem; line-height: 1.65; }
+
+    /* ===== BODY (2-col) ===== */
+    .page-body {
+      padding: 64px 0 80px;
+      background: var(--surface);
+    }
+    .body-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ===== MAIN COLUMN ===== */
+    .main-col p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 18px;
+      color: var(--text-sec);
+    }
+    .main-col p:last-child { margin-bottom: 0; }
+
+    .col-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin: 40px 0 16px;
+    }
+    .col-section-title:first-child { margin-top: 0; }
+
+    /* ===== ACCORDION ===== */
+    .accordion { display: flex; flex-direction: column; gap: 8px; }
+
+    details.acc {
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-sm);
+      background: var(--surface-card);
+      overflow: hidden;
+    }
+    details.acc summary {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      color: var(--heading);
+      user-select: none;
+      transition: background var(--t-fast), color var(--t-fast);
+    }
+    details.acc summary::-webkit-details-marker { display: none; }
+    details.acc[open] summary {
+      background: var(--magenta);
+      color: #fff;
+    }
+    .acc-icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(5,17,69,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--t-fast), transform var(--t-med);
+    }
+    details.acc[open] .acc-icon {
+      background: rgba(255,255,255,0.2);
+      transform: rotate(180deg);
+    }
+    details.acc[open] .acc-icon svg path { stroke: #fff; }
+
+    details.acc > .acc-body {
+      display: block !important;
+      overflow: hidden;
+      max-height: 0;
+      padding: 0 20px;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    details.acc[open] > .acc-body {
+      max-height: 1200px;
+      padding: 18px 20px 20px;
+    }
+    .acc-body p { font-size: 0.9375rem; color: var(--text-sec); line-height: 1.7; }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      background: var(--surface-alt);
+      border-radius: var(--r-md);
+      padding: 32px;
+      border: 1px solid var(--border);
+    }
+    .sidebar h2 {
+      font-size: 1.625rem;
+      margin-bottom: 20px;
+    }
+    .sidebar-img {
+      width: 100%;
+      border-radius: var(--r-md);
+      margin-bottom: 20px;
+      box-shadow: var(--sh-sm);
+      object-fit: cover;
+      aspect-ratio: 2/3;
+    }
+    .sidebar p {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 24px 0;
+    }
+
+    .sidebar-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--heading);
+      margin-bottom: 14px;
+    }
+
+    .benefit-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+    .benefit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9375rem;
+      color: var(--text-sec);
+      line-height: 1.5;
+    }
+    .benefit-list li::before {
+      content: '';
+      flex-shrink: 0;
+      margin-top: 3px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background-color: var(--gold);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%23051145' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 10px 8px;
+    }
+
+    /* sidebar form */
+    .sidebar-form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 8px;
+    }
+    .sidebar-note {
+      font-size: 0.875rem;
+      color: var(--text-sec);
+      margin-bottom: 20px;
+    }
+    .sidebar-note a { font-weight: 600; color: var(--teal); }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-sm);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--text);
+      background: var(--surface);
+      transition: border-color var(--t-fast), box-shadow var(--t-fast);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--magenta);
+      box-shadow: 0 0 0 3px rgba(167,64,143,0.13);
+    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    .sidebar-social { display: flex; gap: 12px; margin-top: 20px; }
+    .sidebar-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      color: var(--text-sec);
+      border: 1px solid var(--border);
+      transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+    }
+    .sidebar-social a:hover {
+      color: var(--magenta);
+      border-color: var(--magenta);
+      background: rgba(167,64,143,0.07);
+      text-decoration: none;
+    }
+
+    /* ===== REPEAT SECTION (below body) ===== */
+    .repeat-section {
+      padding: 64px 0;
+      background: var(--surface-alt);
+      text-align: center;
+    }
+    .repeat-section .eyebrow { justify-content: center; }
+    .repeat-section h2 { margin-bottom: 0; }
+
+    /* ===== FOOTER ===== */
+    .site-footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 80px 0 32px; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+    .footer-logo { height: 46px; width: auto; filter: brightness(0) invert(1); margin-bottom: 16px; }
+    .footer-slogan { font-size: 0.9375rem; font-style: italic; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 24px; }
+
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+    }
+    .footer-social a:hover {
+      color: #fff;
+      border-color: var(--magenta);
+      background: rgba(167,64,143,0.28);
+      text-decoration: none;
+    }
+
+    .footer-col h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 0.9375rem; color: rgba(255,255,255,0.6); transition: color var(--t-fast); }
+    .footer-col ul li a:hover { color: #fff; text-decoration: none; }
+
+    .footer-program { display: flex; flex-direction: column; gap: 10px; }
+    .footer-program p { font-size: 0.9375rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.38);
+      flex-wrap: wrap;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.48); }
+    .footer-bottom a:hover { color: #fff; text-decoration: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .body-grid { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .sculptor-hero { height: 55vh; }
+      .hero-text-box { padding: 32px 24px; }
+      .page-body { padding: 48px 0 64px; }
+      .site-footer { padding-top: 56px; }
+    }
+    @media (max-width: 500px) {
+      .wrap { padding: 0 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo" aria-label="Deea Body Center — pagina principală">
+        <img src="../assets/deea-body-center5.webp" alt="Deea Body Center">
+      </a>
+      <input type="checkbox" id="nav-cb" class="nav-cb">
+      <label for="nav-cb" class="hamburger" aria-label="Deschide meniu">
+        <span></span><span></span><span></span>
+      </label>
+      <nav class="main-nav" aria-label="Navigare principală">
+        <a href="index.html">Home</a>
+        <a href="#">Oferte</a>
+        <a href="#">Servicii</a>
+        <a href="#">Tarife</a>
+        <a href="#">Contact</a>
+        <a href="#programare-sculptor" class="btn btn-primary nav-cta">Programare</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         HERO FULL-WIDTH
+    ========================================================== -->
+    <div class="sculptor-hero" role="img" aria-label="Tratament Sculptor la Deea Body Center Ploiești">
+      <div class="hero-gradient" aria-hidden="true"></div>
+      <div class="hero-text-box">
+        <h1>Tratament Sculptor</h1>
+        <p>Sculptor este un echipament de ultima generatie care combina cinci terapii premium, transferate din domeniul medical, atat pentru corp cat si pentru fata.</p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         BODY 2-COLOANE
+    ========================================================== -->
+    <section class="page-body">
+      <div class="wrap">
+        <div class="body-grid">
+
+          <!-- ===== MAIN COLUMN ===== -->
+          <div class="main-col">
+
+            <p>Tratamentul Sculptor de la Deea Body Center Ploiești este soluția perfectă pentru a-ți modela și contura corpul, obținând o siluetă fermă și armonioasă.</p>
+            <p>Folosind tehnologie avansată, acest tratament combină metode eficiente pentru a reduce depozitele de grăsime localizată și pentru a tonifia zonele vizate.</p>
+            <p>Eficient împotriva celulitei, Sculptor ajută la stimularea circulației și a metabolismului celular, favorizând eliminarea toxinelor și a retenției de apă.</p>
+            <p>În plus, este ideal pentru a îmbunătăți fermitatea pielii și a crea un efect vizibil de lifting.</p>
+            <p>Fie că îți dorești să scapi de câțiva centimetri în plus sau pur și simplu să-ți redefinesti conturul corpului, tratamentul Sculptor te ajută să obții rezultatele dorite într-un timp scurt.</p>
+            <p>Tratamentul este non-invaziv, fără durere, și oferă o senzație de relaxare totală.</p>
+            <p>La Deea Body Center, îți oferim un spațiu confortabil unde îți poți atinge obiectivele de înfrumusețare și remodelare corporală.</p>
+
+            <!-- CORPORAL ACCORDEOANE -->
+            <h2 class="col-section-title">Corporal</h2>
+            <div class="accordion">
+
+              <details class="acc" open>
+                <summary>
+                  HiFu multifocal HImFu
+                  <span class="acc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#051145" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </summary>
+                <div class="acc-body">
+                  <p>Este tehnologia ce are acelasi obiectiv ca si liposuctia chirurgicala, distrugerea definitiva a unui numar important de adipocite, dar fiind non-invaziva si nedureroasa. Actioneaza cu valuri de unde cavitationale de inalta frecventa producand microbule ce cresc presiunea in interiorul celulei grase. Dilatarile si comprimarile repetate si rapide ale adipocitelor duc la o spargere imediata a acestora si o reducere instanta a centimetrilor. Spre deosebire de celelate echipamente de cavitatie cu frecventa joasa (35–80kHz), terapia HImFU cu frecventa inalta (2.7MHZ, 45w) asigura rezultate remarcabile de pana la 4 cm in doar o sesiune, dar cu adancime de penetrare controlata de pana la maxim 3 cm.</p>
+                </div>
+              </details>
+
+              <details class="acc">
+                <summary>
+                  CrioRadiofrecventa
+                  <span class="acc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#051145" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </summary>
+                <div class="acc-body">
+                  <p>Tehnologie de radiofrecvență combinată cu crioterapie, pentru tonifiere profundă și reducerea circumferinței, cu rezultate vizibile după primele ședințe.</p>
+                </div>
+              </details>
+
+              <details class="acc">
+                <summary>
+                  Masaj Transdermic Dermohealth
+                  <span class="acc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#051145" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </summary>
+                <div class="acc-body">
+                  <p>Masajul transdermic Dermohealth stimulează circulația, reduce celulita și îmbunătățește fermitatea pielii prin tehnici de presiune și vibrație controlată.</p>
+                </div>
+              </details>
+
+              <details class="acc">
+                <summary>
+                  DermoHealth
+                  <span class="acc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#051145" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </summary>
+                <div class="acc-body">
+                  <p>Terapie dermică avansată care acționează în profunzime pentru a stimula producția de colagen, a elimina toxinele și a remodela conturul corporal.</p>
+                </div>
+              </details>
+
+            </div>
+
+            <!-- FACIAL ACCORDEOANE -->
+            <h2 class="col-section-title">Facial</h2>
+            <div class="accordion">
+
+              <details class="acc" open>
+                <summary>
+                  CrioRadiofrecventa
+                  <span class="acc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#051145" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </summary>
+                <div class="acc-body">
+                  <p>Lifting facial restructurant pentru redefinirea conturului facial, poate fi folosit inclusiv pe tenul cuperotic.</p>
+                </div>
+              </details>
+
+              <details class="acc">
+                <summary>
+                  Radiofrecventa tetrapolara
+                  <span class="acc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#051145" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </summary>
+                <div class="acc-body">
+                  <p>Radiofrecvența tetrapolară acționează în profunzimea dermei pentru a stimula producția de colagen și a tonifica pielea feței, cu efect de întinerire vizibil.</p>
+                </div>
+              </details>
+
+              <details class="acc">
+                <summary>
+                  Dermoheath + DermoLED
+                  <span class="acc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#051145" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </summary>
+                <div class="acc-body">
+                  <p>Combinație sinergică între masajul transdermic și terapia LED pentru regenerarea celulară, reducerea inflamațiilor și îmbunătățirea texturii pielii.</p>
+                </div>
+              </details>
+
+              <details class="acc">
+                <summary>
+                  Microdermabraziune cu pulbere de diamant
+                  <span class="acc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#051145" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </summary>
+                <div class="acc-body">
+                  <p>Exfoliere mecanică fină cu pulbere de diamant, care îndepărtează celulele moarte, stimulează reînnoirea celulară și lasă pielea netedă, luminoasă și mai tânără.</p>
+                </div>
+              </details>
+
+            </div>
+          </div>
+          <!-- /MAIN COLUMN -->
+
+          <!-- ===== SIDEBAR ===== -->
+          <aside class="sidebar">
+
+            <h2>Sculptor</h2>
+
+            <img class="sidebar-img"
+              src="../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-312-682x1024.webp"
+              alt="Tratament Sculptor Deea Body Center Ploiești">
+
+            <p>6 terapii PREMIUM pentru rezultate spectaculoase atât pentru corp cât și pentru față.</p>
+            <p>Sculptor este un echipament de ultimă generație brevetat de FDA și COFEPRICE.</p>
+
+            <div class="sidebar-divider"></div>
+
+            <p class="sidebar-label">Beneficii</p>
+            <ul class="benefit-list">
+              <li>Exfolierea celulelor moarte de la suprafata tegumentului</li>
+              <li>Eliminarea semnelor de fotoimbatranire</li>
+              <li>Combaterea punctelor negre</li>
+              <li>Combaterea ridurilor fine și a liniilor de expresie</li>
+              <li>Tratarea cicatricilor post-acnee</li>
+            </ul>
+
+            <div class="sidebar-divider"></div>
+
+            <p class="sidebar-form-title" id="programare-sculptor">Trimite o programare</p>
+            <p class="sidebar-note">Sau suna la <a href="tel:0723882529">0723 882 529</a> pentru programare telefonica.</p>
+
+            <form>
+              <div class="form-group">
+                <label for="s-name">Nume</label>
+                <input type="text" id="s-name" name="name" placeholder="Numele tău complet" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="s-phone">Telefon</label>
+                <input type="tel" id="s-phone" name="phone" placeholder="07XX XXX XXX" autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label for="s-email">Email</label>
+                <input type="email" id="s-email" name="email" placeholder="adresa@exemplu.ro" autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="s-msg">Mesajul tău</label>
+                <textarea id="s-msg" name="message" placeholder="Descrie ce îți dorești sau pune o întrebare..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-submit">Trimite programare</button>
+            </form>
+
+            <div class="sidebar-social">
+              <a href="#" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+            </div>
+
+          </aside>
+          <!-- /SIDEBAR -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- repeat eyebrow + h2 (as in original) -->
+    <section class="repeat-section">
+      <div class="wrap">
+        <div class="eyebrow">Deea Body Center</div>
+        <h2>Tratament Sculptor</h2>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html"><img class="footer-logo" src="../assets/deea-body-center5.webp" alt="Deea Body Center"></a>
+          <p class="footer-slogan">Redefinește-ți silueta, redescoperă-ți încrederea!</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Servicii</h4>
+          <ul>
+            <li><a href="#">Servicii Tratamente Faciale și Corporale</a></li>
+            <li><a href="tratament-sculptor.html">Tratament Sculptor</a></li>
+            <li><a href="#">Tratament HidratIQ</a></li>
+            <li><a href="#">Criolipoliza Cryogen</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Oferte</h4>
+          <ul>
+            <li><a href="#">Oferte Speciale Tratamente Faciale și Corporale</a></li>
+            <li><a href="#">Oferte Tratamente Corporale</a></li>
+            <li><a href="#">Oferte Tratamente Faciale</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Program</h4>
+          <div class="footer-program">
+            <p>Luni – Vineri<br>9:00 – 20:00</p>
+            <p>Sâmbătă<br>10:00 – 16:00</p>
+            <p>Duminica – Închis</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2022 Deea Body Center.</span>
+        <span>Creare site: <a href="https://digitalhelp.ro" target="_blank" rel="noopener">digitalhelp.ro</a></span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

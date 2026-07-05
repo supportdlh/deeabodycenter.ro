@@ -1,0 +1,1530 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deea Body Center - Remodelare corporala si tratamente faciale</title>
+  <meta name="description" content="Obține silueta dorită cu tratamentele de remodelare corporala de la Deea Body Center Ploiești. Tonifiere, reducerea celulitei și contur perfect!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       RESET & VARIABLES
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #051145;
+      --navy-deep:   #020d30;
+      --navy-90:     rgba(5,17,69,0.90);
+      --navy-75:     rgba(5,17,69,0.75);
+      --gold:        #FEC42D;
+      --gold-dim:    rgba(254,196,45,0.18);
+      --magenta:     #A7408F;
+      --magenta-dk:  #8B3578;
+      --cream:       #F5F1EA;
+      --cream-2:     #EDE9E0;
+      --white:       #FFFFFF;
+      --text-body:   #051145;
+      --text-muted:  #4e5470;
+
+      --ff-serif: 'Playfair Display', Georgia, serif;
+      --ff-sans:  'Poppins', system-ui, sans-serif;
+
+      --radius:  3px;
+      --ease:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --dur:     0.28s;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    img  { max-width: 100%; height: auto; display: block; }
+    a    { color: inherit; text-decoration: none; }
+    ul   { list-style: none; }
+
+    /* =============================================
+       LAYOUT UTILITIES
+    ============================================= */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Gold eyebrow line */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .eyebrow.center { display: flex; justify-content: center; }
+
+    /* Horizontal gold rule */
+    .gold-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 20px;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-block;
+      font-family: var(--ff-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 30px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      border: none;
+      transition: background var(--dur) var(--ease),
+                  color     var(--dur) var(--ease),
+                  transform var(--dur) var(--ease),
+                  box-shadow var(--dur) var(--ease);
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-magenta  { background: var(--magenta); color: var(--white); }
+    .btn-magenta:hover { background: var(--magenta-dk); box-shadow: 0 6px 20px rgba(167,64,143,0.35); }
+
+    .btn-gold-solid { background: var(--gold); color: var(--navy); }
+    .btn-gold-solid:hover { background: #e9b420; box-shadow: 0 6px 20px rgba(254,196,45,0.35); }
+
+    .btn-outline-navy {
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--navy);
+    }
+    .btn-outline-navy:hover { background: var(--navy); color: var(--white); }
+
+    .btn-outline-light {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline-light:hover { border-color: var(--gold); color: var(--gold); }
+
+    .btn-full { display: block; width: 100%; text-align: center; }
+
+    /* =============================================
+       HEADER
+    ============================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(2,13,48,0.97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(254,196,45,0.18);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      gap: 24px;
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .main-nav a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      transition: color var(--dur) var(--ease);
+    }
+    .main-nav a:hover { color: var(--gold); }
+
+    /* =============================================
+       HERO — editorial split
+    ============================================= */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 90vh;
+      background: var(--navy-deep);
+      overflow: hidden;
+    }
+
+    /* Subtle radial glow from gold */
+    .hero-left {
+      display: flex;
+      align-items: center;
+      padding: 80px 64px 80px 40px;
+      position: relative;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 80%, rgba(254,196,45,0.05) 0%, transparent 60%),
+        linear-gradient(145deg, #060e38 0%, #051145 100%);
+    }
+
+    /* Thin vertical gold accent line */
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 10%;
+      bottom: 10%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(254,196,45,0.4), transparent);
+    }
+
+    .hero-content {
+      max-width: 520px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-h1 {
+      font-family: var(--ff-serif);
+      font-size: clamp(34px, 3.8vw, 56px);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 420px;
+    }
+
+    .hero-checklist {
+      margin-bottom: 36px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .hero-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.72);
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-checklist li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 7px;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .hero-price-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    .price-badge {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--ff-serif);
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 14px 26px;
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+
+    .price-note {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      max-width: 180px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-pill {
+      display: flex;
+      gap: 10px;
+    }
+    .social-icon {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      font-style: normal;
+      transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .social-icon:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Hero right — image panel */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    /* Gradient bleed into left panel */
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--navy-deep) 0%, transparent 30%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* =============================================
+       INTRO SPLIT — Faciale / Corporale
+    ============================================= */
+    .intro-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+
+    .intro-image {
+      overflow: hidden;
+    }
+    .intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+    .intro-image:hover img { transform: scale(1.04); }
+
+    .intro-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 64px;
+    }
+    .intro-text.bg-cream { background: var(--cream); }
+    .intro-text.bg-white  { background: var(--white); }
+
+    .intro-text h2 {
+      font-family: var(--ff-serif);
+      font-size: clamp(26px, 2.8vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+    .intro-text p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+    .btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Reverse order for right-image variant */
+    .intro-split.img-right .intro-image { order: 2; }
+    .intro-split.img-right .intro-text  { order: 1; }
+
+    /* =============================================
+       SERVICE GRID SECTIONS
+    ============================================= */
+    .services-section {
+      padding: 96px 0;
+    }
+    .services-section.bg-cream { background: var(--cream); }
+    .services-section.bg-white { background: var(--white); }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header h2 {
+      font-family: var(--ff-serif);
+      font-size: clamp(26px, 3vw, 44px);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .section-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    /* Service card */
+    .svc-card {
+      background: var(--white);
+      border: 1px solid rgba(5,17,69,0.07);
+      overflow: hidden;
+      position: relative;
+      transition:
+        box-shadow var(--dur) var(--ease),
+        transform  var(--dur) var(--ease);
+    }
+    .svc-card:hover {
+      box-shadow: 0 20px 56px rgba(5,17,69,0.11);
+      transform: translateY(-5px);
+    }
+
+    .svc-card-img {
+      height: 210px;
+      overflow: hidden;
+      position: relative;
+    }
+    .svc-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s var(--ease);
+    }
+    .svc-card:hover .svc-card-img img { transform: scale(1.07); }
+
+    /* Index number badge */
+    .card-idx {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-family: var(--ff-serif);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      background: var(--navy-75);
+      padding: 3px 9px;
+      z-index: 2;
+      border-left: 2px solid var(--gold);
+    }
+
+    .svc-card-body {
+      padding: 24px 24px 28px;
+      position: relative;
+    }
+    /* Gold top rule */
+    .svc-card-body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 24px;
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .svc-card-body h3 {
+      font-family: var(--ff-serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .svc-card-body p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* "Descoperă mai mult" link */
+    .card-more {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--magenta);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+      transition: color var(--dur) var(--ease);
+    }
+    .card-more:hover { color: var(--navy); }
+
+    /* =============================================
+       SOLAR INTERLUDE — dark band
+    ============================================= */
+    .solar-band {
+      background: var(--navy);
+      padding: 88px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .solar-band::before,
+    .solar-band::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(254,196,45,0.5) 50%, transparent 100%);
+    }
+    .solar-band::before { top: 0; }
+    .solar-band::after  { bottom: 0; }
+
+    /* Decorative large serif character */
+    .solar-band::before {
+      /* override to keep both: use a different pseudo trick */
+    }
+
+    .solar-band .eyebrow { color: rgba(255,255,255,0.4); }
+    .solar-band .eyebrow::before { background: rgba(255,255,255,0.25); }
+
+    .solar-band h2 {
+      font-family: var(--ff-serif);
+      font-size: clamp(26px, 3.2vw, 46px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+    .solar-band p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.62);
+      max-width: 680px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
+    }
+    .solar-band .btn-group {
+      justify-content: center;
+    }
+
+    /* =============================================
+       OFFERS — full-bleed image cards
+    ============================================= */
+    .offers-section {
+      padding: 96px 0;
+      background: var(--cream-2);
+    }
+    .offers-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .offers-header h2 {
+      font-family: var(--ff-serif);
+      font-size: clamp(26px, 3vw, 44px);
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .offer-card {
+      height: 440px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .offer-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .offer-card:hover img { transform: scale(1.07); }
+
+    .offer-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+        rgba(5,17,69,0.93) 0%,
+        rgba(5,17,69,0.45) 45%,
+        transparent 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px 32px;
+    }
+
+    /* Animated bottom gold line */
+    .offer-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease);
+    }
+    .offer-card:hover::after { transform: scaleX(1); }
+
+    .offer-overlay h3 {
+      font-family: var(--ff-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+    .offer-overlay p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .offer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .offer-cta::after { content: '→'; font-size: 13px; }
+
+    /* =============================================
+       TESTIMONIALS — navy bg + bg image
+    ============================================= */
+    .testimonials-section {
+      padding: 96px 0;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .testi-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .testi-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.10;
+    }
+    .testi-inner { position: relative; z-index: 2; }
+
+    .testi-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .testi-header h2 {
+      font-family: var(--ff-serif);
+      font-size: clamp(26px, 3vw, 44px);
+      font-weight: 700;
+      color: var(--white);
+    }
+    .testi-header .eyebrow { color: rgba(254,196,45,0.65); }
+    .testi-header .eyebrow::before { background: rgba(254,196,45,0.4); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .testi-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(254,196,45,0.18);
+      padding: 40px 36px;
+      position: relative;
+    }
+    /* Large quote mark */
+    .testi-card::before {
+      content: '\201C';
+      font-family: var(--ff-serif);
+      font-size: 88px;
+      line-height: 0.85;
+      color: var(--gold);
+      opacity: 0.22;
+      position: absolute;
+      top: 22px;
+      left: 30px;
+      pointer-events: none;
+    }
+
+    .stars { display: flex; gap: 3px; margin-bottom: 18px; }
+    .star { color: var(--gold); font-size: 13px; }
+
+    .testi-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      position: relative; /* above the quote pseudo */
+    }
+
+    .testi-author {
+      border-top: 1px solid rgba(254,196,45,0.18);
+      padding-top: 18px;
+    }
+    .testi-author strong {
+      font-family: var(--ff-serif);
+      font-size: 14px;
+      color: var(--white);
+      font-weight: 600;
+      display: block;
+    }
+
+    /* =============================================
+       CONTACT + FAQ
+    ============================================= */
+    .contact-section {
+      padding: 96px 0;
+      background: var(--cream);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Form side */
+    .form-col h2 {
+      font-family: var(--ff-serif);
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .form-col .phone-note {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .form-col .phone-note strong { color: var(--navy); }
+
+    .form-field { margin-bottom: 18px; }
+    .form-field label {
+      display: block;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 7px;
+    }
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--white);
+      border: 1.5px solid rgba(5,17,69,0.14);
+      border-radius: var(--radius);
+      font-family: var(--ff-sans);
+      font-size: 14px;
+      color: var(--navy);
+      outline: none;
+      transition: border-color var(--dur) var(--ease);
+    }
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: var(--gold); }
+    .form-field textarea { height: 116px; resize: vertical; }
+
+    /* FAQ side */
+    .faq-col h2 {
+      font-family: var(--ff-serif);
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .faq-col .faq-intro {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    /* Accordion */
+    details.faq-item {
+      border-bottom: 1px solid rgba(5,17,69,0.1);
+    }
+    details.faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 0;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: '+';
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform var(--dur) var(--ease);
+      line-height: 1;
+    }
+    details.faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      padding: 0 0 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .site-footer {
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.55);
+      padding: 80px 0 36px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 36px;
+    }
+
+    .footer-brand-col img {
+      height: 44px;
+      margin-bottom: 18px;
+      filter: brightness(0) invert(1);
+    }
+    .footer-slogan {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social .social-icon {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .footer-col h4 {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .footer-col ul li { margin-bottom: 9px; }
+    .footer-col ul li a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      transition: color var(--dur) var(--ease);
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+
+    .footer-program li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .footer-program li span:first-child { color: rgba(255,255,255,0.72); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-copy a {
+      color: rgba(255,255,255,0.45);
+      transition: color var(--dur) var(--ease);
+    }
+    .footer-copy a:hover { color: var(--gold); }
+
+    /* =============================================
+       RESPONSIVE — 768px
+    ============================================= */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+
+      .main-nav,
+      .header-cta { display: none; }
+
+      /* Hero stacks */
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-left {
+        padding: 56px 20px;
+      }
+      .hero-right {
+        height: 280px;
+      }
+
+      /* Intro splits */
+      .intro-split,
+      .intro-split.img-right {
+        grid-template-columns: 1fr;
+      }
+      .intro-split .intro-image,
+      .intro-split.img-right .intro-image { order: 1; height: 280px; }
+      .intro-split .intro-text,
+      .intro-split.img-right .intro-text  { order: 2; padding: 48px 20px; }
+
+      /* Grids */
+      .cards-grid { grid-template-columns: 1fr; }
+      .offers-grid { grid-template-columns: 1fr; }
+      .testi-grid  { grid-template-columns: 1fr; }
+
+      .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      .footer-brand-col { grid-column: 1 / -1; }
+
+      .services-section { padding: 60px 0; }
+      .offers-card { height: 340px; }
+      .solar-band { padding: 60px 0; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-h1 { font-size: 36px; }
+      .intro-text { padding: 56px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="../assets/deea-body-center5.webp" alt="Deea Body Center Ploiești">
+      </a>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Oferte</a></li>
+          <li><a href="#">Servicii</a></li>
+          <li><a href="#">Tarife</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn btn-magenta">Programează-te</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO — Ofertă limitată
+============================================================ -->
+<section class="hero" aria-label="Ofertă limitată">
+  <div class="hero-left">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Ofertă limitată</span>
+
+      <h1 class="hero-h1">
+        Transformă-ți corpul<br>și <em>redefinește-ți</em><br>încrederea
+      </h1>
+
+      <p class="hero-sub">
+        Rezervă acum pachetul tău complet și profită de criolipoliza cadou!
+      </p>
+
+      <ul class="hero-checklist">
+        <li>3 ședințe VelaShape – coapse + fese</li>
+        <li>2 ședințe VelaShape – abdomen + flancuri + lombar</li>
+        <li>3 ședințe laser Zentisse</li>
+        <li>3 ședinte presodrenaj</li>
+        <li>1 zonă mare de criolipoliză cadou</li>
+      </ul>
+
+      <div class="hero-price-row">
+        <div class="price-badge">1690 RON</div>
+        <p class="price-note">Nu rata șansa de a obține silueta mult dorită la un preț special!</p>
+      </div>
+
+      <div class="hero-cta-row">
+        <a href="#contact" class="btn btn-gold-solid">Programează-te</a>
+        <div class="social-pill">
+          <a href="#" class="social-icon" aria-label="Facebook">f</a>
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img src="../assets/promo-remodelare-corporala.webp" alt="Pachet remodelare corporală exclusiv">
+  </div>
+</section>
+
+<!-- ============================================================
+     INTRO — Tratamente Faciale
+============================================================ -->
+<section class="intro-split">
+  <div class="intro-image">
+    <img src="../assets/DSC01046-1536x1024.webp" alt="Tratamente Faciale Deea Body Center Ploiești">
+  </div>
+  <div class="intro-text bg-cream">
+    <span class="eyebrow">Deea Body Center</span>
+    <h2>Tratamente Faciale</h2>
+    <p>Ten revitalizat, neted și luminos, cu tratamente faciale personalizate pentru un aspect proaspăt și sănătos, fără imperfecțiuni.</p>
+    <div class="btn-group">
+      <a href="#faciale" class="btn btn-magenta">Descoperă</a>
+      <a href="#tarife" class="btn btn-outline-navy">Tarife</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GRID — Tratamente Faciale (6 carduri)
+============================================================ -->
+<section class="services-section bg-cream" id="faciale">
+  <div class="container">
+    <header class="section-header">
+      <span class="eyebrow center">Deea Body Center</span>
+      <h2>Tenul pe care ți-l dorești,<br>la un pas distanță!</h2>
+      <p>La Deea Body Center, obții un ten radiant prin tratamente faciale personalizate, cu rezultate vizibile.</p>
+    </header>
+
+    <div class="cards-grid">
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">01</span>
+          <img src="../assets/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-542.webp" alt="Intraceuticals">
+        </div>
+        <div class="svc-card-body">
+          <h3>Intraceuticals</h3>
+          <p>Rezultate spectaculoase in tratarea ridurilor, pielii imbatranite, acnee, pete pigmentare, cearcane, elasticitate si volum piele.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">02</span>
+          <img src="../assets/tratamente-faciale-1.png" alt="Tratament OPTI-FIRM">
+        </div>
+        <div class="svc-card-body">
+          <h3>Tratament special pentru ochi OPTI-FIRM</h3>
+          <p>Tratament special pentru ochi OPTI-FIRM eye contour REPECHAGE – pentru cearcane, riduri si pungile de sub ochi.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">03</span>
+          <img src="../assets/woman-rf-skin-tightening-min-1536x1008-1.webp" alt="Radiofrecvență 4K">
+        </div>
+        <div class="svc-card-body">
+          <h3>Tratamentul facial cu Radiofrecvență 4K</h3>
+          <p>Recomandată pentru oricine dorește o piele mai fermă, mai netedă și cu un aspect întinerit, fără disconfort și fără intervenții invazive.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">04</span>
+          <img src="../assets/tratament-micropen-1536x1046.webp" alt="Tratament MicroPen">
+        </div>
+        <div class="svc-card-body">
+          <h3>Tratament facial MicroPen</h3>
+          <p>Tratamentul facial cu Micropen este o metodă inovatoare de rejuvenare și regenerare a pielii, cunoscută și sub numele de microneedling.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">05</span>
+          <img src="../assets/tratament-green-peel-deeabocycenter-ploiesti_DBC-676.webp" alt="Green Peel">
+        </div>
+        <div class="svc-card-body">
+          <h3>Tratamentul Green Peel® by Dr. Schrammek</h3>
+          <p>Metodă de rejuvenare a pielii, bazată exclusiv pe ingrediente naturale, fără chimicale sau aditivi sintetici.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">06</span>
+          <img src="../assets/tratament-hidratiq-1.png" alt="Tratament HidratIQ">
+        </div>
+        <div class="svc-card-body">
+          <h3>Tratament HidratIQ</h3>
+          <p>Combina cosmetica 7 functii: Aqua peel, Oxigen Hiperbaric, Radiofrecventa, Ultrasunete, Spatula Ultrasunet, Ionoforeza, CrioHeat.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INTRO — Remodelare corporală
+============================================================ -->
+<section class="intro-split img-right">
+  <div class="intro-image">
+    <img src="../assets/DSC00993-scaled.webp" alt="Remodelare corporală Deea Body Center">
+  </div>
+  <div class="intro-text bg-white">
+    <span class="eyebrow">Deea Body Center</span>
+    <h2>Remodelare Corporală</h2>
+    <p>Tratamente de remodelare corporala prin reducerea grăsimii localizate, eliminarea celulitei, tonifierea pielii și îmbunătățirea conturului corporal, oferind rezultate rapide și fără intervenții chirurgicale.</p>
+    <div class="btn-group">
+      <a href="#corporale" class="btn btn-magenta">Descoperă</a>
+      <a href="#tarife" class="btn btn-outline-navy">Tarife</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GRID — Tratamente Corporale (9 carduri)
+============================================================ -->
+<section class="services-section bg-white" id="corporale">
+  <div class="container">
+    <header class="section-header">
+      <span class="eyebrow center">Deea Body Center</span>
+      <h2>Corpul pe care ți-l dorești,<br>la un pas distanță!</h2>
+      <p>La Deea Body Center, obții un corp tonifiat prin tratamente corporale personalizate, cu rezultate vizibile.</p>
+    </header>
+
+    <div class="cards-grid">
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">01</span>
+          <img src="../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-320.webp" alt="Tratament Sculptor">
+        </div>
+        <div class="svc-card-body">
+          <h3>Tratament Sculptor</h3>
+          <p>Sculptor este un echipament de ultima generatie care combina cinci terapii premium, transferate din domeniul medical, atat pentru corp cat si pentru fata.</p>
+          <a href="tratament-sculptor.html" class="card-more">Descoperă mai mult</a>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">02</span>
+          <img src="../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-346.webp" alt="Masaj transdermic Dermohealth">
+        </div>
+        <div class="svc-card-body">
+          <h3>Masaj transdermic Dermohealth</h3>
+          <p>Reducerea celulitei, îmbunătățirea fermității pielii și eliminarea toxinelor, cu rezultate vizibile și de lungă durată.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">03</span>
+          <img src="../assets/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-250.webp" alt="ZENTISSE Slim Light Laser">
+        </div>
+        <div class="svc-card-body">
+          <h3>ZENTISSE Slim Light Laser</h3>
+          <p>Cel mai eficient laser de slabit din Romania este destinat mai ales slabirii in zonele problema.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">04</span>
+          <img src="../assets/vela-shape-deeabocycenter-ploiesti_DBC-203.webp" alt="VelaShape2">
+        </div>
+        <div class="svc-card-body">
+          <h3>Tratare anticelulita cu VelaShape2</h3>
+          <p>Solutie medicala non-invaziva aprobata de FDA pentru reducerea circumferintei si pentru diminuarea celulitei prin tehnologia elos.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">05</span>
+          <img src="../assets/criolipoliza-cryogen-deeabocycenter-ploiesti_DBC-428.webp" alt="Criolipoliza CRYOGEN">
+        </div>
+        <div class="svc-card-body">
+          <h3>Criolipoliza CRYOGEN</h3>
+          <p>Ultima tehnologie aparuta in industria de ingrijire personala care are rolul de a distruge definitiv celulele adipoase.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">06</span>
+          <img src="../assets/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-271.webp" alt="Electrostimulare">
+        </div>
+        <div class="svc-card-body">
+          <h3>Slabire prin electrostimulare</h3>
+          <p>O metodă eficientă și non-invazivă de remodelare corporală care folosește impulsuri electrice pentru a stimula mușchii în profunzime, mimând contracțiile naturale.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">07</span>
+          <img src="../assets/presoterapie-deeabodycenter-ploiesti.png" alt="Presoterapie">
+        </div>
+        <div class="svc-card-body">
+          <h3>Presoterapie</h3>
+          <p>Tehnologie avansata pentru tratarea problemelor ca: picioare umflate, picioare grele, eliminarea toxinelor, retinerea de apa.</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">08</span>
+          <img src="../assets/solar-deeabocycenter-ploiesti_DBC-297.webp" alt="Solar">
+        </div>
+        <div class="svc-card-body">
+          <h3>Solar</h3>
+          <p>Va doriti un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare?</p>
+        </div>
+      </article>
+
+      <article class="svc-card">
+        <div class="svc-card-img">
+          <span class="card-idx">09</span>
+          <img src="../assets/epilare-definitiva-cu-laser-deeabodycenter-ploiesti.jpg" alt="Epilare XLight">
+        </div>
+        <div class="svc-card-body">
+          <h3>Epilarea definitivă cu laserul XLight</h3>
+          <p>Reprezintă o soluție avansată și eficientă pentru îndepărtarea permanentă a părului nedorit.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOLAR — dark interlude band
+============================================================ -->
+<section class="solar-band">
+  <div class="container">
+    <span class="eyebrow center">Deea Body Center</span>
+    <h2>Solar</h2>
+    <p>Va doriţi un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare? Deea Body Center va propune o solutie rapida si eficienta: solariile ERGOLINE — lider incontestabil in domeniilor solariilor.</p>
+    <div class="btn-group">
+      <a href="#" class="btn btn-gold-solid">Descoperă</a>
+      <a href="#tarife" class="btn btn-outline-light">Tarife</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     OFERTE — 3 image cards
+============================================================ -->
+<section class="offers-section">
+  <div class="container">
+    <header class="offers-header">
+      <span class="eyebrow center">Pachete exclusive</span>
+      <h2>Ofertele Deea Body Center</h2>
+    </header>
+
+    <div class="offers-grid">
+
+      <div class="offer-card">
+        <img src="../assets/oferte-deea-body-center-ploiesti.webp" alt="Oferte Corporale">
+        <div class="offer-overlay">
+          <h3>Oferte Tratamente Remodelare Corporală</h3>
+          <p>Tratamente corporale personalizate care tonifiază, sculptează și reduc celulita.</p>
+          <a href="#" class="offer-cta">Vezi ofertele</a>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <img src="../assets/DSC00993-scaled.webp" alt="Oferte Speciale">
+        <div class="offer-overlay">
+          <h3>Oferte Speciale</h3>
+          <p>Oferte speciale pentru tratamente faciale și corporale, obținând un ten luminos și un corp tonifiat.</p>
+          <a href="#" class="offer-cta">Vezi ofertele</a>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <img src="../assets/Tratament-sculptor-deeabodycenter.ro-ploiesti.webp" alt="Oferte Faciale">
+        <div class="offer-overlay">
+          <h3>Oferte Tratamente Faciale</h3>
+          <p>Tratamentele faciale personalizează îngrijirea tenului tău, oferind hidratare intensă și regenerare celulară.</p>
+          <a href="#" class="offer-cta">Vezi ofertele</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALE
+============================================================ -->
+<section class="testimonials-section">
+  <div class="testi-bg" aria-hidden="true">
+    <img src="../assets/testimonials.webp" alt="">
+  </div>
+  <div class="container testi-inner">
+    <header class="testi-header">
+      <span class="eyebrow center">Clienții noștri</span>
+      <h2>Ce spun ele</h2>
+    </header>
+
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">Sunt absolut încântată de rezultatele obținute la Deea Body Center! Am început cu ședințe de remodelare corporală și am văzut diferențe vizibile încă de la primele tratamente. Pielea mea e mai fermă, iar centimetrii din talie și coapse s-au redus semnificativ. Echipa este profesionistă și amabilă, iar atmosfera este relaxantă. Recomand cu toată încrederea!</p>
+        <div class="testi-author">
+          <strong>Maria, 35 de ani</strong>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">Tratamentele faciale de la Deea Body Center mi-au schimbat complet tenul! Am avut probleme cu cearcănele și ridurile fine, iar după câteva ședințe de radiofrecvență și tratamente hidratante, pielea mea e mai luminoasă și vizibil întinerită. Recomand acest loc minunat oricărei femei care își dorește un boost de încredere și frumusețe!</p>
+        <div class="testi-author">
+          <strong>Andreea, 29 de ani</strong>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">De când am descoperit Deea Body Center, am început o transformare pe care o așteptam de mult. Remodelarea corporală mi-a tonifiat corpul, iar tratamentele faciale m-au ajutat să am un ten mult mai neted și radiant. Profesionalismul și atenția la detalii de aici sunt de neegalat! Este locul ideal pentru momente de răsfăț și îngrijire completă.</p>
+        <div class="testi-author">
+          <strong>Elena, 42 de ani</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT + FAQ
+============================================================ -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Form -->
+      <div class="form-col">
+        <span class="eyebrow">Programare</span>
+        <h2>Trimite o programare</h2>
+        <p class="phone-note">Sau suna la <strong>0723 882 529</strong> pentru programare telefonica la Deea Body Center.</p>
+        <form>
+          <div class="form-field">
+            <label for="c-name">Nume</label>
+            <input type="text" id="c-name" placeholder="Numele tău complet">
+          </div>
+          <div class="form-field">
+            <label for="c-phone">Telefon</label>
+            <input type="tel" id="c-phone" placeholder="Numărul tău de telefon">
+          </div>
+          <div class="form-field">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" placeholder="Adresa ta de email">
+          </div>
+          <div class="form-field">
+            <label for="c-msg">Mesajul tău</label>
+            <textarea id="c-msg" placeholder="Scrie-ne ce tratament te interesează..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-magenta btn-full">Trimite programare</button>
+        </form>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-col">
+        <span class="eyebrow">Informații utile</span>
+        <h2>Întrebări și răspunsuri</h2>
+        <p class="faq-intro">Răspunsuri la cele mai frecvente întrebări pe care le primim din partea clienților.</p>
+
+        <details class="faq-item">
+          <summary>Cât durează rezultatele și de câte ședințe am nevoie pentru a vedea efecte?</summary>
+          <p class="faq-answer">Durata rezultatelor și numărul de ședințe necesare variază în funcție de tipul de tratament și de caracteristicile individuale ale fiecărei cliente. Echipa noastră vă va oferi o recomandare personalizată în urma consultației inițiale.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Sunt aceste tratamente sigure și au efecte secundare?</summary>
+          <p class="faq-answer">Toate tratamentele oferite la Deea Body Center sunt non-invazive și aprobate de autoritățile competente. Efectele secundare sunt minime și temporare, specialiștii noștri vă vor informa detaliat înainte de fiecare procedură.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Cum funcționează tratamentele de slăbire/localizare a grăsimii (ex. criolipoliză, cavitație, radiofrecvență)?</summary>
+          <p class="faq-answer">Fiecare tratament utilizează tehnologii diferite pentru a acționa asupra celulelor adipoase: criolipoliza le îngheață, cavitația le distruge prin unde ultrasonice, iar radiofrecvența stimulează producția de colagen și firmează pielea.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Ce tipuri de tratamente faciale sunt potrivite pentru tipul meu de piele?</summary>
+          <p class="faq-answer">Alegerea tratamentului facial optim se face în urma unei analize amănunțite a tipului și stării tenului dumneavoastră. Specialiștii noștri vă vor recomanda cel mai potrivit protocol de îngrijire, adaptat nevoilor specifice ale pielii tale.</p>
+        </details>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand-col">
+        <a href="index.html">
+          <img src="../assets/deea-body-center5.webp" alt="Deea Body Center">
+        </a>
+        <p class="footer-slogan">Redefinește-ți silueta, redescoperă-ți încrederea!</p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="Facebook">f</a>
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Servicii</h4>
+        <ul>
+          <li><a href="#">Servicii Tratamente Faciale și Corporale</a></li>
+          <li><a href="tratament-sculptor.html">Tratament Sculptor</a></li>
+          <li><a href="#">Tratament HidratIQ</a></li>
+          <li><a href="#">Criolipoliza Cryogen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Oferte</h4>
+        <ul>
+          <li><a href="#">Oferte Speciale Tratamente Faciale și Corporale</a></li>
+          <li><a href="#">Oferte Tratamente Corporale</a></li>
+          <li><a href="#">Oferte Tratamente Faciale</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Program</h4>
+        <ul class="footer-program">
+          <li><span>Luni – Vineri</span><span>9:00 – 20:00</span></li>
+          <li><span>Sâmbătă</span><span>10:00 – 16:00</span></li>
+          <li><span>Duminică</span><span>Închis</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2022 Deea Body Center. Creare site: <a href="https://digitalhelp.ro" target="_blank" rel="noopener">digitalhelp.ro</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

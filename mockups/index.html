@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deea Body Center — Comparație variante de design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#051145; --magenta:#A7408F; --gold:#FEC42D; --teal:#1C7261; --cream:#F5F1EA; --line:rgba(5,17,69,.12); }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Poppins,sans-serif;color:var(--navy);background:#fafafb;line-height:1.55}
+  h1,h2,h3{font-family:"Playfair Display",serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  header.top{background:var(--navy);color:#fff;padding:48px 0 40px;text-align:center}
+  header.top .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  header.top h1{font-size:40px;margin:14px 0 10px;color:#fff}
+  header.top p{max-width:640px;margin:0 auto;color:#d7dbe8;font-size:15px}
+  .legend{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .legend a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.28);padding:8px 16px;border-radius:999px;font-size:13px;transition:.2s}
+  .legend a:hover{background:#fff;color:var(--navy)}
+  section.variant{padding:40px 0;border-bottom:1px solid var(--line)}
+  .vhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .vhead .num{font-family:"Playfair Display",serif;font-size:34px;color:var(--gold)}
+  .vhead h2{font-size:28px}
+  .vhead .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:4px 10px;border-radius:999px}
+  .tag.a{background:#eef1f4;color:var(--navy)}
+  .tag.b{background:#f3e9f0;color:var(--magenta)}
+  .tag.c{background:var(--navy);color:var(--gold)}
+  .vdesc{color:#4a4f5c;max-width:820px;margin:8px 0 20px;font-size:14.5px}
+  .vdesc b{color:var(--navy)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:14px;padding:11px 20px;border-radius:999px;transition:.2s}
+  .btn.primary{background:var(--magenta);color:#fff}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(167,64,143,.35)}
+  .btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--navy)}
+  .shots{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(5,17,69,.05)}
+  .shot .cap{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13px;font-weight:600}
+  .shot .cap a{font-size:12px;color:var(--teal);text-decoration:none;font-weight:600}
+  .shot .frame{max-height:520px;overflow:auto;background:#f0f0f2}
+  .shot img{display:block;width:100%}
+  .orig{background:var(--cream)}
+  footer.note{padding:34px 0 60px;text-align:center;color:#6b7180;font-size:13px}
+  @media(max-width:820px){ .shots{grid-template-columns:1fr} header.top h1{font-size:30px} }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Deea Body Center · Migrare WordPress → Astro</div>
+    <h1>3 direcții de design — alege una</h1>
+    <p>Fiecare variantă e construită cu conținutul și imaginile reale, pe două pagini: homepage și o pagină de serviciu (Tratament Sculptor). Click pe „Deschide live" ca să navighezi real prin fiecare.</p>
+    <div class="legend">
+      <a href="#v1">1 · Clonă fidelă</a>
+      <a href="#v2">2 · Rafinat</a>
+      <a href="#v3">3 · Modern</a>
+      <a href="#orig">Site actual (referință)</a>
+    </div>
+  </div>
+</header>
+
+<section class="variant" id="v1">
+  <div class="wrap">
+    <div class="vhead"><span class="num">01</span><h2>Clonă fidelă</h2><span class="tag a">Pixel-perfect</span></div>
+    <p class="vdesc">Indistinctă vizual de site-ul actual — <b>același layout, culori, fonturi și structură</b>. Zero surprize pentru vizitatorii obișnuiți. Câștigi doar viteza și mentenanța Astro, fără nicio schimbare de aspect.</p>
+    <div class="actions">
+      <a class="btn primary" href="v1-clona/index.html" target="_blank">Deschide homepage live ↗</a>
+      <a class="btn ghost" href="v1-clona/tratament-sculptor.html" target="_blank">Deschide pagina Sculptor ↗</a>
+    </div>
+    <div class="shots">
+      <div class="shot"><div class="cap"><span>Homepage</span><a href="v1-clona/index.html" target="_blank">live ↗</a></div><div class="frame"><img src="shots/v1-home.png" alt="V1 homepage"></div></div>
+      <div class="shot"><div class="cap"><span>Tratament Sculptor</span><a href="v1-clona/tratament-sculptor.html" target="_blank">live ↗</a></div><div class="frame"><img src="shots/v1-sculptor.png" alt="V1 sculptor"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="variant" id="v2">
+  <div class="wrap">
+    <div class="vhead"><span class="num">02</span><h2>Rafinat</h2><span class="tag b">Același site, execuție de designer senior</span></div>
+    <p class="vdesc">Păstrează identitatea și structura, dar cu <b>execuție mult mai îngrijită</b>: spațiere consistentă, carduri unitare cu hover elegant, butoane pill, caseta de preț premium, secțiuni alternante cu tentă lavandă. Recognoscibil ca același brand, dar vizibil mai bun.</p>
+    <div class="actions">
+      <a class="btn primary" href="v2-rafinat/index.html" target="_blank">Deschide homepage live ↗</a>
+      <a class="btn ghost" href="v2-rafinat/tratament-sculptor.html" target="_blank">Deschide pagina Sculptor ↗</a>
+    </div>
+    <div class="shots">
+      <div class="shot"><div class="cap"><span>Homepage</span><a href="v2-rafinat/index.html" target="_blank">live ↗</a></div><div class="frame"><img src="shots/v2-home.png" alt="V2 homepage"></div></div>
+      <div class="shot"><div class="cap"><span>Tratament Sculptor</span><a href="v2-rafinat/tratament-sculptor.html" target="_blank">live ↗</a></div><div class="frame"><img src="shots/v2-sculptor.png" alt="V2 sculptor"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="variant" id="v3">
+  <div class="wrap">
+    <div class="vhead"><span class="num">03</span><h2>Modern reimaginat</h2><span class="tag c">Spa / lux editorial</span></div>
+    <p class="vdesc">Aspect complet nou, <b>premium și editorial</b>: navy profund + auriu, neutre calde crem, mult spațiu alb, tipografie serif elegantă, carduri cu index 01–09, magenta doar pe CTA. Același conținut, dar arată clar mai „scump" și mai actual.</p>
+    <div class="actions">
+      <a class="btn primary" href="v3-modern/index.html" target="_blank">Deschide homepage live ↗</a>
+      <a class="btn ghost" href="v3-modern/tratament-sculptor.html" target="_blank">Deschide pagina Sculptor ↗</a>
+    </div>
+    <div class="shots">
+      <div class="shot"><div class="cap"><span>Homepage</span><a href="v3-modern/index.html" target="_blank">live ↗</a></div><div class="frame"><img src="shots/v3-home.png" alt="V3 homepage"></div></div>
+      <div class="shot"><div class="cap"><span>Tratament Sculptor</span><a href="v3-modern/tratament-sculptor.html" target="_blank">live ↗</a></div><div class="frame"><img src="shots/v3-sculptor.png" alt="V3 sculptor"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="variant orig" id="orig">
+  <div class="wrap">
+    <div class="vhead"><span class="num">★</span><h2>Site actual (referință)</h2><span class="tag a">WordPress + Elementor</span></div>
+    <p class="vdesc">Capturile site-ului live existent, pentru comparație directă.</p>
+    <div class="shots">
+      <div class="shot"><div class="cap"><span>Homepage actual</span><a href="https://deeabodycenter.ro" target="_blank">deeabodycenter.ro ↗</a></div><div class="frame"><img src="shots/homepage-desktop-full.png" alt="Original homepage"></div></div>
+      <div class="shot"><div class="cap"><span>Sculptor actual</span><a href="https://deeabodycenter.ro/tratament-sculptor/" target="_blank">pagina live ↗</a></div><div class="frame"><img src="shots/sculptor-desktop-full.png" alt="Original sculptor"></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="note">
+  <div class="wrap">Mockup-uri statice pentru alegerea direcției de design · programările vor merge pe WhatsApp la build-ul final · pas următor: spec + implementare Astro pe varianta aleasă.</div>
+</footer>
+</body>
+</html>
