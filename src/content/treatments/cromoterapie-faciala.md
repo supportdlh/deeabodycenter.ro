@@ -51,7 +51,7 @@ sections:
           proaspătă, fără roșeață sau sensibilitate.
 order: 8
 seo:
-  title: Cromoterapie facială — Deea Body Center
+  title: Cromoterapie faciala - Deea Body Center
   description: >-
     Redescoperă strălucirea pielii cu cromoterapie facială la Deea Body Center Ploiești. Tratament inovator pentru
     regenerare, hidratare și un ten radiant!

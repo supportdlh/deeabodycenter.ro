@@ -67,7 +67,7 @@ packages:
       - 12 Ședințe Electrostimulare
     price: 600 RON
 seo:
-  title: Oferte Tratamente Corporale — Deea Body Center Ploiești
+  title: Oferte Tratamente Corporale - Deea Body Center
   description: >-
     Profită de oferte pentru tratamente corporale la Deea Body Center Ploiești. Tonifiere, remodelare și relaxare
     la prețuri avantajoase!

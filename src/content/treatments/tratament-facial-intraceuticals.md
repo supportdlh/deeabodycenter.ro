@@ -54,7 +54,7 @@ sections:
           adaptat pentru a răspunde nevoilor unice ale fiecărui client.
 order: 1
 seo:
-  title: Tratament facial Intraceuticals — Deea Body Center
+  title: Tratament facial Intraceuticals - Deea Body Center
   description: >-
     Răsfață-ți tenul cu tratamentul facial Intraceutical la Deea Body Center Ploiești! Hidratează, luminează și
     revitalizează-ți pielea.

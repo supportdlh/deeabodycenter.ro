@@ -51,7 +51,7 @@ sections:
           periodice, eliminând complet necesitatea programărilor frecvente și a produselor de epilare.
 order: 9
 seo:
-  title: Epilarea definitivă cu laserul XLight — Deea Body Center
+  title: Epilarea definitivă cu laserul XLight - Deea Body Center
   description: >-
     Bucură-te de piele fină și fără griji cu epilarea definitivă cu laser la Deea Body Center Ploiești. Rezultate
     rapide și de lungă durată!

@@ -58,7 +58,7 @@ benefits:
   - 60% au prezentat o imbunatatire a texturii pielii
 order: 4
 seo:
-  title: Tratare Celulita cu VelaShape2 — Deea Body Center
+  title: Tratare Celulita cu VelaShape2 - Deea Body Center
   description: >-
     Tratare celulită cu VelaShape la Deea Body Center Ploiești! Tonifică pielea, reduce depozitele de grăsime și
     obține un aspect neted și ferm.

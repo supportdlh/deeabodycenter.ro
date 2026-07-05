@@ -1,0 +1,36 @@
+---
+// JSON-LD Service pentru fiecare pagină de tratament (17 pagini via TreatmentLayout) — Task 9.
+// Data-driven din `entry` (colecția `treatments`): name = data.title, description = data.excerpt.
+import type { CollectionEntry } from 'astro:content';
+import { site } from '../../data/site';
+
+export interface Props {
+  entry: CollectionEntry<'treatments'>;
+}
+
+const { entry } = Astro.props as Props;
+const { data } = entry;
+
+const pageUrl = new URL(`/${entry.id}/`, Astro.site).href;
+const providerUrl = new URL('/', Astro.site).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: data.title,
+  description: data.excerpt,
+  url: pageUrl,
+  serviceType: data.category === 'facial' ? 'Tratament facial' : 'Tratament corporal',
+  provider: {
+    '@type': 'HealthAndBeautyBusiness',
+    name: site.name,
+    url: providerUrl,
+  },
+  areaServed: {
+    '@type': 'City',
+    name: site.city,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

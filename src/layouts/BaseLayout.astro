@@ -22,7 +22,7 @@ const { title, description, canonicalPath, ogImage } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <Seo title={title} description={description} canonicalPath={canonicalPath} ogImage={ogImage}>
-      <slot name="head" />
+      <slot name="head" slot="head" />
     </Seo>
     <Analytics />
   </head>

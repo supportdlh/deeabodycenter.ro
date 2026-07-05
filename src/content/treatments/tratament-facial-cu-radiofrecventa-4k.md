@@ -40,7 +40,7 @@ sections:
           eficientă, cu efecte de durată, fără a necesita timp de recuperare.
 order: 3
 seo:
-  title: Tratament facial cu Radiofrecvență 4K — Deea Body Center
+  title: Tratament facial cu Radiofrecvență 4K - Deea Body Center
   description: >-
     Îmbunătățește-ți tenul cu tratamentul facial cu Radiofrecvență 4K la Deea Body Center Ploiești! Stimulează
     colagenul și redă fermitatea pielii tale.

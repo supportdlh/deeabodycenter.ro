@@ -56,7 +56,7 @@ packages:
       - Rezultate vizibile
     price: 290 RON/ tratament
 seo:
-  title: Oferte Tratamente Faciale — Deea Body Center Ploiești
+  title: Oferte Tratamente Faciale - Deea Body Center
   description: >-
     Explorează oferte de tratamente faciale la Deea Body Center Ploiești. Regenerare, hidratare și îngrijire
     personalizată pentru un ten radiant și sănătos!

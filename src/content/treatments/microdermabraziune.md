@@ -53,7 +53,7 @@ sections:
           zilnice.
 order: 7
 seo:
-  title: Microdermabraziune — Deea Body Center
+  title: Microdermabraziune - Deea Body Center
   description: >-
     Redă strălucirea tenului cu microdermabraziune la Deea Body Center Ploiești. Exfoliere delicată, regenerare și
     un ten vizibil mai luminos!

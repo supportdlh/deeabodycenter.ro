@@ -13,6 +13,7 @@ import OfferCard from '../components/OfferCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import Accordion from '../components/Accordion.astro';
 import ContactBlock from '../components/ContactBlock.astro';
+import LocalBusinessSchema from '../components/schema/LocalBusinessSchema.astro';
 import { site } from '../data/site';
 
 import heroImg from '../assets/promo-remodelare-corporala.webp';
@@ -223,6 +224,10 @@ const faq = [
   description="Obține silueta dorită cu tratamentele de remodelare corporala de la Deea Body Center Ploiești. Tonifiere, reducerea celulitei și contur perfect!"
   canonicalPath="/"
 >
+  <Fragment slot="head">
+    <LocalBusinessSchema />
+  </Fragment>
+
   <!-- ============================================================
        HERO — „Ofertă limitată"
   ============================================================= -->

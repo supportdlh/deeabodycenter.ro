@@ -40,7 +40,7 @@ sections:
           continuând să se îmbunătățească pe măsură ce tratamentul progresează.
 order: 2
 seo:
-  title: Masaj transdermic Dermohealth — Deea Body Center
+  title: Masaj transdermic Dermohealth - Deea Body Center
   description: >-
     Masaj transdermic DermoHealth la Deea Body Center Ploiești – ideal pentru reducerea celulitei, tonifiere și
     revitalizarea pielii!

@@ -45,7 +45,7 @@ sections:
           hidratarea pe termen lung.
 order: 2
 seo:
-  title: Tratament OPTI-FIRM — Deea Body Center
+  title: Tratament OPTI-FIRM - Deea Body Center
   description: >-
     Îngrijește-ți zona ochilor cu tratament Opti-Firm! Reduce cearcănele, ridurile și umflăturile, oferind un look
     fresh și odihnit.

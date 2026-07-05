@@ -69,8 +69,8 @@ benefits:
   - Tratarea cicatricilor post-acnee
 order: 1
 seo:
-  title: Tratament Sculptor — Deea Body Center Ploiești
+  title: Tratament Sculptor - Deea Body Center
   description: >-
-    Tratamentul Sculptor de la Deea Body Center Ploiești combină 5 terapii premium pentru remodelare corporală și
-    facială, fără intervenții invazive.
+    Modelați-vă silueta cu tratamentul Sculptor la Deea Body Center Ploiești! Tonifiază, reduce celulita și
+    conturează corpul pentru un aspect ferm și armonios.
 ---

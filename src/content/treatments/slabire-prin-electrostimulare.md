@@ -41,7 +41,7 @@ sections:
           rapidă și eficientă de remodelare corporală!
 order: 6
 seo:
-  title: Slabire prin electrostimulare — Deea Body Center
+  title: Slabire prin electrostimulare - Deea Body Center
   description: >-
     Slăbire prin electrostimulare la Deea Body Center din Ploiești! Redu celulita, tonifică-ți corpul și scade în
     greutate rapid, cu ajutorul tehnologiei avansate.

@@ -52,7 +52,7 @@ sections:
           rezultate de lungă durată și o îmbunătățire continuă a aspectului pielii.
 order: 4
 seo:
-  title: Tratament facial MicroPen — Deea Body Center
+  title: Tratament facial MicroPen - Deea Body Center
   description: >-
     Ten redefinit cu tratament facial MicroPen la Deea Body Center Ploiești! Stimulează regenerarea pielii, reduce
     ridurile și îmbunătățește textura pielii.

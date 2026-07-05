@@ -50,7 +50,7 @@ sections:
           se îmbunătățească pe măsură ce pielea se regenerează natural.
 order: 5
 seo:
-  title: Tratament Green Peel® by Dr. Schrammek — Deea Body Center
+  title: Tratament Green Peel® by Dr. Schrammek - Deea Body Center
   description: >-
     Descoperă tratamentul GreenPeel by Dr. Schrammek! Terapie naturala ce revitalizează tenul, îmbunătățește textura
     pielii și reduce imperfecțiunile.

@@ -34,7 +34,7 @@ benefits:
   - Muzicoterapie
 order: 8
 seo:
-  title: Solar — Deea Body Center Ploiesti
+  title: Solar - Deea Body Center Ploiesti
   description: >-
     Obține un bronz natural și uniform cu solarul Deea Body Center Ploiești! Îmbunătățește-ți aspectul cu o piele
     netedă și fermă.

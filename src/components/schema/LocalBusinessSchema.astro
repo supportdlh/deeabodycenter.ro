@@ -1,0 +1,58 @@
+---
+// JSON-LD LocalBusiness (subtip HealthAndBeautyBusiness) pentru homepage — Task 9.
+// Sursă unică de adevăr: src/data/site.ts (NAP, geo, program, social). NU se inventează
+// date NAP: cod poștal absent pe pagina live /contact/ → omis din schema (fără câmp fals).
+// `streetAddress` elimină nota de navigare „(în sensul giratoriu)" din site.address.street —
+// utilă pentru vizitatori pe pagina Contact, dar nu face parte din adresa poștală propriu-zisă.
+import { site } from '../../data/site';
+
+const streetAddress = site.address.street.replace(/\s*\([^)]*\)\s*$/, '').trim();
+
+const openingHoursSpecification = site.hours
+  .filter((h) => h.open && h.close)
+  .map((h) => {
+    // "Luni – Vineri" → ["Monday", ... "Friday"]; "Sâmbătă" → ["Saturday"].
+    const dayMap: Record<string, string[]> = {
+      'Luni – Vineri': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      Sâmbătă: ['Saturday'],
+    };
+    const dayOfWeek = dayMap[h.days] ?? [h.days];
+    return {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek,
+      opens: h.open,
+      closes: h.close,
+    };
+  });
+
+const logoUrl = new URL('/apple-touch-icon.png', Astro.site).href;
+const imageUrl = new URL('/images/og-default.jpg', Astro.site).href;
+const homeUrl = new URL('/', Astro.site).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'HealthAndBeautyBusiness',
+  name: site.name,
+  image: imageUrl,
+  logo: logoUrl,
+  url: homeUrl,
+  telephone: site.phoneHref.replace('tel:', ''),
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: site.geo.lat,
+    longitude: site.geo.lng,
+  },
+  openingHoursSpecification,
+  sameAs: [site.social.facebook, site.social.instagram].filter(Boolean),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

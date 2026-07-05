@@ -48,7 +48,7 @@ sections:
           metabolismul și detoxifierea prin sistemul limfatic. Aceasta contribuie la o stare generală de bine.
 order: 5
 seo:
-  title: Criolipoliza Cryogen — Deea Body Center
+  title: Criolipoliza Cryogen - Deea Body Center
   description: >-
     Criolipoliza – tratamentul inovator pentru reducerea grăsimii prin înghețare controlată la Deea Body Center
     Ploiești

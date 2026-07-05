@@ -46,7 +46,7 @@ packages:
       - 6 ședințe Laser Zentisse
     price: 1680 RON
 seo:
-  title: Oferte speciale tratamente faciale și corporale — Deea Body Center Ploiești
+  title: Oferte Speciale Tratamente Faciale si Corporale - Deea Body Center
   description: >-
     Oferte speciale de tratamente faciale și corporale la Deea Body Center Ploiești. Înfrumusețare și relaxare la
     cele mai bune prețuri!

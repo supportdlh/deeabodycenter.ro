@@ -10,6 +10,7 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import Accordion from '../components/Accordion.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import ServiceSchema from '../components/schema/ServiceSchema.astro';
 import { site } from '../data/site';
 
 export interface Props {
@@ -27,6 +28,10 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
 ---
 
 <BaseLayout title={data.seo.title} description={data.seo.description} canonicalPath={`/${entry.id}/`}>
+  <Fragment slot="head">
+    <ServiceSchema entry={entry} />
+  </Fragment>
+
   <!-- =========================================================
        HERO FULL-WIDTH
   ========================================================== -->

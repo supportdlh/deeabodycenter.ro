@@ -71,7 +71,7 @@ sections:
           porilor, pentru tonifierea peretilor vasculari, pentru un usor lifting facial.
 order: 6
 seo:
-  title: Tratament HidratIQ — Deea Body Center
+  title: Tratament HidratiQ - Deea Body Center
   description: >-
     Răsfață-ți tenul cu tratamentul HidratiQ la Deea Body Center Ploiești! Hidratează în profunzime, luminează și
     revitalizează pielea pentru un aspect sănătos și radiant.

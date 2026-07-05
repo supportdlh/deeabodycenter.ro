@@ -63,7 +63,7 @@ benefits:
   - Accelerează recuperarea musculară - Util pentru sportivi sau după efort fizic intens.
 order: 7
 seo:
-  title: Presoterapie — Deea Body Center
+  title: Presoterapie - Deea Body Center
   description: >-
     Îmbunătățește circulația și reduce retenția de apă cu presoterapie la Deea Body Center Ploiești! Relaxare și
     rezultate vizibile pentru corpul tău.

@@ -49,7 +49,7 @@ sections:
           si nu presupune riscuri de nici un fel sau timp de recuperare dupa tratament.
 order: 3
 seo:
-  title: Slabire cu ZENTISSE Slim Light Laser — Deea Body Center
+  title: Slabire cu ZENTISSE Slim Light Laser - Deea Body Center
   description: >-
     Slăbește cu ZENTISSE Slim Light Laser la Deea Body Center Ploiești! Tratament non-invaziv pentru reducerea
     grăsimii localizate și conturarea siluetei.
