@@ -34,25 +34,6 @@ packages:
     price: 1400 RON
     oldPrice: 4000 RON
     badge: -65%
-  - title: Abonament nr. 1
-    items:
-      - 4 ședințe Laser Zentisse
-      - 4 ședințe VelaShape (zona mare)
-      - 1 ședință Sculptor sau Criolipoliză
-    price: 1.470 RON
-  - title: Abonament nr. 2
-    items:
-      - 1 ședință Sculptor
-      - 3 ședințe Dermocell (masaj transdermic)
-      - 3 ședințe Laser Zentisse
-    price: 659 RON
-  - title: Abonament nr. 3
-    items:
-      - 4 ședințe Dermocell (masaj transdermic)
-      - 2 ședințe electrostimulare sau presodrenaj
-      - 2 zone mari Criolipoliză
-      - 2 ședințe Laser Zentisse
-    price: 890 RON
   - items:
       - Evaluare corporală GRATUITĂ
       - Criolipoliză (o zonă MARE)

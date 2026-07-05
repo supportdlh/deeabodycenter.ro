@@ -49,6 +49,12 @@ packages:
       - Tratament Micropen
       - Microdermabraziune
     price: 500 RON
+  - items:
+      - Green Peel Energy este tratamentul facial premium care oferă pielii un aspect proaspăt, neted și revitalizat.
+      - Regenerare delicată
+      - Luminozitate naturală
+      - Rezultate vizibile
+    price: 290 RON/ tratament
 seo:
   title: Oferte Tratamente Faciale — Deea Body Center Ploiești
   description: >-
