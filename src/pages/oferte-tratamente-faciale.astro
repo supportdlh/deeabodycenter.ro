@@ -1,0 +1,11 @@
+---
+// Pagină dedicată (nu rută dinamică) — slug exact din reference/site-inventory.md,
+// cerut de task 7 pentru a păstra 1:1 sursa de adevăr a URL-ului (fișierul din src/pages/).
+import { getEntry } from 'astro:content';
+import OfferLayout from '../layouts/OfferLayout.astro';
+
+const entry = await getEntry('offers', 'oferte-tratamente-faciale');
+if (!entry) throw new Error('Missing offers entry: oferte-tratamente-faciale');
+---
+
+<OfferLayout entry={entry} />

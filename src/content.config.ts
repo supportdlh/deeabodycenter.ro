@@ -53,6 +53,22 @@ const offers = defineCollection({
       image: image(),
       body: z.string(),
       category: z.string(),
+      // Extensie ADITIVĂ, opțională — pachetele de preț (Abonament nr. X, tarife fixe etc.)
+      // afișate pe paginile live de oferte (deeabodycenter.ro/oferte-*) sunt structurate ca
+      // liste de proceduri + preț, NU ca proză continuă; `body` (proză) nu le poate reda fidel
+      // fără paginare artificială. Opțional pentru că pagina „Oferte speciale" nu are pachete
+      // text (conținutul ei real e doar un colaj de imagini promoționale rotative, nedurabile).
+      packages: z
+        .array(
+          z.object({
+            title: z.string().optional(),
+            items: z.array(z.string()),
+            price: z.string(),
+            oldPrice: z.string().optional(),
+            badge: z.string().optional(),
+          }),
+        )
+        .optional(),
       seo: z.object({
         title: z.string(),
         description: z.string(),

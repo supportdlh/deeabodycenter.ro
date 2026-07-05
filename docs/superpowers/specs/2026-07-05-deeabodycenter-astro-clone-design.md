@@ -91,13 +91,24 @@ public/
   benefits?: string[]      // lista „Beneficii" din sidebar
   order: number            // ordinea în grid-uri
   seo: { title, description }
+  // câmpuri opționale adiționale (adăugate la implementare):
+  sidebarTitle?: string    // titlu explicit pentru sidebar; altfel se derivă din title (strip „Tratament ")
+  sidebarPromo?: string[]  // propozițiile promo din sidebar care nu încap în excerpt/intro/benefits
 }
 ```
+
+Notă: în Astro 7 configul colecțiilor stă în `src/content.config.ts` (glob loader); routing-ul folosește `entry.id` (derivat din numele fișierului = slug).
 
 **`offers` collection** — un fișier per ofertă:
 ```ts
 {
   title, slug, excerpt, image, body, category, seo
+  // câmp opțional adițional (adăugat la implementare, task 7):
+  packages?: [{ title?, items: string[], price, oldPrice?, badge? }]
+  // pachetele de preț („Abonament nr. X", tarife fixe) de pe paginile live de oferte sunt
+  // liste de proceduri + preț, nu proză continuă — `body` (proză) nu le poate reda fidel.
+  // Opțional: pagina „Oferte speciale" nu are pachete text (conținutul ei real e un colaj
+  // de imagini promoționale rotative, nedurabile, nu date structurate stabile).
 }
 ```
 
