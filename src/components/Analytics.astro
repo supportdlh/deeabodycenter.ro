@@ -1,4 +1,16 @@
 ---
-// STUB minimal — va fi înlocuit cu integrarea GA4 completă în Task 2.
-// Nu randează nimic momentan.
+import { site } from '../data/site.ts';
+const isProd = import.meta.env.PROD;
 ---
+
+{isProd && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.ga4}`}></script>
+    <script is:inline define:vars={{ id: site.ga4 }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', id);
+    </script>
+  </>
+)}

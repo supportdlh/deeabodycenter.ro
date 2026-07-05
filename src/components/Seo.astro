@@ -1,5 +1,6 @@
 ---
-// STUB minimal — va fi înlocuit cu implementarea completă în Task 2.
+import { site } from '../data/site.ts';
+
 export interface Props {
   title: string;
   description: string;
@@ -7,11 +8,19 @@ export interface Props {
   ogImage?: string;
 }
 
-const { title, description, canonicalPath } = Astro.props as Props;
-const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+const { title, description, canonicalPath, ogImage = '/images/og-default.jpg' } = Astro.props as Props;
+const canonical = new URL(canonicalPath, Astro.site).href;
+const ogUrl = new URL(ogImage, Astro.site).href;
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonicalUrl} />
-<slot />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogUrl} />
+<meta property="og:locale" content="ro_RO" />
+<meta name="twitter:card" content="summary_large_image" />
+<slot name="head" />
