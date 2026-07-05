@@ -16,7 +16,16 @@ const { title, excerpt, image, href } = Astro.props;
 ---
 
 <div class="card">
-  <Image class="card-img" src={image} alt={title} width={640} height={400} loading="lazy" />
+  <Image
+    class="card-img"
+    src={image}
+    alt={title}
+    width={640}
+    height={400}
+    widths={[320, 480, 640]}
+    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 370px"
+    loading="lazy"
+  />
   <div class="card-body">
     <h3>{title}</h3>
     <p>{excerpt}</p>
