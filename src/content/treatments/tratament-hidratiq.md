@@ -5,6 +5,7 @@ category: facial
 excerpt: >-
   Combina cosmetica 7 functii: Aqua peel, Oxigen Hiperbaric, Radiofrecventa, Ultrasunete, Spatula Ultrasunet,
   Ionoforeza, CrioHeat
+heroSubtitle: "HidratIQ este un echipament versatil, ce inglobeaza 7 tehnologii unice în estetica faciala."
 heroImage: ../../assets/DSC01046-1536x1024.webp
 sidebarImage: ../../assets/tratament-hidratiq-1.png
 intro:

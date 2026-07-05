@@ -6,6 +6,7 @@ category: corporal
 excerpt: >-
   Ultima tehnologie aparuta in industria de ingrijire personala care are rolul de a distruge definitiv celulele
   adipoase.
+heroSubtitle: "Criolipoliza CRYOGEN este ultima tehnologie aparuta in industria de ingrijire personala care are rolul de a distruge definitiv celulele adipoase."
 heroImage: ../../assets/criolipoliza-cryogen-deeabocycenter-ploiesti_DBC-429.webp
 sidebarImage: ../../assets/criolipoliza-cryogen-deeabocycenter-ploiesti_DBC-455-682x1024.webp
 intro:

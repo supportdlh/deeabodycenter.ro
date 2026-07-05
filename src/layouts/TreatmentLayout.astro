@@ -53,7 +53,7 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
     <div class="hero-overlay-wrap">
       <div class="hero-overlay-box">
         <h1>{data.title}</h1>
-        <p>{data.excerpt}</p>
+        <p>{data.heroSubtitle ?? data.excerpt}</p>
       </div>
     </div>
   </div>
@@ -66,7 +66,25 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
       <div class="body-grid">
         <!-- ===== MAIN COLUMN ===== -->
         <div class="main-col">
-          {data.intro.map((p, i) => (i === 0 ? <h2 class="col-lead">{p}</h2> : <p>{p}</p>))}
+          {
+            data.intro.map((p, i) => {
+              if (i !== 0) return <p>{p}</p>;
+              // Prima frază de intro: pe LIVE, denumirea tratamentului (primele două
+              // cuvinte, ex. „Tratamentul Sculptor" / „Criolipoliza Cryogen") e un
+              // hyperlink TEAL. Izolăm acel lead-phrase și îl stilăm ca link teal,
+              // restul rămâne text normal.
+              const words = p.split(' ');
+              const lead = words.slice(0, 2).join(' ');
+              const rest = words.slice(2).join(' ');
+              return (
+                <h2 class="col-lead">
+                  <a class="lead-link" href={`/${entry.id}/`}>
+                    {lead}
+                  </a>{rest ? ` ${rest}` : ''}
+                </h2>
+              );
+            })
+          }
 
           {
             data.sections.map((section) => (
@@ -170,7 +188,7 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
   /* ===== HERO ===== */
   .treatment-hero {
     position: relative;
-    min-height: 420px;
+    min-height: 640px;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
@@ -257,6 +275,15 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
     color: var(--navy);
     line-height: 1.3;
     margin: 0 0 18px;
+  }
+
+  /* Lead-phrase (denumirea tratamentului) din prima frază de intro = link TEAL, ca pe LIVE. */
+  .main-col :global(.col-lead .lead-link) {
+    color: var(--teal);
+    font-weight: 700;
+  }
+  .main-col :global(.col-lead .lead-link:hover) {
+    text-decoration: underline;
   }
 
   .col-section-title {
@@ -430,13 +457,15 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
   }
   @media (max-width: 768px) {
     .treatment-hero {
-      min-height: 300px;
+      min-height: 440px;
     }
     .hero-overlay-box {
       padding: 26px 24px;
     }
+    /* Titlu hero mobil ~54px Playfair, ca pe LIVE (nu 32px). */
     .hero-overlay-box h1 {
-      font-size: 2rem;
+      font-size: 3.375rem;
+      line-height: 1;
     }
     .hero-overlay-box p {
       font-size: 1.1875rem;

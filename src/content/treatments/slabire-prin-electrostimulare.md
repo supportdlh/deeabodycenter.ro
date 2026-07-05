@@ -5,6 +5,7 @@ category: corporal
 excerpt: >-
   O metodă eficientă și non-invazivă de remodelare corporală care folosește impulsuri electrice pentru a stimula
   mușchii în profunzime, mimând contracțiile naturale.
+heroSubtitle: "Tratamentul de slăbire prin electrostimulare este o metodă eficientă și non-invazivă de remodelare corporală care folosește impulsuri electrice pentru a stimula mușchii în profunzime, mimând contracțiile naturale."
 heroImage: ../../assets/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-271.webp
 sidebarImage: ../../assets/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-264-682x1024.webp
 intro:

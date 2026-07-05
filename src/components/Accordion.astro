@@ -60,16 +60,25 @@ const { title, open = false, variant = 'faq' } = Astro.props;
     display: none;
   }
 
-  /* Indicator chevron (⌄) — SVG inline, roteste la deschidere. */
+  /* Indicator chevron (⌄) — SVG inline, roteste la deschidere.
+     Folosim `!important` + reset geometric (border-radius/dimensiuni/background-color)
+     pentru a suprascrie varianta „cerc magenta +/−" impusă de TreatmentLayout.astro
+     prin `.accordion :global(details.faq-item summary::after)` (specificitate mai mare),
+     astfel încât toate acordeoanele (FAQ homepage + Corporal/Facial pe paginile de
+     tratament) folosesc identic caretul subțire, ca pe LIVE. */
   details.faq-item summary::after {
     content: '';
     flex-shrink: 0;
-    width: 16px;
-    height: 16px;
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
     margin-left: 8px;
+    border-radius: 0 !important;
     background: center / 14px 14px no-repeat
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5L7 7l6-5.5' stroke='%23051145' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    transition: transform var(--t-fast, 0.2s) ease;
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5L7 7l6-5.5' stroke='%23051145' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+    transition:
+      transform var(--t-fast, 0.2s) ease,
+      background-image var(--t-fast, 0.2s) ease;
   }
 
   /* Stare deschisă: bandă magenta-roz rotunjită, text + chevron alb. */
@@ -80,7 +89,8 @@ const { title, open = false, variant = 'faq' } = Astro.props;
   }
   details.faq-item[open] summary::after {
     transform: rotate(180deg);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5L7 7l6-5.5' stroke='%23ffffff' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-color: transparent !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5L7 7l6-5.5' stroke='%23ffffff' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
   }
 
   details.faq-item .faq-answer {

@@ -5,6 +5,7 @@ category: facial
 excerpt: >-
   Tratamentul Green Peel® by Dr. Schrammek este o metodă de rejuvenare a pielii, bazată exclusiv pe ingrediente
   naturale, fără chimicale sau aditivi sintetici.
+heroSubtitle: "Tratamentul Green Peel® Natural 100% by Dr. Schrammek este o metodă de rejuvenare a pielii, bazată exclusiv pe ingrediente naturale, fără chimicale sau aditivi sintetici."
 heroImage: ../../assets/tratament-green-peel-deeabocycenter-ploiesti_DBC-676.webp
 sidebarImage: ../../assets/tratament-green-peel-deeabocycenter-ploiesti_DBC-691-682x1024.webp
 intro:

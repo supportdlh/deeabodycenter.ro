@@ -5,6 +5,7 @@ category: corporal
 excerpt: >-
   Epilarea definitivă cu laserul XLight reprezintă o soluție avansată și eficientă pentru îndepărtarea permanentă a
   părului nedorit.
+heroSubtitle: "Epilarea definitivă cu laserul XLight reprezintă o soluție avansată și eficientă pentru îndepărtarea permanentă a părului nedorit."
 heroImage: ../../assets/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-496-scaled.jpg
 sidebarImage: ../../assets/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-479-681x1024.jpg
 intro:

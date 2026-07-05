@@ -5,6 +5,7 @@ excerpt: >-
   Microdermabraziunea facială cu dischete abrazive cu pulbere de diamant hipoalergenic este un tratament de
   exfoliere avansată, ideal pentru reducerea ridurilor, a petelor pigmentare și pentru obținerea unei pieli
   luminoase și netede.
+heroSubtitle: "Microdermabraziunea facială cu dischete abrazive cu pulbere de diamant hipoalergenic este un tratament de exfoliere avansată, ideal pentru reducerea ridurilor, a petelor pigmentare și pentru obținerea unei pieli luminoase și netede."
 heroImage: ../../assets/microdermabraziune-1.png
 sidebarImage: ../../assets/microdermabrasion-1024x683.jpg
 intro:

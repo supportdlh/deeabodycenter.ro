@@ -3,6 +3,7 @@ title: Tratament OPTI-FIRM
 category: facial
 excerpt: >-
   Tratament special pentru ochi OPTI-FIRM eye contour REPECHAGE – pentru cearcane, riduri si pungile de sub ochi
+heroSubtitle: "Tratamentul OPTI-FIRM Eye Contour de la Repechage este o soluție avansată și intensivă, special concepută pentru îngrijirea zonei delicate din jurul ochilor"
 heroImage: ../../assets/tratamente-faciale-1.png
 sidebarImage: ../../assets/Opti-firmEyeContourTreatment1_1200x1200.webp
 intro:

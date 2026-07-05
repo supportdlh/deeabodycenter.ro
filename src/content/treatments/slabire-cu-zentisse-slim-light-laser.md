@@ -4,6 +4,7 @@ galleryTitle: Slabire cu ZENTISSE Slim Light Laser
 sidebarTitle: ZENTISSE Slim Light Laser
 category: corporal
 excerpt: Cel mai eficient laser de slabit din Romania este destinat mai ales slabirii in zonele problema
+heroSubtitle: "Această metodă non-invazivă ajută la slabire prin reducerea circumferinței corpului și la conturarea zonelor problematice fără durere, fără intervenții chirurgicale și fără timp de recuperare."
 heroImage: ../../assets/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-251.webp
 sidebarImage: ../../assets/cover.jpg
 intro:

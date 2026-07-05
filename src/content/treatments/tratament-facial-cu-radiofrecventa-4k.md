@@ -5,6 +5,7 @@ category: facial
 excerpt: >-
   Recomandată pentru oricine dorește o piele mai fermă, mai netedă și cu un aspect întinerit, fără disconfort și fără
   intervenții invazive.
+heroSubtitle: "Tratamentul facial cu Radiofrecvență 4K este o soluție avansată anti-îmbătrânire, non-invazivă, care utilizează unde radio de înaltă frecvență pentru a stimula producția naturală de colagen și elastină din piele."
 heroImage: ../../assets/woman-rf-skin-tightening-min-1536x1008-1.webp
 sidebarImage: ../../assets/radiofrequency-for-skin.webp
 intro:

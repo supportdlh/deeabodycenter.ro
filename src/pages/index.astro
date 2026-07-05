@@ -585,10 +585,10 @@ const faq = [
   }
   .hero-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.25rem;
+    font-size: 1.875rem;
     font-weight: 700;
     color: var(--navy);
-    line-height: 1.22;
+    line-height: 1.25;
     margin-bottom: 14px;
   }
   .hero-desc {
@@ -674,12 +674,15 @@ const faq = [
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: var(--navy);
-    color: #fff;
-    transition: background var(--t-fast);
+    background: #fff;
+    color: #1c7261;
+    transition:
+      background var(--t-fast),
+      color var(--t-fast);
   }
   .social-icon:hover {
     background: var(--magenta);
+    color: #fff;
     text-decoration: none;
   }
 
@@ -871,7 +874,7 @@ const faq = [
     display: none;
   }
   .testi-controls {
-    display: flex;
+    display: none;
     justify-content: center;
     gap: 16px;
     margin-top: 26px;
@@ -1014,9 +1017,24 @@ const faq = [
   @media (max-width: 768px) {
     .hero-inner {
       grid-template-columns: 1fr;
+      gap: 0;
     }
     .hero-image {
-      display: none;
+      display: block;
+      order: -1;
+      margin-bottom: 30px;
+    }
+    .hero-content {
+      text-align: center;
+    }
+    .hero-content .hero-list li {
+      justify-content: center;
+    }
+    .hero-content .social-row {
+      justify-content: center;
+    }
+    .hero-content .btn-row {
+      justify-content: center;
     }
     .hero-eyebrow {
       font-size: 1.5rem;

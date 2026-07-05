@@ -4,12 +4,19 @@ galleryTitle: Solar
 sidebarTitle: Bronzare solar
 category: corporal
 excerpt: Va doriti un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare?
+heroSubtitle: "Va doriţi un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare? Deea Body Center  va propune o solutie rapida si eficienta : solariile ERGOLINE – lider incontestabil in domeniilor solariilor."
 heroImage: ../../assets/solar-deeabocycenter-ploiesti_DBC-297.webp
 sidebarImage: ../../assets/solar-deeabocycenter-ploiesti_DBC-273.webp
 intro:
   - "Va doriţi un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare? Deea Body Center va propune o solutie rapida si eficienta: solariile ERGOLINE – lider incontestabil in domeniilor solariilor."
   - Aceasta este o metoda de bronzare artificiala la solar, prin intermediul careia se realizeaza un bronz uniform si de durata datorita controlului intensitatii razelor ultraviolete.
   - "Solariile Ergoline sunt permanent echipate cu tehnologii de varf in materie de bronzare, fiind concepute in stransa legatura cu specialistii dermatologi. Pentru calitatea bronzului si confortul Dvs., solariile sunt dotate cu:"
+  - suprafete de asezare cu forma ergonomica
+  - "Power System Standard, ce regleaza ca puterea standard emisa sa nu depaseasca gradul de suportabilitate"
+  - "IQ Sensor – masoara sensibilitatea la ultraviolete atat la nivelul fetei, cat si al corpului"
+  - "Voice guide (clientul este informat in legatura cu operatiunea care a fost efectuata)"
+  - Aromaterapie
+  - Muzicoterapie
 sidebarPromo:
   - Solariile Ergoline sunt permanent echipate cu tehnologii de varf in materie de bronzare, fiind concepute in stransa legatura cu specialistii dermatologi.
 sections:
@@ -27,13 +34,6 @@ sections:
         body: Lumina UV poate ajuta la creșterea nivelului de serotonină, reducând stresul și îmbunătățind dispoziția.
       - title: Pregătire pentru expunerea la soare
         body: Poate pregăti pielea pentru expunerea la soare, reducând riscul de arsuri solare.
-benefits:
-  - suprafete de asezare cu forma ergonomica
-  - Power System Standard, ce regleaza ca puterea standard emisa sa nu depaseasca gradul de suportabilitate
-  - IQ Sensor – masoara sensibilitatea la ultraviolete atat la nivelul fetei, cat si al corpului
-  - Voice guide (clientul este informat in legatura cu operatiunea care a fost efectuata)
-  - Aromaterapie
-  - Muzicoterapie
 gallery:
   - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-297.webp
   - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-296.webp

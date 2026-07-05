@@ -6,6 +6,7 @@ category: corporal
 excerpt: >-
   Solutie medicala non-invaziva aprobata de FDA pentru reducerea circumferintei si pentru diminuarea celulitei prin
   tehnologia elos.
+heroSubtitle: "Solutie medicala non-invaziva aprobata de FDA pentru reducerea circumferintei si pentru tratare celulita prin tehnologia elos."
 heroImage: ../../assets/vela-shape-deeabocycenter-ploiesti_DBC-203.webp
 sidebarImage: ../../assets/vela-shape-deeabocycenter-ploiesti_DBC-185-682x1024.webp
 intro:

@@ -5,6 +5,7 @@ category: corporal
 excerpt: >-
   Sculptor este un echipament de ultima generatie care combina cinci terapii premium, transferate din domeniul
   medical, atat pentru corp cat si pentru fata.
+heroSubtitle: "Sculptor este un echipament de ultima generatie care combina cinci terapii premium, transferate din domeniul medical, atat pentru corp cat si pentru fata."
 heroImage: ../../assets/Tratament-sculptor-deeabodycenter.ro-ploiesti.webp
 sidebarImage: ../../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-312-682x1024.webp
 intro:

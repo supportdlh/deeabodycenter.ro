@@ -6,6 +6,7 @@ category: facial
 excerpt: >-
   Tratamentul facial cu Micropen este o metodă inovatoare de rejuvenare și regenerare a pielii, cunoscută și sub
   numele de microneedling.
+heroSubtitle: "Tratamentul facial cu Micropen este o metodă inovatoare de rejuvenare și regenerare a pielii, cunoscută și sub numele de microneedling."
 heroImage: ../../assets/tratament-micropen-deeabocycenter-ploiesti_DBC-639.webp
 sidebarImage: ../../assets/tratament-micropen-deeabocycenter-ploiesti_DBC-642-682x1024.webp
 intro:

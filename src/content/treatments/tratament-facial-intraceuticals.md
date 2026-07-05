@@ -6,6 +6,7 @@ category: facial
 excerpt: >-
   Rezultate spectaculoase in tratarea ridurilor, pielii imbatranite, acnee, pete pigmentare, cearcane, elasticitate si
   volum piele.
+heroSubtitle: "Tratamentul facial Intraceuticals este o metodă inovatoare de rejuvenare, cunoscută și sub numele de „infuzie cu oxigen”."
 heroImage: ../../assets/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-541.webp
 sidebarImage: ../../assets/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-529-682x1024.webp
 intro:

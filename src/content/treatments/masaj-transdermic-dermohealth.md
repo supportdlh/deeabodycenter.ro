@@ -6,6 +6,7 @@ category: corporal
 excerpt: >-
   Reducerea celulitei, îmbunătățirea fermității pielii și eliminarea toxinelor, cu rezultate vizibile și de lungă
   durată.
+heroSubtitle: "Masajul transdermic Dermohealth este o tehnică inovatoare de remodelare corporală, ce folosește o tehnologie avansată pentru a stimula pielea în profunzime, activând circulația și oxigenarea țesuturilor."
 heroImage: ../../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-391.webp
 sidebarImage: ../../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-363-682x1024.webp
 intro:

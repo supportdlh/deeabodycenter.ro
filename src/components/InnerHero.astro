@@ -80,13 +80,19 @@ const { title, breadcrumb = [], image, imageAlt = '' } = Astro.props;
     padding-top: 80px;
     position: relative;
     z-index: 1;
+    /* Plasă de siguranță: fotografia hero nu poate „atârna" niciodată sub bandă
+       peste conținutul de dedesubt (ex. cardurile de preț de pe /oferte-.../). */
+    overflow: hidden;
   }
   .inner-hero__inner {
     max-width: 1140px;
     margin: 0 auto;
     padding: 0 15px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* Coloana de text este lată (~700px) ca pe live, astfel încât titlurile scurte
+       („Oferte Tratamente Faciale/Corporale") încap pe UN rând, iar cel lung
+       („Oferte speciale…") se rupe pe DOUĂ rânduri — exact ca pe live. */
+    grid-template-columns: minmax(0, 700px) minmax(0, 1fr);
     column-gap: 30px;
     align-items: start;
     min-height: 204px;
@@ -118,25 +124,28 @@ const { title, breadcrumb = [], image, imageAlt = '' } = Astro.props;
     position: relative;
     align-self: stretch;
   }
-  /* Fotografia mare din dreapta — bloc de ~410px care umple înălțimea benzii și
-     „atârnă" sub ea, aliniat la marginea din dreapta (ca pe live /tarife/). */
+  /* Fotografia din dreapta — pătrat de 235px (ca pe live /oferte-.../), CONȚINUT
+     strict în bandă: se ridică în zona de padding (top negativ) până lângă marginea
+     de sus a benzii, dar marginea ei de jos rămâne DEASUPRA marginii de jos a benzii
+     (140px → 375px, sub band-bottom 408px), deci nu suprapune niciodată cardurile de
+     preț de dedesubt. `overflow:hidden` de pe .inner-hero garantează suplimentar
+     că nimic nu poate depăși banda. */
   .inner-hero__photo {
     position: absolute;
-    top: 16px;
+    top: -64px;
     right: 0;
-    width: 410px;
-    height: 410px;
-    max-width: 100%;
+    width: 235px;
+    height: 235px;
     object-fit: cover;
     display: block;
     z-index: 2;
   }
-  /* Decorațiune puncte teal — în stânga fotografiei, ~93px sub marginea ei de sus,
-     suprapusă ~28px peste marginea din stânga a fotografiei (ca pe live). */
+  /* Decorațiune puncte teal — în stânga fotografiei, suprapusă ~28px peste marginea
+     ei din stânga, centrată vertical în bandă (ca pe live). */
   .inner-hero__dots {
     position: absolute;
-    top: 109px;
-    right: 382px;
+    top: 30px;
+    right: 207px;
     width: 129px;
     height: 50px;
     display: block;

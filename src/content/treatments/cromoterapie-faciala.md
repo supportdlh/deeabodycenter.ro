@@ -4,6 +4,7 @@ category: facial
 excerpt: >-
   Tratamentul de cromoterapie facială este o metodă inovatoare de îmbunătățire a sănătății și aspectului pielii,
   utilizând terapia cu lumină colorată pentru a trata diferite probleme dermatologice.
+heroSubtitle: "Tratamentul de cromoterapie facială este o metodă inovatoare de îmbunătățire a sănătății și aspectului pielii, utilizând terapia cu lumină colorată pentru a trata diferite probleme dermatologice."
 heroImage: ../../assets/Tratament-revitalizant-Cromoterapia-si-Terapia-LED.png
 sidebarImage: ../../assets/cromoterapie-deea-body-center-ploiesti.webp
 intro:

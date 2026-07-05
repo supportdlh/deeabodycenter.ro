@@ -16,6 +16,11 @@ const treatments = defineCollection({
       sidebarTitle: z.string().optional(),
       category: z.enum(['facial', 'corporal']),
       excerpt: z.string(),
+      // Subtitlu opțional al hero-ului (textul mare Playfair de sub titlu de pe LIVE,
+      // ex. „Sculptor este un echipament de ultima generație…"). Distinct de `excerpt`.
+      // Dacă lipsește, TreatmentLayout revine la `excerpt`. Un pas de conținut îl va
+      // completa cu textul real din hero-ul live, per tratament.
+      heroSubtitle: z.string().optional(),
       heroImage: image(),
       sidebarImage: image().optional(),
       intro: z.array(z.string()),

@@ -5,6 +5,7 @@ category: corporal
 excerpt: >-
   Tehnologie avansata pentru tratarea problemelor ca: picioare umflate, picioare grele, eliminarea toxinelor,
   retinerea de apa.
+heroSubtitle: "Presoterapia este o metoda relativ noua, care se face prin drenaj limfatic."
 heroImage: ../../assets/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0004.webp
 sidebarImage: ../../assets/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0003-1024x768.webp
 intro:
