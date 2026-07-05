@@ -203,7 +203,7 @@ const DEEA_ICON = '/deea-icon.webp';
   <!-- ===== CORPORAL / FACIAL: tabel de prețuri (cutii gri + iconiță DEEA) ===== -->
   {
     hasPriceTable && (
-      <section class="price-table">
+      <section class={`price-table${isFacial ? ' price-table--filled' : ''}`}>
         <div class="wrap">
           <div class="price-cols">
             {[leftBoxes, rightBoxes].map((col) => (
@@ -442,12 +442,16 @@ const DEEA_ICON = '/deea-icon.webp';
     gap: 20px;
   }
   .price-box {
-    background: #ecf0f2;
+    background: transparent;
     border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 22px 18px 22px 24px;
+  }
+  /* Doar paginile faciale au cutii cu fundal gri (ca pe live); corporalele sunt pe alb. */
+  .price-table--filled .price-box {
+    background: #ecf0f2;
   }
   .price-box__content {
     flex: 1;
@@ -481,7 +485,7 @@ const DEEA_ICON = '/deea-icon.webp';
 
   /* ===== ÎNCHEIERE ===== */
   .closing {
-    background: var(--surface-alt);
+    background: var(--surface);
     padding: 64px 0;
   }
   .closing-grid {

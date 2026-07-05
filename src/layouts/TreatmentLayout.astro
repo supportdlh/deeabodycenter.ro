@@ -30,6 +30,77 @@ const { data } = entry;
 // „Tratament " dacă există, altfel păstrează titlul complet.
 const sidebarTitle = entry.data.sidebarTitle ?? entry.data.title.replace(/^Tratament\s+/i, '');
 const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
+
+// ---------------------------------------------------------------------------
+// INTRO — construcție noduri de randare (ca pe LIVE)
+// ---------------------------------------------------------------------------
+// Pe LIVE corpul intro NU are un „lead" mare (acela e doar subtitlul din hero).
+// Regulile reproduse din site-ul original:
+//  1. Toate frazele de intro se randează ca paragrafe normale <p> (fără titlu mare).
+//  2. Deduplicare: dacă intro[0] e conținut în heroSubtitle (deja afișat în hero),
+//     nu îl mai randăm în corp.
+//  3. Denumirea tratamentului (prima apariție, în intro[0] dacă acesta e randat) e
+//     un LINK inline TEAL către pagina proprie — nu un heading. Nu se aplică pe
+//     paginile unde intro[0] e deduplicat (ex. Criolipoliză, unde LIVE n-are link).
+//  4. Elementele de listă (prefixate cu „- " în frontmatter) se grupează într-un
+//     <ul> cu marcatori disc (ex. dotările solariilor Ergoline pe /solar/).
+const norm = (s: string) => (s ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
+const heroSubNorm = norm(data.heroSubtitle ?? data.excerpt ?? '');
+
+const slug = entry.id.split('/').pop() ?? entry.id;
+const slugWords = slug.split('-').map((w) => w.toLowerCase()).filter(Boolean);
+const stripEdge = (w: string) =>
+  w.replace(/^[^\p{L}\p{N}]+/u, '').replace(/[^\p{L}\p{N}]+$/u, '').toLowerCase();
+
+// Găsește prima apariție a secvenței de cuvinte din slug (denumirea tratamentului)
+// și întoarce {before, link, after} pentru a o transforma în link inline.
+function findKeyword(text: string): { before: string; link: string; after: string } | null {
+  const toks: { w: string; start: number; end: number }[] = [];
+  const re = /\S+/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text))) toks.push({ w: m[0], start: m.index, end: m.index + m[0].length });
+  for (let i = 0; i + slugWords.length <= toks.length; i++) {
+    let ok = true;
+    for (let j = 0; j < slugWords.length; j++) {
+      if (!stripEdge(toks[i + j].w).startsWith(slugWords[j])) {
+        ok = false;
+        break;
+      }
+    }
+    if (ok) {
+      const first = toks[i];
+      const last = toks[i + slugWords.length - 1];
+      const trail = last.w.match(/[^\p{L}\p{N}]+$/u);
+      const linkEnd = last.end - (trail ? trail[0].length : 0);
+      return {
+        before: text.slice(0, first.start),
+        link: text.slice(first.start, linkEnd),
+        after: text.slice(linkEnd),
+      };
+    }
+  }
+  return null;
+}
+
+type IntroNode =
+  | { type: 'p'; text: string; keyword: boolean }
+  | { type: 'ul'; items: string[] };
+
+const listPrefix = /^-\s+/;
+const introNodes: IntroNode[] = [];
+(data.intro ?? []).forEach((raw, i) => {
+  const introNorm = norm(raw);
+  const deduped = i === 0 && heroSubNorm.length > 0 && heroSubNorm.includes(introNorm);
+  if (deduped) return;
+  if (listPrefix.test(raw)) {
+    const item = raw.replace(listPrefix, '');
+    const last = introNodes[introNodes.length - 1];
+    if (last && last.type === 'ul') last.items.push(item);
+    else introNodes.push({ type: 'ul', items: [item] });
+  } else {
+    introNodes.push({ type: 'p', text: raw, keyword: i === 0 });
+  }
+});
 ---
 
 <BaseLayout title={data.seo.title} description={data.seo.description} canonicalPath={`/${entry.id}/`}>
@@ -67,22 +138,29 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
         <!-- ===== MAIN COLUMN ===== -->
         <div class="main-col">
           {
-            data.intro.map((p, i) => {
-              if (i !== 0) return <p>{p}</p>;
-              // Prima frază de intro: pe LIVE, denumirea tratamentului (primele două
-              // cuvinte, ex. „Tratamentul Sculptor" / „Criolipoliza Cryogen") e un
-              // hyperlink TEAL. Izolăm acel lead-phrase și îl stilăm ca link teal,
-              // restul rămâne text normal.
-              const words = p.split(' ');
-              const lead = words.slice(0, 2).join(' ');
-              const rest = words.slice(2).join(' ');
-              return (
-                <h2 class="col-lead">
-                  <a class="lead-link" href={`/${entry.id}/`}>
-                    {lead}
-                  </a>{rest ? ` ${rest}` : ''}
-                </h2>
-              );
+            introNodes.map((node) => {
+              if (node.type === 'ul') {
+                return (
+                  <ul class="intro-list">
+                    {node.items.map((it) => (
+                      <li>{it}</li>
+                    ))}
+                  </ul>
+                );
+              }
+              const kw = node.keyword ? findKeyword(node.text) : null;
+              if (kw) {
+                return (
+                  <p>
+                    {kw.before}
+                    <a class="intro-keyword" href={`/${entry.id}/`}>
+                      {kw.link}
+                    </a>
+                    {kw.after}
+                  </p>
+                );
+              }
+              return <p>{node.text}</p>;
             })
           }
 
@@ -267,23 +345,30 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
     font-weight: 500;
   }
 
-  /* Prima frază de intro = sub-titlu Playfair navy bold (ca pe LIVE: h2 24px). */
-  .main-col :global(.col-lead) {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1.3;
-    margin: 0 0 18px;
+  /* Denumirea tratamentului (prima apariție în intro) = link inline TEAL în text
+     normal, ca pe LIVE — NU un heading. */
+  .main-col :global(.intro-keyword) {
+    color: var(--teal);
+    font-weight: 500;
+  }
+  .main-col :global(.intro-keyword:hover) {
+    text-decoration: underline;
   }
 
-  /* Lead-phrase (denumirea tratamentului) din prima frază de intro = link TEAL, ca pe LIVE. */
-  .main-col :global(.col-lead .lead-link) {
-    color: var(--teal);
-    font-weight: 700;
+  /* Listă intro cu marcatori disc (ex. dotările solariilor Ergoline pe /solar/). */
+  .main-col :global(.intro-list) {
+    list-style: disc;
+    padding-left: 22px;
+    margin: 0 0 16px;
   }
-  .main-col :global(.col-lead .lead-link:hover) {
-    text-decoration: underline;
+  .main-col :global(.intro-list li) {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--text-sec);
+    margin-bottom: 6px;
+  }
+  .main-col :global(.intro-list li:last-child) {
+    margin-bottom: 0;
   }
 
   .col-section-title {
@@ -456,8 +541,10 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
     }
   }
   @media (max-width: 768px) {
+    /* Hero mobil mai înalt (ca pe LIVE, ~640px): fotografia se vede integral, iar
+       caseta overlay coboară spre baza imaginii. */
     .treatment-hero {
-      min-height: 440px;
+      min-height: 640px;
     }
     .hero-overlay-box {
       padding: 26px 24px;

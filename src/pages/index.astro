@@ -383,8 +383,18 @@ const faq = [
           <a href="/tarife/" class="btn btn-primary">Tarife</a>
         </div>
       </div>
-      <div class="intro-deco" aria-hidden="true">
-        <span class="deco-dots deco-dots-lg"></span>
+      <div class="intro-img-wrap intro-img-right">
+        <span class="deco-dots deco-dots-left" aria-hidden="true"></span>
+        <Image
+          class="intro-img"
+          src={imgSculptor}
+          alt="remodelare corporala la deea body center in ploiesti"
+          width={800}
+          height={600}
+          widths={[400, 600, 800]}
+          sizes="(max-width: 768px) 90vw, 560px"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
@@ -410,17 +420,32 @@ const faq = [
   <!-- ============================================================
        SOLAR
   ============================================================= -->
-  <section class="solar-section">
-    <div class="solar-inner">
-      <span class="eyebrow">Deea Body Center</span>
-      <h2>Solar</h2>
-      <p>
-        Va doriţi un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare? Deea Body Center va
-        propune o solutie rapida si eficienta: solariile ERGOLINE – lider incontestabil in domeniilor solariilor.
-      </p>
-      <div class="btn-row">
-        <a href="/solar/" class="btn btn-primary">Descoperă</a>
-        <a href="/tarife/" class="btn btn-primary">Tarife</a>
+  <section class="section-intro solar-section">
+    <div class="wrap intro-grid">
+      <div class="intro-text">
+        <span class="eyebrow">Deea Body Center</span>
+        <h2>Solar</h2>
+        <p>
+          Va doriţi un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare? Deea Body Center va
+          propune o solutie rapida si eficienta: solariile ERGOLINE – lider incontestabil in domeniilor solariilor.
+        </p>
+        <div class="btn-row">
+          <a href="/solar/" class="btn btn-primary">Descoperă</a>
+          <a href="/tarife/" class="btn btn-primary">Tarife</a>
+        </div>
+      </div>
+      <div class="intro-img-wrap intro-img-right">
+        <span class="deco-dots deco-dots-left" aria-hidden="true"></span>
+        <Image
+          class="intro-img"
+          src={imgSolar}
+          alt="Solar Ergoline la Deea Body Center Ploiești"
+          width={800}
+          height={600}
+          widths={[400, 600, 800]}
+          sizes="(max-width: 768px) 90vw, 560px"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
@@ -769,24 +794,6 @@ const faq = [
     padding: 64px 0;
     background: #f7f2fc;
   }
-  .solar-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 24px;
-    text-align: left;
-  }
-  .solar-inner .eyebrow {
-    margin-bottom: 6px;
-  }
-  .solar-inner h2 {
-    font-size: 2.375rem;
-    margin-bottom: 16px;
-  }
-  .solar-inner p {
-    font-size: 0.9375rem;
-    line-height: 1.75;
-    margin-bottom: 28px;
-  }
 
   /* ===== OFFERS ===== */
   .offers-section {
@@ -968,19 +975,26 @@ const faq = [
     position: relative;
     z-index: 1;
   }
-  /* Remodelare corporala — coloana fără foto, doar decor teal punctat */
-  .intro-deco {
+  /* Remodelare corporala & Solar — text pe stânga, imagine pe dreapta,
+     cu grila teal punctată suprapusă pe marginea din stânga a fotografiei
+     (oglinda benzii „Tratamente Faciale"). */
+  .intro-img-right {
     position: relative;
-    min-height: 300px;
   }
-  .deco-dots-lg {
+  .intro-img-right :global(.intro-img) {
+    position: relative;
+    z-index: 1;
+  }
+  .intro-img-right .deco-dots-left {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 260px;
-    height: 200px;
+    left: -34px;
     right: auto;
+    transform: translateY(-50%);
+    width: 128px;
+    height: 110px;
+    opacity: 0.9;
+    z-index: 2;
   }
   /* Offers — eyebrow centrat + pătrat gri offset în spatele mozaicului */
   .offers-section {
@@ -1089,8 +1103,8 @@ const faq = [
     .offers-deco {
       display: none;
     }
-    .intro-deco {
-      display: none;
+    .intro-img-right {
+      order: -1;
     }
     .contact-grid {
       grid-template-columns: 1fr;
