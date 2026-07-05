@@ -1,0 +1,285 @@
+---
+// Pagină unică „Contact" — slug exact din reference/site-inventory.md (/contact/).
+// Conținut PORTAT FIDEL din pagina live (https://deeabodycenter.ro/contact/, curl 2026-07-05):
+// adresa (verbatim, așa cum apare pe pagină) + iframe-ul Google Maps embed (URL-ul `pb=` copiat
+// EXACT, inclusiv place-id-ul) + programul (`site.hours`, deja completat) + telefon.
+// NU există formular (decizie de proiect) — WhatsApp + tel: prin <ContactBlock />.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact — Deea Body Center Ploiești"
+  description="Contactează Deea Body Center Ploiești: Str. Vlad Țepeș nr. 21B, telefon 0723 882 529. Programează-te rapid prin WhatsApp sau telefonic."
+  canonicalPath="/contact/"
+>
+  <!-- =========================================================
+       PAGE HEADER
+  ========================================================== -->
+  <section class="page-header">
+    <div class="wrap">
+      <div class="eyebrow eyebrow--gold" style="justify-content:center">Deea Body Center</div>
+      <h1>Contact</h1>
+      <p>Unde ne găsești?</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       NAP + HARTĂ
+  ========================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="nap-card">
+          <h2>{site.name}</h2>
+          <!-- Text verbatim de pe pagina live (fără diacritice pe "Tepes"/"Ploiesti", exact ca sursa) -->
+          <p class="nap-address">Str. Vlad Tepes nr. 21B. (in sensul giratoriu), Ploiesti, Romania.</p>
+
+          <div class="nap-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+              ><path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path></svg
+            >
+            <a href={site.phoneHref}>{site.phone}</a>
+          </div>
+
+          <div class="nap-social">
+            <a href={site.social.facebook || '#'} aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                ><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg
+              >
+            </a>
+            <a href={site.social.instagram || '#'} aria-label="Instagram">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                ><rect x="2" y="2" width="20" height="20" rx="5"></rect><path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
+                ></line></svg
+              >
+            </a>
+          </div>
+        </div>
+
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2824.1890494144245!2d26.015518876596058!3d44.939824668272315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b249d35041d17f%3A0x14a54747b424fd62!2sDeea%20Body%20Center%20Ploiesti!5e0!3m2!1sen!2sro!4v1728383848505!5m2!1sen!2sro"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={`Locația ${site.name} pe Google Maps`}
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PROGRAMARE — WHATSAPP + TELEFON + PROGRAM (fără formular)
+  ========================================================== -->
+  <section class="section--alt" id="programare">
+    <div class="wrap wrap--narrow">
+      <ContactBlock />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .wrap--narrow {
+    max-width: 640px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 3px;
+    background: var(--teal);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .eyebrow--gold {
+    color: var(--gold);
+  }
+  .eyebrow--gold::before {
+    background: var(--gold);
+  }
+
+  /* ===== PAGE HEADER ===== */
+  .page-header {
+    background: var(--navy);
+    padding: 88px 0 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: -80px;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(167, 64, 143, 0.14) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .page-header .wrap {
+    position: relative;
+    max-width: 640px;
+  }
+  .page-header h1 {
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.0625rem;
+  }
+
+  /* ===== NAP + MAP ===== */
+  .section {
+    padding: 72px 0 80px;
+    background: var(--surface);
+  }
+  .section--alt {
+    padding: 72px 0;
+    background: var(--surface-alt);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: stretch;
+  }
+
+  .nap-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-sm);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  .nap-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+  .nap-address {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .nap-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--heading);
+    margin-bottom: 28px;
+  }
+  .nap-row svg {
+    color: var(--magenta);
+    flex-shrink: 0;
+  }
+  .nap-row a:hover {
+    color: var(--magenta);
+    text-decoration: none;
+  }
+  .nap-social {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+  }
+  .nap-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--text-sec);
+    border: 1px solid var(--border);
+    transition:
+      color var(--t-fast),
+      border-color var(--t-fast),
+      background var(--t-fast);
+  }
+  .nap-social a:hover {
+    color: #fff;
+    border-color: var(--magenta);
+    background: var(--magenta);
+    text-decoration: none;
+  }
+
+  .map-wrap {
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: var(--sh-sm);
+    border: 1px solid var(--border);
+    min-height: 320px;
+  }
+  .map-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 64px 0 48px;
+    }
+    .section {
+      padding: 48px 0 56px;
+    }
+    .section--alt {
+      padding: 48px 0;
+    }
+    .nap-card {
+      padding: 28px;
+    }
+  }
+  @media (max-width: 600px) {
+    .wrap {
+      padding: 0 20px;
+    }
+  }
+</style>

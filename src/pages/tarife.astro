@@ -1,0 +1,299 @@
+---
+// Pagină unică „Tarife" — slug exact din reference/site-inventory.md (/tarife/).
+// Conținut PORTAT FIDEL din pagina live (https://deeabodycenter.ro/tarife/, curl 2026-07-05),
+// verificat linie cu linie prin grep pe HTML brut — NICIUN preț/serviciu inventat.
+// Listele de mai jos păstrează VERBATIM textul sursă (inclusiv absența diacriticelor pe
+// unele intrări, ex. „sedinte", „faciala" — așa cum apare literal pe site-ul live), tocmai
+// pentru a elimina orice ambiguitate/interpretare asupra unei pagini de preț.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+
+interface PriceItem {
+  name: string;
+  price: string;
+}
+
+interface PriceGroup {
+  title: string;
+  items: PriceItem[];
+}
+
+// 48 de perechi nume/preț — număr confirmat prin
+// `grep -c 'elementor-price-list-title'` (48) pe pagina live.
+const groups: PriceGroup[] = [
+  {
+    title: 'Tratamente Faciale',
+    items: [
+      { name: 'KIT Intraceuticals 6 fiole + tratamentul pentru acasa cu 4 creme', price: '700 EUR' },
+      { name: 'Radiofrecventa faciala 4K abonament 10 sedinte + 3 sedinte microdermabraziune', price: '2200 RON' },
+      { name: 'Green Peel by Dr. Schrammek (Tratament peeling 100% natural): green peel CLASSIC', price: '700 RON' },
+      { name: 'Intraceuticals (Tratament cu oxigen hiperbaric)', price: '550 RON /fiola' },
+      { name: 'MicroPen (mezoterapie cu ace)', price: '550 RON /sedinta' },
+      { name: 'Hidratiq Aquapeel', price: '550 RON' },
+      { name: 'Green Peel by Dr. Schrammek (Tratament peeling 100% natural): green peel ENERGY', price: '400 RON' },
+      { name: 'Radiofrecventa faciala 4K', price: '350 RON /sedinta' },
+      { name: 'Tratament rejuvenare faciala laser CPL', price: '350 RON/sedinta' },
+      { name: 'Green Peel by Dr. Schrammek (Tratament peeling 100% natural): green peel FRESH UP', price: '330 RON' },
+      { name: 'Crioradiofrecventa faciala', price: '300 RON /sedinta' },
+      { name: 'Tratament cosmetic (produse Dr. Schrammek)', price: '250 RON' },
+      { name: 'Tratament cromo-terapie', price: '160 RON' },
+      { name: 'Tratament lifting instant', price: '150 RON' },
+      { name: 'Microdermabraziune', price: '140 RON /sedinta' },
+      { name: 'Tratament special pentru ochi OPTI-FIRM', price: '100 RON' },
+      { name: 'Drenaj limfatic facial', price: '70 RON' },
+    ],
+  },
+  {
+    title: 'Tratamente Remodelare Corporala',
+    items: [
+      {
+        name: '4 sedinte Velashape (zona mare) + 4 sedinte Criolipoliza + 4 Laser Zentisse + 4 Presodrenaj',
+        price: '2500 RON /abonament',
+      },
+      { name: '6 sedinte Velashape (zona mare) + 2 sedinte Criolipoliza bonus', price: '2000 RON /abonament' },
+      { name: '1 Sedinta Velashape Full Body', price: '1000 RON' },
+      { name: '4 sedinte Criolipoliza (zona mare)', price: '1400 RON /abonament' },
+      { name: '6 sedinte Laser Zentisse + 4 Presodrenaj + 2 Sculptor', price: '1200 RON /abonament' },
+      { name: 'Criolipoliza (inghetarea grasimii)', price: '600 RON /zona' },
+      { name: 'Pachet Sculptor', price: '600 RON' },
+      { name: 'Vela shape 2', price: '500 RON /zona mare' },
+      { name: 'Criolipoliza zona gusa', price: '450 RON/sedinta' },
+      { name: 'HImFU', price: '350 RON' },
+      { name: 'Laser Zentisse', price: '250 RON/zona' },
+      { name: 'Crioradiofrecventa', price: '250 RON' },
+      { name: 'Dermo Health (masaj transdermic)', price: '150 RON' },
+      { name: 'Presodrenaj', price: '50 RON /sedinta' },
+      { name: 'Electrostimulare', price: '60 RON /sedinta' },
+    ],
+  },
+  {
+    title: 'Epilare definitva',
+    items: [
+      { name: 'Brate total', price: '400 RON' },
+      { name: 'Picioare lung', price: '400 RON' },
+      { name: 'Spate intreg', price: '400 RON' },
+      { name: 'Piept + Abdomen', price: '400 RON' },
+      { name: 'Antebrat', price: '250 RON' },
+      { name: 'Intreaga fata', price: '230 RON' },
+      { name: 'Gat', price: '160 RON' },
+      { name: 'Inghinal', price: '200 RON' },
+      { name: 'Zona lombara', price: '160 RON' },
+      { name: 'Linie bikini', price: '120 RON' },
+      { name: 'Axila', price: '90 RON' },
+      { name: 'Linie alba', price: '50 RON' },
+      { name: 'Barbie', price: '40 RON' },
+      { name: 'Mustata', price: '35 RON' },
+      { name: 'Perciuni', price: '35 RON' },
+    ],
+  },
+  {
+    title: 'Solar',
+    items: [{ name: 'Solar', price: '4 RON /minut' }],
+  },
+];
+---
+
+<BaseLayout
+  title="Tarife — Deea Body Center Ploiești"
+  description="Tarifele accesibile pentru tratamente faciale și corporale la Deea Body Center Ploiești! Soluții personalizate pentru un look sănătos și revitalizat."
+  canonicalPath="/tarife/"
+>
+  <!-- =========================================================
+       PAGE HEADER
+  ========================================================== -->
+  <section class="page-header">
+    <div class="wrap">
+      <div class="eyebrow eyebrow--gold" style="justify-content:center">Deea Body Center</div>
+      <h1>Tarife tratamente corporale si faciale</h1>
+      <p>Descoperă la Deea Body Center soluții complete pentru un ten luminos și un corp remodelat, cu rezultate spectaculoase.</p>
+      <p>Tarifele accesibile pentru tratamente faciale și corporale la Deea Body Center Ploiești! Soluții personalizate pentru un look sănătos și revitalizat.</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       LISTE DE TARIFE
+  ========================================================== -->
+  <section class="section">
+    <div class="wrap">
+      {
+        groups.map((group) => (
+          <div class="price-group">
+            <h2>{group.title}</h2>
+            <div class="price-list">
+              {group.items.map((item) => (
+                <div class="price-row">
+                  <span class="price-name">{item.name}</span>
+                  <span class="price-value">{item.price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CTA — PROGRAMARE WHATSAPP (fără formular)
+  ========================================================== -->
+  <section class="section--alt" id="programare">
+    <div class="wrap wrap--narrow">
+      <ContactBlock />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .wrap--narrow {
+    max-width: 640px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 3px;
+    background: var(--teal);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .eyebrow--gold {
+    color: var(--gold);
+  }
+  .eyebrow--gold::before {
+    background: var(--gold);
+  }
+
+  /* ===== PAGE HEADER ===== */
+  .page-header {
+    background: var(--navy);
+    padding: 88px 0 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(254, 196, 45, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .page-header .wrap {
+    position: relative;
+    max-width: 720px;
+  }
+  .page-header h1 {
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .page-header p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  .page-header p + p {
+    margin-top: 10px;
+  }
+
+  /* ===== PRICE LISTS ===== */
+  .section {
+    padding: 72px 0 80px;
+    background: var(--surface);
+  }
+  .section--alt {
+    padding: 72px 0;
+    background: var(--surface-alt);
+  }
+
+  .price-group {
+    margin-bottom: 48px;
+  }
+  .price-group:last-child {
+    margin-bottom: 0;
+  }
+  .price-group h2 {
+    font-size: 1.375rem;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    position: relative;
+  }
+  .price-group h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 64px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--magenta) 100%);
+  }
+
+  .price-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px 48px;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .price-name {
+    font-size: 0.9375rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .price-value {
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--magenta);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 64px 0 48px;
+    }
+    .section {
+      padding: 48px 0 56px;
+    }
+    .section--alt {
+      padding: 48px 0;
+    }
+  }
+  @media (max-width: 640px) {
+    .price-list {
+      grid-template-columns: 1fr;
+    }
+    .wrap {
+      padding: 0 20px;
+    }
+  }
+</style>
