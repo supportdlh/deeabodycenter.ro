@@ -1,27 +1,257 @@
 ---
-// STUB minimal — va fi înlocuit cu implementarea completă în Task 3.
+import { Image } from 'astro:assets';
+import logo from '../assets/deea-body-center5.webp';
 import { site } from '../data/site';
+import { nav } from '../data/nav';
+import WhatsAppButton from './WhatsAppButton.astro';
 ---
 
-<header>
-  <div class="wrap">
-    <a href="/" class="logo">{site.name}</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label={`${site.name} — pagina principală`}>
+      <Image src={logo} alt={site.name} width={92} height={92} loading="eager" />
+    </a>
+
+    <input type="checkbox" id="nav-cb" class="nav-cb" />
+    <label for="nav-cb" class="hamburger" aria-label="Deschide meniu">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="main-nav" aria-label="Navigare principală">
+      <ul class="nav-list">
+        {
+          nav.map((item) => (
+            <li class="nav-item">
+              {item.children ? (
+                <details class="nav-dropdown">
+                  <summary>
+                    {item.label}
+                    <span class="caret" aria-hidden="true">▾</span>
+                  </summary>
+                  <ul class="dropdown-panel">
+                    {item.children.map((child) =>
+                      child.heading ? (
+                        <li class="dropdown-heading">{child.label}</li>
+                      ) : (
+                        <li>
+                          <a href={child.href}>{child.label}</a>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </details>
+              ) : (
+                <a href={item.href}>{item.label}</a>
+              )}
+            </li>
+          ))
+        }
+        <li class="nav-item nav-item--cta">
+          <WhatsAppButton variant="nav" label="Programare" />
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
 
 <style>
-  header {
-    padding: 16px 0;
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 16px rgba(5, 17, 69, 0.06);
+    transition: background var(--t-med);
   }
-  .wrap {
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 72px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 32px;
   }
-  .logo {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 700;
-    color: var(--heading);
+  .site-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .site-logo :global(img) {
+    height: 46px;
+    width: auto;
+  }
+
+  /* nav toggle (checkbox-hack CSS-only) */
+  .nav-cb {
+    display: none;
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+    border-radius: var(--r-sm);
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition:
+      transform var(--t-fast),
+      opacity var(--t-fast);
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+  }
+  .nav-item {
+    position: relative;
+  }
+  .main-nav a {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: var(--r-sm);
+    transition:
+      color var(--t-fast),
+      background var(--t-fast);
+  }
+  .main-nav a:hover {
+    color: var(--teal);
+    background: rgba(28, 114, 97, 0.07);
     text-decoration: none;
+  }
+
+  /* dropdown Oferte/Servicii — <details>/<summary>, fără JS */
+  .nav-dropdown summary {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition:
+      color var(--t-fast),
+      background var(--t-fast);
+  }
+  .nav-dropdown summary::-webkit-details-marker {
+    display: none;
+  }
+  .nav-dropdown summary:hover {
+    color: var(--teal);
+    background: rgba(28, 114, 97, 0.07);
+  }
+  .caret {
+    font-size: 0.625rem;
+    transition: transform var(--t-fast);
+  }
+  .nav-dropdown[open] .caret {
+    transform: rotate(180deg);
+  }
+  .dropdown-panel {
+    list-style: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    box-shadow: var(--sh-md);
+    padding: 8px;
+    min-width: 260px;
+  }
+  .dropdown-panel a {
+    font-size: 0.875rem;
+    padding: 8px 10px;
+    white-space: normal;
+  }
+  .dropdown-heading {
+    padding: 10px 10px 4px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-sec);
+  }
+  .nav-item--cta {
+    margin-left: 4px;
+  }
+
+  @media (min-width: 769px) {
+    .nav-dropdown {
+      position: static;
+    }
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    .site-header {
+      position: relative;
+    }
+    .header-inner {
+      position: relative;
+    }
+    .main-nav {
+      display: none;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      flex-direction: column;
+      align-items: stretch;
+      padding: 16px 24px 24px;
+      box-shadow: var(--sh-md);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-cb:checked ~ .main-nav {
+      display: flex;
+    }
+    .nav-list {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      gap: 4px;
+    }
+    .main-nav a,
+    .nav-dropdown summary {
+      width: 100%;
+      padding: 12px 8px;
+    }
+    .dropdown-panel {
+      box-shadow: none;
+      border: none;
+      background: transparent;
+      padding: 0 0 4px 12px;
+    }
+    .nav-item--cta {
+      margin-left: 0;
+      margin-top: 8px;
+    }
   }
 </style>

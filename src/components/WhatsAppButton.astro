@@ -1,0 +1,14 @@
+---
+import { waLink } from '../data/site.ts';
+
+export interface Props {
+  message?: string;
+  label?: string;
+  variant?: 'primary' | 'nav' | 'ghost';
+  class?: string;
+}
+
+const { message, label = 'Programează-te', variant = 'primary', class: cls = '' } = Astro.props;
+---
+
+<a href={waLink(message)} target="_blank" rel="noopener" class={`btn btn-${variant} ${cls}`}>{label}</a>

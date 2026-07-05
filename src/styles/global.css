@@ -4,6 +4,9 @@
 @import '@fontsource/poppins/500.css';
 @import '@fontsource/poppins/600.css';
 
+/* Butoane comune (.btn, .btn-primary, .btn-nav, .btn-outline, .btn-ghost-white) */
+@import './buttons.css';
+
 /* ===== RESET minimal ===== */
 *,
 *::before,

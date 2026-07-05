@@ -1,0 +1,81 @@
+---
+// Indicator animat „Descoperă” + mouse, portat din hero-ul V2 aprobat
+// (mockups/v2-rafinat/index.html). Fără props — de plasat într-un ancestor
+// cu `position: relative` (secțiunea .hero).
+---
+
+<a href="#tratamente-faciale" class="hero-scroll" aria-label="Derulează în jos">
+  <span class="hero-scroll-text">Descoperă</span>
+  <span class="hero-scroll-mouse"><span></span></span>
+</a>
+
+<style>
+  .hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none !important;
+    color: var(--magenta);
+    animation: heroBob 2.6s ease-in-out infinite;
+  }
+  .hero-scroll-text {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .hero-scroll-mouse {
+    width: 25px;
+    height: 40px;
+    border: 2px solid var(--magenta);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    padding-top: 7px;
+  }
+  .hero-scroll-mouse > span {
+    width: 4px;
+    height: 8px;
+    background: var(--magenta);
+    border-radius: 2px;
+    animation: heroWheel 1.6s ease-in-out infinite;
+  }
+  @keyframes heroWheel {
+    0% {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(11px);
+    }
+  }
+  @keyframes heroBob {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(7px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll,
+    .hero-scroll-mouse > span {
+      animation: none !important;
+    }
+  }
+  @media (max-width: 768px) {
+    .hero-scroll {
+      display: none;
+    }
+  }
+</style>

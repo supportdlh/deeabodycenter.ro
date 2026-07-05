@@ -1,0 +1,97 @@
+/*
+ * Stiluri de butoane comune — portate verbatim din mockup-ul aprobat
+ * (mockups/v2-rafinat/index.html, blocurile ===== BUTTONS ===== și regulile .nav-cta).
+ * Globale intenționat: folosite de Header, WhatsAppButton și de multe componente viitoare
+ * (carduri, oferte, formular etc.) — NU scopate per-componentă.
+ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--r-pill);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none !important;
+  transition:
+    background var(--t-fast),
+    color var(--t-fast),
+    border-color var(--t-fast),
+    transform var(--t-fast),
+    box-shadow var(--t-fast);
+  white-space: nowrap;
+  line-height: 1;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--magenta);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--magenta-h);
+  box-shadow: 0 6px 20px rgba(167, 64, 143, 0.38);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--magenta);
+  border-color: var(--magenta);
+}
+.btn-outline:hover {
+  background: var(--magenta);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(167, 64, 143, 0.25);
+}
+
+.btn-ghost-white,
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.btn-ghost-white:hover,
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Varianta folosită de CTA-ul din navigație (WhatsAppButton variant="nav") —
+   text ALB pe fond magenta, indiferent de contextul în care e plasat
+   (echivalentul aprobat al regulii .main-nav a.nav-cta { color:#fff }). */
+.btn-nav {
+  background: var(--magenta);
+  color: #fff;
+  padding: 10px 22px;
+  margin-left: 8px;
+}
+.btn-nav:hover {
+  background: var(--magenta-h);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(167, 64, 143, 0.38);
+}
+@media (max-width: 768px) {
+  .btn-nav {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+}
+
+.btn-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
