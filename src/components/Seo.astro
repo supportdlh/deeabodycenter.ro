@@ -1,0 +1,17 @@
+---
+// STUB minimal — va fi înlocuit cu implementarea completă în Task 2.
+export interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  ogImage?: string;
+}
+
+const { title, description, canonicalPath } = Astro.props as Props;
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<slot />

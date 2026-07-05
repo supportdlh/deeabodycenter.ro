@@ -1,0 +1,32 @@
+/*
+ * Design tokens — copiate verbatim din mockup-ul aprobat
+ * Sursă: mockups/v2-rafinat/index.html, blocul :root
+ */
+:root {
+  --navy:        #051145;
+  --magenta:     #A7408F;
+  --magenta-h:   #8f3278;
+  --teal:        #1C7261;
+  --gold:        #FEC42D;
+  --gold-dim:    #d4a020;
+
+  --surface:     #FFFFFF;
+  --surface-alt: #F4F2FA;
+  --surface-card:#FFFFFF;
+  --heading:     #051145;
+  --text:        #051145;
+  --text-sec:    #4a4870;
+  --border:      rgba(5,17,69,0.10);
+
+  --sh-sm: 0 2px 12px rgba(5,17,69,0.07);
+  --sh-md: 0 6px 24px rgba(5,17,69,0.12);
+  --sh-lg: 0 14px 40px rgba(5,17,69,0.16);
+
+  --r-sm:   6px;
+  --r-md:   12px;
+  --r-lg:   20px;
+  --r-pill: 9999px;
+
+  --t-fast: 0.18s ease;
+  --t-med:  0.28s ease;
+}
