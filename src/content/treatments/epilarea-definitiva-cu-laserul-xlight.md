@@ -1,5 +1,6 @@
 ---
-title: Epilarea definitivă cu laserul XLight
+title: Epilare definitivă cu laserul XLight
+galleryTitle: Epilarea definitivă cu laserul XLight
 category: corporal
 excerpt: >-
   Epilarea definitivă cu laserul XLight reprezintă o soluție avansată și eficientă pentru îndepărtarea permanentă a
@@ -13,6 +14,7 @@ intro:
   - Perfectă pentru orice zonă a corpului și pentru toți cei care își doresc un look impecabil, fără efort!
 sections:
   - group: Corporal
+    heading: Beneficiile epilarii cu laser XLight
     items:
       - title: Rezultate durabile și eficiente
         open: true

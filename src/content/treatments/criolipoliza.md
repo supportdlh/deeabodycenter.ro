@@ -1,5 +1,6 @@
 ---
-title: Criolipoliza Cryogen
+title: Criolipoliză Cryogen
+galleryTitle: Tratament Criolipoliză Cryogen
 sidebarTitle: Cryogen
 category: corporal
 excerpt: >-
@@ -19,6 +20,7 @@ sidebarPromo:
   - "Echipamentul profesional cu cea mai performantă terapie de slăbire din ultima generație: CRIOLIPOLIZA."
 sections:
   - group: Corporal
+    heading: Beneficiile slabirii prin criolipoliza
     items:
       - title: Reducere localizată a grăsimii
         open: true

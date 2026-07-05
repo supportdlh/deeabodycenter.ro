@@ -13,6 +13,7 @@ intro:
   - Cu beneficii variate și rezultate vizibile, cromoterapia facială aduce armonie și frumusețe pielii, pentru un look radiant și sănătos.
 sections:
   - group: Facial
+    heading: Beneficiile cromoterapiei faciale
     items:
       - title: Îmbunătățirea texturii și elasticității pielii
         open: true

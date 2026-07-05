@@ -1,5 +1,6 @@
 ---
-title: Masaj transdermic Dermohealth
+title: Masaj transdermic
+galleryTitle: Masaj transdermic Dermohealth
 sidebarTitle: Dermohealth
 category: corporal
 excerpt: >-
@@ -14,6 +15,7 @@ intro:
   - In plus, terapia LED (culoare rosie) aplicata in acelasi timp tripleaza efectele tratamentului. Dermoledurile activeaza receptorii celulari, multiplicand productia de elastina si colagen, conferind astfel pielii un aspect mai fin.
 sections:
   - group: Corporal
+    heading: Beneficiile Dermohealth
     items:
       - title: Reducerea celulitei
         open: true

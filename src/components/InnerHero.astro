@@ -3,8 +3,10 @@
 // (ex. https://deeabodycenter.ro/tarife/, /contact/, /servicii-.../, /oferte-.../):
 //   - bandă gri-deschis (#ECF0F2) sub header
 //   - STÂNGA: titlul paginii în Playfair navy, aliniat la stânga, + <Breadcrumb />
-//   - DREAPTA: o fotografie (opțională) care „atârnă" ușor sub bandă, cu o decorațiune
-//     de tip grilă de puncte teal (pattern_1.png) în stânga fotografiei.
+//   - DREAPTA (DESKTOP): o fotografie mare (~410px) care „atârnă" sub bandă pe dreapta,
+//     cu o decorațiune de grilă de puncte teal (pattern_1.png) în stânga fotografiei.
+//   - MOBIL (≤900px): titlul + breadcrumb-ul CENTRATE, fotografia din dreapta ASCUNSĂ
+//     (ca pe live), iar decorațiunea de puncte teal apare lângă breadcrumb.
 //
 // Props:
 //   title: string                       — titlul paginii (H1)
@@ -30,7 +32,18 @@ const { title, breadcrumb = [], image, imageAlt = '' } = Astro.props;
   <div class="inner-hero__inner">
     <div class="inner-hero__text">
       <h1 class="inner-hero__title">{title}</h1>
-      <Breadcrumb items={breadcrumb} />
+      <div class="inner-hero__crumb">
+        <img
+          class="inner-hero__dots-m"
+          src="/pattern_1.png"
+          width="129"
+          height="50"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        />
+        <Breadcrumb items={breadcrumb} />
+      </div>
     </div>
 
     <div class="inner-hero__media">
@@ -50,8 +63,8 @@ const { title, breadcrumb = [], image, imageAlt = '' } = Astro.props;
               class="inner-hero__photo"
               src={image}
               alt={imageAlt}
-              width="235"
-              height="235"
+              width="410"
+              height="410"
               loading="eager"
             />
           </>
@@ -66,6 +79,7 @@ const { title, breadcrumb = [], image, imageAlt = '' } = Astro.props;
     background: #ecf0f2;
     padding-top: 80px;
     position: relative;
+    z-index: 1;
   }
   .inner-hero__inner {
     max-width: 1140px;
@@ -91,28 +105,38 @@ const { title, breadcrumb = [], image, imageAlt = '' } = Astro.props;
     color: var(--navy, #051145);
     margin: 0 0 26px;
   }
+  .inner-hero__crumb {
+    position: relative;
+  }
+  /* Decorațiune de puncte pentru breadcrumb — vizibilă doar pe mobil (ca pe live) */
+  .inner-hero__dots-m {
+    display: none;
+  }
 
   /* ===== DREAPTA: fotografie + decorațiune puncte ===== */
   .inner-hero__media {
     position: relative;
     align-self: stretch;
   }
+  /* Fotografia mare din dreapta — bloc de ~410px care umple înălțimea benzii și
+     „atârnă" sub ea, aliniat la marginea din dreapta (ca pe live /tarife/). */
   .inner-hero__photo {
     position: absolute;
     top: 16px;
     right: 0;
-    width: 235px;
-    height: 235px;
+    width: 410px;
+    height: 410px;
     max-width: 100%;
     object-fit: cover;
     display: block;
+    z-index: 2;
   }
-  /* Decorațiune puncte teal — ca pe live: ~101px la stânga fotografiei și ~93px
-     sub marginea ei de sus (photo 235px, right:0 → left = 235-28 = 207px din dreapta). */
+  /* Decorațiune puncte teal — în stânga fotografiei, ~93px sub marginea ei de sus,
+     suprapusă ~28px peste marginea din stânga a fotografiei (ca pe live). */
   .inner-hero__dots {
     position: absolute;
     top: 109px;
-    right: 207px;
+    right: 382px;
     width: 129px;
     height: 50px;
     display: block;
@@ -129,28 +153,37 @@ const { title, breadcrumb = [], image, imageAlt = '' } = Astro.props;
       min-height: 0;
       row-gap: 0;
     }
+    /* Titlu + breadcrumb centrate pe mobil */
+    .inner-hero__text {
+      padding-bottom: 28px;
+      text-align: center;
+      align-self: start;
+    }
     .inner-hero__title {
-      font-size: 34px;
       margin-bottom: 20px;
     }
-    .inner-hero__text {
-      padding-bottom: 24px;
+    /* Breadcrumb centrat (nav-ul copil e stilizat prin :global) */
+    .inner-hero__text :global(.breadcrumb__list) {
+      justify-content: center;
     }
-    /* Pe mobil fotografia curge normal sub text, fără atârnare absolută */
+    /* Puncte teal lângă breadcrumb, în stânga, în spatele textului */
+    .inner-hero__dots-m {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 129px;
+      height: 50px;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .inner-hero__crumb :global(.breadcrumb) {
+      position: relative;
+      z-index: 1;
+    }
+    /* Fotografia din dreapta e ascunsă pe mobil (ca pe live) */
     .inner-hero__media {
-      position: relative;
-      min-height: 320px;
-    }
-    .inner-hero__photo {
-      position: relative;
-      top: 0;
-      margin: 0 auto;
-      width: 100%;
-      max-width: 340px;
-      height: auto;
-      aspect-ratio: 1 / 1;
-    }
-    .inner-hero__dots {
       display: none;
     }
   }

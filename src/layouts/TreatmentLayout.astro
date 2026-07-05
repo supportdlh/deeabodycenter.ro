@@ -71,7 +71,7 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
           {
             data.sections.map((section) => (
               <>
-                <h2 class="col-section-title">{section.group}</h2>
+                <h2 class="col-section-title">{section.heading ?? section.group}</h2>
                 <div class="accordion">
                   {section.items.map((item) => (
                     <Accordion title={item.title} open={item.open}>
@@ -157,7 +157,7 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
   <!-- =========================================================
        GALERIE (carusel de imagini) — randată doar dacă există
   ========================================================== -->
-  <Gallery images={data.gallery ?? []} title={data.title} />
+  <Gallery images={data.gallery ?? []} title={data.galleryTitle ?? data.title} />
 </BaseLayout>
 
 <style>

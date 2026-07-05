@@ -13,7 +13,7 @@ const isActive = (href: string) => norm(href) === norm(currentPath);
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="site-logo" aria-label={`${site.name} — pagina principală`}>
-      <Image src={logo} alt={site.name} width={92} height={92} loading="eager" />
+      <Image src={logo} alt={site.name} width={208} height={208} loading="eager" />
     </a>
 
     <input type="checkbox" id="nav-cb" class="nav-cb" />
@@ -76,7 +76,7 @@ const isActive = (href: string) => norm(href) === norm(currentPath);
     justify-content: space-between;
     gap: 20px;
     padding: 10px 24px;
-    max-width: 1170px;
+    max-width: 1140px;
     margin: 0 auto;
   }
   .site-logo {
@@ -85,7 +85,7 @@ const isActive = (href: string) => norm(href) === norm(currentPath);
     align-items: center;
   }
   .site-logo :global(img) {
-    height: 54px;
+    height: 104px;
     width: auto;
   }
 

@@ -12,6 +12,7 @@ intro:
   - Tratamentul cu radiofrecvența facială 4K este recomandată pentru oricine dorește o piele mai fermă, mai netedă și cu un aspect întinerit, fără disconfort și fără intervenții invazive. Perfect pentru un ten revitalizat și pentru un contur facial definit!
 sections:
   - group: Facial
+    heading: Beneficiile tratamentului
     items:
       - title: Riduri și linii fine reduse vizibil
         open: true

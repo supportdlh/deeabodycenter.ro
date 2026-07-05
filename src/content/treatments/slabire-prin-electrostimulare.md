@@ -1,5 +1,6 @@
 ---
 title: Slabire prin electrostimulare
+galleryTitle: Slabire prin electrostimulare
 category: corporal
 excerpt: >-
   O metodă eficientă și non-invazivă de remodelare corporală care folosește impulsuri electrice pentru a stimula
@@ -12,6 +13,7 @@ intro:
   - Acest tratament de slabire prin electrostimulare este perfect pentru oricine își dorește un corp tonifiat, o reducere a grăsimii și o piele mai fermă, fără intervenții invazive și fără efort fizic intens.
 sections:
   - group: Corporal
+    heading: Beneficiile tratamentului
     items:
       - title: Arderea grăsimilor și reducerea circumferinței
         open: true

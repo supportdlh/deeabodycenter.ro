@@ -11,6 +11,7 @@ intro:
   - Tratamentul OPTI-FIRM Eye Contour este ideal pentru cei care doresc să reducă semnele de oboseală și îmbătrânire din jurul ochilor, fără proceduri invazive. Perfect pentru o privire revitalizată și un aspect întinerit al zonei ochilor!
 sections:
   - group: Facial
+    heading: Beneficiile tratamentului
     items:
       - title: Reducerea cearcănelor și a petelor întunecate
         open: true

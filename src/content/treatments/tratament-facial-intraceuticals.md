@@ -1,5 +1,6 @@
 ---
 title: Tratament facial Intraceuticals
+galleryTitle: Tratament facial Intraceuticals
 sidebarTitle: Intraceuticals
 category: facial
 excerpt: >-
@@ -15,6 +16,7 @@ intro:
   - Rezultatul este o piele strălucitoare, cu un efect wow instant!
 sections:
   - group: Facial
+    heading: Beneficiile tratamentului
     items:
       - title: Hidratare intensă și efect de „lifting” instant
         open: true

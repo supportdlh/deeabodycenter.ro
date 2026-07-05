@@ -26,6 +26,10 @@ const treatments = defineCollection({
       sections: z.array(
         z.object({
           group: z.enum(['Corporal', 'Facial']),
+          // Titlu descriptiv opțional afișat deasupra grupului de acordeoane
+          // (ex. „Beneficiile slabirii prin criolipoliza"). Dacă lipsește,
+          // TreatmentLayout revine la eticheta `group`.
+          heading: z.string().optional(),
           items: z.array(
             z.object({
               title: z.string(),
@@ -41,6 +45,9 @@ const treatments = defineCollection({
       // Nu folosim image() aici: sunt zeci de imagini per pagină (deja webp optimizate din WP),
       // le servim direct din public/ ca să nu încetinim build-ul.
       gallery: z.array(z.string()).optional(),
+      // Titlu opțional al secțiunii de galerie (ex. „Tratament Criolipoliză Cryogen").
+      // Dacă lipsește, TreatmentLayout revine la `title`.
+      galleryTitle: z.string().optional(),
       order: z.number(),
       seo: z.object({
         title: z.string(),
@@ -76,6 +83,20 @@ const offers = defineCollection({
         .optional(),
       // Galeria de imagini promoționale a paginii de ofertă (căi din `public/galleries/<slug>/`).
       gallery: z.array(z.string()).optional(),
+      // Blocul promo intro (doar pagina „corporale" pe desktop): titlu serif, un
+      // paragraf-intro, o etichetă de listă, bulete cu emoji, un preț mare și imaginea
+      // promo din dreapta. Transcris VERBATIM din live (deeabodycenter.ro/oferte-tratamente-corporale).
+      introPromo: z
+        .object({
+          heading: z.string(),
+          intro: z.string().optional(),
+          listLabel: z.string().optional(),
+          items: z.array(z.string()).optional(),
+          bulletEmoji: z.string().optional(),
+          price: z.string(),
+          image: z.string(),
+        })
+        .optional(),
       seo: z.object({
         title: z.string(),
         description: z.string(),

@@ -1,5 +1,6 @@
 ---
 title: Tratament HidratIQ
+galleryTitle: Tratament HidratIQ
 category: facial
 excerpt: >-
   Combina cosmetica 7 functii: Aqua peel, Oxigen Hiperbaric, Radiofrecventa, Ultrasunete, Spatula Ultrasunet,

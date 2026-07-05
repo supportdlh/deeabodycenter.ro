@@ -1,5 +1,6 @@
 ---
-title: Solar
+title: Solar Ergoline
+galleryTitle: Solar
 sidebarTitle: Bronzare solar
 category: corporal
 excerpt: Va doriti un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare?
@@ -13,6 +14,7 @@ sidebarPromo:
   - Solariile Ergoline sunt permanent echipate cu tehnologii de varf in materie de bronzare, fiind concepute in stransa legatura cu specialistii dermatologi.
 sections:
   - group: Corporal
+    heading: Beneficiile bronzarii artificiale la solar
     items:
       - title: Aspect bronzat rapid
         open: true

@@ -1,5 +1,6 @@
 ---
 title: Tratament facial MicroPen
+galleryTitle: Tratament facial MicroPen
 sidebarTitle: MicroPen
 category: facial
 excerpt: >-
@@ -13,6 +14,7 @@ intro:
   - Totul fără intervenții invazive sau timp de recuperare prelungit!
 sections:
   - group: Facial
+    heading: Beneficiile tratamentului
     items:
       - title: Stimularea producției de colagen și elastină
         open: true

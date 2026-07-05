@@ -1,5 +1,6 @@
 ---
-title: Tratare Celulita cu VelaShape2
+title: Tratare celulită
+galleryTitle: Tratament anticelulita si remodelare corporala
 sidebarTitle: VelaShape 2
 category: corporal
 excerpt: >-
@@ -21,6 +22,7 @@ sidebarPromo:
   - Atunci cand se utilizeaza aplicatorul VContour impreuna cu aplicatorul VSmooth se poate realiza o penetrare mai profunda a energiei si o hipertermie optima.
 sections:
   - group: Corporal
+    heading: Cum actioneaza VelaShape2?
     items:
       - title: Reducerea vizibilă a celulitei
         open: true

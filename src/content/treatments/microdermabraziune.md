@@ -14,6 +14,7 @@ intro:
   - Acest tratament de exfoliere profesională ajută la combaterea semnelor de îmbătrânire și a imperfecțiunilor, oferind un ten revitalizat, neted și vizibil întinerit.
 sections:
   - group: Facial
+    heading: Beneficiile acestui tratament inovator
     items:
       - title: Reducerea ridurilor și liniilor fine
         open: true

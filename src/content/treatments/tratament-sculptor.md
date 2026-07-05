@@ -1,5 +1,6 @@
 ---
 title: Tratament Sculptor
+galleryTitle: Tratament Sculptor
 category: corporal
 excerpt: >-
   Sculptor este un echipament de ultima generatie care combina cinci terapii premium, transferate din domeniul
@@ -19,6 +20,7 @@ sidebarPromo:
   - Sculptor este un echipament de ultimă generație brevetat de FDA și COFEPRICE.
 sections:
   - group: Corporal
+    heading: Corporal
     items:
       - title: HiFu multifocal HImFu
         open: true
@@ -47,6 +49,7 @@ sections:
           Terapie dermică avansată care acționează în profunzime pentru a stimula producția de colagen, a elimina
           toxinele și a remodela conturul corporal.
   - group: Facial
+    heading: Facial
     items:
       - title: CrioRadiofrecventa
         open: true

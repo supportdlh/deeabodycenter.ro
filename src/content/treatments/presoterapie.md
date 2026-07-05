@@ -1,5 +1,6 @@
 ---
 title: Presoterapie
+galleryTitle: Tratament Presoterapie
 category: corporal
 excerpt: >-
   Tehnologie avansata pentru tratarea problemelor ca: picioare umflate, picioare grele, eliminarea toxinelor,

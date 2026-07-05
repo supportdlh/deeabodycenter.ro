@@ -1,5 +1,6 @@
 ---
 title: Tratament Green Peel® by Dr. Schrammek
+galleryTitle: Tratamentul Green Peel® by Dr. Schrammek
 category: facial
 excerpt: >-
   Tratamentul Green Peel® by Dr. Schrammek este o metodă de rejuvenare a pielii, bazată exclusiv pe ingrediente
@@ -11,6 +12,7 @@ intro:
   - Tratamentul Green Peel ® Natural 100% by Dr. Schrammek este un tratament ideal pentru cei care doresc o metodă naturală și eficientă de îmbunătățire a aspectului pielii, cu rezultate durabile și efecte benefice asupra sănătății tenului.
 sections:
   - group: Facial
+    heading: Beneficiile tratamentului
     items:
       - title: Regenerare și întinerire a pielii
         open: true
