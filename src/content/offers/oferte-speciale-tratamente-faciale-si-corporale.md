@@ -5,15 +5,13 @@ excerpt: >-
   La Deea Body Center, obții un corp tonifiat și un ten radiant prin oferte de tratamente faciale și corporale
   personalizate, cu rezultate vizibile.
 image: ../../assets/DSC00993-scaled.webp
+# Colajul 2×2 vizibil pe live (celelalte grafice din galeria WP sunt ascunse pe pagină).
+# Ordine vizuală: sus-stânga, sus-dreapta, jos-stânga, jos-dreapta.
 gallery:
-  - /galleries/oferte-speciale-tratamente-faciale-si-corporale/oferta-tratamente-infrumusetare-deeabodycenter-ploiesti.jpeg
-  - /galleries/oferte-speciale-tratamente-faciale-si-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-criolipoliza-velashape-819x1024.jpeg
   - /galleries/oferte-speciale-tratamente-faciale-si-corporale/WhatsApp-Image-2025-03-30-at-20.51.47-819x1024.jpeg
-  - /galleries/oferte-speciale-tratamente-faciale-si-corporale/oferta-remodelare-corporala-scultptor-dermocell-819x1024.jpeg
+  - /galleries/oferte-speciale-tratamente-faciale-si-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-criolipoliza-velashape-819x1024.jpeg
   - /galleries/oferte-speciale-tratamente-faciale-si-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-electrostimulare-laser-zentisse-819x1024.jpeg
-  - /galleries/oferte-speciale-tratamente-faciale-si-corporale/criolipoliza-oferta-deeabodycenter-ploiesti.jpg
-  - /galleries/oferte-speciale-tratamente-faciale-si-corporale/dermocell-deeabodycenter-ploiesti.jpg
-  - /galleries/oferte-speciale-tratamente-faciale-si-corporale/vela-shape-deeabodycenter-ploiesti.jpg
+  - /galleries/oferte-speciale-tratamente-faciale-si-corporale/oferta-remodelare-corporala-scultptor-dermocell-819x1024.jpeg
 body: >-
   La Deea Body Center, obții un corp tonifiat și un ten radiant prin oferte de tratamente faciale și corporale
   personalizate, cu rezultate vizibile.

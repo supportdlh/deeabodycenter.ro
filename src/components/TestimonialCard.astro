@@ -1,20 +1,27 @@
 ---
 // O „lamelă" (slide) în slider-ul „Ce spun ele" — pixel-perfect după live
-// (deeabodycenter.ro): quote mark teal, text centrat, 5 stele aurii, nume navy,
-// totul pe fundal alb (cardul alb e randat de secțiunea părinte din index.astro).
+// (deeabodycenter.ro): text citat navy centrat, 5 stele aurii, apoi avatarul
+// rotund al clientei + numele. Eyebrow-ul „Testimonial", titlul „Ce spun ele"
+// și semnul mare de citat teal sunt fixe (randate de secțiunea părinte).
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 export interface Props {
   name: string;
   text: string;
+  avatar: ImageMetadata;
 }
 
-const { name, text } = Astro.props;
+const { name, text, avatar } = Astro.props;
 ---
 
 <div class="testi-slide">
-  <span class="quote-mark" aria-hidden="true">&rdquo;</span>
   <p class="testi-text">{text}</p>
   <span class="stars" aria-hidden="true">★★★★★</span>
-  <div class="testi-author">{name}</div>
+  <div class="testi-person">
+    <Image class="testi-avatar" src={avatar} alt={name} width={70} height={70} loading="lazy" />
+    <span class="testi-name">{name}</span>
+  </div>
 </div>
 
 <style>
@@ -24,33 +31,36 @@ const { name, text } = Astro.props;
     scroll-snap-align: start;
     text-align: center;
   }
-  .quote-mark {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 3.75rem;
-    font-weight: 700;
-    color: var(--teal);
-    line-height: 0.6;
-    margin-bottom: 14px;
-    display: block;
-  }
   .testi-text {
     font-size: 0.9375rem;
-    line-height: 1.75;
-    color: var(--text-sec);
-    max-width: 44ch;
-    margin: 0 auto 20px;
+    line-height: 1.85;
+    color: var(--navy);
+    max-width: 46ch;
+    margin: 0 auto 22px;
   }
   .stars {
     color: var(--gold);
     font-size: 1.25rem;
-    letter-spacing: 3px;
-    margin-bottom: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
     display: block;
   }
-  .testi-author {
+  .testi-person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .testi-person :global(.testi-avatar) {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .testi-name {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 1.0625rem;
+    font-size: 1rem;
     color: var(--navy);
   }
 </style>

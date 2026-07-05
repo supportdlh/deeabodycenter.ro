@@ -41,6 +41,9 @@ import imgOfferSpeciale from '../assets/DSC00993-scaled.webp';
 import imgOfferFaciale from '../assets/Tratament-sculptor-deeabodycenter.ro-ploiesti.webp';
 
 import imgTestimonialsBg from '../assets/testimonials.webp';
+import avatar1 from '../assets/testi-avatar-1.webp';
+import avatar2 from '../assets/testi-avatar-2.webp';
+import avatar3 from '../assets/testi-avatar-3.webp';
 
 const facialCards = [
   {
@@ -171,14 +174,17 @@ const offerCards = [
 const testimonials = [
   {
     name: 'Maria, 35 de ani',
+    avatar: avatar1,
     text: 'Sunt absolut încântată de rezultatele obținute la Deea Body Center! Am început cu ședințe de remodelare corporală și am văzut diferențe vizibile încă de la primele tratamente. Pielea mea e mai fermă, iar centimetrii din talie și coapse s-au redus semnificativ. Echipa este profesionistă și amabilă, iar atmosfera este relaxantă. Recomand cu toată încrederea!',
   },
   {
     name: 'Andreea, 29 de ani',
+    avatar: avatar2,
     text: 'Tratamentele faciale de la Deea Body Center mi-au schimbat complet tenul! Am avut probleme cu cearcănele și ridurile fine, iar după câteva ședințe de radiofrecvență și tratamente hidratante, pielea mea e mai luminoasă și vizibil întinerită. Recomand acest loc minunat oricărei femei care își dorește un boost de încredere și frumusețe!',
   },
   {
     name: 'Elena, 42 de ani',
+    avatar: avatar3,
     text: 'De când am descoperit Deea Body Center, am început o transformare pe care o așteptam de mult. Remodelarea corporală mi-a tonifiat corpul, iar tratamentele faciale m-au ajutat să am un ten mult mai neted și radiant. Profesionalismul și atenția la detalii de aici sunt de neegalat! Este locul ideal pentru momente de răsfăț și îngrijire completă.',
   },
 ];
@@ -242,12 +248,11 @@ const faq = [
         <ul class="hero-list">
           <li>3 ședințe VelaShape – coapse + fese</li>
           <li>2 ședințe VelaShape – abdomen + flancuri + lombar</li>
-          <li>3 ședințe laser Zentisse</li>
-          <li>3 ședințe presodrenaj</li>
-          <li>1 zonă mare de criolipoliză <strong>cadou</strong></li>
+          <li>3 ședințe laser Zentisse 3 sedinte presodrenaj</li>
+          <li>1 zonă mare de criolipoliză cadou</li>
         </ul>
         <div class="hero-price">1690 RON</div>
-        <p class="hero-note">Nu rata șansa de a obține silueta mult dorită la un preț special!</p>
+        <p class="hero-note">Nu rata șansa de a obține silueta mult dorită la un preț special! ✨</p>
         <div class="social-row hero-social">
           <a href={site.social.facebook || '#'} class="social-icon" aria-label="Facebook">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
@@ -314,7 +319,8 @@ const faq = [
   ============================================================= -->
   <section class="section-intro" id="tratamente-faciale">
     <div class="wrap intro-grid">
-      <div class="intro-img-wrap">
+      <div class="intro-img-wrap has-frame">
+        <span class="deco-square" aria-hidden="true"></span>
         <Image
           class="intro-img"
           src={facialSplitImg}
@@ -327,6 +333,7 @@ const faq = [
         />
       </div>
       <div class="intro-text">
+        <span class="deco-dots" aria-hidden="true"></span>
         <span class="eyebrow">Deea Body Center</span>
         <h2>Tratamente Faciale</h2>
         <p>
@@ -335,7 +342,7 @@ const faq = [
         </p>
         <div class="btn-row">
           <a href="/servicii-tratamente-faciale-si-corporale/" class="btn btn-primary">Descoperă</a>
-          <a href="/tarife/" class="btn btn-outline">Tarife</a>
+          <a href="/tarife/" class="btn btn-primary">Tarife</a>
         </div>
       </div>
     </div>
@@ -373,20 +380,11 @@ const faq = [
         </p>
         <div class="btn-row">
           <a href="/servicii-tratamente-faciale-si-corporale/" class="btn btn-primary">Descoperă</a>
-          <a href="/tarife/" class="btn btn-outline">Tarife</a>
+          <a href="/tarife/" class="btn btn-primary">Tarife</a>
         </div>
       </div>
-      <div class="intro-img-wrap">
-        <Image
-          class="intro-img"
-          src={bodySplitImg}
-          alt="Remodelare corporală Deea Body Center Ploiești"
-          width={800}
-          height={600}
-          widths={[400, 600, 800]}
-          sizes="(max-width: 768px) 90vw, 560px"
-          loading="lazy"
-        />
+      <div class="intro-deco" aria-hidden="true">
+        <span class="deco-dots deco-dots-lg"></span>
       </div>
     </div>
   </section>
@@ -422,7 +420,7 @@ const faq = [
       </p>
       <div class="btn-row">
         <a href="/solar/" class="btn btn-primary">Descoperă</a>
-        <a href="/tarife/" class="btn btn-outline">Tarife</a>
+        <a href="/tarife/" class="btn btn-primary">Tarife</a>
       </div>
     </div>
   </section>
@@ -431,7 +429,9 @@ const faq = [
        OFERTE
   ============================================================= -->
   <section class="offers-section">
+    <span class="deco-square offers-deco" aria-hidden="true"></span>
     <div class="wrap">
+      <span class="eyebrow offers-eyebrow">Deea Body Center</span>
       <h2 class="offers-title">Ofertele Deea Body Center</h2>
     </div>
     <div class="offers-mosaic">
@@ -449,8 +449,10 @@ const faq = [
       <Image class="testi-bg-img" src={imgTestimonialsBg} alt="" width={1920} height={1277} loading="lazy" />
     </div>
     <div class="wrap testi-inner">
-      <div class="testi-card">
+      <div class="testi-content">
+        <span class="eyebrow testi-eyebrow">Testimonial</span>
         <h2 class="testi-heading">Ce spun ele</h2>
+        <span class="testi-quote" aria-hidden="true">&rdquo;</span>
         <div class="testi-track" data-testi-track>
           {testimonials.map((t) => <TestimonialCard {...t} />)}
         </div>
@@ -466,7 +468,7 @@ const faq = [
     const tracks = document.querySelectorAll('[data-testi-track]');
     tracks.forEach((el) => {
       const track = el;
-      const card = track.closest('.testi-card');
+      const card = track.closest('.testi-content');
       if (!card) return;
       const prevBtn = card.querySelector('[data-testi-prev]');
       const nextBtn = card.querySelector('[data-testi-next]');
@@ -582,10 +584,10 @@ const faq = [
     margin-bottom: 18px;
   }
   .hero-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 2.25rem;
     font-weight: 700;
-    color: var(--heading);
+    color: var(--navy);
     line-height: 1.22;
     margin-bottom: 14px;
   }
@@ -804,39 +806,59 @@ const faq = [
     padding: 0 24px;
   }
 
-  /* ===== TESTIMONIALS — slider (1 item vizibil, foto fundal + card alb) ===== */
+  /* ===== TESTIMONIALS — full-bleed foto fundal (femeia pe dreapta), conținut pe stânga ===== */
   .testi-section {
     position: relative;
-    padding: 80px 0;
     overflow: hidden;
+    min-height: 780px;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
   }
   .testi-bg-wrap {
     position: absolute;
     inset: 0;
     overflow: hidden;
+    z-index: 0;
   }
   .testi-bg-wrap :global(.testi-bg-img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 50% 0;
   }
   .testi-inner {
     position: relative;
-    display: flex;
-    justify-content: flex-start;
-  }
-  .testi-card {
+    z-index: 1;
     width: 100%;
-    max-width: 600px;
-    background: var(--surface);
-    border-radius: var(--r-md);
-    box-shadow: var(--sh-lg);
-    padding: 48px 44px 40px;
+  }
+  .testi-content {
+    text-align: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(5, 17, 69, 0.18);
+    max-width: 660px;
+    margin-right: auto;
+    padding: 54px 56px 48px;
+  }
+  .testi-eyebrow {
+    text-align: center;
+    margin-bottom: 6px;
   }
   .testi-heading {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+  }
+  .testi-quote {
+    display: block;
+    text-align: center;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 5rem;
+    line-height: 0.5;
+    color: var(--teal);
+    margin: 18px 0 30px;
   }
   .testi-track {
     display: flex;
@@ -904,6 +926,85 @@ const faq = [
     flex-direction: column;
   }
 
+  /* ===== DECORAȚIUNI (grilă teal punctată + pătrat gri offset) ===== */
+  .intro-grid {
+    position: relative;
+  }
+  .intro-img-wrap {
+    position: relative;
+  }
+  .intro-img-wrap.has-frame .deco-square {
+    position: absolute;
+    left: -26px;
+    bottom: -26px;
+    width: 62%;
+    height: 62%;
+    background: #eef0f3;
+    border-radius: 10px;
+    z-index: 0;
+  }
+  .intro-img-wrap :global(.intro-img) {
+    position: relative;
+    z-index: 1;
+  }
+  .intro-text {
+    position: relative;
+  }
+  .deco-dots {
+    position: absolute;
+    top: -34px;
+    right: -8px;
+    width: 128px;
+    height: 96px;
+    background: url('/pattern_1.png') no-repeat center / contain;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .intro-text > :not(.deco-dots) {
+    position: relative;
+    z-index: 1;
+  }
+  /* Remodelare corporala — coloana fără foto, doar decor teal punctat */
+  .intro-deco {
+    position: relative;
+    min-height: 300px;
+  }
+  .deco-dots-lg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 200px;
+    right: auto;
+  }
+  /* Offers — eyebrow centrat + pătrat gri offset în spatele mozaicului */
+  .offers-section {
+    position: relative;
+  }
+  .offers-eyebrow {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .offers-title {
+    margin-top: 0;
+  }
+  .offers-deco {
+    position: absolute;
+    top: 118px;
+    left: 0;
+    width: 220px;
+    height: 220px;
+    background: #eceef1;
+    border-radius: 0 10px 10px 0;
+    z-index: 0;
+  }
+  .offers-mosaic {
+    position: relative;
+    z-index: 1;
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
     .svc-grid {
@@ -951,11 +1052,27 @@ const faq = [
     .offers-mosaic {
       grid-template-columns: 1fr;
     }
-    .testi-inner {
-      justify-content: center;
+    .testi-section {
+      min-height: 0;
     }
-    .testi-card {
-      padding: 36px 22px 30px;
+    .testi-bg-wrap :global(.testi-bg-img) {
+      object-position: 72% 0;
+    }
+    .testi-content {
+      padding: 40px 22px 36px;
+      max-width: none;
+      margin: 0;
+    }
+    .testi-heading {
+      font-size: 2rem;
+    }
+    .deco-dots,
+    .intro-img-wrap.has-frame .deco-square,
+    .offers-deco {
+      display: none;
+    }
+    .intro-deco {
+      display: none;
     }
     .contact-grid {
       grid-template-columns: 1fr;

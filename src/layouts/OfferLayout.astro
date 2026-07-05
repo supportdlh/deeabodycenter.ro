@@ -1,17 +1,22 @@
 ---
-// Layout partajat de cele 3 pagini de ofertă — FĂRĂ mockup dedicat pentru aceste pagini
-// (spec §7 / task 7), deci layout proiectat coerent cu limbajul vizual V1 aprobat
-// (RS3): hero full-width cu aceeași casetă overlay navy translucentă ca în
-// TreatmentLayout (mockups/v1-clona/tratament-sculptor.html) + intro narativ + grid de
-// pachete de preț (stil „price-box" din hero-ul homepage-ului: cutie navy, preț auriu)
-// + galerie de imagini promoționale (Gallery, randată doar dacă `entry.data.gallery`
-// are elemente) + bloc final de programare WhatsApp (DECIS la nivel de proiect: fără
-// formular — buton WhatsApp + telefon).
-import { Image } from 'astro:assets';
+// OfferLayout — paginile de OFERTE, reconstruite IMAGE-BASED după LIVE
+// (deeabodycenter.ro/oferte-*). Pe live, conținutul real al paginilor de ofertă
+// NU sunt carduri-text de pachete, ci un COLAJ de IMAGINI PROMOȚIONALE (grafice
+// „Ofertă"/„Abonament" cu prețuri incrustate). Structură replicată:
+//   1. InnerHero — bandă gri, titlu serif navy la stânga + breadcrumb „Home › …”
+//      + fotografia hero (top-oferte.jpg) sus-dreapta + decorațiune puncte teal.
+//   2. Grilă de imagini promoționale (`data.gallery`) = conținutul real al ofertei.
+//      - „Oferte speciale” (category `mixt`): 2×2, cu paragraful intro DEASUPRA grilei
+//        și un bloc FAQ „Întrebări și răspunsuri” alături de contact (ca pe live).
+//      - „corporale/faciale”: grilă de grafice promo, apoi intro (stânga) + contact.
+//   3. Contact WhatsApp (ContactBlock — fără formular).
+// Pachetele text (`data.packages`) rămân în frontmatter pentru SEO, dar NU se afișează
+// (live e image-based). Fără hero foto full-bleed, fără eyebrow auriu, fără carduri de preț.
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
-import Gallery from '../components/Gallery.astro';
-import WhatsAppButton from '../components/WhatsAppButton.astro';
+import InnerHero from '../components/InnerHero.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import Accordion from '../components/Accordion.astro';
 import { site } from '../data/site';
 
 export interface Props {
@@ -21,82 +26,90 @@ export interface Props {
 const { entry } = Astro.props;
 const { data } = entry;
 
-// `body`-ul din frontmatter e proză simplă, separată prin linii goale (nu markdown) —
-// o singură sursă de adevăr pentru textul narativ, împărțită aici în paragrafe
-// (același principiu ca `intro: string[]` din TreatmentLayout, dar stocat ca un singur string
-// întrucât schema `offers` definește `body: z.string()`).
+const isMixt = data.category === 'mixt';
+
+// Intro narativ (proză din `body`, separată prin linii goale). Pe live, coloana
+// intro începe cu rezumatul (excerpt) urmat de paragrafele descriptive — pentru
+// paginile corporale/faciale îl prepend-uim; la „mixt” body === excerpt (un rând).
 const paragraphs = data.body
   .split(/\n{2,}/)
   .map((p) => p.trim())
   .filter(Boolean);
+const introParas = isMixt ? paragraphs : [data.excerpt, ...paragraphs];
 
-const waMessage = `Bună, aș dori mai multe detalii despre ${data.title}.`;
+const promoImages = data.gallery ?? [];
+// Numărul de coloane al grilei promo: „mixt” = 2 (colaj 2×2, identic live);
+// altfel o grafică unică se centrează, iar mai multe curg pe max 4 coloane.
+const gridCols = isMixt ? 2 : promoImages.length === 1 ? 1 : Math.min(promoImages.length, 4);
+
+// FAQ „Întrebări și răspunsuri” — apare pe pagina live „Oferte speciale”, alături
+// de contact (aceleași 4 Q&A ca pe homepage/tarife, copiate VERBATIM).
+const faq = [
+  {
+    question: 'Cât durează rezultatele și de câte ședințe am nevoie pentru a vedea efecte?',
+    answers: [
+      'Rezultatele variază în funcție de tratament și de corpul fiecărei persoane.',
+      'De obicei, se observă îmbunătățiri după 3-5 ședințe, dar pentru rezultate optime se recomandă un program complet de 6-10 ședințe, efectuate la intervale regulate.',
+    ],
+  },
+  {
+    question: 'Sunt aceste tratamente sigure și au efecte secundare?',
+    answers: [
+      'Tratamentele sunt sigure atunci când sunt realizate de personal instruit și cu echipamente de calitate.',
+      'Pot apărea efecte secundare minore, precum roșeață sau senzație de căldură, dar acestea dispar de obicei în câteva ore.',
+      'Consultăm fiecare client pentru a ne asigura că tratamentele sunt potrivite și sigure pentru el.',
+    ],
+  },
+  {
+    question: 'Cum funcționează tratamentele de slăbire/localizare a grăsimii (ex. criolipoliză, cavitație, radiofrecvență)?',
+    answers: [
+      'Fiecare tratament are o metodă diferită de acțiune.',
+      'De exemplu, criolipoliza răcește țesutul adipos pentru a distruge celulele de grăsime, cavitația utilizează ultrasunete pentru a descompune grăsimea, iar radiofrecvența încălzește țesuturile pentru a stimula producția de colagen și a reduce celulita.',
+      'Toate sunt non-invazive și nedureroase.',
+    ],
+  },
+  {
+    question: 'Ce tipuri de tratamente faciale sunt potrivite pentru tipul meu de piele?',
+    answers: [
+      'Oferim o consultație inițială pentru a evalua tipul de piele și nevoile specifice ale fiecărui client.',
+      'În funcție de aceasta, recomandăm tratamente precum curățare profundă, hidratare intensă, anti-îmbătrânire sau pentru pielea sensibilă/acneică.',
+    ],
+  },
+];
 ---
 
 <BaseLayout title={data.seo.title} description={data.seo.description} canonicalPath={`/${entry.id}/`}>
-  <!-- =========================================================
-       HERO FULL-WIDTH
-  ========================================================== -->
-  <div class="offer-hero">
-    <Image
-      src={data.image}
-      alt={`${data.title} — ${site.name} ${site.city}`}
-      width={1600}
-      height={800}
-      loading="eager"
-      class="hero-img"
-    />
-    <div class="hero-gradient" aria-hidden="true"></div>
-    <div class="hero-overlay-wrap">
-      <div class="hero-overlay-box">
-        <div class="eyebrow eyebrow--gold">Oferte exclusive</div>
-        <h1>{data.title}</h1>
-        <p>{data.excerpt}</p>
-      </div>
-    </div>
-  </div>
+  <!-- ===== HERO (InnerHero — bandă gri, titlu + breadcrumb + foto + puncte teal) ===== -->
+  <InnerHero
+    title={data.title}
+    breadcrumb={[{ label: data.title }]}
+    image="/top-oferte.jpg"
+    imageAlt={`${data.title} — ${site.name} ${site.city}`}
+  />
 
-  <!-- =========================================================
-       INTRO NARATIV
-  ========================================================== -->
-  <section class="section">
-    <div class="wrap wrap--narrow">
-      {paragraphs.map((p) => <p>{p}</p>)}
-    </div>
-  </section>
-
-  <!-- =========================================================
-       PACHETE (opțional — pagina „Oferte speciale" nu are pachete text)
-  ========================================================== -->
+  <!-- ===== INTRO (doar „mixt”: paragraf deasupra colajului, ca pe live) ===== -->
   {
-    data.packages && data.packages.length > 0 && (
-      <section class="section--alt">
+    isMixt && (
+      <section class="intro-top">
         <div class="wrap">
-          <div class="sec-head">
-            <div class="eyebrow">Deea Body Center</div>
-            <h2>Alege pachetul potrivit pentru tine</h2>
-            <p>Prețurile și pachetele active la Deea Body Center Ploiești — rezervă direct pe WhatsApp.</p>
-          </div>
-          <div class="pkg-grid">
-            {data.packages.map((pkg) => (
-              <div class="pkg-card">
-                {pkg.badge && <span class="pkg-badge">{pkg.badge}</span>}
-                {pkg.title && <h3>{pkg.title}</h3>}
-                <ul class="pkg-items">
-                  {pkg.items.map((item) => (
-                    <li>{item}</li>
-                  ))}
-                </ul>
-                <div class="pkg-price-box">
-                  {pkg.oldPrice && <span class="pkg-old-price">{pkg.oldPrice}</span>}
-                  <span class="pkg-price">{pkg.price}</span>
-                </div>
-                <WhatsAppButton
-                  label="Rezervă acest pachet"
-                  message={`Bună, aș dori să profit de oferta${pkg.title ? ` „${pkg.title}"` : ''} (${pkg.price}).`}
-                  class="pkg-btn"
-                />
-              </div>
+          {introParas.map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- ===== COLAJ DE IMAGINI PROMOȚIONALE (conținutul real al ofertei) ===== -->
+  {
+    promoImages.length > 0 && (
+      <section class="promo">
+        <div class="wrap">
+          <div class={`promo-grid promo-grid--cols-${gridCols}`}>
+            {promoImages.map((src, i) => (
+              <figure class="promo-item">
+                <img src={src} alt={`${data.title} — ofertă ${i + 1}`} loading={i < 2 ? 'eager' : 'lazy'} />
+              </figure>
             ))}
           </div>
         </div>
@@ -104,23 +117,38 @@ const waMessage = `Bună, aș dori mai multe detalii despre ${data.title}.`;
     )
   }
 
-  <!-- =========================================================
-       GALERIE (imagini promoționale) — randată doar dacă există
-  ========================================================== -->
-  <Gallery images={data.gallery ?? []} title={data.title} />
-
-  <!-- =========================================================
-       CTA FINAL — PROGRAMARE WHATSAPP (fără formular)
-  ========================================================== -->
-  <section class="cta-section">
-    <div class="wrap cta-inner">
-      <h2>Rezervă-ți oferta acum</h2>
-      <p class="cta-note">
-        Scrie-ne pe WhatsApp sau sună la <a href={site.phoneHref}>{site.phone}</a> pentru programare telefonică la {site.name}.
-      </p>
-      <div class="btn-group cta-btn-group">
-        <WhatsAppButton label="Scrie-ne pe WhatsApp" message={waMessage} />
-      </div>
+  <!-- ===== INTRO + CONTACT (corporale/faciale) sau CONTACT + FAQ („mixt”) ===== -->
+  <section class="closing">
+    <div class="wrap closing-grid">
+      {
+        isMixt ? (
+          <>
+            <ContactBlock />
+            <div class="faq-col">
+              <h2>Întrebări și răspunsuri</h2>
+              <p class="faq-sub">Răspunsuri la cele mai frecvente întrebări pe care le primim din partea clienților.</p>
+              <div class="accordion">
+                {faq.map((item) => (
+                  <Accordion title={item.question}>
+                    {item.answers.map((a) => (
+                      <p>{a}</p>
+                    ))}
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div class="intro-col">
+              {introParas.map((p) => (
+                <p>{p}</p>
+              ))}
+            </div>
+            <ContactBlock />
+          </>
+        )
+      }
     </div>
   </section>
 </BaseLayout>
@@ -131,279 +159,119 @@ const waMessage = `Bună, aș dori mai multe detalii despre ${data.title}.`;
     margin: 0 auto;
     padding: 0 24px;
   }
-  .wrap--narrow {
-    max-width: 760px;
-  }
 
-  /* ===== HERO (aceeași casetă overlay navy translucentă ca TreatmentLayout,
-     după mockups/v1-clona/tratament-sculptor.html — coerență vizuală V1
-     între tratamente și oferte) ===== */
-  .offer-hero {
-    position: relative;
-    min-height: 380px;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-  .offer-hero :global(.hero-img) {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-  }
-  .hero-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(5, 17, 69, 0.15) 0%, rgba(5, 17, 69, 0.3) 50%, rgba(5, 17, 69, 0.6) 100%);
-  }
-  .hero-overlay-wrap {
-    position: relative;
-    z-index: 1;
-    max-width: 1170px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 24px 40px;
-  }
-  .hero-overlay-box {
-    display: inline-block;
-    background: rgba(5, 17, 69, 0.7);
-    backdrop-filter: blur(4px);
-    border-radius: var(--r-sm);
-    padding: 28px 32px;
-    max-width: 600px;
-  }
-  .hero-overlay-box h1 {
-    color: #fff;
-    font-size: 2.75rem;
-    line-height: 1.15;
-    margin-bottom: 14px;
-  }
-  .hero-overlay-box p {
-    color: #fff;
-    opacity: 0.92;
-    font-size: 0.9375rem;
-    line-height: 1.65;
-  }
-
-  /* ===== EYEBROW (teal, italic, Playfair — identic live) ===== */
-  .eyebrow {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-style: italic;
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: normal;
-    text-transform: none;
-    color: var(--teal);
-    margin-bottom: 16px;
-  }
-  .eyebrow--gold {
-    color: var(--gold);
-  }
-  .hero-overlay-box .eyebrow {
-    margin-bottom: 10px;
-  }
-
-  /* ===== SECTIONS ===== */
-  .section {
-    padding: 64px 0;
+  /* ===== INTRO TOP (mixt) ===== */
+  .intro-top {
     background: var(--surface);
+    padding: 32px 0 8px;
   }
-  .section--alt {
-    padding: 72px 0;
-    background: var(--surface-alt);
-  }
-  .section--alt :global(p) {
-    font-size: 1.0625rem;
-  }
-  .section :global(p) {
+  .intro-top p {
     font-size: 1rem;
     line-height: 1.8;
-    margin-bottom: 18px;
     color: var(--text-sec);
+    max-width: 900px;
   }
-  .section :global(p:last-child) {
+
+  /* ===== COLAJ PROMO ===== */
+  /* padding-top mai mare ca să lase fotografia hero (care „atârnă" ~47px sub bandă)
+     să nu se suprapună peste primul rând de grafice promo. */
+  .promo {
+    background: var(--surface);
+    padding: 72px 0 56px;
+  }
+  .promo-grid {
+    display: grid;
+    gap: 24px;
+    align-items: start;
+    justify-content: center;
+  }
+  .promo-grid--cols-1 {
+    grid-template-columns: minmax(0, 420px);
+  }
+  .promo-grid--cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .promo-grid--cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .promo-grid--cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .promo-item {
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--sh-sm);
+    background: #fff;
+  }
+  .promo-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ===== ÎNCHEIERE: intro/contact/FAQ ===== */
+  .closing {
+    background: var(--surface-alt);
+    padding: 64px 0;
+  }
+  .closing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .intro-col p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-sec);
+    margin-bottom: 16px;
+  }
+  .intro-col p:last-child {
     margin-bottom: 0;
   }
 
-  .sec-head {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 48px;
+  .faq-col h2 {
+    font-size: 1.875rem;
+    margin-bottom: 10px;
   }
-  .sec-head h2 {
-    margin-bottom: 12px;
-  }
-
-  /* ===== PACKAGE GRID ===== */
-  .pkg-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .pkg-card {
-    position: relative;
-    background: var(--surface-card);
-    border: 1px solid var(--border);
-    border-radius: var(--r-md);
-    padding: 28px 24px 24px;
-    box-shadow: var(--sh-sm);
-    display: flex;
-    flex-direction: column;
-    transition:
-      transform var(--t-med),
-      box-shadow var(--t-med);
-  }
-  .pkg-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--sh-md);
-  }
-  .pkg-badge {
-    position: absolute;
-    top: -12px;
-    right: 20px;
-    background: var(--magenta);
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    padding: 5px 12px;
-    border-radius: var(--r-pill);
-    box-shadow: var(--sh-sm);
-  }
-  .pkg-card h3 {
-    font-size: 1.1875rem;
-    margin-bottom: 14px;
-    color: var(--heading);
-  }
-  .pkg-items {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    margin-bottom: 20px;
-    flex: 1;
-  }
-  .pkg-items li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 0.9375rem;
-    color: var(--text-sec);
-    line-height: 1.5;
-  }
-  .pkg-items li::before {
-    content: '';
-    flex-shrink: 0;
-    margin-top: 3px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background-color: var(--gold);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%23051145' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 10px 8px;
-  }
-
-  .pkg-price-box {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    background: var(--navy);
-    border-radius: var(--r-md);
-    padding: 12px 18px;
-    margin-bottom: 18px;
-    position: relative;
-    overflow: hidden;
-  }
-  .pkg-price-box::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold) 0%, var(--magenta) 100%);
-  }
-  .pkg-old-price {
+  .faq-sub {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: line-through;
+    color: var(--text-sec);
+    margin-bottom: 22px;
+    line-height: 1.6;
   }
-  .pkg-price {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-  }
-  .pkg-card :global(.pkg-btn) {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* ===== CTA FINAL ===== */
-  .cta-section {
-    padding: 72px 0;
-    background: var(--navy);
-    text-align: center;
-  }
-  .cta-inner {
-    max-width: 620px;
-  }
-  .cta-section h2 {
-    color: #fff;
-    margin-bottom: 14px;
-  }
-  .cta-note {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 1rem;
-    margin-bottom: 28px;
-  }
-  .cta-note a {
-    font-weight: 600;
-    color: var(--gold);
-  }
-  .cta-btn-group {
-    justify-content: center;
-    margin-top: 0;
+  .accordion {
+    display: flex;
+    flex-direction: column;
   }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
-    .pkg-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (max-width: 768px) {
-    .offer-hero {
-      min-height: 300px;
-    }
-    .hero-overlay-box {
-      padding: 20px 22px;
-    }
-    .hero-overlay-box h1 {
-      font-size: 1.875rem;
-    }
-    .section {
-      padding: 48px 0;
-    }
-    .section--alt {
-      padding: 56px 0;
-    }
-    .cta-section {
-      padding: 56px 0;
-    }
-  }
-  @media (max-width: 600px) {
-    .pkg-grid {
+    .closing-grid {
       grid-template-columns: 1fr;
+      gap: 40px;
     }
+    .promo-grid--cols-3,
+    .promo-grid--cols-4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 560px) {
     .wrap {
       padding: 0 20px;
+    }
+    .promo-grid {
+      gap: 16px;
+    }
+    .promo-grid--cols-2,
+    .promo-grid--cols-3,
+    .promo-grid--cols-4 {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      margin: 0 auto;
     }
   }
 </style>

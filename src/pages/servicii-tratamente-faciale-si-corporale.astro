@@ -1,16 +1,20 @@
 ---
 // Pagină unică „Hub servicii" — slug exact din reference/site-inventory.md
 // (/servicii-tratamente-faciale-si-corporale/).
-// Intro + titluri de secțiune PORTATE FIDEL din pagina live (curl 2026-07-05) — identice cu cele
-// deja folosite pe homepage (index.astro), unde au fost la rândul lor scrapuite din același site.
-// Grilele de carduri listează TOATE cele 17 tratamente din colecția `treatments` (nu doar
-// subseturile parțiale de pe homepage), grupate pe categorie și ordonate după câmpul `order`
-// (sursă unică de adevăr — vezi src/content.config.ts), în aceeași ordine de secțiuni (Corporal
-// apoi Facial) ca pe pagina live.
+// HERO + intro portate FIDEL din pagina live (curl/Playwright 2026-07-05):
+//   - InnerHero (bandă gri, titlu navy stânga + breadcrumb + poză corporală dreapta + puncte teal)
+//   - intro: paragraf navy cu clauză teal inline + al doilea paragraf navy + iconițe social
+//   - în spatele grupurilor de carduri: decorațiuni gri-deschis „rectangle" (pătrat sus-dreapta +
+//     pătrat jos-stânga, staggered), exact ca pe live (rectangle-2.png, 25% / 20%).
+// Grilele de carduri listează TOATE cele 17 tratamente din colecția `treatments`, grupate pe
+// categorie și ordonate după câmpul `order` (sursă unică — src/content.config.ts), în aceeași
+// ordine (Corporal apoi Facial) ca pe pagina live.
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerHero from '../components/InnerHero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ContactBlock from '../components/ContactBlock.astro';
+import { site } from '../data/site';
 
 const treatments = await getCollection('treatments');
 
@@ -24,24 +28,51 @@ const facial = treatments.filter((t) => t.data.category === 'facial').sort((a, b
   canonicalPath="/servicii-tratamente-faciale-si-corporale/"
 >
   <!-- =========================================================
-       PAGE HEADER
+       INNER HERO (bandă gri-deschis) — replică live
   ========================================================== -->
-  <section class="page-header">
+  <InnerHero
+    title="Servicii tratamente faciale si corporale"
+    breadcrumb={[{ label: 'Servicii Tratamente Faciale si Corporale' }]}
+    image="/top-oferte.jpg"
+    imageAlt="Servicii tratamente faciale și corporale — Deea Body Center Ploiești"
+  />
+
+  <!-- =========================================================
+       INTRO (paragraf navy cu clauză teal + paragraf navy) + social
+  ========================================================== -->
+  <section class="intro">
     <div class="wrap">
-      <div class="eyebrow eyebrow--gold" style="justify-content:center">Deea Body Center</div>
-      <h1>Servicii tratamente faciale si corporale</h1>
-      <p>
-        Descoperă servicii de tratamente faciale și corporale de top la Deea Body Center Ploiești! Revitalizează-ți
-        tenul și conturează-ți corpul cu soluții personalizate și eficiente.
+      <p class="intro-lead">
+        Descoperă <a class="intro-teal" href="/servicii-tratamente-faciale-si-corporale/">servicii de tratamente
+        faciale și corporale</a> de top la Deea Body Center Ploiești! Revitalizează-ți tenul și conturează-ți corpul
+        cu soluții personalizate și eficiente.
       </p>
-      <p>La Deea Body Center combinăm tratamente faciale și corporale pentru o piele revitalizată și o siluetă sculptată, perfectă pentru tine.</p>
+      <p class="intro-lead">
+        La Deea Body Center combinăm tratamente faciale și corporale pentru o piele revitalizată și o siluetă
+        sculptată, perfectă pentru tine.
+      </p>
+      <div class="intro-social">
+        <a href={site.social.facebook || '#'} aria-label="Facebook">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+            ><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg
+          >
+        </a>
+        <a href={site.social.instagram || '#'} aria-label="Instagram">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+            ><rect x="2" y="2" width="20" height="20" rx="5"></rect><path
+              d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
+            ></line></svg
+          >
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- =========================================================
-       TRATAMENTE CORPORALE (9)
+       TRATAMENTE CORPORALE — decorațiuni rectangle staggered
   ========================================================== -->
-  <section class="section">
+  <section class="section section--deco">
     <div class="wrap">
       <div class="sec-head">
         <div class="eyebrow">Deea Body Center</div>
@@ -59,9 +90,9 @@ const facial = treatments.filter((t) => t.data.category === 'facial').sort((a, b
   </section>
 
   <!-- =========================================================
-       TRATAMENTE FACIALE (8)
+       TRATAMENTE FACIALE — decorațiuni rectangle staggered
   ========================================================== -->
-  <section class="section--alt">
+  <section class="section section--deco">
     <div class="wrap">
       <div class="sec-head">
         <div class="eyebrow">Deea Body Center</div>
@@ -81,7 +112,7 @@ const facial = treatments.filter((t) => t.data.category === 'facial').sort((a, b
   <!-- =========================================================
        CTA — PROGRAMARE WHATSAPP (fără formular)
   ========================================================== -->
-  <section class="section" id="programare">
+  <section class="section--alt" id="programare">
     <div class="wrap wrap--narrow">
       <ContactBlock />
     </div>
@@ -90,9 +121,9 @@ const facial = treatments.filter((t) => t.data.category === 'facial').sort((a, b
 
 <style>
   .wrap {
-    max-width: 1200px;
+    max-width: 1140px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 15px;
   }
   .wrap--narrow {
     max-width: 640px;
@@ -108,44 +139,38 @@ const facial = treatments.filter((t) => t.data.category === 'facial').sort((a, b
     color: var(--teal);
     margin-bottom: 16px;
   }
-  .eyebrow--gold {
-    color: var(--gold);
-  }
 
-  /* ===== PAGE HEADER ===== */
-  .page-header {
-    background: var(--navy);
-    padding: 88px 0 64px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  /* ===== INTRO (sub bandă hero) ===== */
+  .intro {
+    background: var(--surface);
+    padding: 28px 0 8px;
   }
-  .page-header::before {
-    content: '';
-    position: absolute;
-    top: -120px;
-    right: -80px;
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(circle, rgba(28, 114, 97, 0.14) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .page-header .wrap {
-    position: relative;
-    max-width: 760px;
-  }
-  .page-header h1 {
-    color: #fff;
-    margin-bottom: 18px;
-  }
-  .page-header p {
-    color: rgba(255, 255, 255, 0.78);
+  .intro-lead {
+    color: var(--navy, #051145);
     font-size: 1.0625rem;
     line-height: 1.7;
+    max-width: 640px;
+    margin: 0 0 14px;
   }
-  .page-header p + p {
-    margin-top: 10px;
+  .intro-teal {
+    color: var(--teal, #148a87);
+    text-decoration: none;
+  }
+  .intro-teal:hover {
+    text-decoration: underline;
+  }
+  .intro-social {
+    display: flex;
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .intro-social a {
+    color: var(--navy, #051145);
+    display: inline-flex;
+    transition: color 0.2s ease;
+  }
+  .intro-social a:hover {
+    color: var(--teal, #148a87);
   }
 
   /* ===== SECTIONS ===== */
@@ -154,8 +179,23 @@ const facial = treatments.filter((t) => t.data.category === 'facial').sort((a, b
     background: var(--surface);
   }
   .section--alt {
-    padding: 80px 0;
+    padding: 72px 0;
     background: var(--surface-alt);
+  }
+
+  /* Decorațiuni gri-deschis „rectangle" — replică live:
+     pătrat sus-dreapta (25%) + pătrat jos-stânga (20%), staggered, în spatele cardurilor. */
+  .section--deco {
+    position: relative;
+    background-color: var(--surface);
+    background-image: url('/images/rectangle-2.png'), url('/images/rectangle-2.png');
+    background-position: 100% 0%, 0% 100%;
+    background-size: 25%, 20%;
+    background-repeat: no-repeat, no-repeat;
+  }
+  .section--deco .wrap {
+    position: relative;
+    z-index: 1;
   }
 
   .sec-head {
@@ -184,9 +224,6 @@ const facial = treatments.filter((t) => t.data.category === 'facial').sort((a, b
     }
   }
   @media (max-width: 768px) {
-    .page-header {
-      padding: 64px 0 48px;
-    }
     .section,
     .section--alt {
       padding: 56px 0;
@@ -196,8 +233,8 @@ const facial = treatments.filter((t) => t.data.category === 'facial').sort((a, b
     .svc-grid {
       grid-template-columns: 1fr;
     }
-    .wrap {
-      padding: 0 20px;
+    .section--deco {
+      background-size: 40%, 34%;
     }
   }
 </style>

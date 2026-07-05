@@ -26,9 +26,13 @@ const { title, excerpt, image, href, tall = false } = Astro.props;
 <a href={href} class={`offer-card ${tall ? 'tall' : ''}`}>
   <Image class="offer-bg" src={image} alt="" width={640} height={640} loading="lazy" />
   <div class="offer-overlay">
+    <svg class="offer-icon" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.4" aria-hidden="true">
+      <path d="M24 30c-6 0-11-4-11-10 5 0 8 2 11 6 3-4 6-6 11-6 0 6-5 10-11 10Z" />
+      <path d="M24 30v8" />
+      <path d="M24 14c2 3 2 6 0 9-2-3-2-6 0-9Z" />
+    </svg>
     <h3>{title}</h3>
     <p>{excerpt}</p>
-    <span class="btn-offer">Vezi ofertele</span>
   </div>
 </a>
 
@@ -38,8 +42,9 @@ const { title, excerpt, image, href, tall = false } = Astro.props;
     overflow: hidden;
     border-radius: 10px;
     display: flex;
-    align-items: flex-end;
-    min-height: 260px;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
     text-decoration: none;
   }
   .offer-card.tall {
@@ -57,41 +62,45 @@ const { title, excerpt, image, href, tall = false } = Astro.props;
   .offer-card:hover :global(.offer-bg) {
     transform: scale(1.04);
   }
+  /* Tentă navy plină peste toată imaginea (ca pe live) */
+  .offer-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 17, 69, 0.68);
+    transition: background var(--t-fast);
+  }
+  .offer-card:hover::after {
+    background: rgba(5, 17, 69, 0.78);
+  }
   .offer-overlay {
     position: relative;
-    background: linear-gradient(to top, rgba(5, 17, 69, 0.85) 0%, rgba(5, 17, 69, 0.35) 60%, transparent 100%);
+    z-index: 1;
     width: 100%;
-    padding: 24px 22px;
+    padding: 32px 30px;
     color: #fff;
+    text-align: center;
+  }
+  .offer-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 14px;
+    display: block;
   }
   .offer-overlay h3 {
     color: #fff;
-    font-size: 1.3125rem;
-    margin-bottom: 10px;
-    line-height: 1.25;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.2;
   }
   .offer-overlay p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.92);
     font-size: 0.8125rem;
-    line-height: 1.55;
-    margin-bottom: 16px;
-  }
-  .btn-offer {
-    display: inline-block;
-    background: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    padding: 8px 18px;
-    border-radius: 5px;
-    transition:
-      background var(--t-fast),
-      border-color var(--t-fast);
-  }
-  .offer-card:hover .btn-offer {
-    background: var(--magenta);
-    border-color: var(--magenta);
+    line-height: 1.6;
+    max-width: 34ch;
+    margin: 0 auto;
   }
 
   @media (max-width: 768px) {
