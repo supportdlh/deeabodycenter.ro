@@ -1,0 +1,18 @@
+---
+// Rută dinamică pentru cele 17 pagini de tratament — un singur template
+// (TreatmentLayout) alimentat din colecția `treatments`. Slug-ul e dat de
+// numele fișierului din src/content/treatments/ (`entry.id`, generat de
+// glob loader-ul Astro din numele fișierului — nu de un câmp `slug` din
+// frontmatter), astfel încât fișierul rămâne singura sursă de adevăr pentru URL.
+import { getCollection } from 'astro:content';
+import TreatmentLayout from '../layouts/TreatmentLayout.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('treatments');
+  return items.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<TreatmentLayout entry={entry} />
