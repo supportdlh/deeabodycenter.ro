@@ -52,6 +52,33 @@ sections:
           Serurile Intraceuticals sunt disponibile în variante personalizate pentru diferite tipuri de piele și
           probleme specifice, cum ar fi anti-îmbătrânire, fermitate, hiperpigmentare sau acnee. Tratamentul poate fi
           adaptat pentru a răspunde nevoilor unice ale fiecărui client.
+gallery:
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-499.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-505.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-507.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-510.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-527.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-531.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-533.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-536.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-537.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-540.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-541-1.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-543.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-546.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-547.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-548.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-549.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-551.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-552.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-555.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-556.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-557.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-559.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-562.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-565.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-570.webp
+  - /galleries/tratament-facial-intraceuticals/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-571.webp
 order: 1
 seo:
   title: Tratament facial Intraceuticals - Deea Body Center

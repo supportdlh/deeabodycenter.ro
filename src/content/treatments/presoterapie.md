@@ -61,6 +61,14 @@ benefits:
   - Reduce celulita și aspectul pielii lăsate - Contribuie la netezirea și tonifierea pielii.
   - Ameliorează durerea și senzația de picioare grele - Reduce umflăturile și disconfortul muscular.
   - Accelerează recuperarea musculară - Util pentru sportivi sau după efort fizic intens.
+gallery:
+  - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0001.webp
+  - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0002.webp
+  - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0005.webp
+  - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0007.webp
+  - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0006.webp
+  - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0004.webp
+  - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0003.webp
 order: 7
 seo:
   title: Presoterapie - Deea Body Center

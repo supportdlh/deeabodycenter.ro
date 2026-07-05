@@ -50,6 +50,23 @@ sections:
           Efectele benefice sunt observabile după primele ședințe, iar rezultatele devin din ce în ce mai evidente
           pe măsură ce pielea continuă procesul de regenerare în săptămânile următoare. Acest tratament oferă
           rezultate de lungă durată și o îmbunătățire continuă a aspectului pielii.
+gallery:
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-637.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-638.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-639.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-640.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-641.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-642.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-643.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-644.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-645.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-646.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-647.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-648.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-649.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-650.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-651.webp
+  - /galleries/tratament-facial-micropen/tratament-micropen-deeabocycenter-ploiesti_DBC-652.webp
 order: 4
 seo:
   title: Tratament facial MicroPen - Deea Body Center

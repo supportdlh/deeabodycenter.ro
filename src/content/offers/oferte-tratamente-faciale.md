@@ -5,6 +5,8 @@ excerpt: >-
   Explorează oferte de tratamente faciale la Deea Body Center Ploiești. Regenerare, hidratare și îngrijire
   personalizată pentru un ten radiant și sănătos!
 image: ../../assets/Tratament-sculptor-deeabodycenter.ro-ploiesti.webp
+gallery:
+  - /galleries/oferte-tratamente-faciale/WhatsApp-Image-2026-01-27-at-17.58.50-819x1024.jpeg
 body: >-
   La Deea Body Center Ploiești, îți oferim tratamente faciale adaptate nevoilor tale, pentru un ten luminos și
   revitalizat.

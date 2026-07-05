@@ -49,6 +49,19 @@ sections:
         body: >-
           Deși implică o investiție inițială, epilarea definitivă reduce costurile și timpul alocate epilării
           periodice, eliminând complet necesitatea programărilor frecvente și a produselor de epilare.
+gallery:
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-496-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-493-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-491-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-485-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-481-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-479-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-478-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-474-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-473-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-472-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-469-scaled.jpg
+  - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-486-scaled.jpg
 order: 9
 seo:
   title: Epilarea definitivă cu laserul XLight - Deea Body Center

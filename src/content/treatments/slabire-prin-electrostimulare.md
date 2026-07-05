@@ -39,6 +39,19 @@ sections:
           Fiecare sesiune de electrostimulare poate fi personalizată pentru a viza nevoile specifice ale fiecărei
           persoane, iar rezultatele sunt vizibile după doar câteva ședințe. Ideal pentru cei care caută o metodă
           rapidă și eficientă de remodelare corporală!
+gallery:
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-253.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-267.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-266.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-265.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-263.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-261.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-260.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-258.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-257.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-256.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-255.webp
+  - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-254.webp
 order: 6
 seo:
   title: Slabire prin electrostimulare - Deea Body Center

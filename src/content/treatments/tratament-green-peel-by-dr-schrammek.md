@@ -48,6 +48,35 @@ sections:
           Tratamentul este 100% natural, folosind doar plante medicinale și ingrediente naturale, ceea ce îl face
           potrivit chiar și pentru pielea sensibilă. Rezultatele sunt vizibile de la primele ședințe și continuă să
           se îmbunătățească pe măsură ce pielea se regenerează natural.
+gallery:
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-653.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-657.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-659.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-661.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-662.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-665.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-666.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-667.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-669.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-670.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-671.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-673.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-674.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-676.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-678.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-680.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-681.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-684.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-685.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-686.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-690.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-692.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-694.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-695.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-696.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-697.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-699.webp
+  - /galleries/tratament-green-peel-by-dr-schrammek/tratament-green-peel-deeabocycenter-ploiesti_DBC-701.webp
 order: 5
 seo:
   title: Tratament Green Peel® by Dr. Schrammek - Deea Body Center

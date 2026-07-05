@@ -38,6 +38,30 @@ sections:
           Datorită stimulării intense și personalizate a țesuturilor, beneficiile masajului Dermohealth pot fi
           observate chiar după primele sesiuni. Pielea devine mai fină, iar silueta mai bine conturată, rezultatele
           continuând să se îmbunătățească pe măsură ce tratamentul progresează.
+gallery:
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-398.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-393.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-391.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-389.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-387.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-368.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-385.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-375.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-374.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-372.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-367.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-363.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-361.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-360.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-358.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-356.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-354.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-353.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-352.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-351.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-382.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-378.webp
+  - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-377.webp
 order: 2
 seo:
   title: Masaj transdermic Dermohealth - Deea Body Center

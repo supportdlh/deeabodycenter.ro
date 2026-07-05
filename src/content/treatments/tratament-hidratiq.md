@@ -69,6 +69,35 @@ sections:
         body: >-
           Îmbina temperaturi la 2 extreme: minim -2 grade C si maxim 2 grade C pentru închiderea si deschiderea
           porilor, pentru tonifierea peretilor vasculari, pentru un usor lifting facial.
+      - title: HidratIQ
+        body: >-
+          Combina cosmetica 7 functii: Aqua peel, Oxigen Hiperbaric, Radiofrecventa, Ultrasunete, Spatula Ultrasunet,
+          Ionoforeza, CrioHeat.
+gallery:
+  - /galleries/tratament-hidratiq/DSC00993-scaled.webp
+  - /galleries/tratament-hidratiq/DSC00996-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC00998-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC00999-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01005-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01008-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01013-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01021-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01025-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01026-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01027-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01028-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01029-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01036-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01037-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01039-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01044-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01046-scaled.webp
+  - /galleries/tratament-hidratiq/DSC01047-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01048-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01049-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01058-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01059-scaled.jpg
+  - /galleries/tratament-hidratiq/DSC01061-scaled.jpg
 order: 6
 seo:
   title: Tratament HidratiQ - Deea Body Center

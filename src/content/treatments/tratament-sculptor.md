@@ -32,8 +32,12 @@ sections:
           in doar o sesiune, dar cu adancime de penetrare controlata de pana la maxim 3 cm.
       - title: CrioRadiofrecventa
         body: >-
-          Tehnologie de radiofrecvență combinată cu crioterapie, pentru tonifiere profundă și reducerea
-          circumferinței, cu rezultate vizibile după primele ședințe.
+          Inovatia Sculptor care aduce radiofrecventa la un alt nivel, combinand-o pe acelasi capat de tratament cu
+          crioterapia. Socul termic produce o compactare cu efecte vizibile imediat. Crioterapia ajuta la liftarea
+          tegumentului, iar combinatia cu terapia de radiofrecventa se personalizeaza in functie de mai multe
+          criterii. Posibilitatile multiple de alegere a tipului de radiofrecventa, a frecventelor de lucru (Low,
+          Medium, High, Mix), a temperaturilor crioterapiei fac din aceasta terapie solutia ideala pentru
+          rezolvarea problemelor de estetica faciala si corporala.
       - title: Masaj Transdermic Dermohealth
         body: >-
           Masajul transdermic Dermohealth stimulează circulația, reduce celulita și îmbunătățește fermitatea pielii
@@ -50,23 +54,44 @@ sections:
           Lifting facial restructurant pentru redefinirea conturului facial, poate fi folosit inclusiv pe tenul
           cuperotic.
       - title: Radiofrecventa tetrapolara
-        body: >-
-          Radiofrecvența tetrapolară acționează în profunzimea dermei pentru a stimula producția de colagen și a
-          tonifica pielea feței, cu efect de întinerire vizibil.
+        body: Antirid, tonifiant, liftare, pielea lasata a gatului, barbie dubla.
       - title: Dermoheath + DermoLED
         body: >-
-          Combinație sinergică între masajul transdermic și terapia LED pentru regenerarea celulară, reducerea
-          inflamațiilor și îmbunătățirea texturii pielii.
+          Efecte rapide pentru tratamente anticearcan, pungi sub ochi, detoxifiere faciala, cresterea elasticitatii,
+          stimulare fibroblaste.
       - title: Microdermabraziune cu pulbere de diamant
         body: >-
-          Exfoliere mecanică fină cu pulbere de diamant, care îndepărtează celulele moarte, stimulează reînnoirea
-          celulară și lasă pielea netedă, luminoasă și mai tânără.
+          Cu stick-uri de unica folosinta de diferite granulatii, pentru diferite tipuri de ten, pentru stimularea
+          regenerarii epiteliale
 benefits:
   - Exfolierea celulelor moarte de la suprafata tegumentului
   - Eliminarea semnelor de fotoimbatranire
   - Combaterea punctelor negre
   - Combaterea ridurilor fine și a liniilor de expresie
   - Tratarea cicatricilor post-acnee
+gallery:
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-306.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-312.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-313.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-316.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-317.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-319.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-320.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-321.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-323.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-324.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-326.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-328.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-330.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-332.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-335.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-336.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-337.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-340.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-343.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-344.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-345.webp
+  - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-346.webp
 order: 1
 seo:
   title: Tratament Sculptor - Deea Body Center

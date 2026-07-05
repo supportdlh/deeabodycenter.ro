@@ -56,6 +56,39 @@ benefits:
   - 2.3 cm – reducere in zona fesiera
   - Majoritatea pacientilor au considerat tratamentul usor, fara durere
   - 60% au prezentat o imbunatatire a texturii pielii
+gallery:
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-220.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-219.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-217.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-214.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-212.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-211.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-210.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-195.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-197.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-209.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-208.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-207.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-204.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-203.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-201.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-193.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-191.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-190.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-188.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-187.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-186.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-185.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-180.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-225.webp
+  - /galleries/tratare-celulita-cu-velashape2/vela-shape-deeabocycenter-ploiesti_DBC-177.webp
+  - /galleries/tratare-celulita-cu-velashape2/Tratament-eliminare-celulita-fese.png
+  - /galleries/tratare-celulita-cu-velashape2/Tratament-reducere-abdomen.png
+  - /galleries/tratare-celulita-cu-velashape2/Tratament-remodelare-abdomen-cu-VelaShape2.png
+  - /galleries/tratare-celulita-cu-velashape2/Tratament-remodelare-abdomen.png
+  - /galleries/tratare-celulita-cu-velashape2/Tratament-remodelare-brate.png
+  - /galleries/tratare-celulita-cu-velashape2/Cum-functioneaza-VelaShape2.png
+  - /galleries/tratare-celulita-cu-velashape2/Cum-trateaza-celulita-VelaShape2.png
 order: 4
 seo:
   title: Tratare Celulita cu VelaShape2 - Deea Body Center

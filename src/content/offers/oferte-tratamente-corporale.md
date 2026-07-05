@@ -5,6 +5,11 @@ excerpt: >-
   Profită de oferte pentru tratamente corporale la Deea Body Center Ploiești. Tonifiere, remodelare și relaxare la
   prețuri avantajoase!
 image: ../../assets/oferte-deea-body-center-ploiesti.webp
+gallery:
+  - /galleries/oferte-tratamente-corporale/promo-dec-25.webp
+  - /galleries/oferte-tratamente-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-3-819x1024.jpeg
+  - /galleries/oferte-tratamente-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-2-819x1024.jpeg
+  - /galleries/oferte-tratamente-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-1-819x1024.jpeg
 body: >-
   La Deea Body Center Ploiești, îți oferim o gamă variată de tratamente corporale menite să îți redefinească
   silueta și să îți îmbunătățească starea de bine.

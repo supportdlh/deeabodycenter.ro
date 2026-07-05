@@ -36,6 +36,11 @@ const treatments = defineCollection({
         }),
       ),
       benefits: z.array(z.string()).optional(),
+      // Galeria de imagini a paginii (carusel/grilă Elementor de pe site-ul original).
+      // Căi absolute către imagini din `public/galleries/<slug>/` (ex. `/galleries/criolipoliza/1.webp`).
+      // Nu folosim image() aici: sunt zeci de imagini per pagină (deja webp optimizate din WP),
+      // le servim direct din public/ ca să nu încetinim build-ul.
+      gallery: z.array(z.string()).optional(),
       order: z.number(),
       seo: z.object({
         title: z.string(),
@@ -69,6 +74,8 @@ const offers = defineCollection({
           }),
         )
         .optional(),
+      // Galeria de imagini promoționale a paginii de ofertă (căi din `public/galleries/<slug>/`).
+      gallery: z.array(z.string()).optional(),
       seo: z.object({
         title: z.string(),
         description: z.string(),

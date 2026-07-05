@@ -32,6 +32,35 @@ benefits:
   - Voice guide (clientul este informat in legatura cu operatiunea care a fost efectuata)
   - Aromaterapie
   - Muzicoterapie
+gallery:
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-297.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-296.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-295.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-294.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-293.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-292.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-291.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-290-1.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-305.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-303.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-302.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-299.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-298.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-290.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-289.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-287.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-286.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-285.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-284.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-283.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-282.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-281.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-279.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-278.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-277.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-272.webp
+  - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-273.webp
+  - /galleries/solar/deeabodycenter-ploiesti-scaled.webp
 order: 8
 seo:
   title: Solar - Deea Body Center Ploiesti

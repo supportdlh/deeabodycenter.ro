@@ -47,6 +47,30 @@ sections:
         body: >-
           Tratamentul cu Laser tip SlimLight Zentisse este foarte confortabil, relaxant, sigur, neinvaziv, nedureros
           si nu presupune riscuri de nici un fel sau timp de recuperare dupa tratament.
+gallery:
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-251.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-250.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-248.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-247.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-246.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-245.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-244.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-242.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-241.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-240.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-239.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-238.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-237.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-236.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-235.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-234.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-233.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-232.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-231.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-230.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-229.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-227.webp
+  - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-228.webp
 order: 3
 seo:
   title: Slabire cu ZENTISSE Slim Light Laser - Deea Body Center
