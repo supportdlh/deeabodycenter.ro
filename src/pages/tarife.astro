@@ -7,6 +7,7 @@
 // pentru a elimina orice ambiguitate/interpretare asupra unei pagini de preț.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactBlock from '../components/ContactBlock.astro';
+import Accordion from '../components/Accordion.astro';
 
 interface PriceItem {
   name: string;
@@ -91,6 +92,43 @@ const groups: PriceGroup[] = [
     items: [{ name: 'Solar', price: '4 RON /minut' }],
   },
 ];
+
+// FAQ — identică cu cea de pe homepage (src/pages/index.astro), copiată VERBATIM de acolo.
+// Pe pagina live /tarife/, blocul „Întrebări și răspunsuri" apare alături de „Trimite o
+// programare" (aceeași pereche coloană-la-coloană ca pe homepage) — lipsea complet din
+// pagina re-construită; restaurat aici ca conținut real, nu doar prezentare.
+const faq = [
+  {
+    question: 'Cât durează rezultatele și de câte ședințe am nevoie pentru a vedea efecte?',
+    answers: [
+      'Rezultatele variază în funcție de tratament și de corpul fiecărei persoane.',
+      'De obicei, se observă îmbunătățiri după 3-5 ședințe, dar pentru rezultate optime se recomandă un program complet de 6-10 ședințe, efectuate la intervale regulate.',
+    ],
+  },
+  {
+    question: 'Sunt aceste tratamente sigure și au efecte secundare?',
+    answers: [
+      'Tratamentele sunt sigure atunci când sunt realizate de personal instruit și cu echipamente de calitate.',
+      'Pot apărea efecte secundare minore, precum roșeață sau senzație de căldură, dar acestea dispar de obicei în câteva ore.',
+      'Consultăm fiecare client pentru a ne asigura că tratamentele sunt potrivite și sigure pentru el.',
+    ],
+  },
+  {
+    question: 'Cum funcționează tratamentele de slăbire/localizare a grăsimii (ex. criolipoliză, cavitație, radiofrecvență)?',
+    answers: [
+      'Fiecare tratament are o metodă diferită de acțiune.',
+      'De exemplu, criolipoliza răcește țesutul adipos pentru a distruge celulele de grăsime, cavitația utilizează ultrasunete pentru a descompune grăsimea, iar radiofrecvența încălzește țesuturile pentru a stimula producția de colagen și a reduce celulita.',
+      'Toate sunt non-invazive și nedureroase.',
+    ],
+  },
+  {
+    question: 'Ce tipuri de tratamente faciale sunt potrivite pentru tipul meu de piele?',
+    answers: [
+      'Oferim o consultație inițială pentru a evalua tipul de piele și nevoile specifice ale fiecărui client.',
+      'În funcție de aceasta, recomandăm tratamente precum curățare profundă, hidratare intensă, anti-îmbătrânire sau pentru pielea sensibilă/acneică.',
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -134,11 +172,29 @@ const groups: PriceGroup[] = [
   </section>
 
   <!-- =========================================================
-       CTA — PROGRAMARE WHATSAPP (fără formular)
+       CTA — PROGRAMARE WHATSAPP (fără formular) + FAQ
+       (pereche coloană-la-coloană, identică structurii de pe pagina live
+       /tarife/ și pe homepage — vezi src/pages/index.astro)
   ========================================================== -->
-  <section class="section--alt" id="programare">
-    <div class="wrap wrap--narrow">
+  <section class="section--alt contact-faq-section" id="programare">
+    <div class="wrap contact-grid">
       <ContactBlock />
+
+      <div class="faq-col">
+        <h2>Întrebări și răspunsuri</h2>
+        <p class="faq-sub">Răspunsuri la cele mai frecvente întrebări pe care le primim din partea clienților.</p>
+        <div class="accordion">
+          {
+            faq.map((item) => (
+              <Accordion title={item.question}>
+                {item.answers.map((a) => (
+                  <p>{a}</p>
+                ))}
+              </Accordion>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -149,10 +205,6 @@ const groups: PriceGroup[] = [
     margin: 0 auto;
     padding: 0 32px;
   }
-  .wrap--narrow {
-    max-width: 640px;
-  }
-
   .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -276,6 +328,30 @@ const groups: PriceGroup[] = [
     font-variant-numeric: tabular-nums;
   }
 
+  /* ===== CONTACT + FAQ ===== */
+  .contact-faq-section .wrap {
+    max-width: 1170px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .faq-col h2 {
+    font-size: 1.875rem;
+    margin-bottom: 10px;
+  }
+  .faq-sub {
+    font-size: 0.875rem;
+    color: var(--text-sec);
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+  .accordion {
+    display: flex;
+    flex-direction: column;
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .page-header {
@@ -294,6 +370,12 @@ const groups: PriceGroup[] = [
     }
     .wrap {
       padding: 0 20px;
+    }
+  }
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
     }
   }
 </style>
