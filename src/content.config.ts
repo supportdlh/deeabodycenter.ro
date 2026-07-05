@@ -11,6 +11,9 @@ const treatments = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      // Titlu opțional pentru sidebar — dacă lipsește, se derivă din `title`
+      // eliminând prefixul „Tratament ” (vezi TreatmentLayout.astro).
+      sidebarTitle: z.string().optional(),
       category: z.enum(['facial', 'corporal']),
       excerpt: z.string(),
       heroImage: image(),

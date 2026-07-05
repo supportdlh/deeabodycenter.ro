@@ -20,8 +20,9 @@ const { entry } = Astro.props;
 const { data } = entry;
 
 // Titlul din sidebar reproduce mockup-ul Sculptor (unde "Tratament Sculptor" → "Sculptor" în sidebar).
-// Generic: elimină prefixul „Tratament " dacă există, altfel păstrează titlul complet.
-const sidebarTitle = data.title.replace(/^Tratament\s+/i, '');
+// Generic: preferă `sidebarTitle` explicit din frontmatter; altfel elimină prefixul
+// „Tratament " dacă există, altfel păstrează titlul complet.
+const sidebarTitle = entry.data.sidebarTitle ?? entry.data.title.replace(/^Tratament\s+/i, '');
 const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
 ---
 
@@ -29,7 +30,7 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
   <!-- =========================================================
        HERO FULL-WIDTH
   ========================================================== -->
-  <div class="treatment-hero" role="img" aria-label={`${data.title} la ${site.name} ${site.city}`}>
+  <div class="treatment-hero">
     <Image
       src={data.heroImage}
       alt={`${data.title} — ${site.name} ${site.city}`}
@@ -217,9 +218,6 @@ const waMessage = `Bună, aș dori o programare pentru ${data.title}.`;
     font-weight: 700;
     color: var(--heading);
     margin: 40px 0 16px;
-  }
-  .col-section-title:first-of-type {
-    margin-top: 40px;
   }
 
   .accordion {
