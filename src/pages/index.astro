@@ -234,7 +234,7 @@ const faq = [
   <section class="hero">
     <div class="wrap hero-inner">
       <div class="hero-content">
-        <span class="eyebrow">Ofertă limitată</span>
+        <p class="hero-eyebrow">Ofertă limitată</p>
         <h1 class="hero-title">
           Transformă-ți corpul și redefinește-ți încrederea cu oferta noastră exclusivă de remodelare!
         </h1>
@@ -288,6 +288,24 @@ const faq = [
           loading="eager"
         />
       </div>
+    </div>
+
+    <!-- Divizor ondulat (val) — identic ca formă cu shape-divider-ul din live (elementor-shape-bottom) -->
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1000 100" preserveAspectRatio="none">
+        <path
+          d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z"
+          fill="#ffffff"
+          opacity="0.33"></path>
+        <path
+          d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z"
+          fill="#ffffff"
+          opacity="0.66"></path>
+        <path
+          d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z"
+          fill="#ffffff"
+          opacity="1"></path>
+      </svg>
     </div>
   </section>
 
@@ -422,20 +440,47 @@ const faq = [
   </section>
 
   <!-- ============================================================
-       TESTIMONIALE „Ce spun ele"
+       TESTIMONIALE „Ce spun ele" — slider (un singur testimonial vizibil),
+       ca pe live: fotografie pe fundal + card alb cu citat/stele/nume,
+       navigare prev/next cu JS vanilla minim (scroll-snap).
   ============================================================= -->
   <section class="testi-section">
     <div class="testi-bg-wrap" role="presentation">
       <Image class="testi-bg-img" src={imgTestimonialsBg} alt="" width={1920} height={1277} loading="lazy" />
-      <div class="testi-overlay"></div>
     </div>
     <div class="wrap testi-inner">
-      <h2 class="testi-heading">Ce spun ele</h2>
-      <div class="testi-grid">
-        {testimonials.map((t) => <TestimonialCard {...t} />)}
+      <div class="testi-card">
+        <h2 class="testi-heading">Ce spun ele</h2>
+        <div class="testi-track" data-testi-track>
+          {testimonials.map((t) => <TestimonialCard {...t} />)}
+        </div>
+        <div class="testi-controls">
+          <button type="button" class="testi-arrow" data-testi-prev aria-label="Testimonial anterior">‹</button>
+          <button type="button" class="testi-arrow" data-testi-next aria-label="Testimonial următor">›</button>
+        </div>
       </div>
     </div>
   </section>
+
+  <script>
+    const tracks = document.querySelectorAll('[data-testi-track]');
+    tracks.forEach((el) => {
+      const track = el;
+      const card = track.closest('.testi-card');
+      if (!card) return;
+      const prevBtn = card.querySelector('[data-testi-prev]');
+      const nextBtn = card.querySelector('[data-testi-next]');
+      const getIndex = () => Math.round(track.scrollLeft / track.clientWidth);
+      const goTo = (i) => {
+        const count = track.children.length;
+        const idx = ((i % count) + count) % count;
+        const slide = track.children[idx];
+        if (slide) track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+      };
+      prevBtn?.addEventListener('click', () => goTo(getIndex() - 1));
+      nextBtn?.addEventListener('click', () => goTo(getIndex() + 1));
+    });
+  </script>
 
   <!-- ============================================================
        CONTACT & FAQ
@@ -471,10 +516,12 @@ const faq = [
   }
 
   .eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.155em;
-    text-transform: uppercase;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: normal;
+    text-transform: none;
     color: var(--teal);
     display: block;
     margin-bottom: 10px;
@@ -492,7 +539,7 @@ const faq = [
     background: linear-gradient(130deg, #ded1f2 0%, #eae1f5 25%, #f2edf9 50%, #f8f4fc 72%, #ffffff 100%);
     position: relative;
     overflow: hidden;
-    padding: 56px 0 48px;
+    padding: 56px 0 150px;
   }
   .hero::before {
     content: '';
@@ -525,6 +572,15 @@ const faq = [
     z-index: 1;
   }
 
+  .hero-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
   .hero-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.25rem;
@@ -555,28 +611,50 @@ const faq = [
   .hero-list li::before {
     content: '';
     display: inline-block;
-    width: 14px;
-    height: 14px;
-    min-width: 14px;
-    min-height: 14px;
-    background: var(--gold);
-    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    min-height: 15px;
     margin-top: 3px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FEC42D'%3E%3Cpath d='M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z'/%3E%3C/svg%3E")
+      no-repeat center / contain;
+    flex-shrink: 0;
   }
 
   .hero-price {
     font-family: 'Playfair Display', serif;
-    font-size: 3.375rem;
+    font-size: 3.125rem;
     font-weight: 700;
-    color: var(--magenta);
-    line-height: 1.1;
+    color: var(--navy);
+    line-height: 1.2;
     margin-bottom: 10px;
   }
   .hero-note {
-    font-size: 0.875rem;
-    color: var(--text-sec);
-    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9375rem;
+    font-weight: 700;
+    color: var(--navy);
+    font-style: normal;
+    line-height: 1.25;
     margin-bottom: 20px;
+  }
+
+  /* ===== HERO WAVE (divizor ondulat, identic cu shape-divider-ul din live) ===== */
+  .hero-wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 130px;
+    line-height: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-wave svg {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .hero-social {
@@ -726,11 +804,10 @@ const faq = [
     padding: 0 24px;
   }
 
-  /* ===== TESTIMONIALS ===== */
+  /* ===== TESTIMONIALS — slider (1 item vizibil, foto fundal + card alb) ===== */
   .testi-section {
     position: relative;
     padding: 80px 0;
-    color: #fff;
     overflow: hidden;
   }
   .testi-bg-wrap {
@@ -743,24 +820,61 @@ const faq = [
     height: 100%;
     object-fit: cover;
   }
-  .testi-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(5, 17, 69, 0.58);
-  }
   .testi-inner {
     position: relative;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .testi-card {
+    width: 100%;
+    max-width: 600px;
+    background: var(--surface);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-lg);
+    padding: 48px 44px 40px;
   }
   .testi-heading {
-    font-size: 2.5rem;
-    color: #fff;
+    font-size: 2.25rem;
     text-align: center;
-    margin-bottom: 42px;
+    margin-bottom: 8px;
   }
-  .testi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+  .testi-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .testi-track::-webkit-scrollbar {
+    display: none;
+  }
+  .testi-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 26px;
+  }
+  .testi-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--navy);
+    font-size: 1.375rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background var(--t-fast),
+      color var(--t-fast);
+  }
+  .testi-arrow:hover {
+    background: var(--magenta);
+    color: #fff;
+    border-color: var(--magenta);
   }
 
   /* ===== CONTACT / FAQ ===== */
@@ -803,11 +917,23 @@ const faq = [
     .hero-image {
       display: none;
     }
+    .hero-eyebrow {
+      font-size: 1.5rem;
+    }
     .hero-title {
       font-size: 1.625rem;
     }
+    .hero-note {
+      font-size: 1.375rem;
+    }
     .hero-price {
       font-size: 2.5rem;
+    }
+    .hero {
+      padding-bottom: 90px;
+    }
+    .hero-wave {
+      height: 70px;
     }
     .intro-grid {
       grid-template-columns: 1fr;
@@ -825,8 +951,11 @@ const faq = [
     .offers-mosaic {
       grid-template-columns: 1fr;
     }
-    .testi-grid {
-      grid-template-columns: 1fr;
+    .testi-inner {
+      justify-content: center;
+    }
+    .testi-card {
+      padding: 36px 22px 30px;
     }
     .contact-grid {
       grid-template-columns: 1fr;

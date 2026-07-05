@@ -99,30 +99,17 @@ const facial = treatments.filter((t) => t.data.category === 'facial').sort((a, b
   }
 
   .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: normal;
+    text-transform: none;
     color: var(--teal);
     margin-bottom: 16px;
   }
-  .eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 3px;
-    background: var(--teal);
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
   .eyebrow--gold {
     color: var(--gold);
-  }
-  .eyebrow--gold::before {
-    background: var(--gold);
   }
 
   /* ===== PAGE HEADER ===== */

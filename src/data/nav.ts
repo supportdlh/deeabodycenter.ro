@@ -18,7 +18,7 @@ export interface NavItem {
 }
 
 export const nav: NavItem[] = [
-  { label: 'Home', href: '/' },
+  { label: 'Deea Body Center', href: '/' },
   {
     label: 'Oferte',
     href: '/oferte-speciale-tratamente-faciale-si-corporale/',
