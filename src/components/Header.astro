@@ -13,9 +13,6 @@ import WhatsAppButton from './WhatsAppButton.astro';
     </a>
 
     <input type="checkbox" id="nav-cb" class="nav-cb" />
-    <label for="nav-cb" class="hamburger" aria-label="Deschide meniu">
-      <span></span><span></span><span></span>
-    </label>
 
     <nav class="main-nav" aria-label="Navigare principală">
       <ul class="nav-list">
@@ -46,11 +43,16 @@ import WhatsAppButton from './WhatsAppButton.astro';
             </li>
           ))
         }
-        <li class="nav-item nav-item--cta">
-          <WhatsAppButton variant="nav" label="Programare" />
-        </li>
       </ul>
     </nav>
+
+    <div class="nav-cta">
+      <WhatsAppButton variant="nav" label="Programare" />
+    </div>
+
+    <label for="nav-cb" class="hamburger" aria-label="Deschide meniu">
+      <span></span><span></span><span></span>
+    </label>
   </div>
 </header>
 
@@ -58,20 +60,18 @@ import WhatsAppButton from './WhatsAppButton.astro';
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 200;
     background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 2px 16px rgba(5, 17, 69, 0.06);
-    transition: background var(--t-med);
+    box-shadow: var(--sh-sm);
   }
   .header-inner {
     display: flex;
     align-items: center;
-    gap: 32px;
-    height: 72px;
-    max-width: 1200px;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 24px;
+    max-width: 1170px;
     margin: 0 auto;
-    padding: 0 32px;
   }
   .site-logo {
     flex-shrink: 0;
@@ -79,7 +79,7 @@ import WhatsAppButton from './WhatsAppButton.astro';
     align-items: center;
   }
   .site-logo :global(img) {
-    height: 46px;
+    height: 54px;
     width: auto;
   }
 
@@ -92,9 +92,10 @@ import WhatsAppButton from './WhatsAppButton.astro';
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-    padding: 8px;
-    margin-left: auto;
-    border-radius: var(--r-sm);
+    background: none;
+    border: none;
+    padding: 4px;
+    order: 3;
   }
   .hamburger span {
     display: block;
@@ -110,12 +111,13 @@ import WhatsAppButton from './WhatsAppButton.astro';
   .main-nav {
     display: flex;
     align-items: center;
-    margin-left: auto;
+    justify-content: center;
+    flex: 1;
   }
   .nav-list {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 28px;
     list-style: none;
   }
   .nav-item {
@@ -123,18 +125,14 @@ import WhatsAppButton from './WhatsAppButton.astro';
   }
   .main-nav a {
     display: block;
-    font-size: 0.9375rem;
+    font-size: 15px;
     font-weight: 500;
     color: var(--text);
-    padding: 8px 12px;
-    border-radius: var(--r-sm);
-    transition:
-      color var(--t-fast),
-      background var(--t-fast);
+    white-space: nowrap;
+    transition: color var(--t-fast);
   }
   .main-nav a:hover {
-    color: var(--teal);
-    background: rgba(28, 114, 97, 0.07);
+    color: var(--magenta);
     text-decoration: none;
   }
 
@@ -143,24 +141,19 @@ import WhatsAppButton from './WhatsAppButton.astro';
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.9375rem;
+    font-size: 15px;
     font-weight: 500;
     color: var(--text);
-    padding: 8px 12px;
-    border-radius: var(--r-sm);
     cursor: pointer;
     list-style: none;
     user-select: none;
-    transition:
-      color var(--t-fast),
-      background var(--t-fast);
+    transition: color var(--t-fast);
   }
   .nav-dropdown summary::-webkit-details-marker {
     display: none;
   }
   .nav-dropdown summary:hover {
-    color: var(--teal);
-    background: rgba(28, 114, 97, 0.07);
+    color: var(--magenta);
   }
   .caret {
     font-size: 0.625rem;
@@ -191,8 +184,9 @@ import WhatsAppButton from './WhatsAppButton.astro';
     letter-spacing: 0.08em;
     color: var(--text-sec);
   }
-  .nav-item--cta {
-    margin-left: 4px;
+
+  .nav-cta {
+    flex-shrink: 0;
   }
 
   @media (min-width: 769px) {
@@ -210,48 +204,41 @@ import WhatsAppButton from './WhatsAppButton.astro';
     .hamburger {
       display: flex;
     }
-    .site-header {
-      position: relative;
-    }
     .header-inner {
+      flex-wrap: wrap;
       position: relative;
     }
     .main-nav {
       display: none;
       position: absolute;
-      top: 72px;
+      top: 100%;
       left: 0;
       right: 0;
       background: var(--surface);
       flex-direction: column;
-      align-items: stretch;
-      padding: 16px 24px 24px;
+      align-items: flex-start;
+      padding: 20px 24px;
       box-shadow: var(--sh-md);
-      border-bottom: 1px solid var(--border);
+      z-index: 300;
     }
     .nav-cb:checked ~ .main-nav {
       display: flex;
     }
     .nav-list {
       flex-direction: column;
-      align-items: stretch;
+      align-items: flex-start;
       width: 100%;
-      gap: 4px;
+      gap: 16px;
     }
     .main-nav a,
     .nav-dropdown summary {
       width: 100%;
-      padding: 12px 8px;
     }
     .dropdown-panel {
       box-shadow: none;
       border: none;
       background: transparent;
       padding: 0 0 4px 12px;
-    }
-    .nav-item--cta {
-      margin-left: 0;
-      margin-top: 8px;
     }
   }
 </style>

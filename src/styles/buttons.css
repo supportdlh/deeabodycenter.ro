@@ -1,6 +1,8 @@
 /*
- * Stiluri de butoane comune — portate verbatim din mockup-ul aprobat
- * (mockups/v2-rafinat/index.html, blocurile ===== BUTTONS ===== și regulile .nav-cta).
+ * Stiluri de butoane comune — aliniate pixel-perfect la originalul WordPress
+ * (mockups/v1-clona/index.html, blocurile ===== BUTTONS ===== și .site-header a.btn-primary).
+ * Originalul NU folosește butoane complet pill — radius mic (6px = var(--r-sm)), padding
+ * 11px 26px, fără hover-lift/box-shadow (doar schimbare de culoare).
  * Globale intenționat: folosite de Header, WhatsAppButton și de multe componente viitoare
  * (carduri, oferte, formular etc.) — NU scopate per-componentă.
  */
@@ -9,8 +11,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 28px;
-  border-radius: var(--r-pill);
+  padding: 11px 26px;
+  border-radius: var(--r-sm);
   font-family: 'Poppins', sans-serif;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -20,27 +22,20 @@
   transition:
     background var(--t-fast),
     color var(--t-fast),
-    border-color var(--t-fast),
-    transform var(--t-fast),
-    box-shadow var(--t-fast);
+    border-color var(--t-fast);
   white-space: nowrap;
-  line-height: 1;
-}
-.btn:hover {
-  transform: translateY(-1px);
-}
-.btn:active {
-  transform: translateY(0);
+  line-height: 1.4;
 }
 
 .btn-primary {
   background: var(--magenta);
-  color: #fff;
+  color: #fcfcfc;
+  border-color: var(--magenta);
 }
 .btn-primary:hover {
   background: var(--magenta-h);
-  box-shadow: 0 6px 20px rgba(167, 64, 143, 0.38);
-  color: #fff;
+  border-color: var(--magenta-h);
+  color: #fcfcfc;
 }
 
 .btn-outline {
@@ -51,7 +46,6 @@
 .btn-outline:hover {
   background: var(--magenta);
   color: #fff;
-  box-shadow: 0 4px 16px rgba(167, 64, 143, 0.25);
 }
 
 .btn-ghost-white,
@@ -68,24 +62,23 @@
 }
 
 /* Varianta folosită de CTA-ul din navigație (WhatsAppButton variant="nav") —
-   text ALB pe fond magenta, indiferent de contextul în care e plasat
-   (echivalentul aprobat al regulii .main-nav a.nav-cta { color:#fff }). */
+   identică vizual cu .btn-primary (ca în original, unde butonul PROGRAMARE
+   din header e chiar .btn-primary), fără margini suplimentare pe desktop
+   pentru că spațierea vine din gap-ul containerului .header-inner. */
 .btn-nav {
   background: var(--magenta);
-  color: #fff;
-  padding: 10px 22px;
-  margin-left: 8px;
+  color: #fcfcfc;
+  border-color: var(--magenta);
 }
 .btn-nav:hover {
   background: var(--magenta-h);
-  color: #fff;
-  box-shadow: 0 6px 20px rgba(167, 64, 143, 0.38);
+  border-color: var(--magenta-h);
+  color: #fcfcfc;
 }
 @media (max-width: 768px) {
   .btn-nav {
     width: 100%;
     justify-content: center;
-    margin-left: 0;
   }
 }
 

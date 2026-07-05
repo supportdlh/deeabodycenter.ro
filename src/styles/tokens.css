@@ -1,24 +1,28 @@
 /*
- * Design tokens — copiate verbatim din mockup-ul aprobat
- * Sursă: mockups/v2-rafinat/index.html, blocul :root
+ * Design tokens — reconciliate cu clona pixel-perfect a originalului
+ * Sursă: mockups/v1-clona/index.html (culori/umbre extrase din valorile hardcodate,
+ * mockup-ul V1 nu declară un bloc :root propriu-zis).
+ * Numele variabilelor rămân neschimbate față de versiunea V2 — doar valorile au fost
+ * aliniate la original acolo unde diferă (hover magenta mai deschis, text secundar
+ * mai închis/neutru, fond alternativ off-white ca în original, umbră header).
  */
 :root {
   --navy:        #051145;
   --magenta:     #A7408F;
-  --magenta-h:   #8f3278;
+  --magenta-h:   #D461A4;
   --teal:        #1C7261;
   --gold:        #FEC42D;
   --gold-dim:    #d4a020;
 
   --surface:     #FFFFFF;
-  --surface-alt: #F4F2FA;
+  --surface-alt: #F9F7FD;
   --surface-card:#FFFFFF;
   --heading:     #051145;
   --text:        #051145;
-  --text-sec:    #4a4870;
+  --text-sec:    #33373D;
   --border:      rgba(5,17,69,0.10);
 
-  --sh-sm: 0 2px 12px rgba(5,17,69,0.07);
+  --sh-sm: 0 2px 12px rgba(5,17,69,0.08);
   --sh-md: 0 6px 24px rgba(5,17,69,0.12);
   --sh-lg: 0 14px 40px rgba(5,17,69,0.16);
 
