@@ -1,7 +1,10 @@
 ---
-// Cardul de tratament folosit în grilele „Tratamente Faciale" (6) și
-// „Remodelare Corporală" (9). Portat din mockup-ul V2 aprobat
-// (mockups/v2-rafinat/index.html, blocurile .card / .card-img / .card-body).
+// Cardul de tratament folosit în grilele „Tratamente Faciale" (6),
+// „Remodelare Corporală" (9) și pe pagina hub de servicii.
+// Pixel-perfect după mockup-ul V1 aprobat (mockups/v1-clona/index.html,
+// blocurile .card / .card-img / .card-body). Cardul întreg e link (mai bun
+// pentru UX decât link-ul textual „Descoperă" din original, care oricum
+// lipsea de pe majoritatea cardurilor din V1).
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
@@ -15,7 +18,7 @@ export interface Props {
 const { title, excerpt, image, href } = Astro.props;
 ---
 
-<div class="card">
+<a href={href} class="card">
   <Image
     class="card-img"
     src={image}
@@ -29,79 +32,49 @@ const { title, excerpt, image, href } = Astro.props;
   <div class="card-body">
     <h3>{title}</h3>
     <p>{excerpt}</p>
-    <a href={href} class="card-link">
-      Descoperă
-      <svg
-        width="15"
-        height="15"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.2"
-        stroke-linecap="round"
-        aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg
-      >
-    </a>
   </div>
-</div>
+</a>
 
 <style>
   .card {
     background: var(--surface-card);
-    border-radius: var(--r-md);
-    box-shadow: var(--sh-sm);
+    border-radius: 10px;
+    box-shadow: 0 2px 18px rgba(5, 17, 69, 0.09);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--border);
+    color: inherit;
+    text-decoration: none;
     transition:
-      transform var(--t-med),
-      box-shadow var(--t-med);
+      transform 0.22s,
+      box-shadow 0.22s;
     height: 100%;
   }
   .card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--sh-md);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 28px rgba(5, 17, 69, 0.15);
+    text-decoration: none;
   }
   .card :global(.card-img) {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    height: 200px;
     object-fit: cover;
     display: block;
+    flex-shrink: 0;
   }
   .card-body {
-    padding: 20px 24px 24px;
+    padding: 20px 20px 24px;
     flex: 1;
-    display: flex;
-    flex-direction: column;
   }
   .card-body h3 {
-    font-size: 1rem;
-    margin-bottom: 8px;
+    font-size: 1.125rem;
     color: var(--heading);
-    line-height: 1.35;
+    margin-bottom: 10px;
+    line-height: 1.3;
   }
   .card-body p {
-    font-size: 0.875rem;
+    font-size: 0.84375rem;
+    color: var(--text-sec);
     line-height: 1.65;
-    flex: 1;
-    margin-bottom: 16px;
-  }
-  .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--magenta);
-    margin-top: auto;
-    transition: gap var(--t-fast);
-  }
-  .card-link:hover {
-    gap: 10px;
-    text-decoration: none;
-  }
-  .card-link svg {
-    flex-shrink: 0;
   }
 </style>

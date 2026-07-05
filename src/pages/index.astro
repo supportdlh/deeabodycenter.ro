@@ -1,12 +1,11 @@
 ---
-// Homepage — reconstruită secțiune cu secțiune din mockup-ul V2 aprobat
-// (mockups/v2-rafinat/index.html), folosind BaseLayout + componentele
-// comune (Header/Footer prin BaseLayout) + ScrollCue/WhatsAppButton +
-// componentele noi (ServiceCard/OfferCard/TestimonialCard/Accordion/ContactBlock).
+// Homepage — reskinned pixel-perfect după mockup-ul V1 aprobat
+// (mockups/v1-clona/index.html), folosind BaseLayout + componentele
+// comune (Header/Footer prin BaseLayout) + WhatsAppButton +
+// componentele (ServiceCard/OfferCard/TestimonialCard/Accordion/ContactBlock).
 // Copy exact din reference/content.md; meta din reference/design-tokens.md.
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ScrollCue from '../components/ScrollCue.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import OfferCard from '../components/OfferCard.astro';
@@ -153,6 +152,7 @@ const offerCards = [
     excerpt: 'Tratamente corporale personalizate care tonifiază, sculptează și reduc celulita, cu rezultate vizibile și de durată.',
     image: imgOfferCorporal,
     href: '/oferte-tratamente-corporale/',
+    tall: true,
   },
   {
     title: 'Oferte speciale',
@@ -229,118 +229,112 @@ const faq = [
   </Fragment>
 
   <!-- ============================================================
-       HERO — „Ofertă limitată"
+       HERO — „Ofertă limitată" (layout original, fără float/scale)
   ============================================================= -->
   <section class="hero">
-    <div class="wrap">
-      <div class="hero-inner">
-        <div class="hero-text">
-          <div class="hero-badge">Ofertă limitată</div>
-          <h1 class="hero-title">
-            Transformă-ți corpul și redefinește-ți încrederea cu oferta noastră exclusivă de remodelare!
-          </h1>
-          <p class="hero-sub">Rezervă acum pachetul tău complet și profită de criolipoliza cadou!</p>
-          <ul class="hero-list">
-            <li>3 ședințe VelaShape – coapse + fese</li>
-            <li>2 ședințe VelaShape – abdomen + flancuri + lombar</li>
-            <li>3 ședințe laser Zentisse</li>
-            <li>3 ședințe presodrenaj</li>
-            <li>1 zonă mare de criolipoliză <strong>cadou</strong></li>
-          </ul>
-          <div class="price-box">
-            <span class="price-label">Preț pachet complet</span>
-            <span class="price-value">1690 RON</span>
-          </div>
-          <p class="hero-note">Nu rata șansa de a obține silueta mult dorită la un preț special!</p>
-          <div class="btn-group">
-            <WhatsAppButton
-              label="Programează-te"
-              message="Bună, aș dori să profit de oferta cu criolipoliza cadou (pachet 1690 RON)."
-            />
-          </div>
-          <div class="social-row">
-            <a href={site.social.facebook || '#'} aria-label="Facebook">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                ><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg
-              >
-            </a>
-            <a href={site.social.instagram || '#'} aria-label="Instagram">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                ><rect x="2" y="2" width="20" height="20" rx="5"></rect><path
-                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
-                ></line></svg
-              >
-            </a>
-          </div>
+    <div class="wrap hero-inner">
+      <div class="hero-content">
+        <span class="eyebrow">Ofertă limitată</span>
+        <h1 class="hero-title">
+          Transformă-ți corpul și redefinește-ți încrederea cu oferta noastră exclusivă de remodelare!
+        </h1>
+        <p class="hero-desc">Rezervă acum pachetul tău complet și profită de criolipoliza cadou!</p>
+        <ul class="hero-list">
+          <li>3 ședințe VelaShape – coapse + fese</li>
+          <li>2 ședințe VelaShape – abdomen + flancuri + lombar</li>
+          <li>3 ședințe laser Zentisse</li>
+          <li>3 ședințe presodrenaj</li>
+          <li>1 zonă mare de criolipoliză <strong>cadou</strong></li>
+        </ul>
+        <div class="hero-price">1690 RON</div>
+        <p class="hero-note">Nu rata șansa de a obține silueta mult dorită la un preț special!</p>
+        <div class="social-row hero-social">
+          <a href={site.social.facebook || '#'} class="social-icon" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+              ><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg
+            >
+          </a>
+          <a href={site.social.instagram || '#'} class="social-icon" aria-label="Instagram">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><rect x="2" y="2" width="20" height="20" rx="5"></rect><path
+                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
+              ></line></svg
+            >
+          </a>
         </div>
-        <div class="hero-img">
-          <Image
-            src={heroImg}
-            alt="Pachet remodelare corporală — criolipoliză cadou"
-            width={800}
-            height={800}
-            widths={[400, 600, 800]}
-            sizes="(max-width: 900px) 90vw, 640px"
-            loading="eager"
-          />
-        </div>
+        <WhatsAppButton
+          label="Programează-te"
+          message="Bună, aș dori să profit de oferta cu criolipoliza cadou (pachet 1690 RON)."
+          class="hero-cta"
+        />
+      </div>
+      <div class="hero-image">
+        <Image
+          src={heroImg}
+          alt="Pachet remodelare corporală — criolipoliză cadou"
+          width={800}
+          height={800}
+          widths={[400, 600, 800]}
+          sizes="(max-width: 768px) 90vw, 520px"
+          loading="eager"
+        />
       </div>
     </div>
-    <ScrollCue />
   </section>
 
   <!-- ============================================================
-       TRATAMENTE FACIALE — split
+       TRATAMENTE FACIALE — intro (imagine + text)
   ============================================================= -->
-  <section class="split" id="tratamente-faciale">
-    <div class="wrap">
-      <div class="split-inner">
-        <div class="split-img">
-          <Image
-            src={facialSplitImg}
-            alt="Tratamente faciale Deea Body Center Ploiești"
-            width={800}
-            height={600}
-            widths={[400, 600, 800]}
-            sizes="(max-width: 900px) 90vw, 560px"
-            loading="lazy"
-          />
-        </div>
-        <div class="split-text">
-          <div class="eyebrow">Deea Body Center</div>
-          <h2>Tratamente Faciale</h2>
-          <p>
-            Ten revitalizat, neted și luminos, cu tratamente faciale personalizate pentru un aspect proaspăt și
-            sănătos, fără imperfecțiuni.
-          </p>
-          <div class="btn-group">
-            <a href="/servicii-tratamente-faciale-si-corporale/" class="btn btn-outline">Descoperă</a>
-            <a href="/tarife/" class="btn btn-outline">Tarife</a>
-          </div>
+  <section class="section-intro" id="tratamente-faciale">
+    <div class="wrap intro-grid">
+      <div class="intro-img-wrap">
+        <Image
+          class="intro-img"
+          src={facialSplitImg}
+          alt="Tratamente faciale Deea Body Center Ploiești"
+          width={800}
+          height={600}
+          widths={[400, 600, 800]}
+          sizes="(max-width: 768px) 90vw, 560px"
+          loading="lazy"
+        />
+      </div>
+      <div class="intro-text">
+        <span class="eyebrow">Deea Body Center</span>
+        <h2>Tratamente Faciale</h2>
+        <p>
+          Ten revitalizat, neted și luminos, cu tratamente faciale personalizate pentru un aspect proaspăt și
+          sănătos, fără imperfecțiuni.
+        </p>
+        <div class="btn-row">
+          <a href="/servicii-tratamente-faciale-si-corporale/" class="btn btn-primary">Descoperă</a>
+          <a href="/tarife/" class="btn btn-outline">Tarife</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       GRID TRATAMENTE FACIALE (6 carduri)
+       BANDA „Tenul pe care ți-l dorești" + grid (6 carduri)
   ============================================================= -->
-  <section class="section--alt">
+  <section class="services-band">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="eyebrow">Deea Body Center</div>
-        <h2>Tenul pe care ți-l dorești, la un pas distanță!</h2>
-        <p>La Deea Body Center, obții un ten radiant prin tratamente faciale personalizate, cu rezultate vizibile.</p>
-      </div>
+      <span class="eyebrow">Deea Body Center</span>
+      <h2>Tenul pe care ți-l dorești, la un pas distanță!</h2>
+      <p>La Deea Body Center, obții un ten radiant prin tratamente faciale personalizate, cu rezultate vizibile.</p>
+    </div>
+  </section>
+  <section class="cards-section">
+    <div class="wrap">
       <div class="svc-grid">
         {facialCards.map((card) => <ServiceCard {...card} />)}
       </div>
@@ -348,48 +342,49 @@ const faq = [
   </section>
 
   <!-- ============================================================
-       REMODELARE CORPORALA — split
+       REMODELARE CORPORALA — intro (text + imagine)
   ============================================================= -->
-  <section class="split split--alt">
-    <div class="wrap">
-      <div class="split-inner">
-        <div class="split-text">
-          <div class="eyebrow">Deea Body Center</div>
-          <h2>Remodelare corporala</h2>
-          <p>
-            Tratamente de remodelare corporala prin reducerea grăsimii localizate, eliminarea celulitei, tonifierea
-            pielii și îmbunătățirea conturului corporal, oferind rezultate rapide și fără intervenții chirurgicale.
-          </p>
-          <div class="btn-group">
-            <a href="/servicii-tratamente-faciale-si-corporale/" class="btn btn-outline">Descoperă</a>
-            <a href="/tarife/" class="btn btn-outline">Tarife</a>
-          </div>
+  <section class="section-intro bg-offwhite">
+    <div class="wrap intro-grid">
+      <div class="intro-text">
+        <span class="eyebrow">Deea Body Center</span>
+        <h2>Remodelare corporala</h2>
+        <p>
+          Tratamente de remodelare corporala prin reducerea grăsimii localizate, eliminarea celulitei, tonifierea
+          pielii și îmbunătățirea conturului corporal, oferind rezultate rapide și fără intervenții chirurgicale.
+        </p>
+        <div class="btn-row">
+          <a href="/servicii-tratamente-faciale-si-corporale/" class="btn btn-primary">Descoperă</a>
+          <a href="/tarife/" class="btn btn-outline">Tarife</a>
         </div>
-        <div class="split-img">
-          <Image
-            src={bodySplitImg}
-            alt="Remodelare corporală Deea Body Center Ploiești"
-            width={800}
-            height={600}
-            widths={[400, 600, 800]}
-            sizes="(max-width: 900px) 90vw, 560px"
-            loading="lazy"
-          />
-        </div>
+      </div>
+      <div class="intro-img-wrap">
+        <Image
+          class="intro-img"
+          src={bodySplitImg}
+          alt="Remodelare corporală Deea Body Center Ploiești"
+          width={800}
+          height={600}
+          widths={[400, 600, 800]}
+          sizes="(max-width: 768px) 90vw, 560px"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       GRID TRATAMENTE CORPORALE (9 carduri)
+       BANDA „Corpul pe care ți-l dorești" + grid (9 carduri)
   ============================================================= -->
-  <section class="section">
+  <section class="services-band">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="eyebrow">Deea Body Center</div>
-        <h2>Corpul pe care ți-l dorești, la un pas distanță!</h2>
-        <p>La Deea Body Center, obții un corp tonifiat prin tratamente corporale personalizate, cu rezultate vizibile.</p>
-      </div>
+      <span class="eyebrow">Deea Body Center</span>
+      <h2>Corpul pe care ți-l dorești, la un pas distanță!</h2>
+      <p>La Deea Body Center, obții un corp tonifiat prin tratamente corporale personalizate, cu rezultate vizibile.</p>
+    </div>
+  </section>
+  <section class="cards-section">
+    <div class="wrap">
       <div class="svc-grid">
         {bodyCards.map((card) => <ServiceCard {...card} />)}
       </div>
@@ -399,19 +394,17 @@ const faq = [
   <!-- ============================================================
        SOLAR
   ============================================================= -->
-  <section class="section--alt">
-    <div class="wrap">
-      <div class="solar-inner">
-        <div class="eyebrow" style="justify-content:center">Deea Body Center</div>
-        <h2>Solar</h2>
-        <p>
-          Va doriţi un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare? Deea Body Center va
-          propune o solutie rapida si eficienta: solariile ERGOLINE – lider incontestabil in domeniilor solariilor.
-        </p>
-        <div class="btn-group">
-          <a href="/solar/" class="btn btn-outline">Descoperă</a>
-          <a href="/tarife/" class="btn btn-outline">Tarife</a>
-        </div>
+  <section class="solar-section">
+    <div class="solar-inner">
+      <span class="eyebrow">Deea Body Center</span>
+      <h2>Solar</h2>
+      <p>
+        Va doriţi un look exotic cu o piele perfect bronzata fara sa va expuneţi la soare? Deea Body Center va
+        propune o solutie rapida si eficienta: solariile ERGOLINE – lider incontestabil in domeniilor solariilor.
+      </p>
+      <div class="btn-row">
+        <a href="/solar/" class="btn btn-primary">Descoperă</a>
+        <a href="/tarife/" class="btn btn-outline">Tarife</a>
       </div>
     </div>
   </section>
@@ -419,15 +412,12 @@ const faq = [
   <!-- ============================================================
        OFERTE
   ============================================================= -->
-  <section class="section--dark">
+  <section class="offers-section">
     <div class="wrap">
-      <div class="sec-head" style="color:#fff">
-        <div class="eyebrow eyebrow--gold" style="justify-content:center">Oferte exclusive</div>
-        <h2 style="color:#fff;margin-top:4px">Ofertele Deea Body Center</h2>
-      </div>
-      <div class="offers-grid">
-        {offerCards.map((card) => <OfferCard {...card} />)}
-      </div>
+      <h2 class="offers-title">Ofertele Deea Body Center</h2>
+    </div>
+    <div class="offers-mosaic">
+      {offerCards.map((card) => <OfferCard {...card} />)}
     </div>
   </section>
 
@@ -435,14 +425,12 @@ const faq = [
        TESTIMONIALE „Ce spun ele"
   ============================================================= -->
   <section class="testi-section">
-    <div class="testi-bg" role="presentation">
-      <Image src={imgTestimonialsBg} alt="" width={1920} height={1277} loading="lazy" />
+    <div class="testi-bg-wrap" role="presentation">
+      <Image class="testi-bg-img" src={imgTestimonialsBg} alt="" width={1920} height={1277} loading="lazy" />
+      <div class="testi-overlay"></div>
     </div>
     <div class="wrap testi-inner">
-      <div class="sec-head">
-        <div class="eyebrow">Ce spun ele</div>
-        <h2>Ce spun ele</h2>
-      </div>
+      <h2 class="testi-heading">Ce spun ele</h2>
       <div class="testi-grid">
         {testimonials.map((t) => <TestimonialCard {...t} />)}
       </div>
@@ -452,26 +440,23 @@ const faq = [
   <!-- ============================================================
        CONTACT & FAQ
   ============================================================= -->
-  <section class="section--alt" id="programare">
-    <div class="wrap">
-      <div class="contact-grid">
-        <ContactBlock />
+  <section class="contact-faq-section" id="programare">
+    <div class="wrap contact-grid">
+      <ContactBlock />
 
-        <div>
-          <div class="eyebrow">Întrebări</div>
-          <h2 style="margin-bottom:12px">Întrebări și răspunsuri</h2>
-          <p style="margin-bottom:32px">Răspunsuri la cele mai frecvente întrebări pe care le primim din partea clienților.</p>
-          <div class="accordion">
-            {
-              faq.map((item) => (
-                <Accordion title={item.question}>
-                  {item.answers.map((a) => (
-                    <p>{a}</p>
-                  ))}
-                </Accordion>
-              ))
-            }
-          </div>
+      <div class="faq-col">
+        <h2>Întrebări și răspunsuri</h2>
+        <p class="faq-sub">Răspunsuri la cele mai frecvente întrebări pe care le primim din partea clienților.</p>
+        <div class="accordion">
+          {
+            faq.map((item) => (
+              <Accordion title={item.question}>
+                {item.answers.map((a) => (
+                  <p>{a}</p>
+                ))}
+              </Accordion>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -480,358 +465,298 @@ const faq = [
 
 <style>
   .wrap {
-    max-width: 1200px;
+    max-width: 1170px;
     margin: 0 auto;
-    padding: 0 32px;
-  }
-  .section {
-    padding: 80px 0;
-    background: var(--surface);
-  }
-  .section--alt {
-    padding: 80px 0;
-    background: var(--surface-alt);
-  }
-  .section--dark {
-    padding: 80px 0;
-    background: var(--navy);
-  }
-
-  .sec-head {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 56px;
-  }
-  .sec-head h2 {
-    margin-bottom: 12px;
-  }
-  .sec-head p {
-    font-size: 1.0625rem;
+    padding: 0 24px;
   }
 
   .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.155em;
     text-transform: uppercase;
     color: var(--teal);
-    margin-bottom: 16px;
+    display: block;
+    margin-bottom: 10px;
   }
-  .eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 3px;
-    background: var(--teal);
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
-  .eyebrow--gold {
-    color: var(--gold);
-  }
-  .eyebrow--gold::before {
-    background: var(--gold);
+
+  .btn-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 8px;
   }
 
   /* ===== HERO ===== */
   .hero {
-    background: linear-gradient(135deg, #e9e4f8 0%, #f2eefb 35%, #faf9fe 70%, #ffffff 100%);
-    min-height: calc(100vh - 80px);
-    display: flex;
-    align-items: center;
-    padding: 56px 0 64px;
-    overflow: hidden;
+    background: linear-gradient(130deg, #ded1f2 0%, #eae1f5 25%, #f2edf9 50%, #f8f4fc 72%, #ffffff 100%);
     position: relative;
-  }
-  .hero > .wrap {
-    width: 100%;
+    overflow: hidden;
+    padding: 56px 0 48px;
   }
   .hero::before {
     content: '';
     position: absolute;
-    top: -100px;
-    right: -100px;
+    top: -120px;
+    right: 320px;
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, rgba(167, 64, 143, 0.09) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(167, 64, 143, 0.07) 0%, transparent 65%);
     border-radius: 50%;
     pointer-events: none;
   }
   .hero::after {
     content: '';
     position: absolute;
-    bottom: -60px;
-    left: 20%;
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, rgba(28, 114, 97, 0.06) 0%, transparent 70%);
+    bottom: -80px;
+    left: -60px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(28, 114, 97, 0.05) 0%, transparent 65%);
     border-radius: 50%;
     pointer-events: none;
   }
-
   .hero-inner {
     display: grid;
-    grid-template-columns: 1fr 1.12fr;
-    gap: 56px;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
     align-items: center;
     position: relative;
-    width: 100%;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(167, 64, 143, 0.1);
-    border: 1px solid rgba(167, 64, 143, 0.28);
-    color: var(--magenta);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: var(--r-pill);
-    margin-bottom: 14px;
-  }
-  .hero-badge::before {
-    content: '';
-    width: 7px;
-    height: 7px;
-    background: var(--magenta);
-    border-radius: 50%;
-    animation: pulse 2.2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.45;
-      transform: scale(0.75);
-    }
+    z-index: 1;
   }
 
   .hero-title {
-    font-size: clamp(1.5rem, 2.9vw, 2.35rem);
-    line-height: 1.16;
-    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    font-weight: 700;
     color: var(--heading);
+    line-height: 1.22;
+    margin-bottom: 14px;
   }
-  .hero-sub {
-    font-size: 1.0625rem;
+  .hero-desc {
+    font-size: 0.9375rem;
     color: var(--text-sec);
     margin-bottom: 18px;
   }
 
   .hero-list {
     list-style: none;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
+    margin-bottom: 22px;
   }
   .hero-list li {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    font-size: 0.9375rem;
-    color: var(--text-sec);
+    font-size: 0.90625rem;
+    color: var(--heading);
+    margin-bottom: 9px;
     line-height: 1.5;
   }
   .hero-list li::before {
     content: '';
-    flex-shrink: 0;
-    margin-top: 3px;
-    width: 18px;
-    height: 18px;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    min-height: 14px;
+    background: var(--gold);
     border-radius: 50%;
-    background-color: var(--gold);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%23051145' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 10px 8px;
+    margin-top: 3px;
   }
 
-  .price-box {
-    display: inline-flex;
-    flex-direction: column;
-    background: var(--navy);
-    border-radius: var(--r-md);
-    padding: 15px 26px;
-    margin-bottom: 14px;
-    position: relative;
-    overflow: hidden;
-  }
-  .price-box::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold) 0%, var(--magenta) 100%);
-  }
-  .price-label {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 4px;
-  }
-  .price-value {
+  .hero-price {
     font-family: 'Playfair Display', serif;
-    font-size: 2.25rem;
+    font-size: 3.375rem;
     font-weight: 700;
-    color: var(--gold);
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
+    color: var(--magenta);
+    line-height: 1.1;
+    margin-bottom: 10px;
   }
-
   .hero-note {
     font-size: 0.875rem;
     color: var(--text-sec);
     font-style: italic;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
 
+  .hero-social {
+    margin-bottom: 22px;
+  }
   .social-row {
     display: flex;
-    gap: 12px;
-    margin-top: 16px;
+    gap: 10px;
+    align-items: center;
   }
-  .social-row a {
+  .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    color: var(--text-sec);
-    border: 1px solid var(--border);
-    transition:
-      color var(--t-fast),
-      border-color var(--t-fast),
-      background var(--t-fast);
+    background: var(--navy);
+    color: #fff;
+    transition: background var(--t-fast);
   }
-  .social-row a:hover {
-    color: var(--magenta);
-    border-color: var(--magenta);
-    background: rgba(167, 64, 143, 0.07);
+  .social-icon:hover {
+    background: var(--magenta);
     text-decoration: none;
   }
 
-  .hero-img {
-    position: relative;
-  }
-  .hero-img :global(img) {
-    width: 112%;
-    max-width: none;
-    margin-left: -6%;
-    border-radius: var(--r-lg);
-    box-shadow: var(--sh-lg);
-    animation: heroFloat 6s ease-in-out infinite;
-  }
-  @keyframes heroFloat {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-14px);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-img :global(img) {
-      animation: none !important;
-    }
+  .hero-content :global(.hero-cta) {
+    margin-top: 20px;
   }
 
-  /* ===== SPLIT SECTION ===== */
-  .split {
-    padding: 80px 0;
+  .hero-image {
+    position: relative;
+  }
+  .hero-image :global(img) {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    border-radius: var(--r-md);
+    box-shadow: 0 8px 32px rgba(5, 17, 69, 0.12);
+  }
+
+  /* ===== SECTION INTRO (imagine + text, 2 coloane) ===== */
+  .section-intro {
+    padding: 68px 0;
     background: var(--surface);
   }
-  .split--alt {
+  .section-intro.bg-offwhite {
     background: var(--surface-alt);
   }
-  .split-inner {
+  .intro-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: center;
   }
-  .split-img :global(img) {
+  .intro-img-wrap :global(img) {
     width: 100%;
-    border-radius: var(--r-md);
-    box-shadow: var(--sh-md);
+    height: 420px;
     object-fit: cover;
-    aspect-ratio: 4 / 3;
+    border-radius: 10px;
   }
-  .split-text h2 {
-    margin-bottom: 14px;
+  .intro-text h2 {
+    font-size: 2.375rem;
+    margin-bottom: 16px;
+    line-height: 1.18;
   }
-  .split-text p {
-    font-size: 1.0625rem;
+  .intro-text p {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    margin-bottom: 26px;
   }
 
-  /* ===== SERVICE GRID ===== */
+  /* ===== SERVICES BAND (titlu) ===== */
+  .services-band {
+    background: linear-gradient(130deg, #e8dff5 0%, #efe8f8 50%, #f7f3fc 100%);
+    padding: 58px 0 50px;
+    text-align: center;
+  }
+  .services-band h2 {
+    font-size: 2.5rem;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .services-band .eyebrow {
+    justify-content: center;
+  }
+  .services-band p {
+    font-size: 0.9375rem;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ===== CARDS SECTION ===== */
+  .cards-section {
+    padding: 50px 0;
+    background: var(--surface);
+  }
   .svc-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 28px;
   }
 
   /* ===== SOLAR ===== */
+  .solar-section {
+    padding: 64px 0;
+    background: #f7f2fc;
+  }
   .solar-inner {
-    text-align: center;
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
+    padding: 0 24px;
+    text-align: left;
+  }
+  .solar-inner .eyebrow {
+    margin-bottom: 6px;
   }
   .solar-inner h2 {
-    margin-bottom: 14px;
+    font-size: 2.375rem;
+    margin-bottom: 16px;
   }
   .solar-inner p {
-    font-size: 1.0625rem;
-  }
-  .solar-inner .btn-group {
-    justify-content: center;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    margin-bottom: 28px;
   }
 
   /* ===== OFFERS ===== */
-  .offers-grid {
+  .offers-section {
+    padding: 64px 0;
+    background: #f5f5f5;
+  }
+  .offers-title {
+    font-size: 2.375rem;
+    color: var(--heading);
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .offers-mosaic {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 14px;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
 
   /* ===== TESTIMONIALS ===== */
   .testi-section {
     position: relative;
     padding: 80px 0;
-    background: var(--surface);
+    color: #fff;
     overflow: hidden;
   }
-  .testi-bg {
+  .testi-bg-wrap {
     position: absolute;
     inset: 0;
-    opacity: 0.06;
     overflow: hidden;
   }
-  .testi-bg :global(img) {
+  .testi-bg-wrap :global(.testi-bg-img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+  .testi-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 17, 69, 0.58);
+  }
   .testi-inner {
     position: relative;
   }
-
+  .testi-heading {
+    font-size: 2.5rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 42px;
+  }
   .testi-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -839,18 +764,30 @@ const faq = [
   }
 
   /* ===== CONTACT / FAQ ===== */
+  .contact-faq-section {
+    padding: 72px 0;
+    background: var(--surface);
+  }
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
-    align-items: start;
+  }
+  .faq-col h2 {
+    font-size: 1.875rem;
+    margin-bottom: 10px;
+  }
+  .faq-sub {
+    font-size: 0.875rem;
+    color: var(--text-sec);
+    margin-bottom: 22px;
+    line-height: 1.6;
   }
 
-  /* ===== ACCORDION ===== */
+  /* ===== ACCORDION wrapper ===== */
   .accordion {
     display: flex;
     flex-direction: column;
-    gap: 8px;
   }
 
   /* ===== RESPONSIVE ===== */
@@ -860,54 +797,40 @@ const faq = [
     }
   }
   @media (max-width: 768px) {
-    .hero {
-      min-height: 0;
-      padding: 48px 0 64px;
-    }
     .hero-inner {
       grid-template-columns: 1fr;
-      gap: 40px;
     }
-    .hero-img {
-      order: -1;
+    .hero-image {
+      display: none;
     }
-    .hero-img :global(img) {
-      width: 100%;
-      margin-left: 0;
+    .hero-title {
+      font-size: 1.625rem;
     }
-    .split-inner {
+    .hero-price {
+      font-size: 2.5rem;
+    }
+    .intro-grid {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 28px;
     }
-    .split-inner .split-img {
-      order: -1;
+    .intro-img-wrap :global(img) {
+      height: 240px;
     }
-    .contact-grid {
+    .services-band h2 {
+      font-size: 1.75rem;
+    }
+    .svc-grid {
       grid-template-columns: 1fr;
-      gap: 48px;
+    }
+    .offers-mosaic {
+      grid-template-columns: 1fr;
     }
     .testi-grid {
       grid-template-columns: 1fr;
     }
-    .offers-grid {
+    .contact-grid {
       grid-template-columns: 1fr;
-    }
-    .section,
-    .section--alt,
-    .section--dark,
-    .split,
-    .split--alt,
-    .testi-section {
-      padding-top: 56px;
-      padding-bottom: 56px;
-    }
-  }
-  @media (max-width: 600px) {
-    .svc-grid {
-      grid-template-columns: 1fr;
-    }
-    .wrap {
-      padding: 0 20px;
+      gap: 40px;
     }
   }
 </style>

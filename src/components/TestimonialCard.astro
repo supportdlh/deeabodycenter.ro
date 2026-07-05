@@ -1,6 +1,7 @@
 ---
-// Cardul de testimonial (secțiunea „Ce spun ele").
-// Portat din mockup-ul V2 aprobat (.testi-card / .stars / .testi-text / .testi-author).
+// Cardul de testimonial (secțiunea „Ce spun ele", pe fundal foto/navy).
+// Pixel-perfect după mockup-ul V1 (mockups/v1-clona/index.html,
+// blocurile .testimonial-card / .quote-mark / .testimonial-text / .stars / .testimonial-name).
 export interface Props {
   name: string;
   text: string;
@@ -10,50 +11,44 @@ const { name, text } = Astro.props;
 ---
 
 <div class="testi-card">
-  <div class="stars" aria-hidden="true">★★★★★</div>
+  <span class="quote-mark" aria-hidden="true">&ldquo;</span>
   <p class="testi-text">{text}</p>
+  <span class="stars" aria-hidden="true">★★★★★</span>
   <div class="testi-author">{name}</div>
 </div>
 
 <style>
   .testi-card {
-    background: var(--surface-card);
-    border-radius: var(--r-md);
-    padding: 32px;
-    box-shadow: var(--sh-sm);
-    border: 1px solid var(--border);
-    position: relative;
-    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 28px 26px;
   }
-  .testi-card::before {
-    content: '\201C';
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem;
+  .quote-mark {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 4rem;
     color: var(--magenta);
-    opacity: 0.15;
-    line-height: 1;
-    position: absolute;
-    top: 8px;
-    left: 20px;
+    line-height: 0.8;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .testi-text {
+    font-size: 0.84375rem;
+    line-height: 1.72;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 18px;
   }
   .stars {
     color: var(--gold);
-    font-size: 1rem;
+    font-size: 1.1875rem;
     letter-spacing: 2px;
-    margin-bottom: 16px;
-    position: relative;
-  }
-  .testi-text {
-    font-size: 0.9375rem;
-    line-height: 1.75;
-    color: var(--text-sec);
-    margin-bottom: 20px;
-    position: relative;
+    margin-bottom: 8px;
+    display: block;
   }
   .testi-author {
     font-weight: 600;
-    font-size: 0.9375rem;
-    color: var(--heading);
-    position: relative;
+    font-size: 0.875rem;
+    color: #fff;
   }
 </style>

@@ -1,6 +1,8 @@
 ---
-// Cardul de ofertă (secțiunea „Ofertele Deea Body Center", fundal navy).
-// Portat din mockup-ul V2 aprobat (.offer-card / .offer-bg / .offer-overlay).
+// Cardul de ofertă (secțiunea „Ofertele Deea Body Center").
+// Pixel-perfect după mockup-ul V1 (mockups/v1-clona/index.html,
+// blocurile .offer-card / .offer-card.tall / .offer-overlay / .btn-offer),
+// în mozaic 2 coloane × 2 rânduri (primul card „tall" ocupă ambele rânduri).
 // Fundalul foloseşte astro:assets <Image> poziţionat absolut (în loc de
 // background-image inline) ca să beneficieze de optimizarea imaginilor.
 //
@@ -15,30 +17,34 @@ export interface Props {
   excerpt: string;
   image: ImageMetadata;
   href: string;
+  tall?: boolean;
 }
 
-const { title, excerpt, image, href } = Astro.props;
+const { title, excerpt, image, href, tall = false } = Astro.props;
 ---
 
-<div class="offer-card">
-  <Image class="offer-bg" src={image} alt="" width={640} height={853} loading="lazy" />
-  <div class="offer-overlay"></div>
-  <div class="offer-content">
-    <h3><a href={href}>{title}</a></h3>
+<a href={href} class={`offer-card ${tall ? 'tall' : ''}`}>
+  <Image class="offer-bg" src={image} alt="" width={640} height={640} loading="lazy" />
+  <div class="offer-overlay">
+    <h3>{title}</h3>
     <p>{excerpt}</p>
-    <a href={href} class="btn btn-ghost">Vezi ofertele</a>
+    <span class="btn-offer">Vezi ofertele</span>
   </div>
-</div>
+</a>
 
 <style>
   .offer-card {
     position: relative;
-    border-radius: var(--r-md);
     overflow: hidden;
-    aspect-ratio: 3 / 4;
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 260px;
+    text-decoration: none;
+  }
+  .offer-card.tall {
+    grid-row: span 2;
+    min-height: 100%;
   }
   .offer-card :global(.offer-bg) {
     position: absolute;
@@ -52,29 +58,46 @@ const { title, excerpt, image, href } = Astro.props;
     transform: scale(1.04);
   }
   .offer-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(5, 17, 69, 0.9) 0%, rgba(5, 17, 69, 0.45) 55%, transparent 100%);
-  }
-  .offer-content {
     position: relative;
-    padding: 32px;
-  }
-  .offer-content h3 {
+    background: linear-gradient(to top, rgba(5, 17, 69, 0.85) 0%, rgba(5, 17, 69, 0.35) 60%, transparent 100%);
+    width: 100%;
+    padding: 24px 22px;
     color: #fff;
+  }
+  .offer-overlay h3 {
+    color: #fff;
+    font-size: 1.3125rem;
     margin-bottom: 10px;
-    font-size: 1.125rem;
+    line-height: 1.25;
   }
-  .offer-content h3 a {
-    color: inherit;
-  }
-  .offer-content h3 a:hover {
-    text-decoration: underline;
-  }
-  .offer-content p {
-    color: rgba(255, 255, 255, 0.78);
-    font-size: 0.875rem;
+  .offer-overlay p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8125rem;
     line-height: 1.55;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+  }
+  .btn-offer {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 5px;
+    transition:
+      background var(--t-fast),
+      border-color var(--t-fast);
+  }
+  .offer-card:hover .btn-offer {
+    background: var(--magenta);
+    border-color: var(--magenta);
+  }
+
+  @media (max-width: 768px) {
+    .offer-card.tall {
+      grid-row: span 1;
+      min-height: 260px;
+    }
   }
 </style>
