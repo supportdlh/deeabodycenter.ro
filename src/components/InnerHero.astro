@@ -1,0 +1,155 @@
+---
+// InnerHero.astro — banda „hero" a paginilor interioare, replică fidelă a live-ului
+// (ex. https://deeabodycenter.ro/tarife/, /contact/, /servicii-.../, /oferte-.../):
+//   - bandă gri-deschis (#ECF0F2) sub header
+//   - STÂNGA: titlul paginii în Playfair navy, aliniat la stânga, + <Breadcrumb />
+//   - DREAPTA: o fotografie (opțională) care „atârnă" ușor sub bandă, cu o decorațiune
+//     de tip grilă de puncte teal (pattern_1.png) în stânga fotografiei.
+//
+// Props:
+//   title: string                       — titlul paginii (H1)
+//   breadcrumb: Array<{label, href?}>   — crumb-uri DUPĂ „Home" (Home e adăugat auto)
+//   image?: string                      — cale fotografie hero (opțional)
+//   imageAlt?: string
+import Breadcrumb from './Breadcrumb.astro';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  title: string;
+  breadcrumb: Crumb[];
+  image?: string;
+  imageAlt?: string;
+}
+const { title, breadcrumb = [], image, imageAlt = '' } = Astro.props;
+---
+
+<section class="inner-hero">
+  <div class="inner-hero__inner">
+    <div class="inner-hero__text">
+      <h1 class="inner-hero__title">{title}</h1>
+      <Breadcrumb items={breadcrumb} />
+    </div>
+
+    <div class="inner-hero__media">
+      {
+        image && (
+          <>
+            <img
+              class="inner-hero__dots"
+              src="/pattern_1.png"
+              width="129"
+              height="50"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+            />
+            <img
+              class="inner-hero__photo"
+              src={image}
+              alt={imageAlt}
+              width="410"
+              height="410"
+              loading="eager"
+            />
+          </>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .inner-hero {
+    background: #ecf0f2;
+    padding-top: 80px;
+    position: relative;
+  }
+  .inner-hero__inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    align-items: start;
+    min-height: 204px;
+  }
+
+  /* ===== STÂNGA: titlu + breadcrumb ===== */
+  .inner-hero__text {
+    padding-bottom: 44px;
+    align-self: center;
+  }
+  .inner-hero__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--navy, #051145);
+    margin: 0 0 26px;
+  }
+
+  /* ===== DREAPTA: fotografie + decorațiune puncte ===== */
+  .inner-hero__media {
+    position: relative;
+    align-self: stretch;
+  }
+  .inner-hero__photo {
+    position: absolute;
+    top: 16px;
+    right: 0;
+    width: 410px;
+    height: 410px;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .inner-hero__dots {
+    position: absolute;
+    top: 109px;
+    left: 44px;
+    width: 129px;
+    height: 50px;
+    display: block;
+    z-index: 1;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .inner-hero {
+      padding-top: 56px;
+    }
+    .inner-hero__inner {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      row-gap: 0;
+    }
+    .inner-hero__title {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+    .inner-hero__text {
+      padding-bottom: 24px;
+    }
+    /* Pe mobil fotografia curge normal sub text, fără atârnare absolută */
+    .inner-hero__media {
+      position: relative;
+      min-height: 320px;
+    }
+    .inner-hero__photo {
+      position: relative;
+      top: 0;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+    .inner-hero__dots {
+      display: none;
+    }
+  }
+</style>

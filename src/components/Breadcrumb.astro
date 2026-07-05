@@ -1,0 +1,92 @@
+---
+// Breadcrumb.astro — replică fidelă a firului Ariadnei de pe paginile interioare live
+// (ex. https://deeabodycenter.ro/tarife/): rând inline „🏠 Home › <Pagină>", text navy
+// Poppins 16px, primul element (Home) e link către „/". Separator = chevron-right.
+//
+// Props:
+//   items: Array<{ label: string; href?: string }>
+// Elementul „Home" (cu iconiță casă, link „/") este adăugat automat ca prim crumb;
+// NU îl include în `items`.
+interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  items: Crumb[];
+}
+const { items = [] } = Astro.props;
+---
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb__list">
+    <li class="breadcrumb__item">
+      <a href="/" class="breadcrumb__link">
+        <svg class="breadcrumb__home" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 11.5 12 4l9 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5.5 10v9.5h13V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Home</span>
+      </a>
+    </li>
+    {
+      items.map((item) => (
+        <li class="breadcrumb__item">
+          <svg class="breadcrumb__sep" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {item.href ? (
+            <a href={item.href} class="breadcrumb__link">{item.label}</a>
+          ) : (
+            <span class="breadcrumb__current" aria-current="page">{item.label}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--navy, #051145);
+  }
+  .breadcrumb__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+  .breadcrumb__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .breadcrumb__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy, #051145);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .breadcrumb__link:hover {
+    color: var(--teal, #148A87);
+  }
+  .breadcrumb__home {
+    flex-shrink: 0;
+    transform: translateY(-1px);
+  }
+  .breadcrumb__sep {
+    flex-shrink: 0;
+    color: var(--navy, #051145);
+    opacity: 0.55;
+  }
+  .breadcrumb__current {
+    color: var(--navy, #051145);
+  }
+</style>

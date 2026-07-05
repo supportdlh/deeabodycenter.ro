@@ -6,8 +6,6 @@ import { nav } from '../data/nav';
 
 const oferteLinks = nav.find((item) => item.label === 'Oferte')?.children ?? [];
 
-const year = new Date().getFullYear();
-
 const serviciiLinks = [
   { label: 'Servicii Tratamente Faciale și Corporale', href: '/servicii-tratamente-faciale-si-corporale/' },
   { label: 'Tratament Sculptor', href: '/tratament-sculptor/' },
@@ -80,9 +78,11 @@ const serviciiLinks = [
         {
           site.hours.map((h) => (
             <li>
-              <span>
-                {h.days} {h.open && h.close ? `${h.open} – ${h.close}` : 'Închis'}
+              <span class="prog-day">
+                {h.days}
+                {h.open && h.close ? '' : ' – Închis'}
               </span>
+              {h.open && h.close && <span class="prog-time">{h.open} – {h.close}</span>}
             </li>
           ))
         }
@@ -92,15 +92,15 @@ const serviciiLinks = [
 
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
-      &copy; {year} {site.name}. Creare site: <a href="https://digitalhelp.ro" target="_blank" rel="noopener">digitalhelp.ro</a>
+      &copy; 2022 {site.name}. Creare site – <a href="https://digitalhelp.ro" target="_blank" rel="noopener">digitalhelp.ro</a>
     </div>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    background: var(--navy);
-    color: #fff;
+    background: #ecf0f2;
+    color: var(--navy);
   }
 
   .footer-body {
@@ -114,12 +114,11 @@ const serviciiLinks = [
   .footer-logo {
     height: 54px;
     width: auto;
-    filter: brightness(0) invert(1);
     margin-bottom: 16px;
   }
   .footer-slogan {
     font-size: 13.5px;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--navy);
     line-height: 1.65;
     margin-bottom: 18px;
   }
@@ -136,20 +135,23 @@ const serviciiLinks = [
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: var(--navy);
-    color: #fff;
-    transition: background var(--t-fast);
+    background: #fff;
+    color: #1c7261;
+    transition:
+      background var(--t-fast),
+      color var(--t-fast);
   }
   .footer-social a:hover {
     background: var(--magenta);
+    color: #fff;
     text-decoration: none;
   }
 
   .footer-col h4 {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--navy);
     margin-bottom: 16px;
   }
   .footer-col ul {
@@ -159,21 +161,23 @@ const serviciiLinks = [
     gap: 10px;
   }
   .footer-col ul li a {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    color: var(--navy);
     transition: color var(--t-fast);
   }
   .footer-col ul li a:hover {
     color: var(--magenta-h);
     text-decoration: none;
   }
-  .footer-col ul li span {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.7);
+  .footer-col ul li .prog-day,
+  .footer-col ul li .prog-time {
+    display: block;
+    font-size: 14px;
+    color: var(--navy);
   }
 
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(5, 17, 69, 0.1);
   }
   .footer-bottom-inner {
     max-width: 1170px;
@@ -181,10 +185,10 @@ const serviciiLinks = [
     padding: 16px 24px;
     text-align: center;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--navy);
   }
   .footer-bottom-inner a {
-    color: rgba(255, 255, 255, 0.65);
+    color: #1c7261;
   }
 
   @media (max-width: 900px) {
@@ -198,9 +202,15 @@ const serviciiLinks = [
       grid-template-columns: 1fr;
       gap: 28px;
     }
-    /* comportament identic originalului: coloana de brand (logo/slogan/social) e ascunsă pe mobil */
-    .footer-body .footer-col:first-child {
-      display: none;
+    /* pe mobil, ca pe live, coloana de brand (logo/slogan/social) e centrată în capul footer-ului */
+    .footer-body .footer-col--brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-body .footer-col--brand .footer-social {
+      justify-content: center;
     }
   }
 </style>

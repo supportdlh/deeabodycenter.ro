@@ -39,7 +39,7 @@ const { title, excerpt, image, href } = Astro.props;
   .card {
     background: var(--surface-card);
     border-radius: 10px;
-    box-shadow: 0 2px 18px rgba(5, 17, 69, 0.09);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -52,7 +52,7 @@ const { title, excerpt, image, href } = Astro.props;
   }
   .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 28px rgba(5, 17, 69, 0.15);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
     text-decoration: none;
   }
   .card :global(.card-img) {
@@ -74,7 +74,7 @@ const { title, excerpt, image, href } = Astro.props;
   }
   .card-body p {
     font-size: 0.84375rem;
-    color: var(--text-sec);
+    color: rgb(28, 114, 97);
     line-height: 1.65;
   }
 </style>

@@ -1,17 +1,24 @@
 ---
 // Element de acordeon FAQ, nativ <details>/<summary> (fără JS).
-// Pixel-perfect după mockup-ul V1 (mockups/v1-clona/index.html,
-// blocurile details.faq-item / summary / .faq-answer) — fără card/box,
-// doar bordură inferioară + indicator „+"/„−".
+// Stil implicit ("faq"): pixel-perfect după LIVE (deeabodycenter.ro, widget
+// ElementsKit accordion) — rânduri pline gri-deschis (#F7F9FB), colț drept când
+// sunt închise, iar la [open] banda titlului devine magenta-roz (#D461A4) cu text
+// alb și indicator chevron (⌄ → ⌃).
+//
+// Pe pagina de tratament componenta este RE-stilizată LOCAL prin :global() din
+// TreatmentLayout.astro (variantă „boxată"), care are prioritate mai mare și
+// suprascrie stilul de mai jos — deci acest fișier nu afectează acel accordion.
+// Prop `variant` este expus pentru a putea diferenția explicit stilurile în viitor.
 export interface Props {
   title: string;
   open?: boolean;
+  variant?: 'faq' | 'boxed';
 }
 
-const { title, open = false } = Astro.props;
+const { title, open = false, variant = 'faq' } = Astro.props;
 ---
 
-<details class="faq-item" open={open}>
+<details class={`faq-item variant-${variant}`} open={open}>
   <summary>{title}</summary>
   <div class="faq-answer">
     <slot />
@@ -19,46 +26,70 @@ const { title, open = false } = Astro.props;
 </details>
 
 <style>
+  /* Spațierea dintre rânduri (10px) — aplicată global containerului `.accordion`,
+     ca să fie identică pe homepage (FAQ) și pe pagina de tratament, indiferent
+     dacă pagina declară sau nu `gap` local. */
+  :global(.accordion) {
+    gap: 10px;
+  }
+
   details.faq-item {
-    border-bottom: 1px solid var(--border);
+    border: none;
   }
-  details.faq-item:first-of-type {
-    border-top: 1px solid var(--border);
-  }
+
   details.faq-item summary {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    padding: 15px 4px;
-    font-size: 0.875rem;
-    font-weight: 600;
+    gap: 14px;
+    padding: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
     color: var(--heading);
+    background: #f7f9fb;
     cursor: pointer;
     list-style: none;
     user-select: none;
+    transition:
+      background var(--t-fast, 0.2s) ease,
+      color var(--t-fast, 0.2s) ease,
+      border-radius var(--t-fast, 0.2s) ease;
   }
   details.faq-item summary::-webkit-details-marker {
     display: none;
   }
+
+  /* Indicator chevron (⌄) — SVG inline, roteste la deschidere. */
   details.faq-item summary::after {
-    content: '+';
-    font-size: 1.375rem;
-    font-weight: 400;
-    color: var(--magenta);
+    content: '';
     flex-shrink: 0;
-    line-height: 1;
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    background: center / 14px 14px no-repeat
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5L7 7l6-5.5' stroke='%23051145' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    transition: transform var(--t-fast, 0.2s) ease;
+  }
+
+  /* Stare deschisă: bandă magenta-roz rotunjită, text + chevron alb. */
+  details.faq-item[open] summary {
+    background: #d461a4;
+    color: #fff;
+    border-radius: 10px;
   }
   details.faq-item[open] summary::after {
-    content: '\2212';
+    transform: rotate(180deg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5L7 7l6-5.5' stroke='%23ffffff' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
+
   details.faq-item .faq-answer {
-    padding: 0 4px 16px;
-    font-size: 0.84375rem;
+    padding: 48px;
+    font-size: 1rem;
     color: var(--text-sec);
-    line-height: 1.72;
+    line-height: 1.5;
   }
   .faq-answer :global(p + p) {
-    margin-top: 10px;
+    margin-top: 14px;
   }
 </style>

@@ -4,6 +4,10 @@ import logo from '../assets/deea-body-center5.webp';
 import { site } from '../data/site';
 import { nav } from '../data/nav';
 import WhatsAppButton from './WhatsAppButton.astro';
+
+const currentPath = Astro.url.pathname;
+const norm = (p: string) => (p.length > 1 ? p.replace(/\/$/, '') : p);
+const isActive = (href: string) => norm(href) === norm(currentPath);
 ---
 
 <header class="site-header">
@@ -21,9 +25,9 @@ import WhatsAppButton from './WhatsAppButton.astro';
             <li class="nav-item">
               {item.children ? (
                 <details class="nav-dropdown">
-                  <summary>
+                  <summary class={isActive(item.href) ? 'is-active' : undefined}>
                     {item.label}
-                    <span class="caret" aria-hidden="true">▾</span>
+                    <span class="caret" aria-hidden="true"></span>
                   </summary>
                   <ul class="dropdown-panel">
                     {item.children.map((child) =>
@@ -38,7 +42,9 @@ import WhatsAppButton from './WhatsAppButton.astro';
                   </ul>
                 </details>
               ) : (
-                <a href={item.href}>{item.label}</a>
+                <a href={item.href} class={isActive(item.href) ? 'is-active' : undefined}>
+                  {item.label}
+                </a>
               )}
             </li>
           ))
@@ -47,7 +53,7 @@ import WhatsAppButton from './WhatsAppButton.astro';
     </nav>
 
     <div class="nav-cta">
-      <WhatsAppButton variant="nav" label="Programare" />
+      <WhatsAppButton variant="nav" label="PROGRAMARE" />
     </div>
 
     <label for="nav-cb" class="hamburger" aria-label="Deschide meniu">
@@ -136,6 +142,23 @@ import WhatsAppButton from './WhatsAppButton.astro';
     text-decoration: none;
   }
 
+  /* active/current page — teal with teal underline (match live) */
+  .main-nav a.is-active,
+  .nav-dropdown summary.is-active {
+    position: relative;
+    color: rgb(20, 138, 135);
+  }
+  .main-nav a.is-active::after,
+  .nav-dropdown summary.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -18px;
+    height: 2px;
+    background: rgb(20, 138, 135);
+  }
+
   /* dropdown Oferte/Servicii — <details>/<summary>, fără JS */
   .nav-dropdown summary {
     display: flex;
@@ -156,7 +179,11 @@ import WhatsAppButton from './WhatsAppButton.astro';
     color: var(--magenta);
   }
   .caret {
-    font-size: 0.625rem;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
     transition: transform var(--t-fast);
   }
   .nav-dropdown[open] .caret {
@@ -203,6 +230,17 @@ import WhatsAppButton from './WhatsAppButton.astro';
   @media (max-width: 768px) {
     .hamburger {
       display: flex;
+    }
+    /* mobile top bar = logo + hamburger only (match live) */
+    .nav-cta {
+      display: none;
+    }
+    .site-logo :global(img) {
+      height: 130px;
+    }
+    .main-nav a.is-active::after,
+    .nav-dropdown summary.is-active::after {
+      display: none;
     }
     .header-inner {
       flex-wrap: wrap;
