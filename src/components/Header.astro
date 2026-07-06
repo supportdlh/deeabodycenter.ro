@@ -2,12 +2,33 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/deea-body-center5.webp';
 import { site } from '../data/site';
-import { nav } from '../data/nav';
+import { nav, type NavItem } from '../data/nav';
 import WhatsAppButton from './WhatsAppButton.astro';
 
 const currentPath = Astro.url.pathname;
 const norm = (p: string) => (p.length > 1 ? p.replace(/\/$/, '') : p);
 const isActive = (href: string) => norm(href) === norm(currentPath);
+
+// Grupează copiii unui dropdown pe categorii, sparte de marcajele `heading: true`
+// (ex. Servicii → „Tratamente faciale” + „Tratamente corporale”). Un dropdown fără
+// heading-uri (ex. Oferte) devine un singur grup fără etichetă → listă simplă.
+// Dropdown-urile cu 2+ grupuri devin mega-meniu (coloane pe desktop, acordeoane pe mobil).
+interface NavGroup {
+  label?: string;
+  items: { label: string; href: string }[];
+}
+function groupChildren(children: NavItem['children']): NavGroup[] {
+  const groups: NavGroup[] = [];
+  for (const child of children ?? []) {
+    if (child.heading) {
+      groups.push({ label: child.label, items: [] });
+    } else {
+      if (groups.length === 0) groups.push({ items: [] });
+      groups[groups.length - 1].items.push({ label: child.label, href: child.href });
+    }
+  }
+  return groups;
+}
 ---
 
 <header class="site-header">
@@ -21,33 +42,56 @@ const isActive = (href: string) => norm(href) === norm(currentPath);
     <nav class="main-nav" aria-label="Navigare principală">
       <ul class="nav-list">
         {
-          nav.map((item) => (
-            <li class="nav-item">
-              {item.children ? (
-                <details class="nav-dropdown">
-                  <summary class={isActive(item.href) ? 'is-active' : undefined}>
-                    {item.label}
-                    <span class="caret" aria-hidden="true"></span>
-                  </summary>
-                  <ul class="dropdown-panel">
-                    {item.children.map((child) =>
-                      child.heading ? (
-                        <li class="dropdown-heading">{child.label}</li>
-                      ) : (
-                        <li>
-                          <a href={child.href}>{child.label}</a>
-                        </li>
-                      )
+          nav.map((item) => {
+            const groups = item.children ? groupChildren(item.children) : [];
+            const isMega = groups.length > 1;
+            return (
+              <li class="nav-item">
+                {item.children ? (
+                  <details class="nav-dropdown">
+                    <summary class={isActive(item.href) ? 'is-active' : undefined}>
+                      {item.label}
+                      <span class="caret" aria-hidden="true"></span>
+                    </summary>
+                    {isMega ? (
+                      <div class="dropdown-panel mega">
+                        {groups.map((g) => (
+                          <details class="svc-group">
+                            <summary class="svc-group-h">
+                              <span>{g.label}</span>
+                              <span class="svc-group-meta">
+                                <span class="svc-count">{g.items.length}</span>
+                                <span class="caret caret--sub" aria-hidden="true"></span>
+                              </span>
+                            </summary>
+                            <ul>
+                              {g.items.map((c) => (
+                                <li>
+                                  <a href={c.href}>{c.label}</a>
+                                </li>
+                              ))}
+                            </ul>
+                          </details>
+                        ))}
+                      </div>
+                    ) : (
+                      <ul class="dropdown-panel">
+                        {groups[0].items.map((c) => (
+                          <li>
+                            <a href={c.href}>{c.label}</a>
+                          </li>
+                        ))}
+                      </ul>
                     )}
-                  </ul>
-                </details>
-              ) : (
-                <a href={item.href} class={isActive(item.href) ? 'is-active' : undefined}>
-                  {item.label}
-                </a>
-              )}
-            </li>
-          ))
+                  </details>
+                ) : (
+                  <a href={item.href} class={isActive(item.href) ? 'is-active' : undefined}>
+                    {item.label}
+                  </a>
+                )}
+              </li>
+            );
+          })
         }
       </ul>
     </nav>
@@ -209,13 +253,44 @@ const isActive = (href: string) => norm(href) === norm(currentPath);
     padding: 8px 10px;
     white-space: normal;
   }
-  .dropdown-heading {
-    padding: 10px 10px 4px;
+  /* ---- mega-meniu (Servicii): coloane pe desktop, acordeoane pliate pe mobil ---- */
+  .dropdown-panel.mega {
+    min-width: 0;
+  }
+  .svc-group > ul {
+    list-style: none;
+  }
+  .svc-group-h {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    list-style: none;
+    color: var(--teal);
     font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    padding: 8px 10px 6px;
+  }
+  .svc-group-h::-webkit-details-marker {
+    display: none;
+  }
+  .svc-group-meta {
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+  .svc-count {
+    font-size: 0.75rem;
     color: var(--text-sec);
+    font-weight: 500;
+  }
+  .caret--sub {
+    transition: transform var(--t-fast);
+  }
+  .svc-group[open] .caret--sub {
+    transform: rotate(180deg);
   }
 
   .nav-cta {
@@ -230,6 +305,27 @@ const isActive = (href: string) => norm(href) === norm(currentPath);
       position: absolute;
       top: calc(100% + 6px);
       left: 0;
+    }
+    /* Servicii → două coloane (Faciale · Corporale), pe jumătate din înălțime */
+    .dropdown-panel.mega {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(190px, 220px));
+      gap: 2px 20px;
+      max-width: calc(100vw - 32px);
+    }
+    /* pe desktop grupurile sunt mereu „deschise” — coloane, nu acordeon.
+       Acoperă ambele modele de <details>: cel vechi (conținut ascuns cu display:none,
+       suprascris mai jos) și cel nou din Chrome/Safari (pseudo-elementul ::details-content
+       cu content-visibility, care nu răspunde la display pe copil). */
+    .svc-group::details-content {
+      content-visibility: visible;
+      height: auto;
+    }
+    .svc-group > ul {
+      display: block !important;
+    }
+    .svc-group-h {
+      cursor: default;
     }
   }
 
@@ -283,6 +379,26 @@ const isActive = (href: string) => norm(href) === norm(currentPath);
       border: none;
       background: transparent;
       padding: 0 0 4px 12px;
+    }
+    /* Servicii pe mobil: categoriile (Faciale/Corporale) = acordeoane pliate */
+    .dropdown-panel.mega {
+      display: block;
+    }
+    .svc-group-h {
+      cursor: pointer;
+      width: 100%;
+      color: var(--text);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: normal;
+      padding: 10px 0;
+    }
+    .svc-group-meta {
+      display: flex;
+    }
+    .svc-group > ul {
+      padding: 0 0 6px 12px;
     }
   }
 </style>
