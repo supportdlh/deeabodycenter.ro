@@ -72,14 +72,21 @@ import { site } from '../data/site';
 
         <div class="locate__map">
           <iframe
-            src="https://maps.google.com/maps?q=Deea%20Body%20Center%2C%20Str.%20Vlad%20Tepes%2021B%2C%20Ploiesti&z=16&output=embed"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=26.0095%2C44.9368%2C26.0215%2C44.9428&layer=mapnik&marker=44.939824%2C26.015519"
             width="600"
             height="450"
             style="border:0;"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            title={`Locația ${site.name} pe Google Maps`}
+            loading="lazy"
+            title={`Locația ${site.name} pe hartă`}
           ></iframe>
+          <a
+            class="locate__map-link"
+            href="https://www.google.com/maps/search/?api=1&query=44.939824%2C26.015519"
+            target="_blank"
+            rel="noopener"
+          >
+            Deschide în Google Maps ↗
+          </a>
         </div>
       </div>
     </div>
@@ -195,6 +202,19 @@ import { site } from '../data/site';
     width: 100%;
     height: 420px;
     border-radius: 6px;
+  }
+  .locate__map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--magenta);
+  }
+  .locate__map-link:hover {
+    color: var(--navy);
+    text-decoration: none;
   }
 
   /* ===== PROGRAMĂRI TELEFONICE ===== */
