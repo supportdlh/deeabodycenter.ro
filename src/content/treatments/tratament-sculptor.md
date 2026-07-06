@@ -96,7 +96,7 @@ gallery:
   - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-344.webp
   - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-345.webp
   - /galleries/tratament-sculptor/tratament-sculptor-deeabocycenter-ploiesti_DBC-346.webp
-order: 1
+order: 3
 seo:
   title: Tratament Sculptor - Deea Body Center
   description: >-

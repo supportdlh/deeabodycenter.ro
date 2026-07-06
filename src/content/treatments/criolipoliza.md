@@ -117,7 +117,7 @@ gallery:
   - /galleries/criolipoliza/criolipoliza-cryogen-deeabocycenter-ploiesti_DBC-401.webp
   - /galleries/criolipoliza/criolipoliza-cryogen-deeabocycenter-ploiesti_DBC-400.webp
   - /galleries/criolipoliza/criolipoliza-cryogen-deeabocycenter-ploiesti_DBC-399.webp
-order: 5
+order: 7
 seo:
   title: Criolipoliza Cryogen - Deea Body Center
   description: >-

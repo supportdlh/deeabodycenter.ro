@@ -73,7 +73,7 @@ gallery:
   - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-229.webp
   - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-227.webp
   - /galleries/slabire-cu-zentisse-slim-light-laser/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-228.webp
-order: 3
+order: 5
 seo:
   title: Slabire cu ZENTISSE Slim Light Laser - Deea Body Center
   description: >-

@@ -42,6 +42,8 @@ export const nav: NavItem[] = [
       { label: 'Microdermabraziune', href: '/microdermabraziune/' },
       { label: 'Cromoterapie facială', href: '/cromoterapie-faciala/' },
       { label: 'Tratamente corporale', href: '/servicii-tratamente-faciale-si-corporale/', heading: true },
+      { label: 'Wonder Axon', href: '/wonder-axon/' },
+      { label: 'Hera', href: '/hera/' },
       { label: 'Tratament Sculptor', href: '/tratament-sculptor/' },
       { label: 'Masaj transdermic Dermohealth', href: '/masaj-transdermic-dermohealth/' },
       { label: 'ZENTISSE Slim Light Laser', href: '/slabire-cu-zentisse-slim-light-laser/' },

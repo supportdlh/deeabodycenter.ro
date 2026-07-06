@@ -71,7 +71,7 @@ gallery:
   - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0006.webp
   - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0004.webp
   - /galleries/presoterapie/presoterapie-deeabocycenter-ploiesti_presoterapie-deeabodycenter-ploiesti0003.webp
-order: 7
+order: 9
 seo:
   title: Presoterapie - Deea Body Center
   description: >-

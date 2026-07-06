@@ -55,7 +55,7 @@ gallery:
   - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-256.webp
   - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-255.webp
   - /galleries/slabire-prin-electrostimulare/slabire-electrostimulare-deeabocycenter-ploiesti_DBC-254.webp
-order: 6
+order: 8
 seo:
   title: Slabire prin electrostimulare - Deea Body Center
   description: >-

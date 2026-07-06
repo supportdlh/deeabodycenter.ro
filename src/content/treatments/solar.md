@@ -62,7 +62,7 @@ gallery:
   - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-272.webp
   - /galleries/solar/solar-deeabocycenter-ploiesti_DBC-273.webp
   - /galleries/solar/deeabodycenter-ploiesti-scaled.webp
-order: 8
+order: 10
 seo:
   title: Solar - Deea Body Center Ploiesti
   description: >-

@@ -65,7 +65,7 @@ gallery:
   - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-382.webp
   - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-378.webp
   - /galleries/masaj-transdermic-dermohealth/tratament-sculptor-deeabocycenter-ploiesti_DBC-377.webp
-order: 2
+order: 4
 seo:
   title: Masaj transdermic Dermohealth - Deea Body Center
   description: >-

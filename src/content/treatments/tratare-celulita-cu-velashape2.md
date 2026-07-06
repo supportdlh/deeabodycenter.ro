@@ -92,7 +92,7 @@ gallery:
   - /galleries/tratare-celulita-cu-velashape2/Tratament-remodelare-brate.png
   - /galleries/tratare-celulita-cu-velashape2/Cum-functioneaza-VelaShape2.png
   - /galleries/tratare-celulita-cu-velashape2/Cum-trateaza-celulita-VelaShape2.png
-order: 4
+order: 6
 seo:
   title: Tratare Celulita cu VelaShape2 - Deea Body Center
   description: >-

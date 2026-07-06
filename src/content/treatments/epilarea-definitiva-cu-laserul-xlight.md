@@ -65,7 +65,7 @@ gallery:
   - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-472-scaled.jpg
   - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-469-scaled.jpg
   - /galleries/epilarea-definitiva-cu-laserul-xlight/epilare-definitiva-cu-laser-deeabodycenter-ploiestiDBC-486-scaled.jpg
-order: 9
+order: 11
 seo:
   title: Epilarea definitivă cu laserul XLight - Deea Body Center
   description: >-
