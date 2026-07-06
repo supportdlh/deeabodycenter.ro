@@ -5,6 +5,10 @@
   RewriteEngine On
   RewriteCond %{HTTPS} off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # /sitemap.xml → servește indexul generat de @astrojs/sitemap (rewrite intern, URL rămâne curat)
+  # Astfel URL-ul de trimis în Search Console e mereu /sitemap.xml, dar conținutul e auto-generat la build.
+  RewriteRule ^sitemap\.xml$ /sitemap-index.xml [L]
 </IfModule>
 
 # --- Compresie ---

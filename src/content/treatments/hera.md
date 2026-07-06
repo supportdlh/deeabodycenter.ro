@@ -48,6 +48,13 @@ benefits:
   - Detoxifiere și drenaj
   - Tratament non-invaziv
 gallery:
+  - /galleries/hera/hera-16.webp
+  - /galleries/hera/hera-ba-1.webp
+  - /galleries/hera/hera-ba-2.webp
+  - /galleries/hera/hera-ba-3.webp
+  - /galleries/hera/hera-ba-4.webp
+  - /galleries/hera/hera-ba-5.webp
+  - /galleries/hera/hera-ba-6.webp
   - /galleries/hera/hera-1.webp
   - /galleries/hera/hera-2.webp
   - /galleries/hera/hera-3.webp
@@ -56,6 +63,15 @@ gallery:
   - /galleries/hera/hera-6.webp
   - /galleries/hera/hera-7.webp
   - /galleries/hera/hera-8.webp
+  - /galleries/hera/hera-9.webp
+  - /galleries/hera/hera-10.webp
+  - /galleries/hera/hera-11.webp
+  - /galleries/hera/hera-12.webp
+  - /galleries/hera/hera-13.webp
+  - /galleries/hera/hera-14.webp
+  - /galleries/hera/hera-15.webp
+  - /galleries/hera/hera-17.webp
+  - /galleries/hera/hera-18.webp
 order: 2
 seo:
   title: Tratament Hera - Deea Body Center

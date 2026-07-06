@@ -57,6 +57,7 @@ gallery:
   - /galleries/wonder-axon/wonder-axon-6.webp
   - /galleries/wonder-axon/wonder-axon-7.webp
   - /galleries/wonder-axon/wonder-axon-8.webp
+  - /galleries/wonder-axon/wonder-axon-9.webp
 order: 1
 seo:
   title: Tratament Wonder Axon - Deea Body Center
