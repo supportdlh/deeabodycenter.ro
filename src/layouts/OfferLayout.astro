@@ -203,7 +203,7 @@ const DEEA_ICON = '/deea-icon.webp';
   <!-- ===== CORPORAL / FACIAL: tabel de prețuri (cutii gri + iconiță DEEA) ===== -->
   {
     hasPriceTable && (
-      <section class={`price-table${isFacial ? ' price-table--filled' : ''}`}>
+      <section class={`price-table${isFacial || isCorporal ? ' price-table--filled' : ''}`}>
         <div class="wrap">
           <div class="price-cols">
             {[leftBoxes, rightBoxes].map((col) => (
