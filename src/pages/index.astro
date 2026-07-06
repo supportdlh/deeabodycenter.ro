@@ -41,9 +41,9 @@ import imgOfferSpeciale from '../assets/DSC00993-scaled.webp';
 import imgOfferFaciale from '../assets/Tratament-sculptor-deeabodycenter.ro-ploiesti.webp';
 
 import imgTestimonialsBg from '../assets/testimonials.webp';
-import avatar1 from '../assets/testi-avatar-1.webp';
-import avatar2 from '../assets/testi-avatar-2.webp';
-import avatar3 from '../assets/testi-avatar-3.webp';
+import avatar1 from '../assets/testi-maria.webp';
+import avatar2 from '../assets/testi-andreea.webp';
+import avatar3 from '../assets/testi-elena.webp';
 
 const facialCards = [
   {
@@ -563,7 +563,10 @@ const faq = [
 
   /* ===== HERO ===== */
   .hero {
-    background: linear-gradient(130deg, #ded1f2 0%, #eae1f5 25%, #f2edf9 50%, #f8f4fc 72%, #ffffff 100%);
+    /* Gradient identic cu live: alb sus (1%) → lavandă jos (rgb(222,194,245)),
+       ca valurile albe ale shape-divider-ului să iasă în evidență și să se
+       întrepătrundă cu fundalul lavandă la baza hero-ului. */
+    background: linear-gradient(181deg, #ffffff 1%, #dec2f5 100%);
     position: relative;
     overflow: hidden;
     padding: 56px 0 150px;
@@ -666,22 +669,28 @@ const faq = [
     margin-bottom: 20px;
   }
 
-  /* ===== HERO WAVE (divizor ondulat, identic cu shape-divider-ul din live) ===== */
+  /* ===== HERO WAVE (divizor ondulat "mountains", identic cu shape-divider-ul din live) =====
+     Live: elementor-shape-bottom "mountains" — 3 straturi albe (opacity 0.33/0.66/1),
+     container position:absolute; bottom:-1px; overflow:hidden; transform:rotate(180deg)
+     (matrix(-1,0,0,-1)) astfel încât valurile URCĂ în hero și se întrepătrund cu
+     gradientul lavandă. Înălțimea e proporțională cu lățimea (viewBox 10:1 → height:auto),
+     exact ca pe live (144px la 1440, 39px la 390). */
   .hero-wave {
     position: absolute;
     left: 0;
     right: 0;
     bottom: -1px;
     width: 100%;
-    height: 130px;
     line-height: 0;
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
+    overflow: hidden;
+    transform: rotate(180deg);
   }
   .hero-wave svg {
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 
   .hero-social {
@@ -881,7 +890,7 @@ const faq = [
     display: none;
   }
   .testi-controls {
-    display: none;
+    display: flex;
     justify-content: center;
     gap: 16px;
     margin-top: 26px;
@@ -1064,9 +1073,6 @@ const faq = [
     }
     .hero {
       padding-bottom: 90px;
-    }
-    .hero-wave {
-      height: 70px;
     }
     .intro-grid {
       grid-template-columns: 1fr;

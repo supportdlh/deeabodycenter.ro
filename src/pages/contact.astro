@@ -72,12 +72,11 @@ import { site } from '../data/site';
 
         <div class="locate__map">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2824.1890494144245!2d26.015518876596058!3d44.939824668272315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b249d35041d17f%3A0x14a54747b424fd62!2sDeea%20Body%20Center%20Ploiesti!5e0!3m2!1sen!2sro!4v1728383848505!5m2!1sen!2sro"
+            src="https://maps.google.com/maps?q=Deea%20Body%20Center%2C%20Str.%20Vlad%20Tepes%2021B%2C%20Ploiesti&z=16&output=embed"
             width="600"
             height="450"
             style="border:0;"
             allowfullscreen
-            loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title={`Locația ${site.name} pe Google Maps`}
           ></iframe>
@@ -153,6 +152,9 @@ import { site } from '../data/site';
   }
   .locate__cta {
     padding: 8px 8px 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .locate__lead {
     font-size: 1.0625rem;

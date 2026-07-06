@@ -449,7 +449,8 @@ const DEEA_ICON = '/deea-icon.webp';
     gap: 8px;
     padding: 22px 18px 22px 24px;
   }
-  /* Doar paginile faciale au cutii cu fundal gri (ca pe live); corporalele sunt pe alb. */
+  /* Cutii cu fundal gri-deschis #ECF0F2 (verificat pe LIVE — atât corporale, cât și
+     faciale au acest fill, cu colțuri rotunjite 10px, pe pagină albă). */
   .price-table--filled .price-box {
     background: #ecf0f2;
   }
@@ -461,10 +462,10 @@ const DEEA_ICON = '/deea-icon.webp';
   .price-box__price {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 700;
-    font-size: 1.9rem;
-    line-height: 1.1;
+    font-size: 1.9375rem; /* 31px — LIVE */
+    line-height: 1.2;
     color: var(--navy);
-    margin: 0 0 10px;
+    margin: 8px 0 16px; /* LIVE: mt 8px / mb 16px */
   }
   .price-box__desc {
     display: flex;
@@ -478,7 +479,7 @@ const DEEA_ICON = '/deea-icon.webp';
   }
   .price-box__icon {
     flex-shrink: 0;
-    width: 108px;
+    width: 118px; /* LIVE: ~118px square */
     height: auto;
     align-self: center;
   }
