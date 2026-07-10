@@ -21,6 +21,72 @@ interface PriceGroup {
   items: PriceItem[];
 }
 
+// Secțiunea „Tratamente Hera" — furnizată de client, împărțită pe subcategorii,
+// fiecare intrare având și durata/ședința (detail). Prețuri normalizate la „RON"
+// pentru a fi consecvente cu restul paginii (clientul le-a scris ca „lei").
+interface HeraItem {
+  name: string;
+  price: string;
+  detail?: string;
+}
+interface HeraSubgroup {
+  subtitle: string;
+  items: HeraItem[];
+}
+
+const heraSubgroups: HeraSubgroup[] = [
+  {
+    subtitle: 'Facial',
+    items: [
+      {
+        name: 'Rejuvenare facială',
+        price: '400 RON',
+        detail:
+          '40 minute / ședință (riduri profunde, linii fine / redobândire oval facial, îmbunătățirea elasticității)',
+      },
+      { name: 'Lifting instant full face', price: '350 RON', detail: '30 minute / ședință' },
+      { name: 'Piele sensibilă', price: '300 RON', detail: '30 minute / ședință' },
+      { name: 'Periocular (pungi / riduri)', price: '300 RON', detail: '25 minute / ședință' },
+      { name: 'Decolteu + Gât + Bărbie dublă', price: '350 RON', detail: '25 minute / ședință' },
+      { name: 'Rejuvenare față + Gât + Decolteu', price: '600 RON' },
+    ],
+  },
+  {
+    subtitle: 'Corporal | Reducere circumferința',
+    items: [
+      { name: 'Abdomen', price: '450 RON', detail: '40 minute / ședință' },
+      { name: 'Flancuri', price: '300 RON', detail: '22 minute / ședință' },
+      { name: 'Abdomen + Flancuri', price: '550 RON', detail: '62 minute / ședință' },
+      { name: 'Coapse exterior / coapse interior', price: '400 RON', detail: '30 minute / ședință' },
+      { name: 'Pachet: Abdomen + Coapse 360° + Fese', price: '650 RON', detail: '120 minute / ședință' },
+      { name: 'Genunchi', price: '300 RON', detail: '30 minute / ședință' },
+      { name: 'Spate', price: '400 RON', detail: '40 minute / ședință' },
+      { name: 'Brațe', price: '350 RON', detail: '34 minute / ședință' },
+    ],
+  },
+  {
+    subtitle: 'Laxitate cutanată (piele lăsată)',
+    items: [
+      { name: 'Abdomen / Coapse / Brațe', price: '450 RON', detail: '40 minute / ședință' },
+      { name: 'Mâini îmbătrânite', price: '250 RON', detail: '24 minute / ședință' },
+    ],
+  },
+  {
+    subtitle: 'Celulită (grad I-IV)',
+    items: [
+      { name: 'Picioare spate + Fese', price: '400 RON', detail: '28 minute / ședință' },
+      { name: 'Picioare față + spate 360° + Fese', price: '500 RON', detail: '58 minute / ședință' },
+    ],
+  },
+  {
+    subtitle: 'Relaxare & Drenaj',
+    items: [
+      { name: 'Relaxare spate', price: '400 RON', detail: '40 minute / ședință' },
+      { name: 'Picioare grele (coapse + gambe)', price: '400 RON', detail: '42 minute / ședință' },
+    ],
+  },
+];
+
 // 48 de perechi nume/preț — număr confirmat prin
 // `grep -c 'elementor-price-list-title'` (48) pe pagina live.
 const groups: PriceGroup[] = [
@@ -183,6 +249,28 @@ const faq = [
   ========================================================== -->
   <section class="section">
     <div class="wrap">
+      <div class="price-group">
+        <h2>Tratamente Hera</h2>
+        {
+          heraSubgroups.map((sub) => (
+            <div class="hera-sub">
+              <h3>{sub.subtitle}</h3>
+              <ul class="price-list">
+                {sub.items.map((item) => (
+                  <li class="price-row hera-row">
+                    <div class="hera-main">
+                      <span class="price-name">{item.name}</span>
+                      <span class="price-leader" aria-hidden="true" />
+                      <span class="price-value">{item.price}</span>
+                    </div>
+                    {item.detail && <p class="price-detail">{item.detail}</p>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
       {
         groups.map((group) => (
           <div class="price-group">
@@ -295,6 +383,42 @@ const faq = [
     font-size: 1.75rem;
     color: var(--navy, #051145);
     margin-bottom: 24px;
+  }
+
+  /* ===== Subcategorii „Tratamente Hera" (h3 teal) + rând cu durată ===== */
+  .hera-sub {
+    margin-bottom: 30px;
+  }
+  .hera-sub:last-child {
+    margin-bottom: 0;
+  }
+  .hera-sub h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--teal, #148a87);
+    margin: 0 0 6px;
+  }
+  /* Rândul Hera: linia nume ...... preț, plus o linie de detaliu (durată) sub ea.
+     Selector cu specificitate dublă ca să învingă `.price-row { align-items: center }`
+     definit mai jos în foaia de stil. */
+  .price-row.hera-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 12px 0;
+  }
+  .hera-main {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+  }
+  .price-detail {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    color: var(--text-sec);
+    max-width: 760px;
   }
 
   /* Single full-width column with dotted-leader lines (name ..... price) */
