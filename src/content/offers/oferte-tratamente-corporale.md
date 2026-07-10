@@ -44,6 +44,17 @@ body: >-
   oferi rezultate vizibile și durabile.
 packages:
   - items:
+      - 'Abonament Fast Slim pentru vară! 😀💞'
+      - 6 ședințe Axon Wonder
+      - 4 ședințe Hera
+      - 1 ședință Velashape
+      - Axon 200 RON / ședința
+    price: 2100 RON
+  - items:
+      - Abonamentul 10 + 2 gratis
+      - Al doilea abonament cu 40% reducere
+    price: 1800 RON
+  - items:
       - Evaluare corporală GRATUITĂ
       - Criolipoliză (o zonă MARE)
       - 4 ședințe Dermocell
@@ -75,17 +86,6 @@ packages:
   - items:
       - 12 Ședințe Electrostimulare
     price: 600 RON
-  - items:
-      - 'Abonament Fast Slim pentru vară! 😀💞'
-      - 6 ședințe Axon Wonder
-      - 4 ședințe Hera
-      - 1 ședință Velashape
-      - Axon 200 RON / ședința
-    price: 2100 RON
-  - items:
-      - Abonamentul 10 + 2 gratis
-      - Al doilea abonament cu 40% reducere
-    price: 1800 RON
 seo:
   title: Oferte Tratamente Corporale - Deea Body Center
   description: >-
