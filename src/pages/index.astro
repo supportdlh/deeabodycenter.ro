@@ -15,7 +15,7 @@ import ContactBlock from '../components/ContactBlock.astro';
 import LocalBusinessSchema from '../components/schema/LocalBusinessSchema.astro';
 import { site } from '../data/site';
 
-import heroImg from '../assets/promo-remodelare-corporala.webp';
+import heroImg from '../assets/hera-pachet-coapse.webp';
 import facialSplitImg from '../assets/DSC01046-1536x1024.webp';
 import bodySplitImg from '../assets/DSC00993-scaled.webp';
 
@@ -240,52 +240,30 @@ const faq = [
   <section class="hero">
     <div class="wrap hero-inner">
       <div class="hero-content">
-        <p class="hero-eyebrow">Ofertă limitată</p>
-        <h1 class="hero-title">
-          Transformă-ți corpul și redefinește-ți încrederea cu oferta noastră exclusivă de remodelare!
-        </h1>
-        <p class="hero-desc">Rezervă acum pachetul tău complet și profită de criolipoliza cadou!</p>
+        <p class="hero-eyebrow">✨ Ofertă Specială</p>
+        <h1 class="hero-title">Pachet HERA — 7 ședințe la un preț de excepție! 🤍</h1>
         <ul class="hero-list">
-          <li>3 ședințe VelaShape – coapse + fese</li>
-          <li>2 ședințe VelaShape – abdomen + flancuri + lombar</li>
-          <li>3 ședințe laser Zentisse 3 sedinte presodrenaj</li>
-          <li>1 zonă mare de criolipoliză cadou</li>
+          <li>7 ședințe personalizate HERA</li>
+          <li>Remodelare corporală și tonifiere</li>
+          <li>Reducerea aspectului de celulită</li>
+          <li>Piele mai fermă și mai netedă</li>
+          <li>Plan adaptat obiectivelor tale</li>
         </ul>
-        <div class="hero-price">1690 RON</div>
-        <p class="hero-note">Nu rata șansa de a obține silueta mult dorită la un preț special! ✨</p>
-        <div class="social-row hero-social">
-          <a href={site.social.facebook || '#'} class="social-icon" aria-label="Facebook">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-              ><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg
-            >
-          </a>
-          <a href={site.social.instagram || '#'} class="social-icon" aria-label="Instagram">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-              ><rect x="2" y="2" width="20" height="20" rx="5"></rect><path
-                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
-              ></line></svg
-            >
-          </a>
+        <div class="hero-price-block">
+          <p class="hero-price-value">💎 Valoare pachet: <span class="hero-price-old">2.800 lei</span></p>
+          <div class="hero-price">🔥 2.100 RON</div>
+          <p class="hero-price-economy">🎁 Economisești 700 lei!</p>
         </div>
         <WhatsAppButton
-          label="Programează-te"
-          message="Bună, aș dori să profit de oferta cu criolipoliza cadou (pachet 1690 RON)."
+          label="Vreau Pachetul HERA"
+          message="Bună, aș dori să profit de Pachetul HERA – 7 ședințe la 2.100 lei. Când pot programa prima ședință?"
           class="hero-cta"
         />
       </div>
       <div class="hero-image">
         <Image
           src={heroImg}
-          alt="Pachet remodelare corporală — criolipoliză cadou"
+          alt="Tratament HERA remodelare corporală — Pachet 7 ședințe"
           width={800}
           height={800}
           widths={[400, 600, 800]}
@@ -667,6 +645,29 @@ const faq = [
     font-style: normal;
     line-height: 1.25;
     margin-bottom: 20px;
+  }
+
+  .hero-price-block {
+    margin-bottom: 24px;
+  }
+  .hero-price-value {
+    font-size: 1rem;
+    color: var(--text-sec);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .hero-price-old {
+    text-decoration: line-through;
+    text-decoration-color: #c0392b;
+    text-decoration-thickness: 2px;
+    color: #999;
+  }
+  .hero-price-economy {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--magenta);
+    margin-top: 4px;
   }
 
   /* ===== HERO WAVE (divizor ondulat "mountains", identic cu shape-divider-ul din live) =====
