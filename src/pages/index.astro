@@ -27,7 +27,7 @@ import imgGreenPeel from '../assets/tratament-green-peel-deeabocycenter-ploiesti
 import imgHidratiq from '../assets/tratament-hidratiq-1.png';
 
 import imgSculptor from '../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-320.webp';
-import imgHeraPromo from '../assets/hera-pachet-hero.png';
+import imgHeraPromo from '../assets/hera-650-poster.jpg';
 import imgDermohealth from '../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-346.webp';
 import imgZentisse from '../assets/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-250.webp';
 import imgVelaShape from '../assets/vela-shape-deeabocycenter-ploiesti_DBC-203.webp';
@@ -397,12 +397,12 @@ const faq = [
       <div class="intro-img-wrap intro-img-right">
         <span class="deco-dots deco-dots-left" aria-hidden="true"></span>
         <Image
-          class="intro-img"
+          class="intro-img intro-img-poster"
           src={imgHeraPromo}
-          alt="remodelare corporala la deea body center in ploiesti"
-          width={800}
-          height={600}
-          widths={[400, 600, 800]}
+          alt="tratament HERA 120 de minute — abdomen, coapse 360°, fese, 650 RON la Deea Body Center Ploiesti"
+          width={1254}
+          height={1254}
+          widths={[600, 900, 1254]}
           sizes="(max-width: 768px) 90vw, 560px"
           loading="lazy"
         />
@@ -966,6 +966,12 @@ const faq = [
     height: 420px;
     object-fit: cover;
     border-radius: 10px;
+  }
+  /* Posterul pătrat HERA 650 RON — afișat integral, fără crop */
+  .intro-img-wrap :global(img.intro-img-poster) {
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
   }
   .intro-text h2 {
     font-size: 2.375rem;
