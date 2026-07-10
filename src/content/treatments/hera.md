@@ -40,6 +40,37 @@ sections:
         body: >-
           Pe lângă tratamentele corporale, Hera poate fi folosită și pentru rejuvenare facială, redensificarea
           pielii, uniformizarea tenului și îngrijirea conturului feței.
+  - group: Corporal
+    heading: Ce zone pot fi tratate și care este timpul de lucru?
+    items:
+      - title: Corporal — Reducere circumferință
+        open: true
+        body: |
+          • Abdomen – 40 minute
+          • Flancuri – 22 minute
+          • Coapse exterior / coapse interior – 30 minute
+          • Brațe – 34 minute
+          • Abdomen + flancuri – 62 minute
+      - title: Corporal — Laxitate cutanată
+        body: |
+          • Abdomen / coapse interior / fese / brațe / sâni – 30 minute
+          • Mâini – 24 minute
+      - title: Corporal — Celulită
+        body: |
+          • Coapse + fese – 58 minute
+          • Reducere circumferință abdomen + celulită coapse și fese – 120 minute
+      - title: Corporal — Relaxare / Drenaj
+        body: |
+          • Relaxare spate / remodelare spate – 40 minute
+          • Picioare obosite – 42 minute
+      - title: Facial
+        body: |
+          • Rejuvenare Facială (riduri profunde, linii fine / redobândire oval facial, îmbunătățirea elasticității) – 40 minute
+          • Lifting instant full face – 30 minute
+          • Piele sensibilă – 30 minute
+          • Periocular (pungi / riduri) – 25 minute
+          • Decolteu + gât + bărbie dublă – 25 minute
+          • Rejuvenare față + gât + decolteu – 65 minute
 benefits:
   - Remodelare corporală și reducerea circumferinței
   - Fermitate și tonifiere
