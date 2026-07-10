@@ -261,15 +261,47 @@ const faq = [
         />
       </div>
       <div class="hero-image">
-        <Image
-          src={heroImg}
-          alt="Tratament HERA remodelare corporală — Pachet 7 ședințe"
-          width={800}
-          height={800}
-          widths={[400, 600, 800]}
-          sizes="(max-width: 768px) 90vw, 520px"
-          loading="eager"
-        />
+        <div class="hera-poster">
+          <Image
+            class="hera-poster-photo"
+            src={heroImg}
+            alt="Tratament HERA remodelare corporală — Pachet 7 ședințe"
+            width={800}
+            height={800}
+            widths={[400, 600, 800]}
+            sizes="(max-width: 768px) 90vw, 520px"
+            loading="eager"
+          />
+          <div class="hera-poster-overlay">
+            <div class="hera-poster-badge">✨ OFERTĂ SPECIALĂ ✨</div>
+            <div class="hera-poster-title">
+              <span class="hera-poster-pachet">PACHET</span>
+              <span class="hera-poster-hera">HERA</span>
+              <span class="hera-poster-sub">Corporal</span>
+            </div>
+            <div class="hera-poster-benefits">
+              <div class="hera-poster-ben"><span>✦</span> 7 ședințe personalizate</div>
+              <div class="hera-poster-ben"><span>✦</span> Remodelare corporală &amp; tonifiere</div>
+              <div class="hera-poster-ben"><span>✦</span> Reducere aspect celulită</div>
+              <div class="hera-poster-ben"><span>✦</span> Piele mai fermă și mai netedă</div>
+              <div class="hera-poster-ben"><span>✦</span> Plan adaptat obiectivelor tale</div>
+            </div>
+            <div class="hera-poster-price-row">
+              <div class="hera-poster-price-box">
+                <div class="hera-poster-price-lbl">PREȚ</div>
+                <div class="hera-poster-price-line"></div>
+                <div class="hera-poster-price-num">2.100</div>
+                <div class="hera-poster-price-line"></div>
+                <div class="hera-poster-price-curr">LEI</div>
+              </div>
+              <div class="hera-poster-price-info">
+                <div class="hera-poster-price-sessions">7 ședințe HERA</div>
+                <div class="hera-poster-price-old">Valoare: 2.800 lei</div>
+                <div class="hera-poster-price-eco">🎁 Economisești 700 lei!</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -734,6 +766,182 @@ const faq = [
     margin: 0 auto;
     border-radius: var(--r-md);
     box-shadow: 0 8px 32px rgba(5, 17, 69, 0.12);
+  }
+
+  /* ===== POSTER HERA (overlay pe imaginea din dreapta) ===== */
+  .hera-poster {
+    position: relative;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    max-width: 520px;
+    margin: 0 auto;
+    box-shadow: 0 8px 32px rgba(5, 17, 69, 0.18);
+  }
+  .hera-poster :global(.hera-poster-photo) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--r-md);
+  }
+  .hera-poster-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--r-md);
+    background: linear-gradient(to right,
+      rgba(249,237,232,0.97) 0%,
+      rgba(249,237,232,0.93) 38%,
+      rgba(249,237,232,0.55) 58%,
+      rgba(249,237,232,0.05) 80%,
+      transparent 100%
+    );
+    padding: 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hera-poster-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #7b2d8b, #9b3dab);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    padding: 4px 11px;
+    border-radius: 20px;
+    width: fit-content;
+    box-shadow: 0 2px 10px rgba(123,45,139,0.4);
+    font-family: 'Poppins', sans-serif;
+  }
+  .hera-poster-title {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    margin: 6px 0 4px;
+  }
+  .hera-poster-pachet {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #111;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .hera-poster-hera {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.8rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 0.9;
+    background: linear-gradient(180deg, #e8c840 0%, #c8920a 40%, #8b5e08 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hera-poster-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #8b3a9a;
+    margin-top: 2px;
+    margin-left: 3px;
+  }
+  .hera-poster-benefits {
+    background: linear-gradient(135deg, rgba(113,32,130,0.9), rgba(75,10,95,0.93));
+    border-radius: 10px;
+    padding: 10px 13px;
+    margin: 4px 0;
+    box-shadow: 0 3px 16px rgba(80,15,100,0.35);
+  }
+  .hera-poster-ben {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2.5px 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  .hera-poster-ben span {
+    color: #f0c030;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+  .hera-poster-price-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .hera-poster-price-box {
+    border: 1.5px solid #c8a030;
+    border-radius: 10px;
+    padding: 7px 14px 5px;
+    text-align: center;
+    background: rgba(255,255,255,0.75);
+    flex-shrink: 0;
+  }
+  .hera-poster-price-lbl {
+    font-size: 0.55rem;
+    font-weight: 800;
+    color: #6b2d7a;
+    letter-spacing: 2px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .hera-poster-price-line {
+    height: 1px;
+    background: #c8a030;
+    margin: 3px 0;
+  }
+  .hera-poster-price-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #6b2d7a;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .hera-poster-price-curr {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #6b2d7a;
+    letter-spacing: 2px;
+  }
+  .hera-poster-price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 4px;
+  }
+  .hera-poster-price-sessions {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #6b2d7a;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .hera-poster-price-old {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #888;
+    text-decoration: line-through;
+    text-decoration-color: #c0392b;
+    text-decoration-thickness: 2px;
+  }
+  .hera-poster-price-eco {
+    background: linear-gradient(135deg, #d4a820, #b8820a);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 4px 9px;
+    border-radius: 14px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(180,120,0,0.3);
   }
 
   /* ===== SECTION INTRO (imagine + text, 2 coloane) ===== */
