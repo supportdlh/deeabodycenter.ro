@@ -57,10 +57,6 @@ packages:
       - 4 zone Laser Zentisse
     price: 1800 RON
   - items:
-      - 6 ședințe VelaShape Full Body
-      - 2 ședințe Criolipoliza
-    price: 3500 RON
-  - items:
       - 6 ședințe VelaShape (zona mare)
       - 2 ședințe Criolipoliza
     price: 2000 RON
@@ -70,6 +66,10 @@ packages:
   - items:
       - 12 Ședințe Electrostimulare
     price: 600 RON
+  - items:
+      - 6 ședințe VelaShape Full Body
+      - 2 ședințe Criolipoliza
+    price: 3500 RON
 seo:
   title: Oferte Tratamente Corporale - Deea Body Center
   description: >-
