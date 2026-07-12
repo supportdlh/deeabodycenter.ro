@@ -5,11 +5,6 @@ excerpt: >-
   Profită de oferte pentru tratamente corporale la Deea Body Center Ploiești. Tonifiere, remodelare și relaxare la
   prețuri avantajoase!
 image: ../../assets/oferte-deea-body-center-ploiesti.webp
-# Cele 3 carduri-imagine „Abonament nr. 1/2/3" (prețuri incrustate 1.470/659/890 RON).
-gallery:
-  - /galleries/oferte-tratamente-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-3-819x1024.jpeg
-  - /galleries/oferte-tratamente-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-2-819x1024.jpeg
-  - /galleries/oferte-tratamente-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-1-819x1024.jpeg
 # Blocul promo de sub hero (transcris din live): text la stânga + imaginea promo la dreapta.
 introPromo:
   heading: Nu ai nevoie de magie, ai nevoie de procedurile potrivite.
@@ -61,17 +56,6 @@ packages:
       - 4 ședințe VelaShape
       - 4 zone Laser Zentisse
     price: 1800 RON
-  - items:
-      - Evaluare corporală GRATUITĂ
-      - 2 zone mari Criolipoliză sau Sculptor
-      - 2 ședințe Presodrenaj, 2 zone mari VelaShape
-      - 4 ședințe Dermocell, 6 zone Laser Zentisse
-    price: 1490 RON
-  - items:
-      - Evaluare corporală GRATUITĂ
-      - 2 ședințe Sculptor, 3 ședințe Dermocell
-      - 6 zone Laser Zentisse
-    price: 1190 RON
   - items:
       - 6 ședințe VelaShape Full Body
       - 2 ședințe Criolipoliza

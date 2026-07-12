@@ -11,7 +11,6 @@ gallery:
   - /galleries/oferte-speciale-tratamente-faciale-si-corporale/WhatsApp-Image-2025-03-30-at-20.51.47-819x1024.jpeg
   - /galleries/oferte-speciale-tratamente-faciale-si-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-criolipoliza-velashape-819x1024.jpeg
   - /galleries/oferte-speciale-tratamente-faciale-si-corporale/oferta-tratamente-corporale-deeabodycenter-ploiesti-electrostimulare-laser-zentisse-819x1024.jpeg
-  - /galleries/oferte-speciale-tratamente-faciale-si-corporale/oferta-remodelare-corporala-scultptor-dermocell-819x1024.jpeg
 body: >-
   La Deea Body Center, obții un corp tonifiat și un ten radiant prin oferte de tratamente faciale și corporale
   personalizate, cu rezultate vizibile.

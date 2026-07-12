@@ -49,7 +49,7 @@ const paragraphs = [data.excerpt, ...bodyParas];
 //   corporale: 3 în stânga (cele detaliate) + restul în dreapta;
 //   faciale:   2 în stânga + 3 în dreapta.
 const packages = data.packages ?? [];
-const splitIndex = isFacial ? 2 : 3;
+const splitIndex = isFacial ? 2 : 4;
 const leftBoxes = packages.slice(0, splitIndex);
 const rightBoxes = packages.slice(splitIndex);
 const hasPriceTable = (isCorporal || isFacial) && packages.length > 0;
