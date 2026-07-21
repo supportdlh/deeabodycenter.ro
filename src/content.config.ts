@@ -88,6 +88,10 @@ const offers = defineCollection({
         .optional(),
       // Galeria de imagini promoționale a paginii de ofertă (căi din `public/galleries/<slug>/`).
       gallery: z.array(z.string()).optional(),
+      // Bannere promoționale afișate imediat SUB hero (grilă 2 pe rând), pe pagina
+      // „corporale". Căi absolute din `public/galleries/<slug>/`. Distinct de `gallery`
+      // (cardurile „Abonament nr. X") și de `introPromo` (blocul text+imagine).
+      promoBanners: z.array(z.string()).optional(),
       // Blocul promo intro (doar pagina „corporale" pe desktop): titlu serif, un
       // paragraf-intro, o etichetă de listă, bulete cu emoji, un preț mare și imaginea
       // promo din dreapta. Transcris VERBATIM din live (deeabodycenter.ro/oferte-tratamente-corporale).

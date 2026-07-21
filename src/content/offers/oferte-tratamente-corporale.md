@@ -5,6 +5,12 @@ excerpt: >-
   Profită de oferte pentru tratamente corporale la Deea Body Center Ploiești. Tonifiere, remodelare și relaxare la
   prețuri avantajoase!
 image: ../../assets/oferte-deea-body-center-ploiesti.webp
+# Bannere promoționale imediat sub hero (2 pe rând).
+promoBanners:
+  - /galleries/oferte-tratamente-corporale/promo-hera-120min-650.jpg
+  - /galleries/oferte-tratamente-corporale/promo-hera-7sedinte-2100.jpg
+  - /galleries/oferte-tratamente-corporale/promo-pachet-16proceduri-1800.jpg
+  - /galleries/oferte-tratamente-corporale/promo-axon-wonder-1100.jpg
 # Blocul promo de sub hero (transcris din live): text la stânga + imaginea promo la dreapta.
 introPromo:
   heading: Nu ai nevoie de magie, ai nevoie de procedurile potrivite.

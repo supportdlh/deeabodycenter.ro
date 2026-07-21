@@ -56,6 +56,7 @@ const hasPriceTable = (isCorporal || isFacial) && packages.length > 0;
 
 const cards = isCorporal ? (data.gallery ?? []) : [];
 const promoImages = isMixt ? (data.gallery ?? []) : [];
+const promoBanners = isCorporal ? (data.promoBanners ?? []) : [];
 const introPromo = data.introPromo;
 
 // FAQ „Întrebări și răspunsuri" — apare pe pagina live „Oferte speciale", alături de contact
@@ -105,6 +106,23 @@ const DEEA_ICON = '/deea-icon.webp';
     image="/top-oferte.jpg"
     imageAlt={`${data.title} — ${site.name} ${site.city}`}
   />
+
+  <!-- ===== CORPORAL: bannere promoționale sub hero (2 pe rând) ===== -->
+  {
+    isCorporal && promoBanners.length > 0 && (
+      <section class="promo-banners">
+        <div class="wrap">
+          <div class="banners-grid">
+            {promoBanners.map((src, i) => (
+              <figure class="banner-item">
+                <img src={src} alt={`${data.title} — ofertă promoțională ${i + 1}`} loading={i < 2 ? 'eager' : 'lazy'} />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <!-- ===== MIXT: paragraf intro + iconițe sociale ===== -->
   {
@@ -337,6 +355,29 @@ const DEEA_ICON = '/deea-icon.webp';
     height: auto;
   }
 
+  /* ===== CORPORAL: bannere promoționale sub hero (2 pe rând) ===== */
+  .promo-banners {
+    background: var(--surface);
+    padding: 40px 0 8px;
+  }
+  .banners-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .banner-item {
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .banner-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   /* ===== CORPORAL: bloc promo intro ===== */
   .intro-promo {
     background: var(--surface);
@@ -551,6 +592,11 @@ const DEEA_ICON = '/deea-icon.webp';
       padding: 0 20px;
     }
     .collage-grid {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      gap: 18px;
+    }
+    .banners-grid {
       grid-template-columns: 1fr;
       max-width: 420px;
       gap: 18px;
