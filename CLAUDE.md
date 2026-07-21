@@ -1,6 +1,26 @@
 # CLAUDE.md — deeabodycenter.ro
 
-Clonă Astro statică a site-ului WordPress deeabodycenter.ro. Vezi `docs/superpowers/specs/` și `docs/superpowers/plans/` pentru spec + plan.
+Clonă Astro statică a site-ului WordPress deeabodycenter.ro (Deea Body Center, Ploiești — remodelare corporală & tratamente faciale). Astro 7, `output: static`, deploy pe shared hosting. Vezi `docs/superpowers/specs/` și `docs/superpowers/plans/` pentru spec + plan; `DEPLOY.md` pentru deploy.
+
+## Comenzi
+
+- `npm run build` — generează `dist/` (offline, fără sandbox). `npm run dev` — server local Astro (cere `dangerouslyDisableSandbox: true`).
+- Preview build static: `cd dist && python3 -m http.server 8080`.
+- `npm run astro -- check` — verificare tipuri/conținut Astro.
+- Nu există suită de teste — validarea e vizuală, vs site-ul live.
+
+## Arhitectură
+
+Site data-driven: paginile citesc din **content collections** (`src/content.config.ts`) și din datele partajate (`src/data/`). Aproape tot conținutul stă în frontmatter/markdown, nu hardcodat în `.astro`.
+
+- **Content collections** (`src/content/`, schema Zod în `src/content.config.ts`):
+  - `treatments/*.md` → cele 17 pagini de tratament, randate de **o singură rută dinamică** [src/pages/[slug].astro](src/pages/[slug].astro) prin `TreatmentLayout`. **Slug-ul = numele fișierului** (`entry.id`), NU un câmp `slug` din frontmatter — o singură sursă de adevăr pentru URL. Adaugi un tratament = adaugi un `.md`.
+  - `offers/*.md` → paginile de oferte (prin `OfferLayout`). Prețurile stau în frontmatter (`packages`, `introPromo`) ca date structurate, nu proză.
+- **Date partajate** (`src/data/`): [site.ts](src/data/site.ts) (NAP, geo, ore, social, GA4, `waLink()` pentru CTA WhatsApp) și [nav.ts](src/data/nav.ts) (meniu — slug-uri identice cu WordPress). Editează aici pentru contact/telefon/adresă/meniu, nu în componente.
+- **Layouts** (`src/layouts/`): `BaseLayout` (head/SEO/Header/Footer, folosit de toate) → `TreatmentLayout` / `OfferLayout` (șabloane pentru colecții). Paginile statice (`index`, `contact`, `tarife`, `servicii-*`) folosesc `BaseLayout` direct.
+- **SEO/schema**: `Seo.astro` + `components/schema/` (LocalBusiness pe homepage, Service pe tratamente). Sitemap generat automat (`@astrojs/sitemap`). URL-uri directory-style (`trailingSlash: 'always'`, `format: 'directory'`) — identice cu WP, zero redirecturi.
+- **Stiluri**: `src/styles/tokens.css` (design tokens) → `global.css` → `buttons.css`. Fonturi self-hosted via `@fontsource` (Playfair Display + Poppins).
+- **Imagini**: sursă optimizabilă în `src/assets/` (procesate de `astro:assets`/sharp); galeriile mari pre-optimizate (webp din WP) stau în `public/galleries/<slug>/` și sunt referite ca căi absolute în frontmatter (`gallery`) ca să nu încetinească build-ul. `public/.htaccess` ajunge automat în `dist/`.
 
 ## Reguli de lucru
 
