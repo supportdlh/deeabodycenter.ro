@@ -24,3 +24,6 @@ Thumbs.db
 
 # working screenshots at repo root
 /*.png
+
+# screenshot-uri de QA/comparație (artefacte locale de lucru)
+qa_crops/
