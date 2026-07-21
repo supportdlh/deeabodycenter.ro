@@ -7,6 +7,12 @@ excerpt: >-
 image: ../../assets/Tratament-sculptor-deeabodycenter.ro-ploiesti.webp
 gallery:
   - /galleries/oferte-tratamente-faciale/WhatsApp-Image-2026-01-27-at-17.58.50-819x1024.jpeg
+# Banner promoțional afișat sub hero (centrat). Vezi promoBanners din corporale.
+promoBanners:
+  - /galleries/oferte-tratamente-faciale/promo-hera-facial-600.webp
+promoBannersAlt:
+  - >-
+    Tratament HERA Facial — rejuvenare facială, conturare și lifting instant. Preț 600 RON.
 body: >-
   La Deea Body Center Ploiești, îți oferim tratamente faciale adaptate nevoilor tale, pentru un ten luminos și
   revitalizat.
