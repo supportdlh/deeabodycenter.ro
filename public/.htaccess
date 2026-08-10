@@ -6,6 +6,13 @@
   RewriteCond %{HTTPS} off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+  # Redirect old specific pages to homepage (301)
+  RewriteRule ^servicii/criolipoliza/?$ / [R=301,L]
+  RewriteRule ^servicii/zentisse-slim-light-laser-cel-mai-eficient-laser-de-slabit-din-romania/?$ / [R=301,L]
+  RewriteRule ^oferte/oferta-lansare-zentisse-slim-laser/?$ / [R=301,L]
+  RewriteRule ^deea-body-center-hair-spa/?$ / [R=301,L]
+  RewriteRule ^zentisse-slim-light-laser/?$ / [R=301,L]
+
   # /sitemap.xml → servește indexul generat de @astrojs/sitemap (rewrite intern, URL rămâne curat)
   # Astfel URL-ul de trimis în Search Console e mereu /sitemap.xml, dar conținutul e auto-generat la build.
   RewriteRule ^sitemap\.xml$ /sitemap-index.xml [L]
