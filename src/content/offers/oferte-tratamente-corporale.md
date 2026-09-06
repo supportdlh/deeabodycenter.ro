@@ -11,19 +11,6 @@ promoBanners:
   - /galleries/oferte-tratamente-corporale/promo-hera-7sedinte-2100.jpg
   - /galleries/oferte-tratamente-corporale/promo-pachet-16proceduri-1800.jpg
   - /galleries/oferte-tratamente-corporale/promo-axon-wonder-1100.jpg
-# Blocul promo de sub hero (transcris din live): text la stânga + imaginea promo la dreapta.
-introPromo:
-  heading: Nu ai nevoie de magie, ai nevoie de procedurile potrivite.
-  intro: Iar noi le-am pus pe toate într-un singur abonament cu super reducere!
-  listLabel: '18 proceduri eficiente:'
-  bulletEmoji: 🔥
-  items:
-    - 2 zone mari Criolipoliză
-    - 8 ședințe Laser
-    - 4 ședințe Dermocell
-    - 4 ședințe Presodrenaj
-  price: Doar 1400 RON
-  image: /galleries/oferte-tratamente-corporale/promo-dec-25.webp
 body: >-
   La Deea Body Center Ploiești, îți oferim o gamă variată de tratamente corporale menite să îți redefinească
   silueta și să îți îmbunătățească starea de bine.
