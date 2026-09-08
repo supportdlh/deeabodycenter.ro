@@ -7,10 +7,15 @@ excerpt: >-
 image: ../../assets/oferte-deea-body-center-ploiesti.webp
 # Bannere promoționale imediat sub hero (2 pe rând).
 promoBanners:
+  - /galleries/oferte-tratamente-corporale/promo-velashape-1200.webp
   - /galleries/oferte-tratamente-corporale/promo-hera-120min-650.jpg
   - /galleries/oferte-tratamente-corporale/promo-hera-7sedinte-2100.jpg
   - /galleries/oferte-tratamente-corporale/promo-pachet-16proceduri-1800.jpg
   - /galleries/oferte-tratamente-corporale/promo-axon-wonder-1100.jpg
+promoBannersAlt:
+  - >-
+    Ofertă VelaShape — 4 ședințe VelaShape, tonifiere și slăbire localizată, plus 4 ședințe Axon Wonder sau
+    2 ședințe Laser Zentisse + 2 ședințe presodrenaj. Preț 1200 RON.
 body: >-
   La Deea Body Center Ploiești, îți oferim o gamă variată de tratamente corporale menite să îți redefinească
   silueta și să îți îmbunătățească starea de bine.

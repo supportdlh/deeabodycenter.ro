@@ -15,9 +15,8 @@ import ContactBlock from '../components/ContactBlock.astro';
 import LocalBusinessSchema from '../components/schema/LocalBusinessSchema.astro';
 import { site } from '../data/site';
 
-import heroImg from '../assets/hera-promo-7sedinte-2100.jpg';
-import facialSplitImg from '../assets/hera-facial-salon.jpg';
-import bodySplitImg from '../assets/DSC00993-scaled.webp';
+import heroImg from '../assets/oferta-velashape-septembrie.jpg';
+import facialSplitImg from '../assets/oferta-facial-hidratiq-septembrie.jpg';
 
 import imgIntraceuticals from '../assets/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-542.webp';
 import imgOptiFirm from '../assets/tratamente-faciale-1.png';
@@ -27,7 +26,6 @@ import imgGreenPeel from '../assets/tratament-green-peel-deeabocycenter-ploiesti
 import imgHidratiq from '../assets/tratament-hidratiq-1.png';
 
 import imgSculptor from '../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-320.webp';
-import imgHeraPromo from '../assets/hera-650-poster.jpg';
 import imgDermohealth from '../assets/tratament-sculptor-deeabocycenter-ploiesti_DBC-346.webp';
 import imgZentisse from '../assets/zentisse-slim-light-laser-deeabocycenter-ploiesti_DBC-250.webp';
 import imgVelaShape from '../assets/vela-shape-deeabocycenter-ploiesti_DBC-203.webp';
@@ -241,23 +239,20 @@ const faq = [
   <section class="hero">
     <div class="wrap hero-inner">
       <div class="hero-content">
-        <p class="hero-eyebrow">✨ Ofertă Specială</p>
-        <h1 class="hero-title">Pachet HERA — 7 ședințe la un preț de excepție! 🤍</h1>
+        <p class="hero-eyebrow">✨ Ofertă VelaShape</p>
+        <h1 class="hero-title">Tonifiere și slăbire localizată — pachet complet! 🤍</h1>
         <ul class="hero-list">
-          <li>7 ședințe personalizate HERA</li>
-          <li>Remodelare corporală și tonifiere</li>
-          <li>Reducerea aspectului de celulită</li>
-          <li>Piele mai fermă și mai netedă</li>
-          <li>Plan adaptat obiectivelor tale</li>
+          <li>4 ședințe VelaShape</li>
+          <li>Tonifiere și slăbire localizată</li>
+          <li>Plus, la alegere: 4 ședințe Axon Wonder</li>
+          <li>sau 2 ședințe Laser Zentisse + 2 ședințe Presodrenaj</li>
         </ul>
         <div class="hero-price-block">
-          <p class="hero-price-value">💎 Valoare pachet: <span class="hero-price-old">2.800 lei</span></p>
-          <div class="hero-price">🔥 2.100 RON</div>
-          <p class="hero-price-economy">🎁 Economisești 700 lei!</p>
+          <div class="hero-price">🔥 1200 RON</div>
         </div>
         <WhatsAppButton
-          label="Vreau Pachetul HERA"
-          message="Bună, aș dori să profit de Pachetul HERA – 7 ședințe la 2.100 lei. Când pot programa prima ședință?"
+          label="Vreau Oferta VelaShape"
+          message="Bună, aș dori să profit de Oferta VelaShape – 4 ședințe VelaShape + extra la alegere, 1200 RON. Când pot programa prima ședință?"
           class="hero-cta"
         />
       </div>
@@ -266,11 +261,11 @@ const faq = [
           <Image
             class="hera-poster-photo"
             src={heroImg}
-            alt="Tratament HERA remodelare corporală — Pachet 7 ședințe"
-            width={800}
-            height={800}
-            widths={[400, 600, 800]}
-            sizes="(max-width: 768px) 90vw, 598px"
+            alt="Ofertă VelaShape — 4 ședințe VelaShape, tonifiere și slăbire localizată, 1200 RON"
+            width={1024}
+            height={1536}
+            widths={[440, 660, 1024]}
+            sizes="(max-width: 768px) 88vw, 470px"
             loading="eager"
           />
         </div>
@@ -301,16 +296,16 @@ const faq = [
   ============================================================= -->
   <section class="section-intro" id="tratamente-faciale">
     <div class="wrap intro-grid">
-      <div class="intro-img-wrap has-frame">
+      <div class="intro-img-wrap has-frame is-poster">
         <span class="deco-square" aria-hidden="true"></span>
         <Image
           class="intro-img intro-img-poster"
           src={facialSplitImg}
-          alt="Tratamente faciale Deea Body Center Ploiești"
-          width={1254}
-          height={1254}
-          widths={[600, 900, 1254]}
-          sizes="(max-width: 768px) 90vw, 560px"
+          alt="Ofertă tratament facial HidratIQ — hidratare intensă, ten luminos, 380 RON (în loc de 550 RON) la Deea Body Center Ploiești"
+          width={1024}
+          height={1536}
+          widths={[430, 640, 1024]}
+          sizes="(max-width: 768px) 88vw, 430px"
           loading="lazy"
         />
       </div>
@@ -365,16 +360,16 @@ const faq = [
           <a href="/tarife/" class="btn btn-primary">Tarife</a>
         </div>
       </div>
-      <div class="intro-img-wrap intro-img-right">
+      <div class="intro-img-wrap intro-img-right is-poster">
         <span class="deco-dots deco-dots-left" aria-hidden="true"></span>
         <Image
           class="intro-img intro-img-poster"
-          src={imgHeraPromo}
-          alt="tratament HERA 120 de minute — abdomen, coapse 360°, fese, 650 RON la Deea Body Center Ploiesti"
-          width={1254}
-          height={1254}
-          widths={[600, 900, 1254]}
-          sizes="(max-width: 768px) 90vw, 560px"
+          src={heroImg}
+          alt="Ofertă VelaShape — 4 ședințe VelaShape, tonifiere și slăbire localizată, 1200 RON la Deea Body Center Ploiești"
+          width={1024}
+          height={1536}
+          widths={[430, 640, 1024]}
+          sizes="(max-width: 768px) 88vw, 430px"
           loading="lazy"
         />
       </div>
@@ -745,7 +740,9 @@ const faq = [
     position: relative;
     border-radius: var(--r-md);
     overflow: hidden;
-    max-width: 598px;
+    /* Poster portret (2:3) — lățime mai mică decât vechiul poster pătrat,
+       ca înălțimea să rămână echilibrată cu coloana de text. */
+    max-width: 470px;
     margin: 0 auto;
     box-shadow: 0 8px 32px rgba(5, 17, 69, 0.18);
   }
@@ -938,10 +935,16 @@ const faq = [
     object-fit: cover;
     border-radius: 10px;
   }
-  /* Posterul pătrat HERA 650 RON — afișat integral, fără crop */
+  /* Posterele de ofertă (portret 2:3) — afișate integral, fără crop.
+     Wrap-ul e îngustat ca decorațiunile (pătrat gri / puncte) să rămână
+     ancorate de poster, nu de toată coloana. */
+  .intro-img-wrap.is-poster {
+    max-width: 430px;
+    margin-inline: auto;
+  }
   .intro-img-wrap :global(img.intro-img-poster) {
     height: auto;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 2 / 3;
     object-fit: contain;
   }
   .intro-text h2 {
