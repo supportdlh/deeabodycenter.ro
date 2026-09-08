@@ -10,9 +10,13 @@ gallery:
 # Banner promoțional afișat sub hero (centrat). Vezi promoBanners din corporale.
 promoBanners:
   - /galleries/oferte-tratamente-faciale/promo-hera-facial-600.webp
+  - /galleries/oferte-tratamente-faciale/promo-hidratiq-380.webp
 promoBannersAlt:
   - >-
     Tratament HERA Facial — rejuvenare facială, conturare și lifting instant. Preț 600 RON.
+  - >-
+    Ofertă tratament facial HidratIQ — hidratare intensă, ten luminos, aspect sănătos. Preț 380 RON, în loc de
+    550 RON.
 body: >-
   La Deea Body Center Ploiești, îți oferim tratamente faciale adaptate nevoilor tale, pentru un ten luminos și
   revitalizat.
