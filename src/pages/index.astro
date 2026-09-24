@@ -15,8 +15,9 @@ import ContactBlock from '../components/ContactBlock.astro';
 import LocalBusinessSchema from '../components/schema/LocalBusinessSchema.astro';
 import { site } from '../data/site';
 
-import heroImg from '../assets/oferta-velashape-septembrie.jpg';
-import facialSplitImg from '../assets/oferta-facial-hidratiq-septembrie.jpg';
+import heraAxonHeroImg from '../assets/oferta-hera-axon-body-septembrie.jpeg';
+import heraFacialImg from '../assets/oferta-hera-facial-septembrie.jpeg';
+import bodyResetImg from '../assets/oferta-body-reset-septembrie.jpeg';
 
 import imgIntraceuticals from '../assets/tratament-intraceuticals-deeabocycenter-ploiesti_DBC-542.webp';
 import imgOptiFirm from '../assets/tratamente-faciale-1.png';
@@ -239,20 +240,21 @@ const faq = [
   <section class="hero">
     <div class="wrap hero-inner">
       <div class="hero-content">
-        <p class="hero-eyebrow">✨ Ofertă VelaShape</p>
-        <h1 class="hero-title">Tonifiere și slăbire localizată — pachet complet! 🤍</h1>
+        <p class="hero-eyebrow">✨ Ofertă HERA + AXON BODY</p>
+        <h1 class="hero-title">Program complet de remodelare corporală 🤍</h1>
         <ul class="hero-list">
-          <li>4 ședințe VelaShape</li>
-          <li>Tonifiere și slăbire localizată</li>
-          <li>Plus, la alegere: 4 ședințe Axon Wonder</li>
-          <li>sau 2 ședințe Laser Zentisse + 2 ședințe Presodrenaj</li>
+          <li>6 ședințe HERA</li>
+          <li>6 ședințe AXON WONDER</li>
+          <li>HERA → remodelare, fermitate și îmbunătățirea aspectului pielii</li>
+          <li>AXON → stimulare musculară și tonifiere</li>
+          <li>Cadou: o ședință de criolipoliză</li>
         </ul>
         <div class="hero-price-block">
-          <div class="hero-price">🔥 1200 RON</div>
+          <div class="hero-price">🔥 1.790 RON</div>
         </div>
         <WhatsAppButton
-          label="Vreau Oferta VelaShape"
-          message="Bună, aș dori să profit de Oferta VelaShape – 4 ședințe VelaShape + extra la alegere, 1200 RON. Când pot programa prima ședință?"
+          label="Vreau Oferta HERA + AXON BODY"
+          message="Bună, aș dori să profit de Oferta HERA + AXON BODY – 6 ședințe HERA + 6 ședințe Axon Wonder, 1.790 RON. Când pot programa prima ședință?"
           class="hero-cta"
         />
       </div>
@@ -260,11 +262,11 @@ const faq = [
         <div class="hera-poster">
           <Image
             class="hera-poster-photo"
-            src={heroImg}
-            alt="Ofertă VelaShape — 4 ședințe VelaShape, tonifiere și slăbire localizată, 1200 RON"
-            width={1024}
-            height={1536}
-            widths={[440, 660, 1024]}
+            src={heraAxonHeroImg}
+            alt="Ofertă HERA + AXON BODY — 6 ședințe HERA + 6 ședințe Axon Wonder, program complet de remodelare corporală, 1.790 RON"
+            width={1080}
+            height={1350}
+            widths={[440, 660, 1080]}
             sizes="(max-width: 768px) 88vw, 470px"
             loading="eager"
           />
@@ -300,11 +302,11 @@ const faq = [
         <span class="deco-square" aria-hidden="true"></span>
         <Image
           class="intro-img intro-img-poster"
-          src={facialSplitImg}
-          alt="Ofertă tratament facial HidratIQ — hidratare intensă, ten luminos, 380 RON (în loc de 550 RON) la Deea Body Center Ploiești"
-          width={1024}
-          height={1536}
-          widths={[430, 640, 1024]}
+          src={heraFacialImg}
+          alt="Ofertă HERA FACIAL — 3 ședințe, fermitate, hidratare, luminozitate, contur facial, 990 RON la Deea Body Center Ploiești"
+          width={1080}
+          height={1350}
+          widths={[430, 640, 1080]}
           sizes="(max-width: 768px) 88vw, 430px"
           loading="lazy"
         />
@@ -364,11 +366,11 @@ const faq = [
         <span class="deco-dots deco-dots-left" aria-hidden="true"></span>
         <Image
           class="intro-img intro-img-poster"
-          src={heroImg}
-          alt="Ofertă VelaShape — 4 ședințe VelaShape, tonifiere și slăbire localizată, 1200 RON la Deea Body Center Ploiești"
-          width={1024}
-          height={1536}
-          widths={[430, 640, 1024]}
+          src={bodyResetImg}
+          alt="Ofertă BODY RESET — Hera corporal, VelaShape, Dermocell, Presodrenaj, cadou Axon Wonder, 690 lei la Deea Body Center Ploiești"
+          width={1080}
+          height={1350}
+          widths={[430, 640, 1080]}
           sizes="(max-width: 768px) 88vw, 430px"
           loading="lazy"
         />
