@@ -937,16 +937,19 @@ const faq = [
     object-fit: cover;
     border-radius: 10px;
   }
-  /* Posterele de ofertă (portret 2:3) — afișate integral, fără crop.
+  /* Posterele de ofertă (portret 4:5, 1080x1350) — afișate integral, fără crop.
      Wrap-ul e îngustat ca decorațiunile (pătrat gri / puncte) să rămână
-     ancorate de poster, nu de toată coloana. */
+     ancorate de poster, nu de toată coloana. Aspect-ratio-ul trebuie să fie
+     identic cu cel real al imaginii, altfel object-fit:contain lasă spațiu
+     gol sus/jos și decorațiunea din spate (deco-square) nu se mai lipește
+     de marginea inferioară a posterului la fel ca de cea laterală. */
   .intro-img-wrap.is-poster {
     max-width: 430px;
     margin-inline: auto;
   }
   .intro-img-wrap :global(img.intro-img-poster) {
     height: auto;
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 4 / 5;
     object-fit: contain;
   }
   .intro-text h2 {
@@ -1198,6 +1201,13 @@ const faq = [
     height: 110px;
     opacity: 0.9;
     z-index: 2;
+  }
+  /* Body Reset (poster) — grila de puncte se mută în colțul stânga-sus al
+     posterului, nu suprapusă peste badge-ul de preț la mijloc. */
+  .intro-img-wrap.is-poster .deco-dots-left {
+    top: -20px;
+    left: -34px;
+    transform: none;
   }
   /* Offers — eyebrow centrat + pătrat gri offset în spatele mozaicului */
   .offers-section {
