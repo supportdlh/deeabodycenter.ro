@@ -8,7 +8,6 @@ image: ../../assets/oferte-deea-body-center-ploiesti.webp
 # Bannere promoționale imediat sub hero (2 pe rând).
 promoBanners:
   - /galleries/oferte-tratamente-corporale/promo-velashape-1200.webp
-  - /galleries/oferte-tratamente-corporale/promo-hera-120min-650.jpg
   - /galleries/oferte-tratamente-corporale/promo-hera-7sedinte-2100.jpg
   - /galleries/oferte-tratamente-corporale/promo-pachet-16proceduri-1800.jpg
   - /galleries/oferte-tratamente-corporale/promo-axon-wonder-1100.jpg
