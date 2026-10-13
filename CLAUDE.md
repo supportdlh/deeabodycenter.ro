@@ -21,7 +21,7 @@ Site data-driven: paginile citesc din **content collections** (`src/content.conf
 - **Layouts** (`src/layouts/`): `BaseLayout` (head/SEO/Header/Footer, folosit de toate) → `TreatmentLayout` / `OfferLayout` (șabloane pentru colecții). Paginile statice (`index`, `contact`, `tarife`, `servicii-*`) folosesc `BaseLayout` direct.
 - **SEO/schema**: `Seo.astro` + `components/schema/` (LocalBusiness pe homepage, Service pe tratamente). Sitemap generat automat (`@astrojs/sitemap`). URL-uri directory-style (`trailingSlash: 'always'`, `format: 'directory'`) — identice cu WP, zero redirecturi.
 - **Stiluri**: `src/styles/tokens.css` (design tokens) → `global.css` → `buttons.css`. Fonturi self-hosted via `@fontsource` (Playfair Display + Poppins).
-- **Imagini**: sursă optimizabilă în `src/assets/` (procesate de `astro:assets`/sharp); galeriile mari pre-optimizate (webp din WP) stau în `public/galleries/<slug>/` și sunt referite ca căi absolute în frontmatter (`gallery`) ca să nu încetinească build-ul. `public/.htaccess` ajunge automat în `dist/`.
+- **Imagini**: sursă optimizabilă în `src/assets/` (procesate de `astro:assets`/sharp); galeriile mari pre-optimizate (webp din WP) stau în `public/galleries/<slug>/` și sunt referite ca căi absolute în frontmatter (`gallery`) ca să nu încetinească build-ul.
 
 ## Reguli de lucru
 
@@ -37,7 +37,7 @@ Când rulez agenți/workflow-uri în fundal, **verific starea lor din când în 
 ### Build & deploy
 - `npm run build` rulează offline (fără flag sandbox). Comenzile de rețea (curl, npm install, push, servere locale) cer `dangerouslyDisableSandbox: true`.
 - Preview local: `cd dist && python3 -m http.server 8080`.
-- Deploy = push pe `main` → [.github/workflows/deploy.yml](.github/workflows/deploy.yml) face build o dată, apoi `deploy-vps` (SSH → `dh-deploy-gate`, release-uri + rollback, smoke test) și, temporar, `deploy-ftp` pe hosting-ul vechi. Config nginx: `deploy/server/deeabodycenter.ro.locations`. Detalii: `DEPLOY.md`. `main` = producție: **push pe `main` publică live imediat — NU împinge până nu confirmă clientul.** (`build/astro` = branch istoric, rămas în urmă; nu se mai folosește.)
+- Deploy = push pe `main` → [.github/workflows/deploy.yml](.github/workflows/deploy.yml) face build, apoi `deploy-vps` (SSH → `dh-deploy-gate`, release-uri + rollback, smoke test) pe VPS. Config nginx: `deploy/server/deeabodycenter.ro.locations`. Detalii: `DEPLOY.md`. `main` = producție: **push pe `main` publică live imediat — NU împinge până nu confirmă clientul.** (`build/astro` = branch istoric, rămas în urmă; nu se mai folosește.)
 
 ### Referință pixel-perfect
 - Ținta e **site-ul LIVE** deeabodycenter.ro (NU mockup-urile din `mockups/`, care diverg).

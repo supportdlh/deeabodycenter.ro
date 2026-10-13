@@ -10,7 +10,7 @@ Clonă fidelă în conținut, în direcția de design **V2 „Rafinat"**, public
 
 ## Structura repo
 - `src/` — sursa Astro: `content/` (tratamente + oferte în markdown), `data/` (NAP, meniu), `layouts/`, `components/`, `pages/`, `styles/`.
-- `public/` — fișiere servite ca atare (galerii pre-optimizate, `.htaccess`).
+- `public/` — fișiere servite ca atare (galerii pre-optimizate).
 - `docs/superpowers/specs/` și `docs/superpowers/plans/` — specificația de design aprobată + planul de implementare.
 - `reference/` — design tokens, conținut extras, inventar site, imagini sursă.
 - `mockups/` — cele 3 variante de design HTML (V1 clonă / V2 rafinat / V3 modern) + hub de comparație. **V2 = varianta aleasă.** Istoric: referința de lucru e site-ul live, nu mockup-urile.

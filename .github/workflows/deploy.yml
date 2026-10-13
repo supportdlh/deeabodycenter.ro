@@ -1,7 +1,6 @@
-# Builds once, then deploys the same build to:
-#   - the VPS (hosting-dh) through dh-deploy-gate: releases + atomic `current` symlink + rollback
-#   - the old shared hosting through FTP, kept in parallel until DNS points to the VPS
-# Secrets: DEPLOY_* from vps-administrare-website/scripts/deploy-setup.sh, FTP_* for the old hosting.
+# Builds once, then deploys to the VPS (hosting-dh) through dh-deploy-gate:
+# releases + atomic `current` symlink + rollback.
+# Secrets: DEPLOY_* from vps-administrare-website/scripts/deploy-setup.sh.
 name: Deploy deeabodycenter.ro
 
 on:
@@ -40,7 +39,6 @@ jobs:
       - name: Build (Astro static)
         run: npm run build
 
-      # Both targets deploy exactly this build.
       - name: Package release
         run: tar -czf "$RUNNER_TEMP/release.tar.gz" -C dist . && mv "$RUNNER_TEMP/release.tar.gz" release.tar.gz
 
@@ -129,29 +127,3 @@ jobs:
           check /servicii/criolipoliza/ 301 "$BASE/"
           check /does-not-exist-check/ 404
           exit $fail
-
-  # Old shared hosting: removed once DNS points to the VPS (see DEPLOY.md).
-  deploy-ftp:
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/download-artifact@v8
-        with:
-          name: release
-
-      - name: Unpack release
-        run: mkdir dist && tar -xzf release.tar.gz -C dist
-
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287 # v4.4.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          # Directorul de pe server unde se servesc fișierele (ex. /public_html/)
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          # Se urcă DOAR conținutul build-ului
-          local-dir: ./dist/
-          protocol: ftps
