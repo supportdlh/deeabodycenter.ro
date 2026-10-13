@@ -1,0 +1,49 @@
+# deeabodycenter.ro: fully static Astro build (no PHP).
+# Installed as /etc/nginx/dh-sites/deeabodycenter.ro.locations (included by conf.d/deeabodycenter.ro.conf).
+# Based on the server's astro locations template; ports the rules from public/.htaccess
+# (HTTPS, www -> apex, gzip and security headers come from the server config).
+root /var/www/deeabodycenter.ro/current;
+index index.html;
+
+include /etc/nginx/snippets/security-headers.conf;
+include /etc/nginx/snippets/deny-hidden.conf;
+
+# Old WordPress pages that no longer exist go to the homepage (same as .htaccess).
+location ~ ^/(servicii/criolipoliza|servicii/zentisse-slim-light-laser-cel-mai-eficient-laser-de-slabit-din-romania|oferte/oferta-lansare-zentisse-slim-laser|deea-body-center-hair-spa|zentisse-slim-light-laser)/?$ {
+    return 301 /;
+}
+
+# Search Console and robots.txt use /sitemap.xml; @astrojs/sitemap generates sitemap-index.xml.
+location = /sitemap.xml {
+    try_files /sitemap-index.xml =404;
+}
+
+# HTML is always revalidated, so price and offer changes show up right after a deploy.
+# $uri/ makes /tarife redirect to /tarife/ (directory-style URLs, like WordPress).
+location / {
+    add_header Cache-Control "no-cache" always;
+    include /etc/nginx/snippets/security-headers.conf;
+    try_files $uri $uri/ =404;
+}
+
+# No PHP on this site: old WordPress endpoints (wp-login.php, xmlrpc.php, ...) are 404.
+location ~ \.php$ {
+    return 404;
+}
+
+# Astro fingerprints everything under /_astro/, so it can be cached forever.
+# ^~ keeps the image regex below from overriding this for /_astro/*.webp.
+location ^~ /_astro/ {
+    expires 1y;
+    add_header Cache-Control "public, immutable" always;
+    include /etc/nginx/snippets/security-headers.conf;
+    try_files $uri =404;
+}
+
+# Gallery images and icons from public/ keep fixed names, so they are not immutable.
+location ~* \.(?:webp|avif|jpe?g|png|svg|ico)$ {
+    expires 30d;
+    add_header Cache-Control "public" always;
+    include /etc/nginx/snippets/security-headers.conf;
+    try_files $uri =404;
+}

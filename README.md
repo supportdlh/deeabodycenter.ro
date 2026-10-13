@@ -3,7 +3,7 @@
 Site-ul **Deea Body Center** (Ploiești — remodelare corporală & tratamente faciale), migrat de pe WordPress + Elementor pe **Astro static**.
 
 ## Obiectiv
-Clonă fidelă în conținut, în direcția de design **V2 „Rafinat"**, publicată pe shared hosting, cu păstrarea completă a SEO-ului (slug-uri, linkuri interne, meta, schema LocalBusiness).
+Clonă fidelă în conținut, în direcția de design **V2 „Rafinat"**, publicată pe VPS-ul agenției (DNS și e-mail rămân la Cyberfolks), cu păstrarea completă a SEO-ului (slug-uri, linkuri interne, meta, schema LocalBusiness).
 
 ## Stadiu
 🟢 **Implementat și în producție** — site-ul Astro e construit și se publică automat la fiecare push pe `main`. Dezvoltarea continuă cu ajustări de conținut și design.
@@ -21,7 +21,7 @@ Detalii de arhitectură și convenții: [CLAUDE.md](CLAUDE.md). Deploy: [DEPLOY.
 - Astro `output: static`, URL-uri directory identice cu WordPress (zero redirecturi).
 - Conținutul stă în content collections (markdown + frontmatter), nu hardcodat în `.astro`.
 - Programări prin **WhatsApp** (`wa.me/40723882529`) — fără backend de formular.
-- Găzduire pe **shared hosting**; deploy automat prin GitHub Actions (build + upload `dist/` prin FTPS).
+- Găzduire pe **VPS** (nginx); deploy automat prin GitHub Actions (build + SSH prin `dh-deploy-gate`, release-uri cu rollback). Vezi [DEPLOY.md](DEPLOY.md).
 - Analytics: **GA4 `G-JX978SL3G5`** (păstrat din site-ul actual).
 
 ## Dezvoltare locală

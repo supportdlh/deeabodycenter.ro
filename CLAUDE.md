@@ -1,6 +1,6 @@
 # CLAUDE.md — deeabodycenter.ro
 
-Clonă Astro statică a site-ului WordPress deeabodycenter.ro (Deea Body Center, Ploiești — remodelare corporală & tratamente faciale). Astro 7, `output: static`, deploy pe shared hosting. Vezi `docs/superpowers/specs/` și `docs/superpowers/plans/` pentru spec + plan; `DEPLOY.md` pentru deploy.
+Clonă Astro statică a site-ului WordPress deeabodycenter.ro (Deea Body Center, Ploiești — remodelare corporală & tratamente faciale). Astro 7, `output: static`, deploy pe VPS-ul agenției (`hosting-dh`); DNS + e-mail rămân la Cyberfolks. Vezi `docs/superpowers/specs/` și `docs/superpowers/plans/` pentru spec + plan; `DEPLOY.md` pentru deploy.
 
 ## Comenzi
 
@@ -37,8 +37,12 @@ Când rulez agenți/workflow-uri în fundal, **verific starea lor din când în 
 ### Build & deploy
 - `npm run build` rulează offline (fără flag sandbox). Comenzile de rețea (curl, npm install, push, servere locale) cer `dangerouslyDisableSandbox: true`.
 - Preview local: `cd dist && python3 -m http.server 8080`.
-- Deploy = push pe `main` → [.github/workflows/deploy.yml](.github/workflows/deploy.yml) face `npm ci` + `npm run build` și urcă `dist/` prin FTPS pe shared hosting (secrete `FTP_SERVER`/`FTP_USERNAME`/`FTP_PASSWORD`/`FTP_SERVER_DIR`). `main` = producție: **push pe `main` publică live imediat — NU împinge până nu confirmă clientul.** (`build/astro` = branch istoric, rămas în urmă; nu se mai folosește.)
+- Deploy = push pe `main` → [.github/workflows/deploy.yml](.github/workflows/deploy.yml) face build o dată, apoi `deploy-vps` (SSH → `dh-deploy-gate`, release-uri + rollback, smoke test) și, temporar, `deploy-ftp` pe hosting-ul vechi. Config nginx: `deploy/server/deeabodycenter.ro.locations`. Detalii: `DEPLOY.md`. `main` = producție: **push pe `main` publică live imediat — NU împinge până nu confirmă clientul.** (`build/astro` = branch istoric, rămas în urmă; nu se mai folosește.)
 
 ### Referință pixel-perfect
 - Ținta e **site-ul LIVE** deeabodycenter.ro (NU mockup-urile din `mockups/`, care diverg).
 - Conținut 100% verbatim din live — zero fabricație (mai ales prețuri/oferte).
+
+## Lessons learned
+
+- La Cyberfolks, MX/`mail`/`ftp` trebuie să fie A spre 176.126.202.224, nu CNAME/apex — altfel mutarea `@` pe alt server rupe e-mailul (s-a întâmplat la scoala-1-mogosoaia.ro).
