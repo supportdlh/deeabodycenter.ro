@@ -1,6 +1,6 @@
 # deeabodycenter.ro: fully static Astro build (no PHP).
 # Installed as /etc/nginx/dh-sites/deeabodycenter.ro.locations (included by conf.d/deeabodycenter.ro.conf).
-# Based on the server's astro locations template; ports the rules from public/.htaccess
+# Based on the server's astro locations template
 # (HTTPS, www -> apex, gzip and security headers come from the server config).
 root /var/www/deeabodycenter.ro/current;
 index index.html;
@@ -8,7 +8,7 @@ index index.html;
 include /etc/nginx/snippets/security-headers.conf;
 include /etc/nginx/snippets/deny-hidden.conf;
 
-# Old WordPress pages that no longer exist go to the homepage (same as .htaccess).
+# Old WordPress pages that no longer exist go to the homepage.
 location ~ ^/(servicii/criolipoliza|servicii/zentisse-slim-light-laser-cel-mai-eficient-laser-de-slabit-din-romania|oferte/oferta-lansare-zentisse-slim-laser|deea-body-center-hair-spa|zentisse-slim-light-laser)/?$ {
     return 301 /;
 }
