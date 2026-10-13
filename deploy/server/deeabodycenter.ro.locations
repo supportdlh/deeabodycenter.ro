@@ -4,6 +4,9 @@
 # (HTTPS, www -> apex, gzip and security headers come from the server config).
 root /var/www/deeabodycenter.ro/current;
 index index.html;
+# Adds "; charset=utf-8" to text/plain (llms.txt, robots.txt) and HTML, so diacritics never
+# fall back to the browser's default encoding.
+charset utf-8;
 
 include /etc/nginx/snippets/security-headers.conf;
 include /etc/nginx/snippets/deny-hidden.conf;
