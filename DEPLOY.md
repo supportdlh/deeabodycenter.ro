@@ -12,8 +12,8 @@ Workflow-ul `.github/workflows/deploy.yml`:
 2. **deploy-vps** — urcă arhiva prin SSH în `dh-deploy-gate` (singura comandă permisă cheii de deploy):
    - `upload <id>` → `/var/www/deeabodycenter.ro/releases/<UTC>-<commit>/`
    - `activate <id>` → comută atomic symlink-ul `current` pe release-ul nou
-   - `prune` → păstrează ultimele 5 release-uri
-   - smoke test pe IP-ul serverului: `/` și `/tarife/` 200, `/sitemap.xml` 200, un redirect vechi 301, URL necunoscut 404.
+   - `prune` → păstrează ultimele 5 release-uri (dacă eșuează, doar avertisment: release-ul e deja live)
+   - smoke test pe IP-ul serverului (`DEPLOY_HOST` trebuie să fie IP): `/` 200 și conține „Deea Body Center”, `/tarife/` 200, `/sitemap.xml` 200 și e un sitemap index, un redirect vechi 301 spre `/`, URL necunoscut 404. Protocolul se alege singur: HTTP cât timp nu există certificat, HTTPS după ce HTTP începe să redirecționeze (erorile TLS pică testul, nu se ascund).
 3. **deploy-ftp** — *(temporar)* urcă același build pe hosting-ul vechi prin FTPS. Se scoate după mutarea DNS.
 
 ### Declanșare
@@ -35,6 +35,8 @@ Workflow-ul `.github/workflows/deploy.yml`:
 - `public/.htaccess` ajunge și pe VPS, dar nginx nu îl citește (și nu îl servește: fișierele ascunse sunt blocate).
 
 ## Rollback (VPS)
+
+**Rollback-ul e manual.** Dacă smoke test-ul pică, jobul e roșu, dar release-ul nou rămâne live (intenționat: o eroare de rețea la test nu trebuie să retragă un release bun). Verifică site-ul și, dacă e stricat, revino:
 
 Din repo-ul `vps-administrare-website`, pe server:
 ```bash
