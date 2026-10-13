@@ -1,3 +1,17 @@
+# Standard DigitalHelp for robots.txt (vps-administrare-website/docs/boti.md).
+# Search engines and AI assistants (search, answers and training) are allowed.
+# SEO-tool crawlers bring no visitors: they are refused here and blocked in nginx anyway.
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: PetalBot
+User-agent: DataForSeoBot
+User-agent: serpstatbot
+User-agent: BLEXBot
+User-agent: Barkrowler
+Disallow: /
+
 User-agent: *
 Allow: /
 
