@@ -1,4 +1,8 @@
-name: Deploy pe shared hosting
+# Builds once, then deploys the same build to:
+#   - the VPS (hosting-dh) through dh-deploy-gate: releases + atomic `current` symlink + rollback
+#   - the old shared hosting through FTP, kept in parallel until DNS points to the VPS
+# Secrets: DEPLOY_* from vps-administrare-website/scripts/deploy-setup.sh, FTP_* for the old hosting.
+name: Deploy deeabodycenter.ro
 
 on:
   push:
@@ -7,10 +11,17 @@ on:
 
 concurrency:
   group: deploy-production
-  cancel-in-progress: true
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  DOMAIN: deeabodycenter.ro
 
 jobs:
-  build-deploy:
+  # No secrets here.
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,6 +39,89 @@ jobs:
       - name: Build (Astro static)
         run: npm run build
 
+      # Both targets deploy exactly this build.
+      - name: Package release
+        run: tar -czf "$RUNNER_TEMP/release.tar.gz" -C dist . && mv "$RUNNER_TEMP/release.tar.gz" release.tar.gz
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: release
+          path: release.tar.gz
+          retention-days: 7
+          if-no-files-found: error
+
+  # Holds the deploy key: no checkout, no npm (no third-party code runs here), first-party actions only.
+  deploy-vps:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: release
+
+      - name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Upload and activate
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -euo pipefail
+          ID="$(date -u +%Y%m%dT%H%M%SZ)-${GITHUB_SHA::7}"
+          SSH="ssh -i $HOME/.ssh/deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o BatchMode=yes $DEPLOY_USER@$HOST"
+          $SSH upload "$ID" < release.tar.gz
+          $SSH activate "$ID"
+          $SSH prune
+          echo "Deployed $ID"
+
+      - name: Smoke test
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+        run: |
+          set -uo pipefail
+          # Test against the server IP, so it also works before the DNS switch; HTTP covers the phase before SSL.
+          status() {
+            local code
+            code="$(curl -s -o /dev/null -w '%{http_code}' --resolve "$DOMAIN:443:$HOST" "https://$DOMAIN$1" || true)"
+            if [ -z "$code" ] || [ "$code" = "000" ]; then
+              code="$(curl -s -o /dev/null -w '%{http_code}' --resolve "$DOMAIN:80:$HOST" "http://$DOMAIN$1" || true)"
+            fi
+            echo "$code"
+          }
+          fail=0
+          expect() { # expect <path> <status>
+            local code
+            code="$(status "$1")"
+            if [ "$code" = "$2" ]; then echo "ok   $1 -> $code"; else echo "::error::expected $2 for $1, got $code"; fail=1; fi
+          }
+          expect / 200
+          expect /tarife/ 200
+          expect /sitemap.xml 200
+          expect /servicii/criolipoliza/ 301
+          expect /does-not-exist-check/ 404
+          exit $fail
+
+  # Old shared hosting: removed once DNS points to the VPS (see DEPLOY.md).
+  deploy-ftp:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: release
+
+      - name: Unpack release
+        run: mkdir dist && tar -xzf release.tar.gz -C dist
+
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
@@ -38,5 +132,4 @@ jobs:
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
           # Se urcă DOAR conținutul build-ului
           local-dir: ./dist/
-          # Protocol: 'ftp' (implicit), 'ftps' (recomandat dacă hostul suportă), sau 'ftps-legacy'
           protocol: ftps
