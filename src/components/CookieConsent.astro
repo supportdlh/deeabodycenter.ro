@@ -1,0 +1,132 @@
+---
+// Banner de consimțământ: Google Analytics se încarcă doar după „Accept” (GDPR).
+import { site } from '../data/site';
+---
+
+<section
+  id="cookie-consent"
+  class="cookie-consent"
+  aria-labelledby="cookie-consent-title"
+  tabindex="-1"
+  hidden
+  data-measurement-id={site.ga4}
+>
+  <div class="cookie-consent__inner">
+    <div class="cookie-consent__text">
+      <h2 id="cookie-consent-title">Cookie-uri pentru statistici</h2>
+      <p>
+        Folosim Google Analytics doar dacă ești de acord, ca să vedem câte persoane vizitează site-ul și ce
+        pagini le sunt utile. Poți schimba alegerea oricând din „Setări cookie-uri”, în subsolul paginii. Detalii în{' '}
+        <a href="/politica-de-confidentialitate/">Politica de confidențialitate</a>.
+      </p>
+    </div>
+    <div class="cookie-consent__actions">
+      <button type="button" class="btn btn-outline" data-consent="denied">Refuz</button>
+      <button type="button" class="btn btn-primary" data-consent="granted">Accept</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { parseConsent } from '../lib/consent';
+  import {
+    clearAnalyticsCookies,
+    loadAnalytics,
+    readConsent,
+    setConsent,
+    trackContactClicks,
+  } from '../scripts/analytics';
+
+  const banner = document.getElementById('cookie-consent');
+  const measurementId = banner?.dataset.measurementId;
+
+  if (banner && measurementId) {
+    const choice = readConsent();
+    if (choice === 'granted') loadAnalytics(measurementId);
+    if (choice === 'denied') clearAnalyticsCookies();
+    if (choice === null) banner.hidden = false;
+    trackContactClicks();
+
+    banner.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      const button = event.target.closest<HTMLButtonElement>('[data-consent]');
+      const picked = parseConsent(button?.dataset.consent ?? null);
+      if (!picked) return;
+      banner.hidden = true;
+      setConsent(picked, measurementId);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element) || !event.target.closest('[data-cookie-settings]')) {
+        return;
+      }
+      banner.hidden = false;
+      banner.focus();
+    });
+  }
+</script>
+
+<style>
+  .cookie-consent {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 1000;
+    background: var(--surface);
+    color: var(--text);
+    border-top: 1px solid var(--border);
+    box-shadow: var(--sh-lg);
+  }
+  .cookie-consent[hidden] {
+    display: none;
+  }
+  .cookie-consent:focus {
+    outline: none;
+  }
+  .cookie-consent__inner {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .cookie-consent h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading);
+    margin-bottom: 4px;
+  }
+  .cookie-consent p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-sec);
+    max-width: 720px;
+  }
+  .cookie-consent p a {
+    color: var(--magenta);
+    text-decoration: underline;
+  }
+  .cookie-consent__actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .cookie-consent__actions .btn {
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  @media (max-width: 768px) {
+    .cookie-consent__inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      padding: 16px;
+    }
+    .cookie-consent__actions .btn {
+      flex: 1;
+    }
+  }
+</style>

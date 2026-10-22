@@ -92,7 +92,9 @@ const serviciiLinks = [
 
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
-      &copy; 2022 {site.name}. Creare site – <a href="https://digitalhelp.ro" target="_blank" rel="noopener">digitalhelp.ro</a>
+      &copy; 2022 {site.name}. Creare site – <a href="https://digitalhelp.ro" target="_blank" rel="noopener">digitalhelp.ro</a> ·
+      <a href="/politica-de-confidentialitate/">Politica de confidențialitate</a> ·
+      <button type="button" class="cookie-settings" data-cookie-settings>Setări cookie-uri</button>
     </div>
   </div>
 </footer>
@@ -189,6 +191,17 @@ const serviciiLinks = [
   }
   .footer-bottom-inner a {
     color: #1c7261;
+  }
+  .cookie-settings {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: #1c7261;
+    cursor: pointer;
+  }
+  .cookie-settings:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: 900px) {

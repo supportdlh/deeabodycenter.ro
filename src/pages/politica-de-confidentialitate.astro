@@ -1,0 +1,160 @@
+---
+// Politica de confidențialitate (GDPR). Descrie doar ce face site-ul efectiv: fără formulare,
+// contact prin telefon/WhatsApp, Google Analytics doar cu consimțământ, harta Google Maps.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerHero from '../components/InnerHero.astro';
+import { site } from '../data/site';
+
+const { legal } = site;
+const updated = '22 octombrie 2026';
+---
+
+<BaseLayout
+  title="Politica de confidențialitate - Deea Body Center"
+  description="Cum prelucrează Deea Body Center datele personale: contact prin telefon și WhatsApp, statistici Google Analytics doar cu acordul tău, drepturile tale GDPR."
+  canonicalPath="/politica-de-confidentialitate/"
+>
+  <InnerHero title="Politica de confidențialitate" breadcrumb={[{ label: 'Politica de confidențialitate' }]} />
+
+  <section class="section">
+    <div class="legal">
+      <p class="legal__updated">Ultima actualizare: {updated}</p>
+
+      <h2>1. Cine suntem</h2>
+      <p>
+        Site-ul deeabodycenter.ro aparține salonului {site.name}, administrat de {legal.company}, CUI {legal.cui},
+        Nr. Reg. Com. {legal.regCom}, cu sediul social în {legal.seat}. Salonul se află în {site.address.street},{' '}
+        {site.address.city}. În sensul Regulamentului (UE) 2016/679 (GDPR), {legal.company} este operatorul datelor
+        tale personale.
+      </p>
+      <p>
+        Ne poți contacta pentru orice întrebare legată de datele tale la telefon{' '}
+        <a href={site.phoneHref}>{site.phone}</a>, pe WhatsApp sau direct la salon.
+      </p>
+
+      <h2>2. Ce date prelucrăm și de ce</h2>
+      <h3>Când ne contactezi</h3>
+      <p>
+        Site-ul nu are formulare. Dacă ne suni sau ne scrii pe WhatsApp, folosim numele, numărul de telefon și ce ne
+        transmiți ca să îți răspundem și să îți facem programarea. Temeiul este pregătirea și executarea serviciului
+        cerut de tine (art. 6 alin. 1 lit. b GDPR). Mesajele trimise pe WhatsApp sunt prelucrate și de WhatsApp
+        (Meta), conform propriei politici de confidențialitate.
+      </p>
+      <h3>Statistici de trafic (Google Analytics)</h3>
+      <p>
+        Folosim Google Analytics 4, furnizat de Google Ireland Limited, ca să vedem câte persoane vizitează site-ul,
+        ce pagini sunt accesate și dacă vizitatorii apasă pe butonul de WhatsApp sau pe numărul de telefon. Google
+        Analytics se încarcă doar după ce apeși „Accept” în bannerul de cookie-uri (art. 6 alin. 1 lit. a GDPR).
+        Dacă apeși „Refuz”, nu se trimit date către Google. Datele pot fi transferate în afara Uniunii Europene,
+        în condițiile Cadrului UE-SUA privind protecția datelor.
+      </p>
+      <h3>Harta Google Maps</h3>
+      <p>
+        Pe pagina de contact afișăm o hartă Google Maps, încărcată de pe serverele Google. La afișarea ei, Google
+        primește adresa IP a dispozitivului tău și poate seta propriile cookie-uri.
+      </p>
+      <h3>Jurnalele serverului</h3>
+      <p>
+        Ca orice site, serverul pe care este găzduit site-ul înregistrează automat adresa IP, data și ora, pagina
+        accesată și browserul folosit. Le folosim doar pentru securitate și pentru remedierea erorilor (interes
+        legitim, art. 6 alin. 1 lit. f GDPR) și le păstrăm pentru o perioadă limitată.
+      </p>
+
+      <h2>3. Cookie-uri</h2>
+      <table class="legal__table">
+        <thead>
+          <tr><th scope="col">Cookie</th><th scope="col">Rol</th><th scope="col">Durată</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>_ga, _ga_*</td><td>Google Analytics, doar cu acordul tău</td><td>până la 2 ani</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Alegerea ta („Accept” sau „Refuz”) este salvată în browser (localStorage), nu într-un cookie. O poți schimba
+        oricând:{' '}
+        <button type="button" class="legal__link" data-cookie-settings>Setări cookie-uri</button>.
+      </p>
+
+      <h2>4. Cui transmitem datele</h2>
+      <p>
+        Nu vindem și nu închiriem datele tale. Le pot primi doar furnizorii de mai sus (Google, WhatsApp/Meta),
+        firma care găzduiește site-ul și, dacă legea o cere, autoritățile publice.
+      </p>
+
+      <h2>5. Cât timp păstrăm datele</h2>
+      <p>
+        Datele de contact le păstrăm cât este nevoie pentru programări și pentru obligațiile legale (de exemplu,
+        cele fiscale). Datele Google Analytics sunt păstrate de Google cel mult 14 luni.
+      </p>
+
+      <h2>6. Drepturile tale</h2>
+      <p>
+        Ai dreptul să ceri acces la datele tale, rectificarea sau ștergerea lor, restricționarea prelucrării,
+        portabilitatea datelor și să te opui prelucrării. Îți poți retrage oricând consimțământul, fără să afecteze
+        prelucrarea făcută înainte. Pentru oricare dintre acestea, contactează-ne la datele de la punctul 1.
+      </p>
+      <p>
+        Dacă consideri că datele tale nu sunt prelucrate corect, poți depune o plângere la Autoritatea Națională de
+        Supraveghere a Prelucrării Datelor cu Caracter Personal (<a
+          href="https://www.dataprotection.ro"
+          target="_blank"
+          rel="noopener">www.dataprotection.ro</a
+        >).
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 24px;
+    color: var(--text);
+    line-height: 1.75;
+  }
+  .legal__updated {
+    font-size: 14px;
+    color: var(--text-sec);
+  }
+  .legal h2 {
+    font-size: 1.5rem;
+    margin: 2.2rem 0 0.8rem;
+    color: var(--heading);
+  }
+  .legal h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 1.4rem 0 0.4rem;
+    color: var(--heading);
+  }
+  .legal p {
+    margin-bottom: 1rem;
+  }
+  .legal a,
+  .legal__link {
+    color: var(--magenta);
+    text-decoration: underline;
+  }
+  .legal__link {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+  .legal__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 15px;
+  }
+  .legal__table th,
+  .legal__table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+</style>
