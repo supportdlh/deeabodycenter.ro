@@ -31,6 +31,13 @@ export const site = {
   // (Header/Footer/ContactBlock foloseau fallback "#"), acum active pe tot site-ul.
   social: { facebook: 'https://www.facebook.com/DeeaBodyCenter', instagram: 'https://www.instagram.com/deeabody_center/' },
   ga4: 'G-JX978SL3G5',
+  // Operatorul de date (politica de confidențialitate). Sursa: termene.ro, verificat 2026-10-22.
+  legal: {
+    company: 'DEEA BEAUTY COSMETICS SRL',
+    cui: '36854454',
+    regCom: 'J2016002187292',
+    seat: 'Str. Brândușelor nr. 26, Păulești, jud. Prahova',
+  },
   tagline: 'Redefinește-ți silueta, redescoperă-ți încrederea!',
 } as const;
 

@@ -106,8 +106,9 @@ const { title, breadcrumb = [], image, imageAlt = '' } = Astro.props;
   .inner-hero__title {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 700;
-    font-size: 48px;
-    line-height: 1;
+    /* Scade sub ~530px, ca titlurile cu cuvinte lungi („confidențialitate") să încapă pe 360px. */
+    font-size: min(48px, 9vw);
+    line-height: 1.05;
     color: var(--navy, #051145);
     margin: 0 0 26px;
   }
