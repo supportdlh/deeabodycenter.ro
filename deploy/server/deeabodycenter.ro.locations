@@ -21,10 +21,15 @@ location = /sitemap.xml {
     try_files /sitemap-index.xml =404;
 }
 
+# Content-Security-Policy for the HTML pages. External resources: GA4 (gtag.js + collect
+# requests) and the Google Maps iframe on the contact section.
+set $dh_csp "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; media-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'";
+
 # HTML is always revalidated, so price and offer changes show up right after a deploy.
 # $uri/ makes /tarife redirect to /tarife/ (directory-style URLs, like WordPress).
 location / {
     add_header Cache-Control "no-cache" always;
+    add_header Content-Security-Policy $dh_csp always;
     include /etc/nginx/snippets/security-headers.conf;
     try_files $uri $uri/ =404;
 }
