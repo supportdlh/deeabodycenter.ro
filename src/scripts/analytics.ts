@@ -90,7 +90,9 @@ export function trackContactClicks(): void {
     if (!link) return;
     const href = link.getAttribute('href') ?? '';
     if (href.startsWith('https://wa.me/')) {
-      trackEvent('click_whatsapp', { page_path: location.pathname });
+      // `data-offer` names the offer behind a booking button, so GA4 can compare offers.
+      const offer = link.dataset.offer;
+      trackEvent('click_whatsapp', { page_path: location.pathname, ...(offer && { offer_name: offer }) });
     } else if (href.startsWith('tel:')) {
       trackEvent('click_to_call', { phone_number: href.slice(4) });
     } else {
