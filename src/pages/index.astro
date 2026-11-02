@@ -480,10 +480,10 @@ const faq = [
       const prevBtn = card.querySelector('[data-testi-prev]');
       const nextBtn = card.querySelector('[data-testi-next]');
       const getIndex = () => Math.round(track.scrollLeft / track.clientWidth);
-      const goTo = (i) => {
+      const goTo = (i: number) => {
         const count = track.children.length;
         const idx = ((i % count) + count) % count;
-        const slide = track.children[idx];
+        const slide = track.children[idx] as HTMLElement | undefined;
         if (slide) track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
       };
       prevBtn?.addEventListener('click', () => goTo(getIndex() - 1));
