@@ -33,7 +33,7 @@ const loading = eager ? 'eager' : 'lazy';
       )
     }
   </a>
-  <a href={offer.wa} target="_blank" rel="noopener" class="btn btn-primary bfc__wa bf-live">
+  <a href={offer.wa} target="_blank" rel="noopener" class="btn btn-primary bfc__wa bf-live" data-offer={offer.label}>
     <WhatsAppIcon />
     Comandă<span class="bf-sr-only"> pe WhatsApp: {offer.label}, {offer.price}</span>
   </a>
