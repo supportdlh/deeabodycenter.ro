@@ -1,0 +1,141 @@
+---
+// Blocul campaniei Black Friday: sus titlul, datele, condițiile și butoanele, cu video-ul
+// proprietarei alături; dedesubt ofertele (posterele), câte 3 pe rând, fiecare cu buton de
+// comandă pe WhatsApp. Folosit sus pe homepage (în locul hero-ului) și pe /black-friday/.
+// Stilurile comune și logica de final de campanie: BlackFridayTheme.
+import BlackFridayTheme from './BlackFridayTheme.astro';
+import BlackFridayOfferCard from './BlackFridayOfferCard.astro';
+import BlackFridayVideo from './BlackFridayVideo.astro';
+import { blackFriday } from '../data/blackFriday';
+import { getBlackFridayOffers } from '../data/blackFridayOffers';
+import { waLink } from '../data/site';
+
+interface Props {
+  headingLevel?: 'h1' | 'h2';
+  removeWhenEnded?: boolean;
+}
+const { headingLevel = 'h2', removeWhenEnded = false } = Astro.props;
+const Heading = headingLevel;
+const offers = await getBlackFridayOffers();
+---
+
+<section class="bfs bf-section" aria-labelledby="bfs-title">
+  <BlackFridayTheme removeWhenEnded={removeWhenEnded} />
+
+  <div class="bf-container">
+    <div class="bfs__top">
+      <div class="bfs__text">
+        <Heading class="bf-title bfs__title" id="bfs-title">
+          <span class="bf-neon">Black</span>
+          <span class="bf-outline">Friday</span>
+        </Heading>
+        <p class="bf-dates bfs__dates">{blackFriday.dates}</p>
+        <p class="bf-lead bfs__lead">
+          <span class="bf-deal">{blackFriday.deal}</span> la {offers.length} oferte de tratamente faciale și corporale.
+        </p>
+        <ul class="bf-terms bfs__terms">
+          {blackFriday.terms.map((term) => <li>{term}</li>)}
+        </ul>
+        <div class="bfs__ctas bf-live">
+          <a href="#bf-oferte" class="btn btn-primary">Vezi ofertele</a>
+          <a
+            href={waLink('Bună! Aș dori detalii despre ofertele Black Friday.')}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-ghost-white">Întreabă-ne pe WhatsApp</a
+          >
+        </div>
+        <p class="bf-ended" role="status">
+          Campania Black Friday s-a încheiat. Mulțumim! Vezi <a href="/oferte-speciale-tratamente-faciale-si-corporale/">ofertele actuale</a>.
+        </p>
+      </div>
+      <div class="bfs__video"><BlackFridayVideo /></div>
+    </div>
+
+    <ul class="bfs__grid" role="list" id="bf-oferte">
+      {
+        offers.map((offer, i) => (
+          <li>
+            <BlackFridayOfferCard offer={offer} eager={i < 2} sizes="(max-width: 767px) 92vw, 360px" />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .bfs {
+    padding: 48px 0 56px;
+  }
+
+  .bfs__top {
+    display: grid;
+    gap: 32px;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+  .bfs__title {
+    font-size: clamp(3rem, 11vw, 6rem);
+  }
+  .bfs__title span {
+    display: block;
+  }
+  .bfs__dates {
+    margin-top: 16px;
+  }
+  .bfs__lead {
+    margin: 12px 0 18px;
+    font-size: 1.0625rem;
+    max-width: 36ch;
+  }
+  .bfs__terms {
+    margin-bottom: 24px;
+  }
+  .bfs__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .bfs__video {
+    max-width: 340px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Flex (nu grid), ca un rând incomplet să rămână centrat. */
+  .bfs__grid {
+    --cols: 1;
+    --gap: 24px;
+    max-width: 420px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+    /* Ancora „Vezi ofertele" nu ajunge sub header-ul sticky (104px). */
+    scroll-margin-top: 124px;
+  }
+  .bfs__grid > li {
+    flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  }
+
+  @media (min-width: 768px) {
+    .bfs__top {
+      grid-template-columns: minmax(0, 1fr) clamp(280px, 32vw, 380px);
+      gap: 56px;
+      /* Video-ul puțin mai spre stânga, mai aproape de text. */
+      padding-right: clamp(0px, 5vw, 70px);
+    }
+    .bfs__video {
+      max-width: none;
+    }
+    .bfs__grid {
+      --cols: 3;
+      --gap: 28px;
+      max-width: 1100px;
+    }
+  }
+</style>

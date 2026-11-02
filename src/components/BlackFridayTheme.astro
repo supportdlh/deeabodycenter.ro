@@ -1,0 +1,155 @@
+---
+// Stilurile comune ale campaniei Black Friday (fundal, titlu neon, header închis, stare
+// „încheiată") + scriptul de final de campanie. Se include o singură dată, chiar la începutul
+// secțiunii campaniei: după `endsAt` marchează <html data-bf-ended> (butoanele dispar, apare
+// mesajul de final, header-ul revine la alb) și, cu `removeWhenEnded`, scoate secțiunea.
+import { blackFriday } from '../data/blackFriday';
+
+interface Props {
+  removeWhenEnded?: boolean;
+}
+const { removeWhenEnded = false } = Astro.props;
+---
+
+<script is:inline define:vars={{ endsAt: blackFriday.endsAt, removeWhenEnded }}>
+  if (Date.now() > Date.parse(endsAt)) {
+    document.documentElement.setAttribute('data-bf-ended', '');
+    if (removeWhenEnded) document.currentScript.closest('section').remove();
+  }
+</script>
+
+<style is:global>
+  /* ---------- Header în tonul campaniei (doar pe paginile cu secțiunea, cât e activă) ---------- */
+  html:not([data-bf-ended]) .site-header {
+    background: #0d0716;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  html:not([data-bf-ended]) .site-header .site-logo img {
+    filter: brightness(0) invert(1);
+  }
+  html:not([data-bf-ended]) .site-header .nav-item > a,
+  html:not([data-bf-ended]) .site-header .nav-dropdown > summary {
+    color: #fff;
+  }
+  html:not([data-bf-ended]) .site-header .nav-item > a:hover,
+  html:not([data-bf-ended]) .site-header .nav-dropdown > summary:hover,
+  html:not([data-bf-ended]) .site-header .nav-item > a.is-active,
+  html:not([data-bf-ended]) .site-header .nav-dropdown > summary.is-active {
+    color: #f6d9ff;
+  }
+  html:not([data-bf-ended]) .site-header .nav-item > a.is-active::after,
+  html:not([data-bf-ended]) .site-header .nav-dropdown > summary.is-active::after {
+    background: #f6d9ff;
+  }
+  html:not([data-bf-ended]) .site-header .hamburger {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  html:not([data-bf-ended]) .site-header .hamburger span {
+    background: #fff;
+  }
+  @media (max-width: 768px) {
+    html:not([data-bf-ended]) .site-header .main-nav {
+      background: #0d0716;
+    }
+    html:not([data-bf-ended]) .site-header .main-nav a,
+    html:not([data-bf-ended]) .site-header .svc-group-h,
+    html:not([data-bf-ended]) .site-header .svc-count {
+      color: #fff;
+    }
+  }
+
+  /* ---------- Stare „campanie încheiată" ---------- */
+  html[data-bf-ended] .bf-live {
+    display: none !important;
+  }
+  .bf-ended {
+    display: none;
+    margin: 0;
+    padding: 14px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--r-md);
+    color: #fff;
+  }
+  html[data-bf-ended] .bf-ended {
+    display: block;
+  }
+  .bf-ended a {
+    color: #f6d9ff;
+  }
+
+  .bf-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* ---------- Secțiune + tipografie ---------- */
+  .bf-section {
+    background:
+      radial-gradient(50% 40% at 90% 0%, rgba(192, 38, 211, 0.35), transparent 70%),
+      radial-gradient(50% 40% at 0% 100%, rgba(167, 64, 143, 0.3), transparent 70%),
+      #0d0716;
+    color: #fff;
+  }
+  .bf-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .bf-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    color: #fff;
+  }
+  .bf-neon {
+    color: #f6d9ff;
+    text-shadow:
+      0 0 8px #c026d3,
+      0 0 24px #c026d3,
+      0 0 48px rgba(192, 38, 211, 0.6);
+  }
+  .bf-outline {
+    color: #0d0716;
+    -webkit-text-stroke: 2px #fff;
+  }
+  .bf-dates {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #fff;
+    margin: 0;
+  }
+  .bf-lead {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.88);
+  }
+  .bf-deal {
+    font-weight: 700;
+    color: #f6d9ff;
+  }
+
+  .bf-terms {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .bf-terms li::before {
+    content: '* ';
+    color: #f6d9ff;
+  }
+</style>
