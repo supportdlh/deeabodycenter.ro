@@ -19,6 +19,8 @@
     "sharp": "^0.35.3"
   },
   "devDependencies": {
-    "lighthouse": "^13.4.0"
+    "@astrojs/check": "^0.9.12",
+    "lighthouse": "^13.4.0",
+    "typescript": "^6.0.3"
   }
 }
