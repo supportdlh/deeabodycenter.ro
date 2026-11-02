@@ -1,0 +1,17 @@
+---
+// Pagina campaniei Black Friday (2–4 noiembrie 2026). Conținutul e același bloc ca sus pe
+// homepage (BlackFridayShowcase); datele stau în src/data/blackFriday.ts.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlackFridayShowcase from '../components/BlackFridayShowcase.astro';
+import { blackFriday } from '../data/blackFriday';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title={`Black Friday ${blackFriday.dates} | ${site.name} ${site.city}`}
+  description={`Black Friday la ${site.name} ${site.city}, ${blackFriday.dates}: ${blackFriday.deal} la VelaShape, Green Peel, Hidratiq, HERA, Criolipoliză, Microneedling și altele. Comandă pe WhatsApp.`}
+  canonicalPath={blackFriday.path}
+  ogImage="/images/og-black-friday.jpg"
+>
+  <BlackFridayShowcase headingLevel="h1" />
+</BaseLayout>
