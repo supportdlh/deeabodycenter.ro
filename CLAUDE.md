@@ -1,6 +1,6 @@
 # CLAUDE.md — deeabodycenter.ro
 
-Clonă Astro statică a site-ului WordPress deeabodycenter.ro (Deea Body Center, Ploiești — remodelare corporală & tratamente faciale). Astro 7, `output: static`, deploy pe VPS-ul agenției (`hosting-dh`); DNS + e-mail rămân la Cyberfolks. Vezi `docs/superpowers/specs/` și `docs/superpowers/plans/` pentru spec + plan; `DEPLOY.md` pentru deploy.
+Clonă Astro statică a site-ului WordPress deeabodycenter.ro (Deea Body Center, Ploiești — remodelare corporală & tratamente faciale). Astro 7, `output: static`, deploy pe VPS-ul Hostinger al agenției (`hostinger-dh`, administrat din `~/Claude/vps-hostinger-dh`); DNS + e-mail rămân la Cyberfolks. Vezi `docs/superpowers/specs/` și `docs/superpowers/plans/` pentru spec + plan; `DEPLOY.md` pentru deploy.
 
 ## Comenzi
 
@@ -21,7 +21,7 @@ Site data-driven: paginile citesc din **content collections** (`src/content.conf
 - **Layouts** (`src/layouts/`): `BaseLayout` (head/SEO/Header/Footer, folosit de toate) → `TreatmentLayout` / `OfferLayout` (șabloane pentru colecții). Paginile statice (`index`, `contact`, `tarife`, `servicii-*`) folosesc `BaseLayout` direct.
 - **SEO/schema**: `Seo.astro` + `components/schema/` (LocalBusiness pe homepage, Service pe tratamente). Sitemap generat automat (`@astrojs/sitemap`). URL-uri directory-style (`trailingSlash: 'always'`, `format: 'directory'`) — identice cu WP, zero redirecturi.
   - `/llms.txt` e generat la build de [src/pages/llms.txt.ts](src/pages/llms.txt.ts) din `site.ts` + colecții (prețurile doar ca link spre `/tarife/`) — nu se editează de mână.
-  - `public/robots.txt` = standardul comun al serverului (`vps-administrare-website/docs/boti.md`): refuză crawlerele SEO, permite motoarele de căutare și asistenții AI. Boții blocați și scanerele primesc 403 din nginx; nu modifica politica doar aici.
+  - `public/robots.txt` = standardul comun al serverului (`vps-hostinger-dh/docs/boti.md`): refuză crawlerele SEO, permite motoarele de căutare și asistenții AI. Boții blocați și scanerele primesc 403 din nginx; nu modifica politica doar aici.
 - **Stiluri**: `src/styles/tokens.css` (design tokens) → `global.css` → `buttons.css`. Fonturi self-hosted via `@fontsource` (Playfair Display + Poppins).
 - **Imagini**: sursă optimizabilă în `src/assets/` (procesate de `astro:assets`/sharp); galeriile mari pre-optimizate (webp din WP) stau în `public/galleries/<slug>/` și sunt referite ca căi absolute în frontmatter (`gallery`) ca să nu încetinească build-ul.
 
@@ -40,7 +40,7 @@ Când rulez agenți/workflow-uri în fundal, **verific starea lor din când în 
 - `npm run build` rulează offline (fără flag sandbox). Comenzile de rețea (curl, npm install, push, servere locale) cer `dangerouslyDisableSandbox: true`.
 - Preview local: `cd dist && python3 -m http.server 8080`.
 - Deploy = push pe `main` → [.github/workflows/deploy.yml](.github/workflows/deploy.yml) face build, apoi `deploy-vps` (SSH → `dh-deploy-gate`, release-uri + rollback, smoke test) pe VPS. Config nginx: `deploy/server/deeabodycenter.ro.locations`. Detalii: `DEPLOY.md`. `main` = producție: **push pe `main` publică live imediat — NU împinge până nu confirmă clientul.** (`build/astro` = branch istoric, rămas în urmă; nu se mai folosește.)
-- `deploy/server/deeabodycenter.ro.locations` **nu** se aplică prin deploy: după o modificare se reinstalează pe server (backup + `nginx -t` + reload) și se notează în `vps-administrare-website/logs/jurnal.md`.
+- `deploy/server/deeabodycenter.ro.locations` **nu** se aplică prin deploy: după o modificare se reinstalează pe server (backup + `nginx -t` + reload) și se notează în `vps-hostinger-dh/logs/jurnal.md`.
 
 ### Conținut
 - Clona a fost făcută după fostul site WordPress, care nu mai există (nici mockup-urile din `mockups/` nu sunt referință — au divergat).

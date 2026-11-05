@@ -1,4 +1,4 @@
-# Standard DigitalHelp for robots.txt (vps-administrare-website/docs/boti.md).
+# Standard DigitalHelp for robots.txt (vps-hostinger-dh/docs/boti.md).
 # Search engines and AI assistants (search, answers and training) are allowed.
 # SEO-tool crawlers bring no visitors: they are refused here and blocked in nginx anyway.
 User-agent: AhrefsBot
