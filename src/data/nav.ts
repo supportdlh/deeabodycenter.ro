@@ -23,7 +23,6 @@ export const nav: NavItem[] = [
     label: 'Oferte',
     href: '/oferte-speciale-tratamente-faciale-si-corporale/',
     children: [
-      { label: 'Black Friday 2–4 noiembrie', href: '/black-friday/' },
       { label: 'Oferte Speciale Tratamente Faciale și Corporale', href: '/oferte-speciale-tratamente-faciale-si-corporale/' },
       { label: 'Oferte Tratamente Corporale', href: '/oferte-tratamente-corporale/' },
       { label: 'Oferte Tratamente Faciale', href: '/oferte-tratamente-faciale/' },

@@ -16,6 +16,11 @@ location ~ ^/(servicii/criolipoliza|servicii/zentisse-slim-light-laser-cel-mai-e
     return 301 /;
 }
 
+# The Black Friday campaign page (2–4 Nov 2026) was removed after the campaign ended.
+location ~ ^/black-friday/?$ {
+    return 301 /;
+}
+
 # Search Console and robots.txt use /sitemap.xml; @astrojs/sitemap generates sitemap-index.xml.
 location = /sitemap.xml {
     try_files /sitemap-index.xml =404;

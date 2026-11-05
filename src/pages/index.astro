@@ -13,7 +13,6 @@ import TestimonialCard from '../components/TestimonialCard.astro';
 import Accordion from '../components/Accordion.astro';
 import ContactBlock from '../components/ContactBlock.astro';
 import LocalBusinessSchema from '../components/schema/LocalBusinessSchema.astro';
-import BlackFridayShowcase from '../components/BlackFridayShowcase.astro';
 import { site } from '../data/site';
 
 import heraAxonHeroImg from '../assets/oferta-hera-axon-body-septembrie.jpeg';
@@ -234,8 +233,6 @@ const faq = [
   <Fragment slot="head">
     <LocalBusinessSchema />
   </Fragment>
-
-  <BlackFridayShowcase removeWhenEnded />
 
   <!-- ============================================================
        HERO — „Ofertă limitată" (layout original, fără float/scale)
@@ -544,11 +541,6 @@ const faq = [
   }
 
   /* ===== HERO ===== */
-  /* Pe durata campaniei Black Friday hero-ul e înlocuit de BlackFridayShowcase; după `endsAt`
-     componenta marchează <html data-bf-ended> și hero-ul obișnuit reapare. */
-  :global(html:not([data-bf-ended])) .hero {
-    display: none;
-  }
   .hero {
     /* Gradient identic cu live: alb sus (1%) → lavandă jos (rgb(222,194,245)),
        ca valurile albe ale shape-divider-ului să iasă în evidență și să se
