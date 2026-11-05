@@ -1,6 +1,6 @@
-# Builds once, then deploys to the VPS (hosting-dh) through dh-deploy-gate:
+# Builds once, then deploys to the VPS (hostinger-dh) through dh-deploy-gate:
 # releases + atomic `current` symlink + rollback.
-# Secrets: DEPLOY_* from vps-administrare-website/scripts/deploy-setup.sh.
+# Secrets: DEPLOY_* from vps-hostinger-dh/scripts/deploy-setup.sh.
 name: Deploy deeabodycenter.ro
 
 on:
